@@ -1,6 +1,6 @@
 {
   "name": "grunt-contrib-uglify",
-  "description": "Concatenate files.",
+  "description": "Minify files with UglifyJS.",
   "version": "0.1.0",
   "homepage": "https://github.com/gruntjs/grunt-contrib-uglify",
   "author": {
