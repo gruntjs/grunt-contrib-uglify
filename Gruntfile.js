@@ -16,21 +16,10 @@ module.exports = function(grunt) {
       all: [
         'Gruntfile.js',
         'tasks/*.js',
-        '<config:nodeunit.tests>'
+        '<%= nodeunit.tests %>'
       ],
       options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true,
-        node: true,
-        es5: true
+        jshintrc: '.jshintrc'
       }
     },
 
@@ -57,6 +46,9 @@ module.exports = function(grunt) {
 
   // Actually load this plugin's task(s).
   grunt.loadTasks('tasks');
+
+  // The jshint plugin is used for linting.
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // The clean plugin helps in testing.
   grunt.loadNpmTasks('grunt-contrib-clean');
