@@ -8,57 +8,47 @@
 
 'use strict';
 
-// External libs.
-var uglifyjs = require('uglify-js');
-var gzip = require('gzip-js');
+module.exports = function(grunt) {
 
-exports.init = function(grunt) {
-  var exports = {};
+  // Internal lib.
+  var uglify = require('./lib/uglify').init(grunt);
 
-  // Minify with UglifyJS.
-  // From https://github.com/mishoo/UglifyJS
-  exports.minify = function(src, options) {
-    if (!options) { options = {}; }
-    var jsp = uglifyjs.parser;
-    var pro = uglifyjs.uglify;
-    var ast, pos;
-    var msg = 'Minifying with UglifyJS...';
-    grunt.verbose.write(msg);
-    try {
-      ast = jsp.parse(src);
-      if (options.mangle !== false) {
-        ast = pro.ast_mangle(ast, options.mangle || {});
+  grunt.registerMultiTask('uglify', 'Minify files with UglifyJS.', function() {
+    // Merge task-specific and/or target-specific options with these defaults.
+    var options = this.options({
+      banner: '',
+      uglify: {}
+    });
+
+    // Process banner.
+    var banner = grunt.template.process(options.banner);
+
+    // Iterate over all specified file groups.
+    this.files.forEach(function(fileObj) {
+      // The source file to be minified.
+      var srcpath = fileObj.src[0];
+      var files = grunt.file.expandFiles(srcpath);
+      // Abort if source didn't match any files.
+      if (files.length === 0) {
+        grunt.log.error('Source file "' + srcpath + '" not found.');
+        return;
       }
-      if (options.squeeze !== false) {
-        ast = pro.ast_squeeze(ast, options.squeeze || {});
-      }
-      src = pro.gen_code(ast, options.codegen || {});
-      // Success!
-      grunt.verbose.ok();
-      // UglifyJS adds a trailing semicolon only when run as a script.
-      // So we manually add the trailing semicolon when using it as a module.
-      // https://github.com/mishoo/UglifyJS/issues/126
-      return src + ';';
-    } catch(e) {
-      // Something went wrong.
-      grunt.verbose.or.write(msg);
-      pos = '['.red + ('L' + e.line).yellow + ':'.red + ('C' + e.col).yellow + ']'.red;
-      grunt.log.error().writeln(pos + ' ' + (e.message + ' (position: ' + e.pos + ')').yellow);
-      grunt.warn('UglifyJS found errors.', 10);
-    }
-  };
 
-  // Return gzipped source.
-  exports.gzip = function(src) {
-    return src ? gzip.zip(src, {}) : '';
-  };
+      // Get source of specified file.
+      var max = grunt.file.read(files[0]);
+      // Concat banner + minified source.
+      var min = banner + uglify.minify(max, options);
 
-  // Output some size info about a file.
-  exports.info = function(min, max) {
-    var gzipSize = String(exports.gzip(min).length);
-    grunt.log.writeln('Uncompressed size: ' + String(max.length).green + ' bytes.');
-    grunt.log.writeln('Compressed size: ' + gzipSize.green + ' bytes gzipped (' + String(min.length).green + ' bytes minified).');
-  };
+      // Write the destination file.
+      grunt.file.write(fileObj.dest, min);
+      // Print a success message.
+      grunt.log.writeln('File "' + fileObj.dest + '" created.');
+      // ...and report some size information.
+      uglify.info(min, max);
+    }, this);
 
-  return exports;
+    // Fail task if any errors were logged.
+    if (this.errorCount > 0) { return false; }
+  });
+
 };
