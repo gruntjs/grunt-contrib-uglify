@@ -1,6 +1,6 @@
 /*
  * grunt-contrib-uglify
- * https://gruntjs.com/
+ * http://gruntjs.com/
  *
  * Copyright (c) 2012 "Cowboy" Ben Alman, contributors
  * Licensed under the MIT license.
