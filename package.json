@@ -33,7 +33,9 @@
   },
   "devDependencies": {
     "grunt-contrib-jshint": "0.1.0",
+    "grunt-contrib-nodeunit": "0.1.0",
     "grunt-contrib-clean": "0.4.0a",
+    "grunt-contrib-internal": "*",
     "grunt": "~0.4.0a"
   },
   "keywords": [
