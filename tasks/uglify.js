@@ -35,17 +35,27 @@ module.exports = function(grunt) {
         return;
       }
 
+      var src = files[0];
+
       // Get source of specified file.
-      var max = grunt.file.read(files[0]);
+      var result = uglify.minify(src, fileObj.dest, options);
+
       // Concat banner + minified source.
-      var min = banner + uglify.minify(max, options);
+      var output = banner + result.min;
 
       // Write the destination file.
-      grunt.file.write(fileObj.dest, min);
+      grunt.file.write(fileObj.dest, output);
+
+      // Write sourcemap
+      if (options.source_map) {
+        grunt.file.write(options.source_map, result.source_map);
+      }
+
       // Print a success message.
       grunt.log.writeln('File "' + fileObj.dest + '" created.');
+
       // ...and report some size information.
-      minlib.info(min, max);
+      minlib.info(result.min, result.max);
     }, this);
 
     // Fail task if any errors were logged.

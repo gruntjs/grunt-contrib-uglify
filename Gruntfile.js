@@ -30,9 +30,47 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     uglify: {
-      default_options: {
+      compressed: {
         files: {
-          'tmp/default_options': ['test/fixtures/code.js']
+          'tmp/lodash-c.js': ['test/fixtures/lodash.js']
+        },
+        options : {
+          compress : {},
+          mangle : false
+        }
+      },
+      compressed_mangled_sourcemap: {
+        files: {
+          '/dev/null': ['test/fixtures/lodash.js']
+        },
+        options : {
+          source_map : 'tmp/lodash-c-m-oDEVNULL--source-map.js'
+        }
+      },
+      compressed_mangled_DEFAULT: {
+        files: {
+          'tmp/lodash-c-m.js': ['test/fixtures/lodash.js']
+        }
+      },
+      compressed_mangled_reserved: {
+        files: {
+          'tmp/lodash-c-m-rarrayref.js': ['test/fixtures/lodash.js']
+        },
+        options : {
+          compress : {},
+          mangle : {
+            except : ['arrayRef']
+          }
+        }
+      },
+      compressed_mangled_beautified: {
+        files: {
+          'tmp/lodash-c-m-b.js': ['test/fixtures/lodash.js']
+        },
+        options : {
+          compress : {},
+          mangle : {},
+          beautify : {}
         }
       }
     },

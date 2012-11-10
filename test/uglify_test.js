@@ -2,13 +2,27 @@
 
 var grunt = require('grunt');
 
-exports.contrib_uglify = {
-  default_options: function(test) {
-    test.expect(1);
+var tmp = 'tmp/',
+    fixtures = 'test/expected/';
 
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should minify file.');
+exports.contrib_uglify = {
+  preuglified_files: function(test) {
+
+    var files = [
+      'lodash-c.js',
+      'lodash-c-m.js',
+      'lodash-c-m-rarrayRef.js',
+      'lodash-c-m-b.js',
+      'lodash-c-m-oDEVNULL--source-map.js',
+    ];
+
+    test.expect(files.length);
+
+    files.forEach(function(file){
+      var actual = grunt.file.read(tmp + file);
+      var expected = grunt.file.read(fixtures + file);
+      test.equal(actual, expected, 'task output should equal ' + file);
+    });
 
     test.done();
   }

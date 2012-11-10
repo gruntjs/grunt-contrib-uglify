@@ -9,41 +9,98 @@
 'use strict';
 
 // External libs.
-var uglifyjs = require('uglify-js');
+var uglifyjs = require('uglify-js2');
 var gzip = require('gzip-js');
+var fs = require('fs');
 
 exports.init = function(grunt) {
   var exports = {};
 
-  // Minify with UglifyJS.
-  // From https://github.com/mishoo/UglifyJS
-  exports.minify = function(src, options) {
-    if (!options) { options = {}; }
-    var jsp = uglifyjs.parser;
-    var pro = uglifyjs.uglify;
-    var ast, pos;
-    var msg = 'Minifying with UglifyJS...';
-    grunt.verbose.write(msg);
+  // Minify with UglifyJS2.
+  // From https://github.com/mishoo/UglifyJS2
+  // API docs at http://lisperator.net/uglifyjs/
+  exports.minify = function(src, dest, options) {
+
+    options = options || {};
+
+    var code = grunt.file.read(src);
+    grunt.verbose.write('Minifying with UglifyJS...');
     try {
-      ast = jsp.parse(src);
-      if (options.mangle !== false) {
-        ast = pro.ast_mangle(ast, options.mangle || {});
+
+      var ast = uglifyjs.parse(code, {
+        // filename necessary for source map
+        filename : src
+      });
+
+      var outputOptions = {
+        beautify    : false,
+        source_map  : null
+      };
+
+      if (options.beautify) {
+        grunt.util._.extend(outputOptions, options.beautify);
+        outputOptions.beautify = true;
       }
-      if (options.squeeze !== false) {
-        ast = pro.ast_squeeze(ast, options.squeeze || {});
+
+      if (options.source_map) {
+        outputOptions.source_map = uglifyjs.SourceMap({
+          file : dest,
+          root: undefined,
+          orig: undefined
+        });
       }
-      src = pro.gen_code(ast, options.codegen || {});
-      // Success!
+
+      var output = uglifyjs.OutputStream(outputOptions);
+
+      // Need to call this before we mangle or compress,
+      // and call after any compression or ast altering
+      ast.figure_out_scope();
+
+      if (options.compress !== false) {
+        var compressor = uglifyjs.Compressor(options.compress);
+        ast = ast.transform(compressor);
+
+        // Need to figure out scope again after source being altered
+        ast.figure_out_scope();
+      }
+
+      if (options.mangle !== false ) {
+        // Optimize for gzip compression.
+        // compute_char_frequency creates larger source but compresses better
+        ast.compute_char_frequency(options.mangle);
+
+        // Requires previous call to figure_out_scope
+        // and should always be called after compressor transform
+        ast.mangle_names(options.mangle);
+      }
+
+      // Print the ast to OutputStream
+      ast.print(output);
+
+      var min = output.get();
+
+      if (options.source_map) {
+        min += "\n//@ sourceMappingURL=" + options.source_map;
+      }
+
+      var result = {
+        max : code,
+        min : min,
+        source_map : outputOptions.source_map
+      };
+
       grunt.verbose.ok();
-      // UglifyJS adds a trailing semicolon only when run as a script.
-      // So we manually add the trailing semicolon when using it as a module.
-      // https://github.com/mishoo/UglifyJS/issues/126
-      return src + ';';
+
+      return result;
     } catch(e) {
-      // Something went wrong.
-      grunt.verbose.or.write(msg);
-      pos = '['.red + ('L' + e.line).yellow + ':'.red + ('C' + e.col).yellow + ']'.red;
-      grunt.log.error().writeln(pos + ' ' + (e.message + ' (position: ' + e.pos + ')').yellow);
+      grunt.verbose.error();
+      if (e instanceof uglifyjs.DefaultsError) {
+        grunt.warn(e.msg);
+        grunt.verbose.log("Supported options:");
+        grunt.verbose.debug(e.defs);
+      } else {
+        grunt.verbose.error(e.stack).or.writeln(e.toString().red);
+      }
       grunt.warn('UglifyJS found errors.', 10);
     }
   };
