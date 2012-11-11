@@ -54,7 +54,7 @@ module.exports = function(grunt) {
       },
       compressed_mangled_reserved: {
         files: {
-          'tmp/lodash-c-m-rarrayref.js': ['test/fixtures/lodash.js']
+          'tmp/lodash-c-m-rarrayRef.js': ['test/fixtures/lodash.js']
         },
         options : {
           compress : {},
