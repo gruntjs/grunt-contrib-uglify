@@ -1,26 +1,35 @@
-### Specifying UglifyJS options
+# UglifyJS options
 
-In this example, custom UglifyJS `mangle`, `squeeze` and `codegen` options are specified. The listed methods and their expected options are explained in the API section of the [UglifyJS documentation][uglify]:
+## API Note:
 
-* The `mangle` object is passed into the `pro.ast_mangle` method.
-* The `squeeze` object is passed into the `pro.ast_squeeze` method.
-* The `codegen` object is passed into the `pro.gen_code` method.
+When in doubt, the options mimic the [UglifyJS2 api](http://lisperator.net/uglifyjs/) *except* where the command line API is found to be simpler (e.g. reusing options passed to `mangle_names` and `compute_char_frequency`.
 
-```javascript
-// Project configuration.
-grunt.initConfig({
-  min: {
-    dist: {
-      src: ['dist/built.js'],
-      dest: 'dist/built.min.js'
-    }
-  },
-  uglify: {
-    mangle: {toplevel: true},
-    squeeze: {dead_code: false},
-    codegen: {quote_keys: true}
-  }
-});
-```
+## mangle
+Type: `Boolean`, `Object`  
+Default: `{}`
 
-See the [min task source](../tasks/min.js) for more information.
+Turn on or off mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_names()` *and* `ast.compute_char_frequency()` (mimicking command line behavior).
+
+## compress
+Type: `Boolean`, `Object`  
+Default: `{}`
+
+Turn on or off source compression with default options. If an `Object` is specified, it is passed directly to `UglifyJS2.Compressor()`.
+
+## beautify
+Type: `Boolean`, `Object`  
+Default: `false`
+
+Turns on beautification of the generated source code. Any extra options passed are merged with the options sent to `UglifyJS2.OutputStream()`.
+
+## source_map
+Type: `string`  
+Default: `undefined`
+
+Specify the sourcemap location to output.
+
+## banner
+Type: `string`
+Default: `undefined`
+
+Specify a banner to prepend to the output source, e.g. license comments.

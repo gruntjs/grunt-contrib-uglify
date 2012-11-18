@@ -65,8 +65,7 @@ exports.init = function(grunt) {
       }
 
       if (options.mangle !== false ) {
-        // Optimize for gzip compression.
-        // compute_char_frequency creates larger source but compresses better
+        // compute_char_frequency optimizes names for compression
         ast.compute_char_frequency(options.mangle);
 
         // Requires previous call to figure_out_scope
