@@ -58,10 +58,22 @@ Default: `false`
 Turns on beautification of the generated source code. Any extra options passed are merged with the options sent to `UglifyJS2.OutputStream()`.
 
 #### source_map
-Type: `string`  
+Type: `string`, `Object`
 Default: `undefined`
 
-Specify the sourcemap location to output.
+Specify the sourcemap location to output or, as an `Object`, specify the options to pass directly to UglifyJS.SourceMap()
+
+#### preserveComments
+Type: `Boolean`, `string`, `Function`
+Default: `undefined`
+Options: `false`, `true` | `'all'`, `'some'`
+
+Turn on preservation of comments.
+
+-`false` will turn off all comments
+-`'all'` will preserve all comments in code blocks that have not been squashed or dropped
+-`'some'` will preserve all comments that start with a bang (`!`) or a closure compiler style directive (`@preserve`, `@license`, `@cc_on`)
+-`Function` specify your own comment preservation function. You will be passed the current node and the current comment and are expected to return a `true`|`false`
 
 #### banner
 Type: `string`
@@ -147,4 +159,4 @@ _(Nothing yet)_
 --
 Task submitted by <a href="http://benalman.com">"Cowboy" Ben Alman</a>.
 
-*Generated on Sun Nov 18 2012 07:27:10.*
+*Generated on Fri Nov 23 2012 23:10:05.*

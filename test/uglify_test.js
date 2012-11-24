@@ -13,7 +13,9 @@ exports.contrib_uglify = {
       'lodash-c-m.js',
       'lodash-c-m-rarrayRef.js',
       'lodash-c-m-b.js',
+      'comments.js',
       'lodash-c-m-oDEVNULL--source-map.js',
+      'jquery-lodash-c-m.js',
     ];
 
     test.expect(files.length);

@@ -39,14 +39,6 @@ module.exports = function(grunt) {
           mangle : false
         }
       },
-      compressed_mangled_sourcemap: {
-        files: {
-          '/dev/null': ['test/fixtures/lodash.js']
-        },
-        options : {
-          source_map : 'tmp/lodash-c-m-oDEVNULL--source-map.js'
-        }
-      },
       compressed_mangled_DEFAULT: {
         files: {
           'tmp/lodash-c-m.js': ['test/fixtures/lodash.js']
@@ -71,6 +63,30 @@ module.exports = function(grunt) {
           compress : {},
           mangle : {},
           beautify : {}
+        }
+      },
+      multifile_out: {
+        files: {
+          'tmp/jquery-lodash-c-m.js': ['test/fixtures/*.js','!test/fixtures/_*']
+        },
+        options : {
+          mangle : false
+        }
+      },
+      preserveComments_some : {
+        src : 'test/fixtures/_comments.js',
+        dest : 'tmp/comments.js',
+        options : {
+          mangle : false,
+          preserveComments : 'some'
+        }
+      },
+      compressed_mangled_sourcemap: {
+        files: {
+          '/dev/null': ['test/fixtures/lodash.js']
+        },
+        options : {
+          source_map : 'tmp/lodash-c-m-oDEVNULL--source-map.js'
         }
       }
     },

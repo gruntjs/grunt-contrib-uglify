@@ -9,7 +9,7 @@
 'use strict';
 
 // External libs.
-var uglifyjs = require('uglify-js2');
+var UglifyJS = require('uglify-js');
 var gzip = require('gzip-js');
 var fs = require('fs');
 
@@ -19,23 +19,43 @@ exports.init = function(grunt) {
   // Minify with UglifyJS2.
   // From https://github.com/mishoo/UglifyJS2
   // API docs at http://lisperator.net/uglifyjs/
-  exports.minify = function(src, dest, options) {
+  exports.minify = function(files, dest, options) {
 
     options = options || {};
 
-    var code = grunt.file.read(src);
     grunt.verbose.write('Minifying with UglifyJS...');
     try {
+      var topLevel = null,
+          totalCode = '';
 
-      var ast = uglifyjs.parse(code, {
-        // filename necessary for source map
-        filename : src
-      });
+      files.forEach(function(file){
+        var code = grunt.file.read(file);
+        totalCode += code;
+        topLevel = UglifyJS.parse(code, {
+          filename : file,
+          toplevel : topLevel
+        })
+      })
 
       var outputOptions = {
         beautify    : false,
         source_map  : null
       };
+
+      if (options.preserveComments) {
+        if (options.preserveComments === 'all' || options.preserveComments === true) {
+          // preserve all the comments we can
+          outputOptions.comments = true;
+        } else if (options.preserveComments === 'some') {
+          // preserve comments with directives or that start with a bang (!)
+          outputOptions.comments = function(node, comment) {
+            return /^!|@preserve|@license|@cc_on/i.test(comment.value);
+          }
+        } else if (grunt.util._.isFunction(options.preserveComments)) {
+          // support custom functions passed in
+          outputOptions.comments = options.preserveComments;
+        }
+      }
 
       if (options.beautify) {
         grunt.util._.extend(outputOptions, options.beautify);
@@ -43,38 +63,43 @@ exports.init = function(grunt) {
       }
 
       if (options.source_map) {
-        outputOptions.source_map = uglifyjs.SourceMap({
-          file : dest,
-          root: undefined,
-          orig: undefined
-        });
+        if (grunt.util._.isObject(options.source_map)) {
+          outputOptions.source_map = UglifyJS.SourceMap(options.source_map);
+        } else {
+          outputOptions.source_map = UglifyJS.SourceMap({
+            file : dest,
+            root: undefined,
+            orig: undefined
+          });
+        }
       }
 
-      var output = uglifyjs.OutputStream(outputOptions);
+      var output = UglifyJS.OutputStream(outputOptions);
 
       // Need to call this before we mangle or compress,
       // and call after any compression or ast altering
-      ast.figure_out_scope();
+      topLevel.figure_out_scope();
 
       if (options.compress !== false) {
-        var compressor = uglifyjs.Compressor(options.compress);
-        ast = ast.transform(compressor);
+        if (options.compress.warnings !== true) options.compress.warnings = false;
+        var compressor = UglifyJS.Compressor(options.compress);
+        topLevel = topLevel.transform(compressor);
 
         // Need to figure out scope again after source being altered
-        ast.figure_out_scope();
+        topLevel.figure_out_scope();
       }
 
       if (options.mangle !== false ) {
         // compute_char_frequency optimizes names for compression
-        ast.compute_char_frequency(options.mangle);
+        topLevel.compute_char_frequency(options.mangle);
 
         // Requires previous call to figure_out_scope
         // and should always be called after compressor transform
-        ast.mangle_names(options.mangle);
+        topLevel.mangle_names(options.mangle);
       }
 
       // Print the ast to OutputStream
-      ast.print(output);
+      topLevel.print(output);
 
       var min = output.get();
 
@@ -83,7 +108,7 @@ exports.init = function(grunt) {
       }
 
       var result = {
-        max : code,
+        max : totalCode,
         min : min,
         source_map : outputOptions.source_map
       };
@@ -93,7 +118,7 @@ exports.init = function(grunt) {
       return result;
     } catch(e) {
       grunt.verbose.error();
-      if (e instanceof uglifyjs.DefaultsError) {
+      if (e instanceof UglifyJS.DefaultsError) {
         grunt.warn(e.msg);
         grunt.verbose.log("Supported options:");
         grunt.verbose.debug(e.defs);
