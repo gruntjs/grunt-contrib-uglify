@@ -17,7 +17,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('uglify', 'Minify files with UglifyJS.', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
-      banner   : '',
+      banner: '',
       compress : {
         warnings : false
       },
@@ -31,29 +31,29 @@ module.exports = function(grunt) {
       return;
     }
 
-    // Get source of specified file.
+      // Get source of specified file.
     var result = uglify.minify(this.file.src, this.file.dest, options);
 
-    // Concat banner + minified source.
+      // Concat banner + minified source.
     var banner = grunt.template.process(options.banner);
-    var output = banner + result.min;
+      var output = banner + result.min;
 
-    // Write the destination file.
+      // Write the destination file.
     grunt.file.write(this.file.dest, output);
 
-    // Write sourcemap
-    if (options.source_map) {
-      grunt.file.write(options.source_map, result.source_map);
-    }
+      // Write sourcemap
+      if (options.source_map) {
+        grunt.file.write(options.source_map, result.source_map);
+      }
 
-    // Print a success message.
+      // Print a success message.
     grunt.log.writeln('File "' + this.file.dest + '" created.');
 
-    // ...and report some size information.
-    minlib.info(result.min, result.max);
-  }, this);
+      // ...and report some size information.
+      minlib.info(result.min, result.max);
+    }, this);
 
-  // Fail task if any errors were logged.
-  if (this.errorCount > 0) { return false; }
+    // Fail task if any errors were logged.
+    if (this.errorCount > 0) { return false; }
 
 };
