@@ -5,28 +5,18 @@
 _Note that this plugin has not yet been released, and only works with the latest bleeding-edge, in-development version of grunt. See the [When will I be able to use in-development feature 'X'?](https://github.com/gruntjs/grunt/blob/devel/docs/faq.md#when-will-i-be-able-to-use-in-development-feature-x) FAQ entry for more information._
 
 ## Getting Started
-_If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide._
+If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide, as it explains how to create a [gruntfile][Getting Started] as well as install and use grunt plugins. Once you're familiar with that process, install this plugin with this command:
 
-From the same directory as your project's [Gruntfile][Getting Started] and [package.json][], install this plugin with the following command:
-
-```bash
+```shell
 npm install grunt-contrib-uglify --save-dev
 ```
 
-Once that's done, add this line to your project's Gruntfile:
-
-```js
-grunt.loadNpmTasks('grunt-contrib-uglify');
-```
-
-If the plugin has been installed correctly, running `grunt --help` at the command line should list the newly-installed plugin's task or tasks. In addition, the plugin should be listed in package.json as a `devDependency`, which ensures that it will be installed whenever the `npm install` command is run.
-
 [grunt]: http://gruntjs.com/
 [Getting Started]: https://github.com/gruntjs/grunt/blob/devel/docs/getting_started.md
-[package.json]: https://npmjs.org/doc/json.html
 
 
-## The uglify task
+## Uglify task
+_Run this task with the `grunt uglify` command._
 
 #### Overview
 
@@ -85,70 +75,84 @@ Specify a banner to prepend to the output source, e.g. license comments.
 
 ##### All tasks are specified in an `uglify` block
 
-        uglify: {
+```js
+uglify: {
+```
 
 ##### This is a multitask and options specified at the root level will be merged with each task
 
-          options: {
-            mangle : {
-              except : ['jQuery', 'Backbone']
-            }
-          },
+```js
+  options: {
+    mangle : {
+      except : ['jQuery', 'Backbone']
+    }
+  }
+```
 
 ##### Just use default options to compress your source
 
-          default: {
-            files: {
-              'source.min.js': ['source.js']
-            }
-          },
+```js
+  default: {
+    files: {
+      'source.min.js': ['source.js']
+    }
+  }
+```
 
 ##### Compress your source only, no mangling
 
-          no_mangle: {
-            files: {
-              'source.min.js': ['source.js']
-            },
-            options : {
-              mangle : false
-            }
-          },
+```js
+  no_mangle: {
+    files: {
+      'source.min.js': ['source.js']
+    },
+    options : {
+      mangle : false
+    }
+  }
+```
 
 ##### Compress, mangle, and output source map
 
-          sourcemap: {
-            files: {
-              'source.min.js': ['source.js']
-            },
-            options : {
-              source_map : 'sourcemap.js'
-            }
-          },
+```js
+  sourcemap: {
+    files: {
+      'source.min.js': ['source.js']
+    },
+    options : {
+      source_map : 'sourcemap.js'
+    }
+  }
+```
 
 ##### Beautify your compressed and mangled source
 
-          beautified: {
-            files: {
-              'source.min.js': ['source.js']
-            },
-            options : {
-              beautify : {
-                max_line_len : 120
-              }
-            }
-          }
+```js
+  beautified: {
+    files: {
+      'source.min.js': ['source.js']
+    },
+    options : {
+      beautify : {
+        max_line_len : 120
+      }
+    }
+  }
+```
 
 ##### Banner comments
 
-          banner: {
-            files: {
-              'source.min.js': ['source.js']
-            },
-            options : {
-              banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-                      ' *  <%= grunt.template.today("yyyy-mm-dd") %> */'
-            }
-          }
+```js
+  banner: {
+    files: {
+      'source.min.js': ['source.js']
+    },
+    options : {
+      banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+              ' *  <%= grunt.template.today("yyyy-mm-dd") %> */'
+    }
+  }
+```
 
 
 ## Release History
@@ -156,7 +160,8 @@ Specify a banner to prepend to the output source, e.g. license comments.
 _(Nothing yet)_
 
 
---
-Task submitted by <a href="http://benalman.com">"Cowboy" Ben Alman</a>.
+---
 
-*Generated on Fri Nov 23 2012 23:10:05.*
+Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
+
+*This file was generated on Sun Nov 25 2012 10:54:24.*
