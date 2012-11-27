@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     jshint: {
       all: [
         'Gruntfile.js',
-        'tasks/*.js',
+        'tasks/**/*.js',
         '<%= nodeunit.tests %>'
       ],
       options: {
@@ -34,9 +34,9 @@ module.exports = function(grunt) {
         files: {
           'tmp/lodash-c.js': ['test/fixtures/lodash.js']
         },
-        options : {
-          compress : {},
-          mangle : false
+        options: {
+          compress: {},
+          mangle: false
         }
       },
       compressed_mangled_DEFAULT: {
@@ -48,10 +48,10 @@ module.exports = function(grunt) {
         files: {
           'tmp/lodash-c-m-rarrayRef.js': ['test/fixtures/lodash.js']
         },
-        options : {
-          compress : {},
-          mangle : {
-            except : ['arrayRef']
+        options: {
+          compress: {},
+          mangle: {
+            except: ['arrayRef']
           }
         }
       },
@@ -59,34 +59,34 @@ module.exports = function(grunt) {
         files: {
           'tmp/lodash-c-m-b.js': ['test/fixtures/lodash.js']
         },
-        options : {
-          compress : {},
-          mangle : {},
-          beautify : {}
+        options: {
+          compress: {},
+          mangle: {},
+          beautify: {}
         }
       },
       multifile_out: {
         files: {
           'tmp/jquery-lodash-c-m.js': ['test/fixtures/*.js','!test/fixtures/_*']
         },
-        options : {
-          mangle : false
+        options: {
+          mangle: false
         }
       },
-      preserveComments_some : {
-        src : 'test/fixtures/_comments.js',
-        dest : 'tmp/comments.js',
-        options : {
-          mangle : false,
-          preserveComments : 'some'
+      preserveComments_some: {
+        src: 'test/fixtures/_comments.js',
+        dest: 'tmp/comments.js',
+        options: {
+          mangle: false,
+          preserveComments: 'some'
         }
       },
       compressed_mangled_sourcemap: {
         files: {
           '/dev/null': ['test/fixtures/lodash.js']
         },
-        options : {
-          source_map : 'tmp/lodash-c-m-oDEVNULL--source-map.js'
+        options: {
+          source_map: 'tmp/lodash-c-m-oDEVNULL--source-map.js'
         }
       }
     },

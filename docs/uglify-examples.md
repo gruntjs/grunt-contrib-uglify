@@ -1,82 +1,117 @@
 # Usage examples
 
-### All tasks are specified in an `uglify` block
+### Options
+Like other multi tasks, per-target options will override options specified at the root level.
 
 ```js
-uglify: {
-```
-
-### This is a multitask and options specified at the root level will be merged with each task
-
-```js
-  options: {
-    mangle: {
-      except: ['jQuery', 'Backbone']
-    }
-  },
-```
-
-### Just use default options to compress your source
-
-```js
-  default: {
-    files: {
-      'source.min.js': ['source.js']
-    }
-  },
-```
-
-### Compress your source only, no mangling
-
-```js
-  no_mangle: {
-    files: {
-      'source.min.js': ['source.js']
-    },
+// Project configuration.
+grunt.initConfig({
+  uglify: {
     options: {
-      mangle: false
-    }
-  },
-```
-
-### Compress, mangle, and output source map
-
-```js
-  sourcemap: {
-    files: {
-      'source.min.js': ['source.js']
+      mangle: {
+        except: ['jQuery', 'Backbone']
+      }
     },
-    options: {
-      source_map: 'sourcemap.js'
-    }
-  },
-```
-
-### Beautify your compressed and mangled source
-
-```js
-  beautified: {
-    files: {
-      'source.min.js': ['source.js']
-    },
-    options: {
-      beautify: {
-        max_line_len: 120
+    my_target: {
+      options: {
+        // override here
+      },
+      files: {
+        'dest/output.min.js': ['src/input.js']
       }
     }
-  },
+  }
+});
+```
+
+### Basic compression
+You can use the default options to compress your source.
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    my_target: {
+      files: {
+        'dest/output.min.js': ['src/input.js']
+      }
+    }
+  }
+});
+```
+
+### No mangling
+Compress your source only, without mangling it.
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    my_target: {
+      options: {
+        mangle: false
+      },
+      files: {
+        'dest/output.min.js': ['src/input.js']
+      }
+    }
+  }
+});
+```
+
+### Source maps
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    my_target: {
+      options: {
+        source_map: 'path/to/source-map.js'
+      },
+      files: {
+        'dest/output.min.js': ['src/input.js']
+      }
+    }
+  }
+});
+```
+
+### Beautify
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    my_target: {
+      options: {
+        beautify: {
+          max_line_len: 120
+        }
+      },
+      files: {
+        'dest/output.min.js': ['src/input.js']
+      }
+    }
+  }
+});
 ```
 
 ### Banner comments
 
 ```js
-  banner: {
-    files: {
-      'source.min.js': ['source.js']
-    },
-    options: {
-      banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-              ' *  <%= grunt.template.today("yyyy-mm-dd") %> */'
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    banner: {
+      options: {
+        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+                ' *  <%= grunt.template.today("yyyy-mm-dd") %> */'
+      },
+      files: {
+        'dest/output.min.js': ['src/input.js']
+      }
     }
-  },
+  }
+});
 ```

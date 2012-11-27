@@ -20,26 +20,26 @@ exports.init = function(grunt) {
   // From https://github.com/mishoo/UglifyJS2
   // API docs at http://lisperator.net/uglifyjs/
   exports.minify = function(files, dest, options) {
-
     options = options || {};
 
     grunt.verbose.write('Minifying with UglifyJS...');
+
     try {
-      var topLevel = null,
-          totalCode = '';
+      var topLevel = null;
+      var totalCode = '';
 
       files.forEach(function(file){
         var code = grunt.file.read(file);
         totalCode += code;
         topLevel = UglifyJS.parse(code, {
-          filename : file,
-          toplevel : topLevel
-        })
-      })
+          filename: file,
+          toplevel: topLevel
+        });
+      });
 
       var outputOptions = {
-        beautify    : false,
-        source_map  : null
+        beautify: false,
+        source_map: null,
       };
 
       if (options.preserveComments) {
@@ -49,8 +49,8 @@ exports.init = function(grunt) {
         } else if (options.preserveComments === 'some') {
           // preserve comments with directives or that start with a bang (!)
           outputOptions.comments = function(node, comment) {
-            return /^!|@preserve|@license|@cc_on/i.test(comment.value);
-          }
+            return (/^!|@preserve|@license|@cc_on/i).test(comment.value);
+          };
         } else if (grunt.util._.isFunction(options.preserveComments)) {
           // support custom functions passed in
           outputOptions.comments = options.preserveComments;
@@ -67,7 +67,7 @@ exports.init = function(grunt) {
           outputOptions.source_map = UglifyJS.SourceMap(options.source_map);
         } else {
           outputOptions.source_map = UglifyJS.SourceMap({
-            file : dest,
+            file: dest,
             root: undefined,
             orig: undefined
           });
@@ -80,16 +80,19 @@ exports.init = function(grunt) {
       // and call after any compression or ast altering
       topLevel.figure_out_scope();
 
+      var compressor;
       if (options.compress !== false) {
-        if (options.compress.warnings !== true) options.compress.warnings = false;
-        var compressor = UglifyJS.Compressor(options.compress);
+        if (options.compress.warnings !== true) {
+          options.compress.warnings = false;
+        }
+        compressor = UglifyJS.Compressor(options.compress);
         topLevel = topLevel.transform(compressor);
 
         // Need to figure out scope again after source being altered
         topLevel.figure_out_scope();
       }
 
-      if (options.mangle !== false ) {
+      if (options.mangle !== false) {
         // compute_char_frequency optimizes names for compression
         topLevel.compute_char_frequency(options.mangle);
 
@@ -104,41 +107,29 @@ exports.init = function(grunt) {
       var min = output.get();
 
       if (options.source_map) {
-        min += "\n//@ sourceMappingURL=" + options.source_map;
+        min += '\n//@ sourceMappingURL=' + options.source_map;
       }
 
       var result = {
-        max : totalCode,
-        min : min,
-        source_map : outputOptions.source_map
+        max: totalCode,
+        min: min,
+        source_map: outputOptions.source_map,
       };
 
       grunt.verbose.ok();
 
       return result;
-    } catch(e) {
+    } catch (e) {
       grunt.verbose.error();
       if (e instanceof UglifyJS.DefaultsError) {
         grunt.warn(e.msg);
-        grunt.verbose.log("Supported options:");
+        grunt.verbose.log('Supported options:');
         grunt.verbose.debug(e.defs);
       } else {
         grunt.verbose.error(e.stack).or.writeln(e.toString().red);
       }
-      grunt.warn('UglifyJS found errors.', 10);
+      grunt.warn('UglifyJS found errors.');
     }
-  };
-
-  // Return gzipped source.
-  exports.gzip = function(src) {
-    return src ? gzip.zip(src, {}) : '';
-  };
-
-  // Output some size info about a file.
-  exports.info = function(min, max) {
-    var gzipSize = String(exports.gzip(min).length);
-    grunt.log.writeln('Uncompressed size: ' + String(max.length).green + ' bytes.');
-    grunt.log.writeln('Compressed size: ' + gzipSize.green + ' bytes gzipped (' + String(min.length).green + ' bytes minified).');
   };
 
   return exports;

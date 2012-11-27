@@ -23,13 +23,13 @@ Default: `false`
 Turns on beautification of the generated source code. Any extra options passed are merged with the options sent to `UglifyJS2.OutputStream()`.
 
 ## source_map
-Type: `string`, `Object`
+Type: `String`, `Object`  
 Default: `undefined`
 
 Specify the sourcemap location to output or, as an `Object`, specify the options to pass directly to UglifyJS.SourceMap()
 
 ## preserveComments
-Type: `Boolean`, `string`, `Function`
+Type: `Boolean`, `String`, `Function`
 Default: `undefined`
 Options: `false`, `true` | `'all'`, `'some'`
 
@@ -41,7 +41,11 @@ Turn on preservation of comments.
 -`Function` specify your own comment preservation function. You will be passed the current node and the current comment and are expected to return a `true`|`false`
 
 ## banner
-Type: `string`
-Default: `undefined`
+Type: `String`  
+Default: empty string
 
-Specify a banner to prepend to the output source, e.g. license comments.
+This string will be prepended to the beginning of the minified output. It is processed using [grunt.template.process][], using the default options.
+
+_(Default processing options are explained in the [grunt.template.process][] documentation)_
+
+[grunt.template.process]: https://github.com/gruntjs/grunt/blob/devel/docs/api_template.md#grunttemplateprocess

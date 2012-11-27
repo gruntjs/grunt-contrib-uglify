@@ -48,13 +48,13 @@ Default: `false`
 Turns on beautification of the generated source code. Any extra options passed are merged with the options sent to `UglifyJS2.OutputStream()`.
 
 #### source_map
-Type: `string`, `Object`
+Type: `String`, `Object`  
 Default: `undefined`
 
 Specify the sourcemap location to output or, as an `Object`, specify the options to pass directly to UglifyJS.SourceMap()
 
 #### preserveComments
-Type: `Boolean`, `string`, `Function`
+Type: `Boolean`, `String`, `Function`
 Default: `undefined`
 Options: `false`, `true` | `'all'`, `'some'`
 
@@ -66,92 +66,131 @@ Turn on preservation of comments.
 -`Function` specify your own comment preservation function. You will be passed the current node and the current comment and are expected to return a `true`|`false`
 
 #### banner
-Type: `string`
-Default: `undefined`
+Type: `String`  
+Default: empty string
 
-Specify a banner to prepend to the output source, e.g. license comments.
+This string will be prepended to the beginning of the minified output. It is processed using [grunt.template.process][], using the default options.
+
+_(Default processing options are explained in the [grunt.template.process][] documentation)_
+
+[grunt.template.process]: https://github.com/gruntjs/grunt/blob/devel/docs/api_template.md#grunttemplateprocess
 
 ### Usage examples
 
-##### All tasks are specified in an `uglify` block
+##### Options
+Like other multi tasks, per-target options will override options specified at the root level.
 
 ```js
-uglify: {
-```
-
-##### This is a multitask and options specified at the root level will be merged with each task
-
-```js
-  options: {
-    mangle : {
-      except : ['jQuery', 'Backbone']
-    }
-  }
-```
-
-##### Just use default options to compress your source
-
-```js
-  default: {
-    files: {
-      'source.min.js': ['source.js']
-    }
-  }
-```
-
-##### Compress your source only, no mangling
-
-```js
-  no_mangle: {
-    files: {
-      'source.min.js': ['source.js']
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    options: {
+      mangle: {
+        except: ['jQuery', 'Backbone']
+      }
     },
-    options : {
-      mangle : false
-    }
-  }
-```
-
-##### Compress, mangle, and output source map
-
-```js
-  sourcemap: {
-    files: {
-      'source.min.js': ['source.js']
-    },
-    options : {
-      source_map : 'sourcemap.js'
-    }
-  }
-```
-
-##### Beautify your compressed and mangled source
-
-```js
-  beautified: {
-    files: {
-      'source.min.js': ['source.js']
-    },
-    options : {
-      beautify : {
-        max_line_len : 120
+    my_target: {
+      options: {
+        // override here
+      },
+      files: {
+        'dest/output.min.js': ['src/input.js']
       }
     }
   }
+});
+```
+
+##### Basic compression
+You can use the default options to compress your source.
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    my_target: {
+      files: {
+        'dest/output.min.js': ['src/input.js']
+      }
+    }
+  }
+});
+```
+
+##### No mangling
+Compress your source only, without mangling it.
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    my_target: {
+      options: {
+        mangle: false
+      },
+      files: {
+        'dest/output.min.js': ['src/input.js']
+      }
+    }
+  }
+});
+```
+
+##### Source maps
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    my_target: {
+      options: {
+        source_map: 'path/to/source-map.js'
+      },
+      files: {
+        'dest/output.min.js': ['src/input.js']
+      }
+    }
+  }
+});
+```
+
+##### Beautify
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    my_target: {
+      options: {
+        beautify: {
+          max_line_len: 120
+        }
+      },
+      files: {
+        'dest/output.min.js': ['src/input.js']
+      }
+    }
+  }
+});
 ```
 
 ##### Banner comments
 
 ```js
-  banner: {
-    files: {
-      'source.min.js': ['source.js']
-    },
-    options : {
-      banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-              ' *  <%= grunt.template.today("yyyy-mm-dd") %> */'
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    banner: {
+      options: {
+        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+                ' *  <%= grunt.template.today("yyyy-mm-dd") %> */'
+      },
+      files: {
+        'dest/output.min.js': ['src/input.js']
+      }
     }
   }
+});
 ```
 
 
@@ -164,4 +203,4 @@ _(Nothing yet)_
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Sun Nov 25 2012 10:54:24.*
+*This file was generated on Tue Nov 27 2012 16:20:31.*
