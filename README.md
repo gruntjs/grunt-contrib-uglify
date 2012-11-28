@@ -18,7 +18,6 @@ npm install grunt-contrib-uglify --save-dev
 ## Uglify task
 _Run this task with the `grunt uglify` command._
 
-### Overview
 _This task is a [multi task][] so any targets, files and options should be specified according to the [multi task][] documentation._
 [multi task]: https://github.com/gruntjs/grunt/wiki/Configuring-tasks
 
@@ -63,7 +62,7 @@ Turn on preservation of comments.
 
 - `false` will strip all comments
 - `'all'` will preserve all comments in code blocks that have not been squashed or dropped
-- `'some'` will preserve all comments that start with a bang (`!`) or include a closure compiler style directive (`@preserve`, `@license`, `@cc_on`)
+- `'some'` will preserve all comments that start with a bang (`!`) or include a closure compiler style directive (`@preserve` `@license` `@cc_on`)
 - `Function` specify your own comment preservation function. You will be passed the current node and the current comment and are expected to return either `true` or `false`
 
 #### banner
@@ -254,4 +253,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Wed Nov 28 2012 08:36:01.*
+*This file was generated on Wed Nov 28 2012 08:56:07.*
