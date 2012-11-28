@@ -22,7 +22,7 @@ module.exports = function(grunt) {
         warnings: false
       },
       mangle: {},
-      beautify: false,
+      beautify: false
     });
 
     // The source files to be processed. The "nonull" option is used

@@ -2,7 +2,7 @@
 
 ## API Note:
 
-When in doubt, the options mimic the [UglifyJS2 api](http://lisperator.net/uglifyjs/) *except* where the command line API is found to be simpler (e.g. reusing options passed to `mangle_names` and `compute_char_frequency`.
+This task delegates most of its options directly to [UglifyJS api](http://lisperator.net/uglifyjs/) as documented below.
 
 ## mangle
 Type: `Boolean`, `Object`  
@@ -14,13 +14,13 @@ Turn on or off mangling with default options. If an `Object` is specified, it is
 Type: `Boolean`, `Object`  
 Default: `{}`
 
-Turn on or off source compression with default options. If an `Object` is specified, it is passed directly to `UglifyJS2.Compressor()`.
+Turn on or off source compression with default options. If an `Object` is specified, it is passed as options to `UglifyJS.Compressor()`.
 
 ## beautify
 Type: `Boolean`, `Object`  
 Default: `false`
 
-Turns on beautification of the generated source code. Any extra options passed are merged with the options sent to `UglifyJS2.OutputStream()`.
+Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`.
 
 ## source_map
 Type: `String`, `Object`  
@@ -29,16 +29,16 @@ Default: `undefined`
 Specify the sourcemap location to output or, as an `Object`, specify the options to pass directly to UglifyJS.SourceMap()
 
 ## preserveComments
-Type: `Boolean`, `String`, `Function`
-Default: `undefined`
-Options: `false`, `true` | `'all'`, `'some'`
+Type: `Boolean`, `String`, `Function`  
+Default: `undefined`  
+Options: `false`, `'all'`, `'some'`
 
 Turn on preservation of comments.
 
--`false` will turn off all comments
--`'all'` will preserve all comments in code blocks that have not been squashed or dropped
--`'some'` will preserve all comments that start with a bang (`!`) or a closure compiler style directive (`@preserve`, `@license`, `@cc_on`)
--`Function` specify your own comment preservation function. You will be passed the current node and the current comment and are expected to return a `true`|`false`
+- `false` will turn off all comments
+- `'all'` will preserve all comments in code blocks that have not been squashed or dropped
+- `'some'` will preserve all comments that start with a bang (`!`) or include a closure compiler style directive (`@preserve`, `@license`, `@cc_on`)
+- `Function` specify your own comment preservation function. You will be passed the current node and the current comment and are expected to return a `true`|`false`
 
 ## banner
 Type: `String`  

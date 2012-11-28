@@ -62,7 +62,7 @@ module.exports = function(grunt) {
         options: {
           compress: {},
           mangle: {},
-          beautify: {}
+          beautify: true
         }
       },
       multifile_out: {

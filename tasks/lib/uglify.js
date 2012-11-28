@@ -16,7 +16,7 @@ var fs = require('fs');
 exports.init = function(grunt) {
   var exports = {};
 
-  // Minify with UglifyJS2.
+  // Minify with UglifyJS.
   // From https://github.com/mishoo/UglifyJS2
   // API docs at http://lisperator.net/uglifyjs/
   exports.minify = function(files, dest, options) {
@@ -58,8 +58,11 @@ exports.init = function(grunt) {
       }
 
       if (options.beautify) {
-        grunt.util._.extend(outputOptions, options.beautify);
-        outputOptions.beautify = true;
+        if (grunt.util._.isObject(options.beautify)) {
+          grunt.util._.extend(outputOptions, options.beautify);
+        } else {
+          outputOptions.beautify = true;
+        }
       }
 
       if (options.source_map) {
