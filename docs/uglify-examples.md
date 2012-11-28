@@ -1,16 +1,33 @@
 # Usage examples
 
-### Options
-Like other multi tasks, per-target options will override options specified at the root level.
+## Basic compression
 
-### Basic compression
-
-Don't specify any options to mangle and compress your source with a default configuration.
+In this example, running `grunt uglify:my_target` (or `grunt uglify` because `uglify` is a [multi task][]) will mangle and compress the input files using the default options.
 
 ```js
 // Project configuration.
 grunt.initConfig({
   uglify: {
+    my_target: {
+      files: {
+        'dest/output.min.js': ['src/input1.js', 'src/input2.js']
+      }
+    }
+  }
+});
+```
+
+## No mangling
+
+Specify `mangle: false` to prevent changes to your variable and function names.
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    options: {
+      mangle: false
+    },
     my_target: {
       files: {
         'dest/output.min.js': ['src/input.js']
@@ -20,27 +37,7 @@ grunt.initConfig({
 });
 ```
 
-### No mangling
-
-Specify `mangle : false` to prevent changes to your variable and function names.
-
-```js
-// Project configuration.
-grunt.initConfig({
-  uglify: {
-    my_target: {
-      options: {
-        mangle: false
-      },
-      files: {
-        'dest/output.min.js': ['src/input.js']
-      }
-    }
-  }
-});
-```
-
-### Reserved identifiers
+## Reserved identifiers
 
 You can specify identifiers to leave untouched with an `except` array in the `mangle` options.
 
@@ -48,12 +45,12 @@ You can specify identifiers to leave untouched with an `except` array in the `ma
 // Project configuration.
 grunt.initConfig({
   uglify: {
+    options: {
+      mangle: {
+        except: ['jQuery', 'Backbone']
+      }
+    },
     my_target: {
-      options: {
-        mangle: {
-          except: ['jQuery', 'Backbone']
-        }
-      },
       files: {
         'dest/output.min.js': ['src/input.js']
       }
@@ -62,9 +59,9 @@ grunt.initConfig({
 });
 ```
 
-### Source maps
+## Source maps
 
-Configure basic source map output by specifying a string value for the `source_map` option.
+Configure basic source map output by specifying a file path for the `source_map` option.
 
 ```js
 // Project configuration.
@@ -82,7 +79,7 @@ grunt.initConfig({
 });
 ```
 
-### Advanced source maps
+## Advanced source maps
 
 You can specify the parameters to pass to `UglifyJS.SourceMap()` which will
 allow you to configure advanced settings.
@@ -110,14 +107,14 @@ grunt.initConfig({
 ```
 
 
-### Beautify
+## Beautify
 
-Specify `beautify : true` to beautify your code for debugging/troubleshooting purposes.
+Specify `beautify: true` to beautify your code for debugging/troubleshooting purposes.
 Pass an object to manually configure any other output options passed directly to `UglifyJS.OutputStream()`.
 
 See [UglifyJS Codegen documentation](http://lisperator.net/uglifyjs/codegen) for more information.
 
-*note*: manual configuration will require you to explicitly set `beautify : true` if you want traditional, beautified output.
+_Note that manual configuration will require you to explicitly set `beautify: true` if you want traditional, beautified output._
 
 ```js
 // Project configuration.
@@ -134,8 +131,8 @@ grunt.initConfig({
     my_advanced_target: {
       options: {
         beautify: {
-          width         : 80,
-          beautify      : true
+          width: 80,
+          beautify: true
         }
       },
       files: {
@@ -146,17 +143,22 @@ grunt.initConfig({
 });
 ```
 
-### Banner comments
+## Banner comments
+
+In this example, running `grunt uglify:my_target` will prepend a banner created by interpolating the `banner` template string with the config object. Here, those properties are the values imported from the `package.json` file (which are available via the `pkg` config property) plus today's date.
+
+_Note: you don't have to use an external JSON file. It's also valid to create the `pkg` object inline in the config. That being said, if you already have a JSON file, you might as well reference it._
 
 ```js
 // Project configuration.
 grunt.initConfig({
+  pkg: grunt.file.readJSON('package.json'),
   uglify: {
-    banner: {
-      options: {
-        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-                ' *  <%= grunt.template.today("yyyy-mm-dd") %> */'
-      },
+    options: {
+      banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+        '<%= grunt.template.today("yyyy-mm-dd") %> */'
+    },
+    my_target: {
       files: {
         'dest/output.min.js': ['src/input.js']
       }
