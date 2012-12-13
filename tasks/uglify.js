@@ -24,6 +24,7 @@ module.exports = function(grunt) {
       mangle: {},
       beautify: false
     });
+    var result;
 
     // The source files to be processed. The "nonull" option is used
     // to retain invalid files/patterns so they can be warned about.
@@ -38,8 +39,13 @@ module.exports = function(grunt) {
     });
     if (invalidSrc) { return false; }
 
-    // Get source of specified file.
-    var result = uglify.minify(files, this.file.dest, options);
+    // Minify files, warn and fail on error.
+    try {
+      result = uglify.minify(files, this.file.dest, options);
+    } catch(e) {
+      grunt.log.error(e);
+      grunt.fail.warn('uglification failed!');
+    }
 
     // Concat banner + minified source.
     var banner = grunt.template.process(options.banner);
@@ -48,9 +54,9 @@ module.exports = function(grunt) {
     // Write the destination file.
     grunt.file.write(this.file.dest, output);
 
-    // Write sourcemap
-    if (options.source_map) {
-      grunt.file.write(options.source_map, result.source_map);
+    // Write source map
+    if (options.sourceMap) {
+      grunt.file.write(options.sourceMap, result.sourceMap);
     }
 
     // Print a success message.

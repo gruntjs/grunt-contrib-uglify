@@ -23,11 +23,23 @@ Default: `false`
 
 Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`.
 
-## source_map
-Type: `String` `Object`  
+## sourceMap
+Type: `String`  
 Default: `undefined`
 
-Specify the sourcemap location to output or, as an `Object`, specify the options to pass directly to UglifyJS.SourceMap()
+Specify the location to output the source map.
+
+## sourceMapRoot
+Type: `String`  
+Default: `undefined`
+
+The location where your source files can be found.
+
+## sourceMapIn
+Type: `String`  
+Default: `undefined`
+
+The location of an input source map from an earlier compilation, e.g. from CoffeeScript.
 
 ## preserveComments
 Type: `Boolean` `String` `Function`  

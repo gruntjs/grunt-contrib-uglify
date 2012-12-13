@@ -61,7 +61,7 @@ grunt.initConfig({
 
 ## Source maps
 
-Configure basic source map output by specifying a file path for the `source_map` option.
+Configure basic source map output by specifying a file path for the `sourceMap` option.
 
 ```js
 // Project configuration.
@@ -69,7 +69,7 @@ grunt.initConfig({
   uglify: {
     my_target: {
       options: {
-        source_map: 'path/to/source-map.js'
+        sourceMap: 'path/to/source-map.js'
       },
       files: {
         'dest/output.min.js': ['src/input.js']
@@ -92,10 +92,9 @@ grunt.initConfig({
   uglify: {
     my_target: {
       options: {
-        source_map: {
-          file: 'path/to/source-map.js',             // your sourcemap output
-          root: 'http://example.com/path/to/src/',   // the location of your original's source
-          orig: 'example/coffeescript-sourcemap.js', // input sourcemap from a different compilation
+        sourceMap: 'path/to/source-map.js',
+        sourceMapRoot: 'http://example.com/path/to/src/', // the location to find your original source
+        sourceMapIn: 'example/coffeescript-sourcemap.js', // input sourcemap from a previous compilation
         }
       },
       files: {

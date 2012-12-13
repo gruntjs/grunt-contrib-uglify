@@ -47,11 +47,23 @@ Default: `false`
 
 Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`.
 
-#### source_map
-Type: `String` `Object`  
+#### sourceMap
+Type: `String`  
 Default: `undefined`
 
-Specify the sourcemap location to output or, as an `Object`, specify the options to pass directly to UglifyJS.SourceMap()
+Specify the location to output the source map.
+
+#### sourceMapRoot
+Type: `String`  
+Default: `undefined`
+
+The location where your source files can be found.
+
+#### sourceMapIn
+Type: `String`  
+Default: `undefined`
+
+The location of an input source map from an earlier compilation, e.g. from CoffeeScript.
 
 #### preserveComments
 Type: `Boolean` `String` `Function`  
@@ -138,7 +150,7 @@ grunt.initConfig({
 
 #### Source maps
 
-Configure basic source map output by specifying a file path for the `source_map` option.
+Configure basic source map output by specifying a file path for the `sourceMap` option.
 
 ```js
 // Project configuration.
@@ -146,7 +158,7 @@ grunt.initConfig({
   uglify: {
     my_target: {
       options: {
-        source_map: 'path/to/source-map.js'
+        sourceMap: 'path/to/source-map.js'
       },
       files: {
         'dest/output.min.js': ['src/input.js']
@@ -169,10 +181,9 @@ grunt.initConfig({
   uglify: {
     my_target: {
       options: {
-        source_map: {
-          file: 'path/to/source-map.js',             // your sourcemap output
-          root: 'http://example.com/path/to/src/',   // the location of your original's source
-          orig: 'example/coffeescript-sourcemap.js', // input sourcemap from a different compilation
+        sourceMap: 'path/to/source-map.js',
+        sourceMapRoot: 'http://example.com/path/to/src/', // the location to find your original source
+        sourceMapIn: 'example/coffeescript-sourcemap.js', // input sourcemap from a previous compilation
         }
       },
       files: {
@@ -253,4 +264,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Wed Nov 28 2012 08:56:07.*
+*This file was generated on Thu Dec 13 2012 14:56:01.*

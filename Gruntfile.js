@@ -30,63 +30,69 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     uglify: {
-      compressed: {
+      compress: {
         files: {
-          'tmp/lodash-c.js': ['test/fixtures/lodash.js']
+          'tmp/compress.js': ['test/fixtures/src/simple.js']
         },
         options: {
-          compress: {},
           mangle: false
         }
       },
-      compressed_mangled_DEFAULT: {
+      compress_mangle: {
         files: {
-          'tmp/lodash-c-m.js': ['test/fixtures/lodash.js']
+          'tmp/compress_mangle.js': ['test/fixtures/src/simple.js']
         }
       },
-      compressed_mangled_reserved: {
+      compress_mangle_except: {
         files: {
-          'tmp/lodash-c-m-rarrayRef.js': ['test/fixtures/lodash.js']
+          'tmp/compress_mangle_except.js': ['test/fixtures/src/simple.js']
         },
         options: {
-          compress: {},
           mangle: {
-            except: ['arrayRef']
+            except: ['argumentC']
           }
         }
       },
-      compressed_mangled_beautified: {
+      compress_mangle_beautify: {
         files: {
-          'tmp/lodash-c-m-b.js': ['test/fixtures/lodash.js']
+          'tmp/compress_mangle_beautify.js': ['test/fixtures/src/simple.js']
         },
         options: {
-          compress: {},
-          mangle: {},
           beautify: true
         }
       },
-      multifile_out: {
+      multifile: {
         files: {
-          'tmp/jquery-lodash-c-m.js': ['test/fixtures/*.js','!test/fixtures/_*']
+          'tmp/multifile.js': ['test/fixtures/src/simple.js','test/fixtures/src/comments.js']
         },
         options: {
           mangle: false
         }
       },
-      preserveComments_some: {
-        src: 'test/fixtures/_comments.js',
+      compress_mangle_sourcemap: {
+        files: {
+          '/dev/null': ['test/fixtures/src/simple.js']
+        },
+        options: {
+          sourceMap: 'tmp/compress_mangle_sourcemap'
+        }
+      },
+      sourcemapin: {
+        files: {
+          '/dev/null': ['test/fixtures/src/simple2.js']
+        },
+        options: {
+          sourceMap: 'tmp/sourcemapin',
+          sourceMapIn: 'test/fixtures/src/simple2.map',
+          sourceMapRoot: 'http://local.host/js/'
+        }
+      },
+      comments: {
+        src: 'test/fixtures/src/comments.js',
         dest: 'tmp/comments.js',
         options: {
           mangle: false,
           preserveComments: 'some'
-        }
-      },
-      compressed_mangled_sourcemap: {
-        files: {
-          '/dev/null': ['test/fixtures/lodash.js']
-        },
-        options: {
-          source_map: 'tmp/lodash-c-m-oDEVNULL--source-map.js'
         }
       }
     },

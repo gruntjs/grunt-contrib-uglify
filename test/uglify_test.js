@@ -3,19 +3,20 @@
 var grunt = require('grunt');
 
 var tmp = 'tmp/',
-    fixtures = 'test/expected/';
+    fixtures = 'test/fixtures/expected/';
 
 exports.contrib_uglify = {
   preuglified_files: function(test) {
 
     var files = [
-      'lodash-c.js',
-      'lodash-c-m.js',
-      'lodash-c-m-rarrayRef.js',
-      'lodash-c-m-b.js',
       'comments.js',
-      'lodash-c-m-oDEVNULL--source-map.js',
-      'jquery-lodash-c-m.js',
+      'compress.js',
+      'compress_mangle.js',
+      'compress_mangle_beautify.js',
+      'compress_mangle_except.js',
+      'compress_mangle_sourcemap',
+      'sourcemapin',
+      'multifile.js',
     ];
 
     test.expect(files.length);
