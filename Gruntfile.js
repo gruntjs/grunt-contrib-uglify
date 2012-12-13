@@ -79,12 +79,21 @@ module.exports = function(grunt) {
       },
       sourcemapin: {
         files: {
-          '/dev/null': ['test/fixtures/src/simple2.js']
+          'tmp/sourcemapin.js': ['test/fixtures/src/simple2.js']
         },
         options: {
+          mangle : false,
           sourceMap: 'tmp/sourcemapin',
           sourceMapIn: 'test/fixtures/src/simple2.map',
           sourceMapRoot: 'http://local.host/js/'
+        }
+      },
+      sourcemapurl: {
+        files: {
+          'tmp/sourcemapurl.js': ['test/fixtures/src/simple.js']
+        },
+        options: {
+          sourceMappingURL: 'js/sourcemapurl.js.map'
         }
       },
       comments: {

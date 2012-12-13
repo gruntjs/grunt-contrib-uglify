@@ -41,6 +41,12 @@ Default: `undefined`
 
 The location of an input source map from an earlier compilation, e.g. from CoffeeScript.
 
+## sourceMappingURL
+Type: `String`  
+Default: `undefined`
+
+The location of your sourcemap. Defaults to the location you use for sourceMap, override if you need finer control
+
 ## preserveComments
 Type: `Boolean` `String` `Function`  
 Default: `undefined`  

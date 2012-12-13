@@ -15,7 +15,7 @@ exports.contrib_uglify = {
       'compress_mangle_beautify.js',
       'compress_mangle_except.js',
       'compress_mangle_sourcemap',
-      'sourcemapin',
+      'sourcemapurl.js',
       'multifile.js',
     ];
 
@@ -24,6 +24,23 @@ exports.contrib_uglify = {
     files.forEach(function(file){
       var actual = grunt.file.read(tmp + file);
       var expected = grunt.file.read(fixtures + file);
+      test.equal(actual, expected, 'task output should equal ' + file);
+    });
+
+    test.done();
+  },
+  relative_test : function(test) {
+
+    var files = [
+      'sourcemapin',
+      'sourcemapin.js',
+    ];
+
+    test.expect(files.length);
+
+    files.forEach(function(file){
+      var actual = grunt.file.read(tmp + file).replace(tmp,'REPLACED');
+      var expected = grunt.file.read(fixtures + file).replace(fixtures,'REPLACED');
       test.equal(actual, expected, 'task output should equal ' + file);
     });
 

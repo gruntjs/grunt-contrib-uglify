@@ -65,6 +65,12 @@ Default: `undefined`
 
 The location of an input source map from an earlier compilation, e.g. from CoffeeScript.
 
+#### sourceMappingURL
+Type: `String`  
+Default: `undefined`
+
+The location of your sourcemap. Defaults to the location you use for sourceMap, override if you need finer control
+
 #### preserveComments
 Type: `Boolean` `String` `Function`  
 Default: `undefined`  
@@ -264,4 +270,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Thu Dec 13 2012 14:56:01.*
+*This file was generated on Thu Dec 13 2012 15:42:18.*
