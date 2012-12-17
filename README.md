@@ -105,7 +105,8 @@ grunt.initConfig({
   uglify: {
     my_target: {
       files: {
-        'dest/output.min.js': ['src/input1.js', 'src/input2.js']
+        src: ['src/input1.js', 'src/input2.js'],
+        dest: 'dest/output.min.js'
       }
     }
   }
@@ -125,7 +126,8 @@ grunt.initConfig({
     },
     my_target: {
       files: {
-        'dest/output.min.js': ['src/input.js']
+        src: ['src/input.js'],
+        dest: 'dest/output.min.js'
       }
     }
   }
@@ -147,7 +149,8 @@ grunt.initConfig({
     },
     my_target: {
       files: {
-        'dest/output.min.js': ['src/input.js']
+        src: ['src/input.js'],
+        dest: 'dest/output.min.js'
       }
     }
   }
@@ -167,7 +170,8 @@ grunt.initConfig({
         sourceMap: 'path/to/source-map.js'
       },
       files: {
-        'dest/output.min.js': ['src/input.js']
+        src: ['src/input.js'],
+        dest: 'dest/output.min.js'
       }
     }
   }
@@ -193,7 +197,8 @@ grunt.initConfig({
         }
       },
       files: {
-        'dest/output.min.js': ['src/input.js']
+        src: ['src/input.js'],
+        dest: 'dest/output.min.js'
       }
     }
   }
@@ -219,7 +224,8 @@ grunt.initConfig({
         beautify: true
       },
       files: {
-        'dest/output.min.js': ['src/input.js']
+        src: ['src/input.js'],
+        dest: 'dest/output.min.js'
       }
     },
     my_advanced_target: {
@@ -230,7 +236,8 @@ grunt.initConfig({
         }
       },
       files: {
-        'dest/output.min.js': ['src/input.js']
+        src: ['src/input.js'],
+        dest: 'dest/output.min.js'
       }
     }
   }
@@ -254,7 +261,8 @@ grunt.initConfig({
     },
     my_target: {
       files: {
-        'dest/output.min.js': ['src/input.js']
+        src: ['src/input.js'],
+        dest: 'dest/output.min.js'
       }
     }
   }
