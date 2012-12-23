@@ -71,6 +71,12 @@ Default: `undefined`
 
 The location of your sourcemap. Defaults to the location you use for sourceMap, override if you need finer control
 
+#### prefix
+Type: `Number`  
+Default: `undefined`
+
+The number of directories to drop from the path prefix when declaring files in the source map.
+
 #### preserveComments
 Type: `Boolean` `String` `Function`  
 Default: `undefined`  

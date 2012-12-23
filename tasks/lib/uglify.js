@@ -32,6 +32,9 @@ exports.init = function(grunt) {
     // Grab and parse all source files
     files.forEach(function(file){
       var code = grunt.file.read(file);
+      if (typeof options.prefix !== 'undefined') {
+        file = file.replace(/^\/+/, "").split(/\/+/).slice(options.prefix).join("/");
+      }
       totalCode += code;
       topLevel = UglifyJS.parse(code, {
         filename: file,

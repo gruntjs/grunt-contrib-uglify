@@ -103,6 +103,15 @@ module.exports = function(grunt) {
           mangle: false,
           preserveComments: 'some'
         }
+      },
+      sourcemap_prefix: {
+        files: {
+          '/dev/null': ['test/fixtures/src/simple.js']
+        },
+        options: {
+          sourceMap: 'tmp/sourcemap_prefix',
+          prefix: 3
+        }
       }
     },
 
