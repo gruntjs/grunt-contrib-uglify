@@ -103,6 +103,14 @@ module.exports = function(grunt) {
           mangle: false,
           preserveComments: 'some'
         }
+      },
+      wrap: {
+        src: 'test/fixtures/src/simple.js',
+        dest: 'tmp/wrap.js',
+        options: {
+          mangle: false,
+          wrap: 'testExport'
+        }
       }
     },
 
