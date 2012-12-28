@@ -110,7 +110,7 @@ module.exports = function(grunt) {
         },
         options: {
           sourceMap: 'tmp/sourcemap_prefix',
-          prefix: 3
+          sourceMapPrefix: 3
         }
       }
     },

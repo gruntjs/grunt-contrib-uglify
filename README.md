@@ -71,7 +71,7 @@ Default: `undefined`
 
 The location of your sourcemap. Defaults to the location you use for sourceMap, override if you need finer control
 
-#### prefix
+#### sourceMappingPrefix
 Type: `Number`  
 Default: `undefined`
 
@@ -276,4 +276,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Thu Dec 13 2012 15:42:18.*
+*This file was generated on Thu Dec 27 2012 23:13:27.*
