@@ -17,7 +17,8 @@ exports.contrib_uglify = {
       'compress_mangle_sourcemap',
       'sourcemapurl.js',
       'multifile.js',
-      'wrap.js'
+      'wrap.js',
+      'exportAll.js'
     ];
 
     test.expect(files.length);

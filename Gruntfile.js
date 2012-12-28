@@ -111,6 +111,15 @@ module.exports = function(grunt) {
           mangle: false,
           wrap: 'testExport'
         }
+      },
+      exportAll: {
+        src: 'test/fixtures/src/simple.js',
+        dest: 'tmp/exportAll.js',
+        options: {
+          mangle: false,
+          wrap: 'testExport',
+          exportAll: true
+        }
       }
     },
 

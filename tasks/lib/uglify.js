@@ -39,9 +39,9 @@ exports.init = function(grunt) {
       });
     });
 
-    // Wrap code in a common js wrapper. 
+    // Wrap code in a common js wrapper.
     if (options.wrap) {
-      topLevel = topLevel.wrap_commonjs(options.wrap, options.export_all);
+      topLevel = topLevel.wrap_commonjs(options.wrap, options.exportAll);
     }
 
     // Need to call this before we mangle or compress,
