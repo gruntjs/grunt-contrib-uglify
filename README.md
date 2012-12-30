@@ -31,56 +31,70 @@ This task primarily delegates to [UglifyJS2][], so please consider the [UglifyJS
 
 #### mangle
 Type: `Boolean` `Object`  
-Default: `{}`
+Default: `{}`  
 
 Turn on or off mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_names()` *and* `ast.compute_char_frequency()` (mimicking command line behavior).
 
 #### compress
 Type: `Boolean` `Object`  
-Default: `{}`
+Default: `{}`  
 
 Turn on or off source compression with default options. If an `Object` is specified, it is passed as options to `UglifyJS.Compressor()`.
 
 #### beautify
 Type: `Boolean` `Object`  
-Default: `false`
+Default: `false`  
 
 Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`.
 
 #### sourceMap
 Type: `String`  
-Default: `undefined`
+Default: `undefined`  
 
 Specify the location to output the source map.
 
 #### sourceMapRoot
 Type: `String`  
-Default: `undefined`
+Default: `undefined`  
 
 The location where your source files can be found.
 
 #### sourceMapIn
 Type: `String`  
-Default: `undefined`
+Default: `undefined`  
 
 The location of an input source map from an earlier compilation, e.g. from CoffeeScript.
 
 #### sourceMappingURL
 Type: `String`  
-Default: `undefined`
+Default: `undefined`  
 
 The location of your sourcemap. Defaults to the location you use for sourceMap, override if you need finer control
 
 #### sourceMapPrefix
 Type: `Number`  
-Default: `undefined`
+Default: `undefined`  
 
 The number of directories to drop from the path prefix when declaring files in the source map.
+
+#### wrap
+Type: `String`  
+Default: `undefined`  
+
+Wrap all of the code in a closure, an easy way to make sure nothing is leaking.
+For variables that need to be public `exports` and `global` variables are made available.
+The value of wrap is the global variable exports will be available as.
+
+#### exportAll
+Type: `Boolean`  
+Default: `false`  
+
+When using `wrap` this will make all global functions and variables available via the export variable.
 
 #### preserveComments
 Type: `Boolean` `String` `Function`  
 Default: `undefined`  
-Options: `false` `'all'` `'some'`
+Options: `false` `'all'` `'some'`  
 
 Turn on preservation of comments.
 
@@ -91,7 +105,7 @@ Turn on preservation of comments.
 
 #### banner
 Type: `String`  
-Default: empty string
+Default: empty string  
 
 This string will be prepended to the beginning of the minified output. It is processed using [grunt.template.process][], using the default options.
 
@@ -99,17 +113,6 @@ _(Default processing options are explained in the [grunt.template.process][] doc
 
 [grunt.template.process]: https://github.com/gruntjs/grunt/blob/devel/docs/api_template.md#grunttemplateprocess
 
-#### wrap
-Type: `String`
-Default: `undefined`
-Wrap all of the code in a closure, an easy way to make sure nothing is leaking.
-For variables that need to be public `exports` and `global` variables are made available.
-The value of wrap is the global variable exports will be available as.
-
-#### exportAll
-Type: `Boolean`
-Default: `false`
-When using `wrap` this will make all global functions and variables available via the export variable.
 
 ### Usage examples
 
@@ -279,6 +282,7 @@ grunt.initConfig({
 });
 ```
 
+
 ## Release History
 
  * 2012-11-27   v0.1.0   Work in progress, not yet officially released.
@@ -287,4 +291,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Sun Dec 30 2012 17:37:36.*
+*This file was generated on Sun Dec 30 2012 15:13:22.*
