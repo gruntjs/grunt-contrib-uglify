@@ -99,6 +99,18 @@ _(Default processing options are explained in the [grunt.template.process][] doc
 
 [grunt.template.process]: https://github.com/gruntjs/grunt/blob/devel/docs/api_template.md#grunttemplateprocess
 
+#### wrap
+Type: `String`
+Default: `undefined`
+Wrap all of the code in a closure, an easy way to make sure nothing is leaking.
+For variables that need to be public `exports` and `global` variables are made available.
+The value of wrap is the global variable exports will be available as.
+
+#### exportAll
+Type: `Boolean`
+Default: `false`
+When using `wrap` this will make all global functions and variables available via the export variable.
+
 ### Usage examples
 
 #### Basic compression
@@ -267,7 +279,6 @@ grunt.initConfig({
 });
 ```
 
-
 ## Release History
 
  * 2012-11-27   v0.1.0   Work in progress, not yet officially released.
@@ -276,4 +287,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Sat Dec 29 2012 18:27:54.*
+*This file was generated on Sun Dec 30 2012 17:37:36.*

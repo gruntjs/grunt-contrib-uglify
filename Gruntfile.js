@@ -104,6 +104,23 @@ module.exports = function(grunt) {
           preserveComments: 'some'
         }
       },
+      wrap: {
+        src: 'test/fixtures/src/simple.js',
+        dest: 'tmp/wrap.js',
+        options: {
+          mangle: false,
+          wrap: 'testExport'
+        }
+      },
+      exportAll: {
+        src: 'test/fixtures/src/simple.js',
+        dest: 'tmp/exportAll.js',
+        options: {
+          mangle: false,
+          wrap: 'testExport',
+          exportAll: true
+        }
+      },
       sourcemap_prefix: {
         files: {
           '/dev/null': ['test/fixtures/src/simple.js']
