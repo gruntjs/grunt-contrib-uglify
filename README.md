@@ -71,6 +71,12 @@ Default: `undefined`
 
 The location of your sourcemap. Defaults to the location you use for sourceMap, override if you need finer control
 
+#### sourceMapPrefix
+Type: `Number`  
+Default: `undefined`
+
+The number of directories to drop from the path prefix when declaring files in the source map.
+
 #### preserveComments
 Type: `Boolean` `String` `Function`  
 Default: `undefined`  
@@ -281,4 +287,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Thu Dec 13 2012 15:42:18.*
+*This file was generated on Sat Dec 29 2012 18:27:54.*

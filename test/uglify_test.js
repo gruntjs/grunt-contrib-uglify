@@ -19,6 +19,7 @@ exports.contrib_uglify = {
       'multifile.js',
       'wrap.js',
       'exportAll.js'
+      'sourcemap_prefix'
     ];
 
     test.expect(files.length);

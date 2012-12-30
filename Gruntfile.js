@@ -120,6 +120,15 @@ module.exports = function(grunt) {
           wrap: 'testExport',
           exportAll: true
         }
+      },
+      sourcemap_prefix: {
+        files: {
+          '/dev/null': ['test/fixtures/src/simple.js']
+        },
+        options: {
+          sourceMap: 'tmp/sourcemap_prefix',
+          sourceMapPrefix: 3
+        }
       }
     },
 
