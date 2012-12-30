@@ -87,5 +87,5 @@ This string will be prepended to the beginning of the minified output. It is pro
 
 _(Default processing options are explained in the [grunt.template.process][] documentation)_
 
-[grunt.template.process]: https://github.com/gruntjs/grunt/blob/devel/docs/api_template.md#grunttemplateprocess
+[grunt.template.process]: https://github.com/gruntjs/grunt/wiki/grunt.template#wiki-grunt-template-process
 

@@ -111,7 +111,7 @@ This string will be prepended to the beginning of the minified output. It is pro
 
 _(Default processing options are explained in the [grunt.template.process][] documentation)_
 
-[grunt.template.process]: https://github.com/gruntjs/grunt/blob/devel/docs/api_template.md#grunttemplateprocess
+[grunt.template.process]: https://github.com/gruntjs/grunt/wiki/grunt.template#wiki-grunt-template-process
 
 
 ### Usage examples
@@ -291,4 +291,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Sun Dec 30 2012 15:13:22.*
+*This file was generated on Sun Dec 30 2012 15:19:39.*
