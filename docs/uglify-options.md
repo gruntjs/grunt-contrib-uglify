@@ -74,3 +74,15 @@ This string will be prepended to the beginning of the minified output. It is pro
 _(Default processing options are explained in the [grunt.template.process][] documentation)_
 
 [grunt.template.process]: https://github.com/gruntjs/grunt/blob/devel/docs/api_template.md#grunttemplateprocess
+
+## wrap
+Type: `String`
+Default: `undefined`
+Wrap all of the code in a closure, an easy way to make sure nothing is leaking.
+For variables that need to be public `exports` and `global` variables are made available.
+The value of wrap is the global variable exports will be available as.
+
+## exportAll
+Type: `Boolean`
+Default: `false`
+When using `wrap` this will make all global functions and variables available via the export variable.

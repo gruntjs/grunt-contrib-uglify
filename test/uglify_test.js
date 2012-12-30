@@ -18,7 +18,7 @@ exports.contrib_uglify = {
       'sourcemapurl.js',
       'multifile.js',
       'wrap.js',
-      'exportAll.js'
+      'exportAll.js',
       'sourcemap_prefix'
     ];
 
