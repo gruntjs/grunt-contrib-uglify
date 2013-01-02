@@ -83,6 +83,7 @@ exports.init = function(grunt) {
     var result = {
       max: totalCode,
       min: min,
+      dest: dest,
       sourceMap: outputOptions.source_map
     };
 
