@@ -24,50 +24,50 @@ module.exports = function(grunt) {
       mangle: {},
       beautify: false
     });
-    var result;
 
-    // The source files to be processed. The "nonull" option is used
-    // to retain invalid files/patterns so they can be warned about.
-    var files = grunt.file.expand({nonull: true}, this.file.srcRaw);
-
-    // Warn if a source file/pattern was invalid.
-    var invalidSrc = files.some(function(filepath) {
-      if (!grunt.file.exists(filepath)) {
-        grunt.log.error('Source file "' + filepath + '" not found.');
-        return true;
-      }
-    });
-    if (invalidSrc) { return false; }
-
-    // Minify files, warn and fail on error.
-    try {
-      result = uglify.minify(files, this.file.dest, options);
-    } catch(e) {
-      grunt.log.error(e);
-      grunt.fail.warn('uglification failed!');
-    }
-
-    // Concat banner + minified source.
+    // Process banner.
     var banner = grunt.template.process(options.banner);
-    var output = banner + result.min;
 
-    // Write the destination file.
-    grunt.file.write(this.file.dest, output);
+    // Iterate over all src-dest file pairs.
+    this.files.forEach(function(f) {
+      var src = f.src.filter(function(filepath) {
+        // Warn on and remove invalid source files (if nonull was set).
+        if (!grunt.file.exists(filepath)) {
+          grunt.log.warn('Source file "' + filepath + '" not found.');
+          return false;
+        } else {
+          return true;
+        }
+      });
 
-    // Write source map
-    if (options.sourceMap) {
-      grunt.file.write(options.sourceMap, result.sourceMap);
-      grunt.log.writeln('Source Map "' + options.sourceMap + '" created.');
-    }
+      // Minify files, warn and fail on error.
+      var result;
+      try {
+        result = uglify.minify(src, f.dest, options);
+      } catch (e) {
+        var err = new Error('Uglification failed.');
+        err.origError = e;
+        grunt.fail.warn(err);
+      }
 
-    // Print a success message.
-    grunt.log.writeln('File "' + this.file.dest + '" created.');
+      // Concat banner + minified source.
+      var output = banner + result.min;
 
-    // ...and report some size information.
-    minlib.info(result.min, result.max);
+      // Write the destination file.
+      grunt.file.write(f.dest, output);
 
-    // Fail task if any errors were logged.
-    if (this.errorCount > 0) { return false; }
+      // Write source map
+      if (options.sourceMap) {
+        grunt.file.write(options.sourceMap, result.sourceMap);
+        grunt.log.writeln('Source Map "' + options.sourceMap + '" created.');
+      }
+
+      // Print a success message.
+      grunt.log.writeln('File "' + f.dest + '" created.');
+
+      // ...and report some size information.
+      minlib.info(result.min, result.max);
+    });
   });
 
 };
