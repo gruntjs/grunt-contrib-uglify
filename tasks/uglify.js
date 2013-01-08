@@ -43,7 +43,7 @@ module.exports = function(grunt) {
     try {
       result = uglify.minify(files, this.file.dest, options);
     } catch(e) {
-      grunt.log.error(e);
+      grunt.log.error(e.msg || e);
       grunt.fail.warn('uglification failed!');
     }
 
