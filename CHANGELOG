@@ -1,3 +1,8 @@
+v0.1.1rc5:
+  date: 2013-01-09
+  changes:
+    - Updating to work with grunt v0.4.0rc5.
+    - Switching back to this.files api.
 v0.1.0:
   date: 2012-11-28
   changes:
