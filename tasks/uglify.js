@@ -28,22 +28,22 @@ module.exports = function(grunt) {
     // Process banner.
     var banner = grunt.template.process(options.banner);
 
-    // Iterate over all src-dest file pairs.
-    this.files.forEach(function(f) {
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      });
+    var src = this.file.src.filter(function(filepath) {
+      // Warn on and remove invalid source files (if nonull was set).
+      if (!grunt.file.exists(filepath)) {
+        grunt.log.warn('Source file "' + filepath + '" not found.');
+        return false;
+      } else {
+        return true;
+      }
+    });
 
+    // Iterate over all src-dest file pairs.
+    src.forEach(function(f) {
       // Minify files, warn and fail on error.
       var result;
       try {
-        result = uglify.minify(src, f.dest, options);
+        result = uglify.minify(src, f, options);
       } catch (e) {
         var err = new Error('Uglification failed.');
         err.origError = e;
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
       var output = banner + result.min;
 
       // Write the destination file.
-      grunt.file.write(f.dest, output);
+      grunt.file.write(this.file.dest, output);
 
       // Write source map
       if (options.sourceMap) {
@@ -63,11 +63,11 @@ module.exports = function(grunt) {
       }
 
       // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
+      grunt.log.writeln('File "' + this.file.dest + '" created.');
 
       // ...and report some size information.
       minlib.info(result.min, result.max);
-    });
+    }, this);
   });
 
 };
