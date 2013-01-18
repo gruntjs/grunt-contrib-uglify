@@ -1,7 +1,7 @@
 {
   "name": "grunt-contrib-uglify",
   "description": "Minify files with UglifyJS.",
-  "version": "0.1.1rc5",
+  "version": "0.1.1rc6",
   "homepage": "https://github.com/gruntjs/grunt-contrib-uglify",
   "author": {
     "name": "Grunt Team",
@@ -32,11 +32,11 @@
     "uglify-js": "~2.2.1"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.1.1rc5",
-    "grunt-contrib-nodeunit": "~0.1.2rc5",
-    "grunt-contrib-clean": "~0.4.0rc5",
+    "grunt-contrib-jshint": "0.1.1rc6",
+    "grunt-contrib-nodeunit": "0.1.2rc6",
+    "grunt-contrib-clean": "0.4.0rc6",
     "grunt-contrib-internal": "*",
-    "grunt": "~0.4.0rc5"
+    "grunt": "0.4.0rc6"
   },
   "keywords": []
 }

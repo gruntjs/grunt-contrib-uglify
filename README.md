@@ -285,6 +285,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2013-01-17   v0.1.1rc6   Updating grunt/gruntplugin dependencies to rc6. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
  * 2013-01-08   v0.1.1rc5   Updating to work with grunt v0.4.0rc5. Switching back to this.files api.
  * 2012-11-27   v0.1.0   Work in progress, not yet officially released.
 
@@ -292,4 +293,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Wed Jan 09 2013 14:12:29.*
+*This file was generated on Fri Jan 18 2013 10:16:17.*
