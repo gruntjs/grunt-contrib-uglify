@@ -57,6 +57,7 @@ module.exports = function(grunt) {
         result = uglify.minify(src, f.dest, options);
       } catch (e) {
         var err = new Error('Uglification failed.');
+        if (e.msg) err.message += ', ' + e.msg + '.';
         err.origError = e;
         grunt.fail.warn(err);
       }
