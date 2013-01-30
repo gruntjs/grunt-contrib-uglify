@@ -37,6 +37,10 @@ exports.contrib_uglify = {
     var files = [
       'sourcemapin',
       'sourcemapin.js',
+      'multiple_sourcemaps1.js',
+      'multiple_sourcemaps1.map',
+      'multiple_sourcemaps2.js',
+      'multiple_sourcemaps2.map',
     ];
 
     test.expect(files.length);
