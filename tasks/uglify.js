@@ -40,6 +40,17 @@ module.exports = function(grunt) {
         }
       });
 
+      // function to get the name of the sourceMap
+      if (typeof options.sourceMapName === "function") {
+        try {
+          options.sourceMap = options.sourceMapName(f.dest);
+        }catch (e) {
+          var err = new Error('SourceMapName failed.');
+          err.origError = e;
+          grunt.fail.warn(err);
+        }
+      }
+
       // Minify files, warn and fail on error.
       var result;
       try {
