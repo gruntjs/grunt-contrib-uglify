@@ -1,3 +1,8 @@
+v0.1.2rc7:
+  date: 2013-01-30
+  changes:
+    - Added better error reporting
+    - Support for dynamic names of multiple sourcemaps
 v0.1.1rc6:
   date: 2013-01-18
   changes:

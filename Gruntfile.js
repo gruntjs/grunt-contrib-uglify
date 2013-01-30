@@ -130,13 +130,13 @@ module.exports = function(grunt) {
           sourceMapPrefix: 3
         }
       },
-      multiple_sourcemap: {
+      multiple_sourcemaps: {
         files: {
-          'tmp/sourcemapA.js': ['test/fixtures/src/simple.js'],
-          'tmp/sourcemapB.js': ['test/fixtures/src/comments.js']
+          'tmp/multiple_sourcemaps1.js': ['test/fixtures/src/simple.js'],
+          'tmp/multiple_sourcemaps2.js': ['test/fixtures/src/comments.js']
         },
         options: {
-          sourceMapName: function(dest) {
+          sourceMap: function(dest) {
             return dest.replace(/\.js$/,".map");
           }
         }

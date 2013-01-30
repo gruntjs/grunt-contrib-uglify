@@ -24,10 +24,11 @@ Default: `false`
 Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`.
 
 ## sourceMap
-Type: `String`  
+Type: `String`  `Function`  
 Default: `undefined`  
 
-Specify the location to output the source map.
+Specify the location to output the source map. If a function is provided, the uglify destination is passed as the argument
+and the return value will be used as the sourceMap name.
 
 ## sourceMapRoot
 Type: `String`  

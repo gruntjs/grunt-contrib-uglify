@@ -27,6 +27,7 @@ module.exports = function(grunt) {
 
     // Process banner.
     var banner = grunt.template.process(options.banner);
+    var mapNameGenerator;
 
     // Iterate over all src-dest file pairs.
     this.files.forEach(function(f) {
@@ -41,9 +42,13 @@ module.exports = function(grunt) {
       });
 
       // function to get the name of the sourceMap
-      if (typeof options.sourceMapName === "function") {
+      if (typeof options.sourceMap === "function") {
+        mapNameGenerator = options.sourceMap;
+      }
+
+      if (mapNameGenerator) {
         try {
-          options.sourceMap = options.sourceMapName(f.dest);
+          options.sourceMap = mapNameGenerator(f.dest);
         }catch (e) {
           var err = new Error('SourceMapName failed.');
           err.origError = e;
@@ -57,6 +62,9 @@ module.exports = function(grunt) {
         result = uglify.minify(src, f.dest, options);
       } catch (e) {
         var err = new Error('Uglification failed.');
+        if (e.msg) {
+          err.message += ', ' + e.msg + '.';
+        }
         err.origError = e;
         grunt.fail.warn(err);
       }

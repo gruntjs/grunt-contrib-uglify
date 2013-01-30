@@ -48,10 +48,11 @@ Default: `false`
 Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`.
 
 #### sourceMap
-Type: `String`  
+Type: `String`  `Function`  
 Default: `undefined`  
 
-Specify the location to output the source map.
+Specify the location to output the source map. If a function is provided, the uglify destination is passed as the argument
+and the return value will be used as the sourceMap name.
 
 #### sourceMapRoot
 Type: `String`  
@@ -285,6 +286,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2013-01-29   v0.1.2rc7   Added better error reporting Support for dynamic names of multiple sourcemaps
  * 2013-01-17   v0.1.1rc6   Updating grunt/gruntplugin dependencies to rc6. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
  * 2013-01-08   v0.1.1rc5   Updating to work with grunt v0.4.0rc5. Switching back to this.files api.
  * 2012-11-27   v0.1.0   Work in progress, not yet officially released.
@@ -293,4 +295,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Fri Jan 18 2013 10:16:17.*
+*This file was generated on Wed Jan 30 2013 11:38:23.*
