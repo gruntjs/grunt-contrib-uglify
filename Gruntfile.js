@@ -136,8 +136,11 @@ module.exports = function(grunt) {
           'tmp/sourcemapB.js': ['test/fixtures/src/comments.js']
         },
         options: {
-          sourceMapName: function(dest) {
+          sourceMap: function(dest) {
             return dest.replace(/\.js$/,".map");
+          },
+          sourceMappingURL: function(dest) {
+            return "http://gruntjs.com/" + dest.replace(/\.js$/,".map");
           }
         }
       }

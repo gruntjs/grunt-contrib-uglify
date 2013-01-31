@@ -40,17 +40,6 @@ module.exports = function(grunt) {
         }
       });
 
-      // function to get the name of the sourceMap
-      if (typeof options.sourceMapName === "function") {
-        try {
-          options.sourceMap = options.sourceMapName(f.dest);
-        }catch (e) {
-          var err = new Error('SourceMapName failed.');
-          err.origError = e;
-          grunt.fail.warn(err);
-        }
-      }
-
       // Minify files, warn and fail on error.
       var result;
       try {
@@ -68,9 +57,9 @@ module.exports = function(grunt) {
       grunt.file.write(f.dest, output);
 
       // Write source map
-      if (options.sourceMap) {
-        grunt.file.write(options.sourceMap, result.sourceMap);
-        grunt.log.writeln('Source Map "' + options.sourceMap + '" created.');
+      if (result.sourceMapName) {
+        grunt.file.write(result.sourceMapName, result.sourceMap);
+        grunt.log.writeln('Source Map "' + result.sourceMapName + '" created.');
       }
 
       // Print a success message.
