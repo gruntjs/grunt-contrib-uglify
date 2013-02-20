@@ -14,6 +14,15 @@ module.exports = function(grunt) {
   var uglify = require('./lib/uglify').init(grunt);
   var minlib = require('./lib/min').init(grunt);
 
+  // if grunt is not provided, then expose internal API
+  if ('object' !== typeof(grunt)) {
+    return {
+      // re-require so libs can be re-initted.
+      uglify: require('./lib/uglify'),
+      minlib: require('./lib/min')
+    };
+  }
+
   grunt.registerMultiTask('uglify', 'Minify files with UglifyJS.', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({

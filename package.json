@@ -20,7 +20,7 @@
       "url": "https://github.com/gruntjs/grunt-contrib-uglify/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "Gruntfile.js",
+  "main": "tasks/uglify.js",
   "engines": {
     "node": ">= 0.8.0"
   },
