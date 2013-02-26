@@ -138,6 +138,9 @@ module.exports = function(grunt) {
         options: {
           sourceMap: function(dest) {
             return dest.replace(/\.js$/,".map");
+          },
+          sourceMappingURL: function(dest) {
+            return dest.replace(/\.js$/,".mapurl");
           }
         }
       }

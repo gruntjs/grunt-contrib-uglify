@@ -11,8 +11,8 @@
 module.exports = function(grunt) {
 
   // Internal lib.
+  var contrib = require('grunt-lib-contrib').init(grunt);
   var uglify = require('./lib/uglify').init(grunt);
-  var minlib = require('./lib/min').init(grunt);
 
   grunt.registerMultiTask('uglify', 'Minify files with UglifyJS.', function() {
     // Merge task-specific and/or target-specific options with these defaults.
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
 
     // Process banner.
     var banner = grunt.template.process(options.banner);
-    var mapNameGenerator;
+    var mapNameGenerator, mappingURLGenerator;
 
     // Iterate over all src-dest file pairs.
     this.files.forEach(function(f) {
@@ -46,10 +46,25 @@ module.exports = function(grunt) {
         mapNameGenerator = options.sourceMap;
       }
 
+      // function to get the sourceMappingURL
+      if (typeof options.sourceMappingURL === "function") {
+        mappingURLGenerator = options.sourceMappingURL;
+      }
+
       if (mapNameGenerator) {
         try {
           options.sourceMap = mapNameGenerator(f.dest);
-        }catch (e) {
+        } catch (e) {
+          var err = new Error('SourceMapName failed.');
+          err.origError = e;
+          grunt.fail.warn(err);
+        }
+      }
+
+      if (mappingURLGenerator) {
+        try {
+          options.sourceMappingURL = mappingURLGenerator(f.dest);
+        } catch (e) {
           var err = new Error('SourceMapName failed.');
           err.origError = e;
           grunt.fail.warn(err);
@@ -85,7 +100,7 @@ module.exports = function(grunt) {
       grunt.log.writeln('File "' + f.dest + '" created.');
 
       // ...and report some size information.
-      minlib.info(result.min, result.max);
+      contrib.minMaxInfo(result.min, result.max);
     });
   });
 

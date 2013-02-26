@@ -2,7 +2,6 @@
 
 > Minify files with UglifyJS.
 
-_Note that this plugin has not yet been released, and only works with the latest bleeding-edge, in-development version of grunt. See the [When will I be able to use in-development feature 'X'?](https://github.com/gruntjs/grunt/blob/devel/docs/faq.md#when-will-i-be-able-to-use-in-development-feature-x) FAQ entry for more information._
 
 ## Getting Started
 If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide, as it explains how to create a [gruntfile][Getting Started] as well as install and use grunt plugins. Once you're familiar with that process, install this plugin with this command:
@@ -18,10 +17,7 @@ npm install grunt-contrib-uglify --save-dev
 ## Uglify task
 _Run this task with the `grunt uglify` command._
 
-_This task is a [multi task][] so any targets, files and options should be specified according to the [multi task][] documentation._
-[multi task]: https://github.com/gruntjs/grunt/wiki/Configuring-tasks
-
-
+Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
 ### Options
 
 This task primarily delegates to [UglifyJS2][], so please consider the [UglifyJS documentation][] as required reading for advanced configuration.
@@ -51,14 +47,14 @@ Turns on beautification of the generated source code. An `Object` will be merged
 Type: `String`  `Function`  
 Default: `undefined`  
 
-Specify the location to output the source map. If a function is provided, the uglify destination is passed as the argument
+The location to output the sourcemap. If a function is provided, the uglify destination is passed as the argument
 and the return value will be used as the sourceMap name.
 
 #### sourceMapRoot
 Type: `String`  
 Default: `undefined`  
 
-The location where your source files can be found.
+The location where your source files can be found. This option sets the root location in the sourcemap file itself.
 
 #### sourceMapIn
 Type: `String`  
@@ -67,10 +63,11 @@ Default: `undefined`
 The location of an input source map from an earlier compilation, e.g. from CoffeeScript.
 
 #### sourceMappingURL
-Type: `String`  
+Type: `String`  `Function`
 Default: `undefined`  
 
-The location of your sourcemap. Defaults to the location you use for sourceMap, override if you need finer control
+The location of your sourcemap. Defaults to the location you use for sourceMap, override if you need finer control. Provide
+a function to dynamically generate the sourceMappingURL based off the destination.
 
 #### sourceMapPrefix
 Type: `Number`  
@@ -286,7 +283,8 @@ grunt.initConfig({
 
 ## Release History
 
- * 2013-01-29   v0.1.2rc7   Added better error reporting Support for dynamic names of multiple sourcemaps
+ * 2013-01-29   v0.1.2   Added better error reporting Support for dynamic names of multiple sourcemaps
+ * 2013-02-14   v0.1.1   First official release for Grunt 0.4.0.
  * 2013-01-17   v0.1.1rc6   Updating grunt/gruntplugin dependencies to rc6. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
  * 2013-01-08   v0.1.1rc5   Updating to work with grunt v0.4.0rc5. Switching back to this.files api.
  * 2012-11-27   v0.1.0   Work in progress, not yet officially released.
@@ -295,4 +293,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Wed Jan 30 2013 11:38:23.*
+*This file was generated on Mon Feb 25 2013 22:39:34.*

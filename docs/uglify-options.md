@@ -27,14 +27,14 @@ Turns on beautification of the generated source code. An `Object` will be merged
 Type: `String`  `Function`  
 Default: `undefined`  
 
-Specify the location to output the source map. If a function is provided, the uglify destination is passed as the argument
+The location to output the sourcemap. If a function is provided, the uglify destination is passed as the argument
 and the return value will be used as the sourceMap name.
 
 ## sourceMapRoot
 Type: `String`  
 Default: `undefined`  
 
-The location where your source files can be found.
+The location where your source files can be found. This option sets the root location in the sourcemap file itself.
 
 ## sourceMapIn
 Type: `String`  
@@ -43,10 +43,11 @@ Default: `undefined`
 The location of an input source map from an earlier compilation, e.g. from CoffeeScript.
 
 ## sourceMappingURL
-Type: `String`  
+Type: `String`  `Function`
 Default: `undefined`  
 
-The location of your sourcemap. Defaults to the location you use for sourceMap, override if you need finer control
+The location of your sourcemap. Defaults to the location you use for sourceMap, override if you need finer control. Provide
+a function to dynamically generate the sourceMappingURL based off the destination.
 
 ## sourceMapPrefix
 Type: `Number`  
