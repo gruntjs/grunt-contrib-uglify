@@ -57,9 +57,9 @@ module.exports = function(grunt) {
       grunt.file.write(f.dest, output);
 
       // Write source map
-      if (options.sourceMap) {
-        grunt.file.write(options.sourceMap, result.sourceMap);
-        grunt.log.writeln('Source Map "' + options.sourceMap + '" created.');
+      if (result.sourceMapName) {
+        grunt.file.write(result.sourceMapName, result.sourceMap);
+        grunt.log.writeln('Source Map "' + result.sourceMapName + '" created.');
       }
 
       // Print a success message.

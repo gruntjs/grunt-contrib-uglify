@@ -76,14 +76,16 @@ exports.init = function(grunt) {
 
     var min = output.get();
 
-    if (options.sourceMappingURL || options.sourceMap) {
-      min += '\n//@ sourceMappingURL=' + (options.sourceMappingURL || options.sourceMap);
+    var sourceMapOptions = getSourceMapOptions(options, dest);
+    if (sourceMapOptions.sourceMappingURL || sourceMapOptions.sourceMap) {
+      min += '\n//@ sourceMappingURL=' + (sourceMapOptions.sourceMappingURL || sourceMapOptions.sourceMap);
     }
 
     var result = {
       max: totalCode,
       min: min,
-      sourceMap: outputOptions.source_map
+      sourceMap: outputOptions.source_map,
+      sourceMapName: sourceMapOptions.sourceMap
     };
 
     grunt.verbose.ok();
@@ -139,6 +141,29 @@ exports.init = function(grunt) {
     }
 
     return outputOptions;
+  };
+
+  var getSourceMapOptions = function(options, dest) {
+    var sourceMapOptions = {
+      sourceMappingURL: null,
+      sourceMap: null
+    };
+
+    if (options.sourceMappingURL) {
+      if (typeof options.sourceMappingURL === "string") {
+        sourceMapOptions.sourceMappingURL = options.sourceMappingURL;
+      }else if (typeof options.sourceMappingURL === "function") {
+        sourceMapOptions.sourceMappingURL = options.sourceMappingURL(dest);
+      }
+    }
+    if (options.sourceMap) {
+      if (typeof options.sourceMap === "string") {
+        sourceMapOptions.sourceMap = options.sourceMap;
+      }else if (typeof options.sourceMap === "function") {
+        sourceMapOptions.sourceMap = options.sourceMap(dest);
+      }
+    }
+    return sourceMapOptions;
   };
 
   return exports;
