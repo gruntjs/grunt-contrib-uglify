@@ -28,7 +28,6 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "gzip-js": "~0.3.1",
     "uglify-js": "~2.2.1",
     "grunt-lib-contrib": "~0.5.3"
   },
