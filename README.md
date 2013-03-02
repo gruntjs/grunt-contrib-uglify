@@ -119,6 +119,11 @@ _(Default processing options are explained in the [grunt.template.process][] doc
 
 [grunt.template.process]: https://github.com/gruntjs/grunt/wiki/grunt.template#wiki-grunt-template-process
 
+#### sizeInfo
+Type: `Boolean`
+Default: `false`
+
+This will output the size of the resulting file both uncompressed and compressed with gzip. This is useful to see exactly how well Uglify is performing but it will make the task take about **5x longer** to complete.
 
 ### Usage examples
 
