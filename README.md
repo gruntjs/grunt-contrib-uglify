@@ -119,11 +119,20 @@ _(Default processing options are explained in the [grunt.template.process][] doc
 
 [grunt.template.process]: https://github.com/gruntjs/grunt/wiki/grunt.template#wiki-grunt-template-process
 
-#### sizeInfo
-Type: `Boolean`
+#### report
+Choices: `false`, `min`, `gzip`
 Default: `false`
 
-This will output the size of the resulting file both uncompressed and compressed with gzip. This is useful to see exactly how well Uglify is performing but it will make the task take about **5x longer** to complete.
+Either do not report anything, report only minification result, or report minification and gzip results.
+This is useful to see exactly how well Uglify is performing but using `gzip` will make the task take 5-10x longer to complete.
+
+Example ouput using `gzip`:
+
+```
+Original: 198444 bytes.
+Minified: 101615 bytes.
+Gzipped:  20084 bytes.
+```
 
 ### Usage examples
 

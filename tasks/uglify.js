@@ -23,7 +23,7 @@ module.exports = function(grunt) {
       },
       mangle: {},
       beautify: false,
-      sizeInfo: false
+      report: false
     });
 
     // Process banner.
@@ -100,9 +100,9 @@ module.exports = function(grunt) {
       // Print a success message.
       grunt.log.writeln('File "' + f.dest + '" created.');
 
-      if (options.sizeInfo) {
-        // ...and report some size information.
-        contrib.minMaxInfo(result.min, result.max);
+      // ...and report some size information.
+      if (options.report) {
+        contrib.minMaxInfo(result.min, result.max, options.report);
       }
     });
   });
