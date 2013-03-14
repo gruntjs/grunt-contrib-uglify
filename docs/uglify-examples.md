@@ -165,3 +165,30 @@ grunt.initConfig({
   }
 });
 ```
+
+## Conditional compilation
+
+You can also enable UglifyJS conditional compilation. This is commonly used to remove debug code blocks for production builds.
+
+See [UglifyJS global definitions documentation](http://lisperator.net/uglifyjs/compress#global-defs) for more information.
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    options: {
+      compress: {
+        global_defs: {
+          "DEBUG": false
+        },
+        dead_code: true
+      }
+    },
+    my_target: {
+      files: {
+        'dest/output.min.js': ['src/input.js']
+      }
+    }
+  }
+});
+```
