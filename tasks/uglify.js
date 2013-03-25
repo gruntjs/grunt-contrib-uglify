@@ -18,6 +18,7 @@ module.exports = function(grunt) {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       banner: '',
+      footer: '',
       compress: {
         warnings: false
       },
@@ -28,6 +29,7 @@ module.exports = function(grunt) {
 
     // Process banner.
     var banner = grunt.template.process(options.banner);
+    var footer = grunt.template.process(options.footer);
     var mapNameGenerator, mappingURLGenerator;
 
     // Iterate over all src-dest file pairs.
@@ -86,7 +88,7 @@ module.exports = function(grunt) {
       }
 
       // Concat banner + minified source.
-      var output = banner + result.min;
+      var output = banner + result.min + footer;
 
       // Write the destination file.
       grunt.file.write(f.dest, output);
