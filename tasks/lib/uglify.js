@@ -77,7 +77,7 @@ exports.init = function(grunt) {
     var min = output.get();
 
     if (options.sourceMappingURL || options.sourceMap) {
-      min += '\n//@ sourceMappingURL=' + (options.sourceMappingURL || options.sourceMap);
+      min += "\n/*\n//@ sourceMappingURL=" + (options.sourceMappingURL || options.sourceMap) + "\n*/";
     }
 
     var result = {
