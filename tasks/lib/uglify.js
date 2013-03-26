@@ -47,6 +47,15 @@ exports.init = function(grunt) {
       topLevel = topLevel.wrap_commonjs(options.wrap, options.exportAll);
     }
 
+    // Wrap code in closure with configurable arguments/parameters list.
+    if (options.enclose) {
+      var argParamList = grunt.util._.map(options.enclose, function(val, key) {
+        return key + ':' + val;
+      });
+
+      topLevel = topLevel.wrap_enclose(argParamList);
+    }
+
     // Need to call this before we mangle or compress,
     // and call after any compression or ast altering
     topLevel.figure_out_scope();
