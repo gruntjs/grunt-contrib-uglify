@@ -63,8 +63,11 @@ exports.init = function(grunt) {
     }
 
     if (options.mangle !== false) {
-      // compute_char_frequency optimizes names for compression
-      topLevel.compute_char_frequency(options.mangle);
+      // disabled due to:
+      //   1) preserve stable name mangling
+      //   2) it increases gzipped file size, see https://github.com/mishoo/UglifyJS2#mangler-options
+      // // compute_char_frequency optimizes names for compression
+      // topLevel.compute_char_frequency(options.mangle);
 
       // Requires previous call to figure_out_scope
       // and should always be called after compressor transform
