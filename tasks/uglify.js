@@ -50,7 +50,7 @@ module.exports = function(grunt) {
       // function to get the name of the sourceMap
       if (typeof options.sourceMapIn === "function") {
         if (src.length !== 1) {
-          grunt.fail.warn("Cannot generate `sourceMapIn` for multiple source files.");
+          grunt.fail.warn('Cannot generate `sourceMapIn` for multiple source files.');
         }
         mapInNameGenerator = options.sourceMapIn;
       }
