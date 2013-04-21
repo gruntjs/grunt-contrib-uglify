@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 
     // Process banner.
     var banner = grunt.template.process(options.banner);
-    var mapNameGenerator, mappingURLGenerator;
+    var mapNameGenerator, mapInNameGenerator, mappingURLGenerator;
 
     // Iterate over all src-dest file pairs.
     this.files.forEach(function(f) {
@@ -47,6 +47,14 @@ module.exports = function(grunt) {
         mapNameGenerator = options.sourceMap;
       }
 
+      // function to get the name of the sourceMap
+      if (typeof options.sourceMapIn === "function") {
+        if (src.length !== 1) {
+          grunt.fail.warn('Cannot generate `sourceMapIn` for multiple source files.');
+        }
+        mapInNameGenerator = options.sourceMapIn;
+      }
+
       // function to get the sourceMappingURL
       if (typeof options.sourceMappingURL === "function") {
         mappingURLGenerator = options.sourceMappingURL;
@@ -57,6 +65,16 @@ module.exports = function(grunt) {
           options.sourceMap = mapNameGenerator(f.dest);
         } catch (e) {
           var err = new Error('SourceMapName failed.');
+          err.origError = e;
+          grunt.fail.warn(err);
+        }
+      }
+
+      if (mapInNameGenerator) {
+        try {
+          options.sourceMapIn = mapInNameGenerator(src[0]);
+        } catch (e) {
+          var err = new Error('SourceMapInName failed.');
           err.origError = e;
           grunt.fail.warn(err);
         }

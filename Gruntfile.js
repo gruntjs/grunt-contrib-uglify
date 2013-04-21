@@ -143,6 +143,27 @@ module.exports = function(grunt) {
             return dest.replace(/\.js$/,".mapurl");
           }
         }
+      },
+      sourcemap_in_generator_single_src: {
+        files: [{
+          expand: true,
+          flatten: true,
+          src: ['test/fixtures/expected/multiple_sourcemaps*.js'],
+          dest: 'tmp',
+          ext: '.min.js'
+        }],
+        options: {
+          sourceMap: function (dest) { return dest.replace(/\.js$/, '') + '.map'; },
+          sourceMapIn: function (src) { return src.replace(/\.js$/, '') + '.map'; }
+        }
+      },
+      sourcemap_in_generator_multi_src: {
+        src: 'test/fixtures/expected/multiple_sourcemaps*.js',
+        dest: 'tmp/multiple_sourcemaps_all.min.js',
+        options: {
+          sourceMap: function (dest) { return dest.replace(/\.js$/, '') + '.map'; },
+          sourceMapIn: function (src) { return src.replace(/\.js$/, '') + '.map'; }
+        }
       }
     },
 
