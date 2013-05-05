@@ -103,11 +103,8 @@ exports.init = function(grunt) {
         // preserve all the comments we can
         outputOptions.comments = true;
       } else if (options.preserveComments === 'some') {
-
         // preserve comments with directives or that start with a bang (!)
-        outputOptions.comments = function(node, comment) {
-          return (/^!|@preserve|@license|@cc_on/i).test(comment.value);
-        };
+        outputOptions.comments = /^!|@preserve|@license|@cc_on/i;
       } else if (grunt.util._.isFunction(options.preserveComments)) {
 
         // support custom functions passed in

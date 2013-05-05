@@ -3,7 +3,7 @@
  */
 function foo(){return 42}// @preserve preserve
 // @license license
-function bar(){return 2*foo()}/* @preserve
+function bar(){return foo()*2}/* @preserve
  * multiline preserve
  */
 /* @license
