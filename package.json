@@ -28,7 +28,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "uglify-js": "~2.3.0",
+    "uglify-js": "~2.3.5",
     "grunt-lib-contrib": "~0.6.0"
   },
   "devDependencies": {
