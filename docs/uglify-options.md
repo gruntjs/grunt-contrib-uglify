@@ -48,7 +48,7 @@ and the return value will be used as the sourceMap name.
 Type: `String`
 Default: `undefined`
 
-The location where your source files can be found. This option sets the root location in the sourcemap file itself.
+The location where your source files can be found. This sets the sourceRoot field in the source map.
 
 ## sourceMapIn
 Type: `String`

@@ -1,3 +1,10 @@
+v0.2.1:
+  date: 2013-05-22
+  changes:
+    - Bumped uglify to ~2.3.5 /55 /40
+    - Changed sourcemappingUrl syntax /56
+    - Disabled sorting of names for consistent mangling /44
+    - Updated docs for sourceMapRoot /47 /25
 v0.2.0:
   date: 2013-03-14
   changes:
