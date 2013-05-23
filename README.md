@@ -138,7 +138,7 @@ _(Default processing options are explained in the [grunt.template.process][] doc
 
 #### Basic compression
 
-In this example, running `grunt uglify:my_target` (or `grunt uglify` because `uglify` is a [multi task][]) will mangle and compress the input files using the default options.
+This configuration will compress and mangle the input files using the default options.
 
 ```js
 // Project configuration.
@@ -344,4 +344,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Wed May 22 2013 11:29:16.*
+*This file was generated on Wed May 22 2013 21:24:32.*

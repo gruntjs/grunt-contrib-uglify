@@ -2,7 +2,7 @@
 
 ## Basic compression
 
-In this example, running `grunt uglify:my_target` (or `grunt uglify` because `uglify` is a [multi task][]) will mangle and compress the input files using the default options.
+This configuration will compress and mangle the input files using the default options.
 
 ```js
 // Project configuration.
