@@ -332,6 +332,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2013-05-31   v0.2.2   Reverted /56 due to /58 until [chrome/239660](https://code.google.com/p/chromium/issues/detail?id=239660&q=sourcemappingurl&colspec=ID%20Pri%20M%20Iteration%20ReleaseBlock%20Cr%20Status%20Owner%20Summary%20OS%20Modified) [firefox/870361](https://bugzilla.mozilla.org/show_bug.cgi?id=870361) drop
  * 2013-05-22   v0.2.1   Bumped uglify to ~2.3.5 /55 /40 Changed sourcemappingUrl syntax /56 Disabled sorting of names for consistent mangling /44 Updated docs for sourceMapRoot /47 /25
  * 2013-03-14   v0.2.0   No longer report gzip results by default. Support `report` option.
  * 2013-01-30   v0.1.2   Added better error reporting Support for dynamic names of multiple sourcemaps
@@ -344,4 +345,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Wed May 22 2013 21:24:32.*
+*This file was generated on Fri May 31 2013 16:43:42.*
