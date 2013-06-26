@@ -143,6 +143,27 @@ module.exports = function(grunt) {
             return dest.replace(/\.js$/,".mapurl");
           }
         }
+      },
+      sourcemap_cover: {
+        files: {
+          'tmp/sourcemap_cover.js': ['test/fixtures/src/simple.js']
+        },
+        options: {
+          sourceMap: 'tmp/sourcemap_cover',
+          sourceMapOutCover: {
+            file: 'simple.min.js',
+            sources: ['simple.js']
+          }
+        }
+      },
+      sourcemap_banner: {
+        files: {
+          'tmp/sourcemap_banner.js': ['test/fixtures/src/simple.js']
+        },
+        options: {
+          banner: '/*\n//@ sourceMappingURL=sourcemap_banner\n*/\n',
+          sourceMap: 'tmp/sourcemap_banner'
+        }
       }
     },
 
