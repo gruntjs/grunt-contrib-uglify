@@ -42,6 +42,11 @@ module.exports = function(grunt) {
         }
       });
 
+      if (src.length === 0) {
+        grunt.log.warn('Destination (' + f.dest + ') not written because src files were empty.');
+        return;
+      }
+
       // function to get the name of the sourceMap
       if (typeof options.sourceMap === "function") {
         mapNameGenerator = options.sourceMap;
