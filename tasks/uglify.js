@@ -89,6 +89,7 @@ module.exports = function(grunt) {
           err.message += ', ' + e.msg + '.';
         }
         err.origError = e;
+        grunt.log.warn('Uglifying source "' + src + '" failed.');
         grunt.fail.warn(err);
       }
 
