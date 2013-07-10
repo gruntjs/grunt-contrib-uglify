@@ -104,7 +104,7 @@ module.exports = function(grunt) {
 
       // ...and report some size information.
       if (options.report) {
-        contrib.minMaxInfo(result.min, result.max, options.report);
+        contrib.minMaxInfo(output, result.max, options.report);
       }
     });
   });
