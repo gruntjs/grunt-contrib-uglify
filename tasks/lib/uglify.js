@@ -80,7 +80,7 @@ exports.init = function(grunt) {
     var min = output.get();
 
     if (options.sourceMappingURL || options.sourceMap) {
-      if (!/\/\/@ sourceMappingURL=/.exec(options.banner)) {
+      if (!/\/\/[@#] sourceMappingURL=/.exec(options.banner)) {
         min += "\n/*\n//@ sourceMappingURL=" + (options.sourceMappingURL || options.sourceMap) + "\n*/";
       }
     }

@@ -95,12 +95,12 @@ module.exports = function(grunt) {
       if (options.sourceMap) {
 
         // See https://github.com/mozilla/source-map#sourcemapconsumer
-        if (options.sourceMapOutCover) {
+        if (options.sourceMapOverride) {
           var sourceMapObject = result.sourceMap.get();
           var toJSON = sourceMapObject.toJSON;
           sourceMapObject.toJSON = function () {
             var map = toJSON.call(sourceMapObject);
-            grunt.util._.extend(map, options.sourceMapOutCover);
+            grunt.util._.extend(map, options.sourceMapOverride);
             return map;
           };
         }

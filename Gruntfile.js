@@ -144,13 +144,13 @@ module.exports = function(grunt) {
           }
         }
       },
-      sourcemap_cover: {
+      sourcemap_override: {
         files: {
-          'tmp/sourcemap_cover.js': ['test/fixtures/src/simple.js']
+          'tmp/sourcemap_override.js': ['test/fixtures/src/simple.js']
         },
         options: {
-          sourceMap: 'tmp/sourcemap_cover',
-          sourceMapOutCover: {
+          sourceMap: 'tmp/sourcemap_override',
+          sourceMapOverride: {
             file: 'simple.min.js',
             sources: ['simple.js']
           }

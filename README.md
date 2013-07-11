@@ -97,6 +97,12 @@ Default: `undefined`
 
 The number of directories to drop from the path prefix when declaring files in the source map.
 
+#### sourceMapOverride
+Type: `Object`
+Default: `undefined`
+
+Custom the attributes of the [SourceMapConsumer](https://github.com/mozilla/source-map#sourcemapconsumer).
+
 #### wrap
 Type: `String`
 Default: `undefined`
@@ -345,4 +351,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Wed Jun 26 2013 21:03:17.*
+*This file was generated on Thu Jul 11 2013 12:56:32.*
