@@ -95,6 +95,8 @@ grunt.initConfig({
         sourceMap: 'path/to/source-map.js',
         sourceMapRoot: 'http://example.com/path/to/src/', // the location to find your original source
         sourceMapIn: 'example/coffeescript-sourcemap.js', // input sourcemap from a previous compilation
+        sourceMapOverride: {                              // custom file path
+          file: 'source-map.js'
         }
       },
       files: {
