@@ -18,6 +18,7 @@ module.exports = function(grunt) {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       banner: '',
+      footer: '',
       compress: {
         warnings: false
       },
@@ -28,6 +29,7 @@ module.exports = function(grunt) {
 
     // Process banner.
     var banner = grunt.template.process(options.banner);
+    var footer = grunt.template.process(options.footer);
     var mapNameGenerator, mappingURLGenerator;
 
     // Iterate over all src-dest file pairs.
@@ -41,6 +43,11 @@ module.exports = function(grunt) {
           return true;
         }
       });
+
+      if (src.length === 0) {
+        grunt.log.warn('Destination (' + f.dest + ') not written because src files were empty.');
+        return;
+      }
 
       // function to get the name of the sourceMap
       if (typeof options.sourceMap === "function") {
@@ -82,11 +89,12 @@ module.exports = function(grunt) {
           err.message += ', ' + e.msg + '.';
         }
         err.origError = e;
+        grunt.log.warn('Uglifying source "' + src + '" failed.');
         grunt.fail.warn(err);
       }
 
       // Concat banner + minified source.
-      var output = banner + result.min;
+      var output = banner + result.min + footer;
 
       // Write the destination file.
       grunt.file.write(f.dest, output);
@@ -114,7 +122,7 @@ module.exports = function(grunt) {
 
       // ...and report some size information.
       if (options.report) {
-        contrib.minMaxInfo(result.min, result.max, options.report);
+        contrib.minMaxInfo(output, result.max, options.report);
       }
     });
   });

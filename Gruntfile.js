@@ -43,6 +43,11 @@ module.exports = function(grunt) {
           'tmp/compress_mangle.js': ['test/fixtures/src/simple.js']
         }
       },
+      no_src: {
+        files: {
+          'tmp/compress_mangle.js': []
+        }
+      },
       compress_mangle_except: {
         files: {
           'tmp/compress_mangle_except.js': ['test/fixtures/src/simple.js']
