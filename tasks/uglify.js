@@ -102,11 +102,11 @@ module.exports = function(grunt) {
       // Write source map
       if (options.sourceMap) {
         grunt.file.write(options.sourceMap, result.sourceMap);
-        grunt.log.writeln('Source Map "' + options.sourceMap + '" created.');
+        grunt.verbose.writeln('Source Map "' + options.sourceMap + '" created.');
       }
 
       // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
+      grunt.verbose.writeln('File "' + f.dest + '" created.');
 
       // ...and report some size information.
       if (options.report) {
