@@ -237,13 +237,12 @@ grunt.initConfig({
         sourceMap: 'path/to/source-map.js',
         sourceMapRoot: 'http://example.com/path/to/src/', // the location to find your original source
         sourceMapIn: 'example/coffeescript-sourcemap.js', // input sourcemap from a previous compilation
-        }
       },
       files: {
-        'dest/output.min.js': ['src/input.js']
-      }
-    }
-  }
+        'dest/output.min.js': ['src/input.js'],
+      },
+    },
+  },
 });
 ```
 
@@ -351,4 +350,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Fri May 31 2013 16:43:42.*
+*This file was generated on Mon Jul 22 2013 11:01:57.*
