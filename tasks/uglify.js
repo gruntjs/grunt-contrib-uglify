@@ -24,7 +24,8 @@ module.exports = function(grunt) {
       },
       mangle: {},
       beautify: false,
-      report: false
+      report: false,
+      silent: false
     });
 
     // Process banner.
@@ -102,11 +103,15 @@ module.exports = function(grunt) {
       // Write source map
       if (options.sourceMap) {
         grunt.file.write(options.sourceMap, result.sourceMap);
-        grunt.log.writeln('Source Map "' + options.sourceMap + '" created.');
+        if (!options.silent) {
+          grunt.log.writeln('Source Map "' + options.sourceMap + '" created.');
+        }
       }
 
       // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
+      if (!options.silent) {
+        grunt.log.writeln('File "' + f.dest + '" created.');
+      }
 
       // ...and report some size information.
       if (options.report) {
