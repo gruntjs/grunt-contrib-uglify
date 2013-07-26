@@ -139,6 +139,11 @@ _(Default processing options are explained in the [grunt.template.process][] doc
 
 [grunt.template.process]: https://github.com/gruntjs/grunt/wiki/grunt.template#wiki-grunt-template-process
 
+#### silent
+Type: `Boolean`
+Default: false
+
+When true this will supress the 'File "{file name}" created.' and 'Source Map "{file name}" created.' messages. All warnings and errors wil still come through.
 
 ### Usage examples
 
