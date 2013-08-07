@@ -45,6 +45,12 @@ Default: `{}`
 
 Turn on or off source compression with default options. If an `Object` is specified, it is passed as options to `UglifyJS.Compressor()`.
 
+#### screwIe8
+Type: `Boolean`
+Default: `false`
+
+By default UglifyJS tries to be IE-proof, passing screw_ie8 makes it not care about IE<9 quirks like leaking named function expressions names to the outer scope. If a project doesn't support IE8 and older, passing this flag can reduce the output file size.
+
 #### beautify
 Type: `Boolean` `Object`
 Default: `false`
