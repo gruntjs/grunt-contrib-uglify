@@ -52,8 +52,14 @@ exports.init = function(grunt) {
     topLevel.figure_out_scope();
 
     if (options.compress !== false) {
+      if (options.compress === true) {
+          options.compress = {};
+      }
       if (options.compress.warnings !== true) {
         options.compress.warnings = false;
+      }
+      if (options.screwIe8) {
+        options.compress.screw_ie8 = options.screwIe8;
       }
       var compressor = UglifyJS.Compressor(options.compress);
       topLevel = topLevel.transform(compressor);
@@ -68,6 +74,13 @@ exports.init = function(grunt) {
       //   2) it increases gzipped file size, see https://github.com/mishoo/UglifyJS2#mangler-options
       // // compute_char_frequency optimizes names for compression
       // topLevel.compute_char_frequency(options.mangle);
+
+      if (options.mangle === true) {
+          options.mangle = {};
+      }
+      if (options.screwIe8) {
+        options.mangle.screw_ie8 = options.screwIe8;
+      }
 
       // Requires previous call to figure_out_scope
       // and should always be called after compressor transform
