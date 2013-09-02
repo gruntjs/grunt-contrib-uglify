@@ -1,4 +1,4 @@
-# grunt-contrib-uglify [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
+# grunt-contrib-uglify v0.2.3 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
 
 > Minify files with UglifyJS.
 
@@ -128,12 +128,6 @@ Type: `String`
 Default: empty string
 
 This string will be prepended to the beginning of the minified output. It is processed using [grunt.template.process][], using the default options.
-
-#### footer
-Type: `String`
-Default: empty string
-
-This string will be append to the end of the minified output. It is processed using [grunt.template.process][], using the default options.
 
 _(Default processing options are explained in the [grunt.template.process][] documentation)_
 
@@ -350,4 +344,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Mon Jul 22 2013 11:01:57.*
+*This file was generated on Mon Sep 02 2013 11:35:39.*
