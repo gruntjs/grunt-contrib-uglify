@@ -1,3 +1,11 @@
+v0.2.4:
+  date: 2013-09-02
+  changes:
+    - updated sourcemap format via /83
+v0.2.3:
+  date: 2013-06-10
+  changes:
+    - added footer option
 v0.2.2:
   date: 2013-05-31
   changes:
