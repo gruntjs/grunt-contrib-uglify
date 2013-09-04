@@ -32,12 +32,17 @@ module.exports = function(grunt) {
     var footer = grunt.template.process(options.footer);
     var mapNameGenerator, mappingURLGenerator;
 
+    var tally = {
+      js: 0,
+      sourceMaps: 0
+    };
+
     // Iterate over all src-dest file pairs.
     this.files.forEach(function(f) {
       var src = f.src.filter(function(filepath) {
         // Warn on and remove invalid source files (if nonull was set).
         if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
+          grunt.log.warn('Source file ' + filepath.cyan + ' not found.');
           return false;
         } else {
           return true;
@@ -45,7 +50,7 @@ module.exports = function(grunt) {
       });
 
       if (src.length === 0) {
-        grunt.log.warn('Destination (' + f.dest + ') not written because src files were empty.');
+        grunt.log.warn('Destination (' + f.dest.cyan + ') not written because src files were empty.');
         return;
       }
 
@@ -89,7 +94,7 @@ module.exports = function(grunt) {
           err.message += ', ' + e.msg + '.';
         }
         err.origError = e;
-        grunt.log.warn('Uglifying source "' + src + '" failed.');
+        grunt.log.warn('Uglifying source ' + src.cyan + ' failed.');
         grunt.fail.warn(err);
       }
 
@@ -102,17 +107,30 @@ module.exports = function(grunt) {
       // Write source map
       if (options.sourceMap) {
         grunt.file.write(options.sourceMap, result.sourceMap);
-        grunt.log.writeln('Source Map "' + options.sourceMap + '" created.');
+        grunt.verbose.writeln('Source map ' + options.sourceMap.cyan + ' created.');
+        tally.sourceMaps++;
       }
 
       // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
+      grunt.verbose.writeln('File ' + f.dest.cyan + ' created.');
+      tally.js++;
 
       // ...and report some size information.
       if (options.report) {
         contrib.minMaxInfo(output, result.max, options.report);
       }
     });
+
+    if (tally.js) {
+      grunt.log.write('Created ' + tally.js.toString().cyan + ' JS files');
+    }
+
+    if (tally.sourceMaps) {
+      grunt.log.write((tally.js ? ' and ' : 'Created ') + tally.sourceMaps.toString().cyan + ' source map files');
+    }
+
+    grunt.log.writeln();
+
   });
 
 };
