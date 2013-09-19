@@ -2,7 +2,7 @@
  * grunt-contrib-uglify
  * https://gruntjs.com/
  *
- * Copyright (c) 2012 "Cowboy" Ben Alman, contributors
+ * Copyright (c) 2013 "Cowboy" Ben Alman, contributors
  * Licensed under the MIT license.
  */
 
@@ -81,7 +81,7 @@ exports.init = function(grunt) {
 
     if (options.sourceMappingURL || options.sourceMap) {
       if (!/\/\/[@#] sourceMappingURL=/.exec(options.banner)) {
-        min += "\n/*\n//@ sourceMappingURL=" + (options.sourceMappingURL || options.sourceMap) + "\n*/";
+        min += "\n//# sourceMappingURL=" + (options.sourceMappingURL || options.sourceMap);
       }
     }
 
