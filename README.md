@@ -135,12 +135,6 @@ Default: empty string
 
 This string will be prepended to the beginning of the minified output. It is processed using [grunt.template.process][], using the default options.
 
-#### footer
-Type: `String`
-Default: empty string
-
-This string will be append to the end of the minified output. It is processed using [grunt.template.process][], using the default options.
-
 _(Default processing options are explained in the [grunt.template.process][] documentation)_
 
 [grunt.template.process]: https://github.com/gruntjs/grunt/wiki/grunt.template#wiki-grunt-template-process
@@ -243,6 +237,8 @@ grunt.initConfig({
         sourceMap: 'path/to/source-map.js',
         sourceMapRoot: 'http://example.com/path/to/src/', // the location to find your original source
         sourceMapIn: 'example/coffeescript-sourcemap.js', // input sourcemap from a previous compilation
+        sourceMapOverride: {                              // custom file path
+          file: 'source-map.js'
         }
       },
       files: {
@@ -357,4 +353,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Thu Jul 11 2013 12:56:32.*
+*This file was generated on Thu Jul 11 2013 13:24:45.*
