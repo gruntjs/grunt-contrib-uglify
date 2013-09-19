@@ -97,6 +97,12 @@ Default: `undefined`
 
 The number of directories to drop from the path prefix when declaring files in the source map.
 
+#### sourceMapOverride
+Type: `Object`
+Default: `undefined`
+
+Custom the attributes of the [SourceMapConsumer](https://github.com/mozilla/source-map#sourcemapconsumer).
+
 #### wrap
 Type: `String`
 Default: `undefined`
@@ -231,12 +237,15 @@ grunt.initConfig({
         sourceMap: 'path/to/source-map.js',
         sourceMapRoot: 'http://example.com/path/to/src/', // the location to find your original source
         sourceMapIn: 'example/coffeescript-sourcemap.js', // input sourcemap from a previous compilation
+        sourceMapOverride: {                              // custom file path
+          file: 'source-map.js'
+        }
       },
       files: {
-        'dest/output.min.js': ['src/input.js'],
-      },
-    },
-  },
+        'dest/output.min.js': ['src/input.js']
+      }
+    }
+  }
 });
 ```
 
@@ -346,4 +355,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Mon Sep 02 2013 11:35:39.*
+*This file was generated on Thu Jul 11 2013 13:24:45.*

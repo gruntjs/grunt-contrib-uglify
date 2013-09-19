@@ -19,7 +19,9 @@ exports.contrib_uglify = {
       'multifile.js',
       'wrap.js',
       'exportAll.js',
-      'sourcemap_prefix'
+      'sourcemap_prefix',
+      'sourcemap_override',
+      'sourcemap_banner'
     ];
 
     test.expect(files.length);
@@ -40,7 +42,7 @@ exports.contrib_uglify = {
       'multiple_sourcemaps1.js',
       'multiple_sourcemaps1.map',
       'multiple_sourcemaps2.js',
-      'multiple_sourcemaps2.map',
+      'multiple_sourcemaps2.map'
     ];
 
     test.expect(files.length);

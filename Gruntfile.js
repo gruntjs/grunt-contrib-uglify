@@ -148,6 +148,27 @@ module.exports = function(grunt) {
             return dest.replace(/\.js$/,".mapurl");
           }
         }
+      },
+      sourcemap_override: {
+        files: {
+          'tmp/sourcemap_override.js': ['test/fixtures/src/simple.js']
+        },
+        options: {
+          sourceMap: 'tmp/sourcemap_override',
+          sourceMapOverride: {
+            file: 'simple.min.js',
+            sources: ['simple.js']
+          }
+        }
+      },
+      sourcemap_banner: {
+        files: {
+          'tmp/sourcemap_banner.js': ['test/fixtures/src/simple.js']
+        },
+        options: {
+          banner: '/*\n//@ sourceMappingURL=sourcemap_banner\n*/\n',
+          sourceMap: 'tmp/sourcemap_banner'
+        }
       }
     },
 
