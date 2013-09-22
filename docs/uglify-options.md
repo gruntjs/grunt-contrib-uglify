@@ -101,6 +101,12 @@ Default: empty string
 
 This string will be prepended to the beginning of the minified output. It is processed using [grunt.template.process][], using the default options.
 
+## footer
+Type: `String`
+Default: empty string
+
+This string will be append to the end of the minified output. It is processed using [grunt.template.process][], using the default options.
+
 _(Default processing options are explained in the [grunt.template.process][] documentation)_
 
 [grunt.template.process]: https://github.com/gruntjs/grunt/wiki/grunt.template#wiki-grunt-template-process
