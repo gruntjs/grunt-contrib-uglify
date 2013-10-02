@@ -136,6 +136,13 @@ exports.init = function(grunt) {
         root: options.sourceMapRoot,
         orig: sourceMapIn
       });
+
+      if (!grunt.util._.isUndefined(sourceMapIn) && grunt.util._.isArray(sourceMapIn.sourcesContent)){
+        var generator = outputOptions.source_map.get();
+        sourceMapIn.sources.forEach(function(file, i) {
+          generator.setSourceContent(file, sourceMapIn.sourcesContent[i]);
+        });
+      }
     }
 
     return outputOptions;
