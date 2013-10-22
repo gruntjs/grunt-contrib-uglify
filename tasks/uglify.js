@@ -73,7 +73,7 @@ module.exports = function(grunt) {
         try {
           options.sourceMappingURL = mappingURLGenerator(f.dest);
         } catch (e) {
-          var err = new Error('SourceMapName failed.');
+          var err = new Error('SourceMappingURL failed.');
           err.origError = e;
           grunt.fail.warn(err);
         }
