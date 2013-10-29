@@ -1,4 +1,4 @@
-# grunt-contrib-uglify [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
+# grunt-contrib-uglify v0.2.5 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
 
 > Minify files with UglifyJS.
 
@@ -337,6 +337,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2013-10-28   v0.2.5   Added warning for banners when using sourcemaps
  * 2013-09-02   v0.2.4   updated sourcemap format via /83
  * 2013-06-10   v0.2.3   added footer option
  * 2013-05-31   v0.2.2   Reverted /56 due to /58 until [chrome/239660](https://code.google.com/p/chromium/issues/detail?id=239660&q=sourcemappingurl&colspec=ID%20Pri%20M%20Iteration%20ReleaseBlock%20Cr%20Status%20Owner%20Summary%20OS%20Modified) [firefox/870361](https://bugzilla.mozilla.org/show_bug.cgi?id=870361) drop
@@ -352,4 +353,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Sun Sep 22 2013 10:20:33.*
+*This file was generated on Mon Oct 28 2013 17:07:45.*
