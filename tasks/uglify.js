@@ -32,6 +32,13 @@ module.exports = function(grunt) {
     var footer = grunt.template.process(options.footer);
     var mapNameGenerator, mappingURLGenerator;
 
+    if (options.sourceMap && banner) {
+      grunt.log.warn(
+        "Grunt-contrib-uglify does not support adding a banner alongside sourcemaps. Add the banner to " +
+        "your unminified source and then uglify."
+      );
+    }
+
     // Iterate over all src-dest file pairs.
     this.files.forEach(function(f) {
       var src = f.src.filter(function(filepath) {
