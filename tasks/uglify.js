@@ -30,7 +30,7 @@ module.exports = function(grunt) {
     // Process banner.
     var banner = grunt.template.process(options.banner);
     var footer = grunt.template.process(options.footer);
-    var mapNameGenerator, mappingURLGenerator, mappingInGenerator;
+    var mapNameGenerator, mappingURLGenerator, mapInGenerator;
 
     // Iterate over all src-dest file pairs.
     this.files.forEach(function(f) {
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
 
       // function to get the sourceMapIn
       if (typeof options.sourceMapIn === "function") {
-        mappingInGenerator = options.sourceMapIn;
+        mapInGenerator = options.sourceMapIn;
       }
 
       if (mapNameGenerator) {
@@ -84,9 +84,9 @@ module.exports = function(grunt) {
         }
       }
 
-      if (mappingInGenerator) {
+      if (mapInGenerator) {
         try {
-          options.sourceMapIn = mappingInGenerator(f.dest);
+          options.sourceMapIn = mapInGenerator(f.dest);
         } catch (e) {
           var err = new Error('SourceMapIn failed.');
           err.origError = e;
