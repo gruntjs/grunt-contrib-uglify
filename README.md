@@ -79,10 +79,12 @@ Default: `undefined`
 The location where your source files can be found. This sets the sourceRoot field in the source map.
 
 #### sourceMapIn
-Type: `String`
+Type: `String`  `Function`
 Default: `undefined`
 
-The location of an input source map from an earlier compilation, e.g. from CoffeeScript.
+The location of an input source map from an earlier compilation, e.g. from CoffeeScript. If a function is
+provided, the uglify destination is passed as the argument and the return value will be used as the
+sourceMapIn value.
 
 #### sourceMappingURL
 Type: `String`  `Function`

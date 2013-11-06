@@ -30,7 +30,7 @@ module.exports = function(grunt) {
     // Process banner.
     var banner = grunt.template.process(options.banner);
     var footer = grunt.template.process(options.footer);
-    var mapNameGenerator, mappingURLGenerator;
+    var mapNameGenerator, mappingURLGenerator, mapInGenerator;
 
     if (options.sourceMap && banner) {
       grunt.log.warn(
@@ -66,6 +66,11 @@ module.exports = function(grunt) {
         mappingURLGenerator = options.sourceMappingURL;
       }
 
+      // function to get the sourceMapIn
+      if (typeof options.sourceMapIn === "function") {
+        mapInGenerator = options.sourceMapIn;
+      }
+
       if (mapNameGenerator) {
         try {
           options.sourceMap = mapNameGenerator(f.dest);
@@ -81,6 +86,16 @@ module.exports = function(grunt) {
           options.sourceMappingURL = mappingURLGenerator(f.dest);
         } catch (e) {
           var err = new Error('SourceMappingURL failed.');
+          err.origError = e;
+          grunt.fail.warn(err);
+        }
+      }
+
+      if (mapInGenerator) {
+        try {
+          options.sourceMapIn = mapInGenerator(f.dest);
+        } catch (e) {
+          var err = new Error('SourceMapIn failed.');
           err.origError = e;
           grunt.fail.warn(err);
         }

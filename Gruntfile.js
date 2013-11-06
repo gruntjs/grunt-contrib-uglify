@@ -144,6 +144,9 @@ module.exports = function(grunt) {
           sourceMap: function(dest) {
             return dest.replace(/\.js$/,".map");
           },
+          sourceMapIn: function(dest) {
+            return false;
+          },
           sourceMappingURL: function(dest) {
             return dest.replace(/\.js$/,".mapurl");
           }
