@@ -71,6 +71,13 @@ Default: `undefined`
 
 The number of directories to drop from the path prefix when declaring files in the source map.
 
+#### enclose
+Type: `Object`
+Default: `undefined`
+
+Wrap all of the code in a closure with a configurable arguments/parameters list.
+Each key-value pair in the `enclose` object is effectively an argument-parameter pair.
+
 ## wrap
 Type: `String`
 Default: `undefined`

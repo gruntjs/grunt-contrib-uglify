@@ -238,6 +238,7 @@ module.exports = function(grunt) {
     'uglify:exportAll',
     'uglify:sourcemap_prefix',
     'uglify:multiple_sourcemaps',
+    'uglify:enclose',
     'uglify:sourcemap_in_generator_single_src',
     'expectFail:uglify:sourcemap_in_generator_multi_src', // fail case
     'nodeunit'

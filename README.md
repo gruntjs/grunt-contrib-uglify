@@ -99,7 +99,7 @@ Default: `undefined`
 
 The number of directories to drop from the path prefix when declaring files in the source map.
 
-#### enclose
+###### enclose
 Type: `Object`
 Default: `undefined`
 
@@ -362,4 +362,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Fri Nov 08 2013 16:02:56.*
+*This file was generated on Fri Nov 08 2013 16:07:34.*
