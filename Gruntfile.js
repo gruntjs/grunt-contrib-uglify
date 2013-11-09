@@ -66,6 +66,20 @@ module.exports = function(grunt) {
           beautify: true
         }
       },
+      enclose: {
+        files: {
+          'tmp/enclose.js': ['test/fixtures/src/simple.js']
+        },
+        options: {
+          beautify: true,
+          compress: false,
+          enclose: {
+            'window.argA': 'paramA',
+            'window.argB': 'paramB'
+          },
+          mangle: false
+        }
+      },
       multifile: {
         files: {
           'tmp/multifile.js': ['test/fixtures/src/simple.js','test/fixtures/src/comments.js']
