@@ -32,13 +32,6 @@ module.exports = function(grunt) {
     var footer = grunt.template.process(options.footer);
     var mapNameGenerator, mapInNameGenerator, mappingURLGenerator;
 
-    if (options.sourceMap && banner) {
-      grunt.log.warn(
-        "Grunt-contrib-uglify does not support adding a banner alongside sourcemaps. Add the banner to " +
-        "your unminified source and then uglify."
-      );
-    }
-
     // Iterate over all src-dest file pairs.
     this.files.forEach(function(f) {
       var src = f.src.filter(function(filepath) {
@@ -112,6 +105,7 @@ module.exports = function(grunt) {
       try {
         result = uglify.minify(src, f.dest, options);
       } catch (e) {
+        console.log(e);
         var err = new Error('Uglification failed.');
         if (e.message) {
           err.message += '\n' + e.message + '. \n';
@@ -124,11 +118,12 @@ module.exports = function(grunt) {
         grunt.fail.warn(err);
       }
 
-      // Concat banner + minified source.
-      var output = banner + result.min + footer;
+      // Concat minified source + footer. Banner was taken care of within uglify
+      var output = result.min + footer;
 
       // Write the destination file.
       grunt.file.write(f.dest, output);
+
 
       // Write source map
       if (options.sourceMap) {

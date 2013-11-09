@@ -124,6 +124,10 @@ exports.init = function(grunt) {
       }
     }
 
+    if (options.banner && options.sourceMap) {
+      outputOptions.preamble = options.banner;
+    }
+
     if (options.beautify) {
       if (grunt.util._.isObject(options.beautify)) {
         // beautify options sent as an object are merged

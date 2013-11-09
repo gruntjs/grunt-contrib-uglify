@@ -101,7 +101,8 @@ module.exports = function(grunt) {
           'tmp/sourcemapin.js': ['test/fixtures/src/simple2.js']
         },
         options: {
-          mangle : false,
+          mangle: false,
+          banner: '// Hello World\n',
           sourceMap: 'tmp/sourcemapin',
           sourceMapIn: 'test/fixtures/src/simple2.map',
           sourceMapRoot: 'http://local.host/js/'
