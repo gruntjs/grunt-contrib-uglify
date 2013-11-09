@@ -365,6 +365,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2013-11-09   v0.2.6   merged 45, 53, 85 (105 by way of duping 53) Added support for banners in uglified files with sourcemaps Updated docs
  * 2013-10-28   v0.2.5   Added warning for banners when using sourcemaps
  * 2013-09-02   v0.2.4   updated sourcemap format via /83
  * 2013-06-10   v0.2.3   added footer option
@@ -381,4 +382,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Fri Nov 08 2013 16:14:08.*
+*This file was generated on Fri Nov 08 2013 16:45:13.*
