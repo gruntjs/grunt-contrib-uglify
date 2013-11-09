@@ -76,7 +76,7 @@ and the return value will be used as the sourceMap name.
 Type: `String`
 Default: `undefined`
 
-The location where your source files can be found. This option sets the root location in the sourcemap file itself.
+The location where your source files can be found. This sets the sourceRoot field in the source map.
 
 #### sourceMapIn
 Type: `String`  `Function`
@@ -146,7 +146,7 @@ _(Default processing options are explained in the [grunt.template.process][] doc
 
 #### Basic compression
 
-In this example, running `grunt uglify:my_target` (or `grunt uglify` because `uglify` is a [multi task][]) will mangle and compress the input files using the default options.
+This configuration will compress and mangle the input files using the default options.
 
 ```js
 // Project configuration.
@@ -355,4 +355,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Mon Oct 28 2013 17:07:45.*
+*This file was generated on Fri Nov 08 2013 16:02:56.*

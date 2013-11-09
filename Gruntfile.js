@@ -179,6 +179,24 @@ module.exports = function(grunt) {
 
   });
 
+  // task that expects its argument (another task) to fail
+  grunt.registerTask('expectFail', function(){
+    var task = this.args.join(':');
+
+    var done = this.async();
+
+    function onComplete(error, result, code) {
+      grunt.log.write("\n > " + result.stdout.split("\n").join("\n > ") + "\n");
+      var rv = error ? true : new Error("Task " + task + " unexpectedly passed.");
+      done(rv);
+    }
+
+    grunt.util.spawn({
+      grunt : true,
+      args : task
+    }, onComplete);
+  });
+
   // Actually load this plugin's task(s).
   grunt.loadTasks('tasks');
 
@@ -190,7 +208,26 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'uglify', 'nodeunit']);
+  grunt.registerTask('test', [
+    'clean',
+    'uglify:compress',
+    'uglify:compress_mangle',
+    'uglify:no_src',
+    'uglify:compress_mangle_except',
+    'uglify:compress_mangle_beautify',
+    'uglify:multifile',
+    'uglify:compress_mangle_sourcemap',
+    'uglify:sourcemapin',
+    'uglify:sourcemapurl',
+    'uglify:comments',
+    'uglify:wrap',
+    'uglify:exportAll',
+    'uglify:sourcemap_prefix',
+    'uglify:multiple_sourcemaps',
+    'uglify:sourcemap_in_generator_single_src',
+    'expectFail:uglify:sourcemap_in_generator_multi_src', // fail case
+    'nodeunit'
+  ]);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test', 'build-contrib']);

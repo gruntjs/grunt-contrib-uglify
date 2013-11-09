@@ -74,6 +74,7 @@ module.exports = function(grunt) {
         mappingURLGenerator = options.sourceMappingURL;
       }
 
+      // dynamically create destination sourcemap name
       if (mapNameGenerator) {
         try {
           options.sourceMap = mapNameGenerator(f.dest);
@@ -84,6 +85,7 @@ module.exports = function(grunt) {
         }
       }
 
+      // dynamically create incoming sourcemap names
       if (mapInNameGenerator) {
         try {
           options.sourceMapIn = mapInNameGenerator(src[0]);
@@ -94,6 +96,7 @@ module.exports = function(grunt) {
         }
       }
 
+      // dynamically create sourceMappingURL
       if (mappingURLGenerator) {
         try {
           options.sourceMappingURL = mappingURLGenerator(f.dest);
