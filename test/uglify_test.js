@@ -12,6 +12,7 @@ exports.contrib_uglify = {
       'comments.js',
       'compress.js',
       'compress_mangle.js',
+      'compress_mangle_banner.js',
       'compress_mangle_beautify.js',
       'compress_mangle_except.js',
       'compress_mangle_sourcemap',

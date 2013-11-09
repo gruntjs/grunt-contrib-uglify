@@ -43,6 +43,14 @@ module.exports = function(grunt) {
           'tmp/compress_mangle.js': ['test/fixtures/src/simple.js']
         }
       },
+      compress_mangle_banner: {
+        files: {
+          'tmp/compress_mangle_banner.js': ['test/fixtures/src/simple.js']
+        },
+        options : {
+          banner : '// banner without sourcemap\n'
+        }
+      },
       no_src: {
         files: {
           'tmp/compress_mangle.js': []
@@ -227,6 +235,7 @@ module.exports = function(grunt) {
     'clean',
     'uglify:compress',
     'uglify:compress_mangle',
+    'uglify:compress_mangle_banner',
     'uglify:no_src',
     'uglify:compress_mangle_except',
     'uglify:compress_mangle_beautify',

@@ -118,8 +118,13 @@ module.exports = function(grunt) {
         grunt.fail.warn(err);
       }
 
-      // Concat minified source + footer. Banner was taken care of within uglify
+      // Concat minified source + footer
       var output = result.min + footer;
+
+      // Only prepend banner if uglify hasn't taken care of it as part of the preamble
+      if (!options.sourceMap) {
+        output = banner + output;
+      }
 
       // Write the destination file.
       grunt.file.write(f.dest, output);
