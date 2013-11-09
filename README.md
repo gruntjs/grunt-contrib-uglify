@@ -76,13 +76,15 @@ and the return value will be used as the sourceMap name.
 Type: `String`
 Default: `undefined`
 
-The location where your source files can be found. This sets the sourceRoot field in the source map.
+The location where your source files can be found. This option sets the root location in the sourcemap file itself.
 
 #### sourceMapIn
-Type: `String`
+Type: `String`  `Function`
 Default: `undefined`
 
-The location of an input source map from an earlier compilation, e.g. from CoffeeScript.
+The location of an input source map from an earlier compilation, e.g. from CoffeeScript. If a function is provided, the
+uglify source is passed as the argument and the return value will be used as the sourceMap name. This only makes sense
+when there's one source file.
 
 #### sourceMappingURL
 Type: `String`  `Function`
@@ -144,7 +146,7 @@ _(Default processing options are explained in the [grunt.template.process][] doc
 
 #### Basic compression
 
-This configuration will compress and mangle the input files using the default options.
+In this example, running `grunt uglify:my_target` (or `grunt uglify` because `uglify` is a [multi task][]) will mangle and compress the input files using the default options.
 
 ```js
 // Project configuration.
