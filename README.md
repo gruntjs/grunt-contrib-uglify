@@ -342,7 +342,6 @@ grunt.initConfig({
   }
 });
 ```
-
 #### Compiling all files in a folder dynamically
 
 This configuration will compress and mangle the files dynamically.
@@ -363,6 +362,7 @@ grunt.initConfig({
 });
 ```
 
+
 ## Release History
 
  * 2013-10-28   v0.2.5   Added warning for banners when using sourcemaps
@@ -381,4 +381,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Fri Nov 08 2013 16:07:34.*
+*This file was generated on Fri Nov 08 2013 16:14:08.*
