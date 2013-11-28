@@ -71,6 +71,12 @@ Default: `undefined`
 
 The number of directories to drop from the path prefix when declaring files in the source map.
 
+## sourceMapRelative
+Type: `Boolean`  
+Default: `false`
+
+Generate relative filenames inside the sourcemap and the minified source file's `sourceMappingURL`.
+
 #### enclose
 Type: `Object`  
 Default: `undefined`

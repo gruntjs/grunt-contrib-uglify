@@ -99,6 +99,12 @@ Default: `undefined`
 
 The number of directories to drop from the path prefix when declaring files in the source map.
 
+#### sourceMapRelative
+Type: `Boolean`  
+Default: `false`
+
+Generate relative filenames inside the sourcemap and the minified source file's `sourceMappingURL`.
+
 ###### enclose
 Type: `Object`  
 Default: `undefined`
@@ -213,6 +219,7 @@ grunt.initConfig({
 #### Source maps
 
 Configure basic source map output by specifying a file path for the `sourceMap` option.
+Use relative paths inside the generated source map.
 
 ```js
 // Project configuration.
@@ -220,7 +227,8 @@ grunt.initConfig({
   uglify: {
     my_target: {
       options: {
-        sourceMap: 'path/to/source-map.js'
+        sourceMap: 'path/to/source-map.js',
+        sourceMapRelative: true
       },
       files: {
         'dest/output.min.js': ['src/input.js']
@@ -383,4 +391,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Thu Nov 28 2013 00:10:29.*
+*This file was generated on Thu Nov 28 2013 01:17:07.*
