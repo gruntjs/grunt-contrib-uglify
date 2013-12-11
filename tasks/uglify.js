@@ -119,7 +119,12 @@ module.exports = function(grunt) {
       }
 
       // Concat minified source + footer
-      var output = result.min + footer;
+      var output;
+      if(result) {
+        output = result.min + footer;
+      } else {
+        output = grunt.file.read(src);
+      }
 
       // Only prepend banner if uglify hasn't taken care of it as part of the preamble
       if (!options.sourceMap) {
@@ -131,7 +136,7 @@ module.exports = function(grunt) {
 
 
       // Write source map
-      if (options.sourceMap) {
+      if (options.sourceMap && result) {
         grunt.file.write(options.sourceMap, result.sourceMap);
         grunt.log.writeln('Source Map "' + options.sourceMap + '" created.');
       }
@@ -141,7 +146,11 @@ module.exports = function(grunt) {
 
       // ...and report some size information.
       if (options.report) {
-        contrib.minMaxInfo(output, result.max, options.report);
+        if(result) {
+          contrib.minMaxInfo(output, result.max, options.report);
+        } else {
+          contrib.minMaxInfo(output, output, options.report);
+        }
       }
     });
   });
