@@ -15,13 +15,27 @@ exports.contrib_uglify = {
       'compress_mangle_banner.js',
       'compress_mangle_beautify.js',
       'compress_mangle_except.js',
-      'compress_mangle_sourcemap',
       'enclose.js',
-      'sourcemapurl.js',
       'multifile.js',
       'wrap.js',
       'exportAll.js',
-      'sourcemap_prefix'
+      'sourcemap_basic.js',
+      'sourcemap_basic.map',
+      'sourcemap_customDir.js',
+      'sourcemap_customName.js',
+      'sourcemap_functionName.js',
+      'sourcemap_functionName.js.fn.map',
+      'deep/directory/location/source_map.js.map',
+      'sourcemapin.js',
+      'sourcemapin.map',
+      'sourcemaps_multiple1.js',
+      'sourcemaps_multiple1.map',
+      'sourcemaps_multiple2.js',
+      'sourcemaps_multiple2.map',
+      'sourcemaps_multiple1_fnName.js',
+      'sourcemaps_multiple1_fnName.js.fn.map',
+      'sourcemaps_multiple2_fnName.js',
+      'sourcemaps_multiple2_fnName.js.fn.map'
     ];
 
     test.expect(files.length);
@@ -29,27 +43,6 @@ exports.contrib_uglify = {
     files.forEach(function(file){
       var actual = grunt.file.read(tmp + file);
       var expected = grunt.file.read(fixtures + file);
-      test.equal(actual, expected, 'task output should equal ' + file);
-    });
-
-    test.done();
-  },
-  relative_test : function(test) {
-
-    var files = [
-      'sourcemapin',
-      'sourcemapin.js',
-      'multiple_sourcemaps1.js',
-      'multiple_sourcemaps1.map',
-      'multiple_sourcemaps2.js',
-      'multiple_sourcemaps2.map',
-    ];
-
-    test.expect(files.length);
-
-    files.forEach(function(file){
-      var actual = grunt.file.read(tmp + file).replace(tmp,'REPLACED');
-      var expected = grunt.file.read(fixtures + file).replace(fixtures,'REPLACED');
       test.equal(actual, expected, 'task output should equal ' + file);
     });
 

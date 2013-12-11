@@ -96,34 +96,6 @@ module.exports = function(grunt) {
           mangle: false
         }
       },
-      compress_mangle_sourcemap: {
-        files: {
-          '/dev/null': ['test/fixtures/src/simple.js']
-        },
-        options: {
-          sourceMap: 'tmp/compress_mangle_sourcemap'
-        }
-      },
-      sourcemapin: {
-        files: {
-          'tmp/sourcemapin.js': ['test/fixtures/src/simple2.js']
-        },
-        options: {
-          mangle: false,
-          banner: '// Hello World\n',
-          sourceMap: 'tmp/sourcemapin',
-          sourceMapIn: 'test/fixtures/src/simple2.map',
-          sourceMapRoot: 'http://local.host/js/'
-        }
-      },
-      sourcemapurl: {
-        files: {
-          'tmp/sourcemapurl.js': ['test/fixtures/src/simple.js']
-        },
-        options: {
-          sourceMappingURL: 'js/sourcemapurl.js.map'
-        }
-      },
       comments: {
         src: 'test/fixtures/src/comments.js',
         dest: 'tmp/comments.js',
@@ -149,50 +121,73 @@ module.exports = function(grunt) {
           exportAll: true
         }
       },
-      sourcemap_prefix: {
-        files: {
-          '/dev/null': ['test/fixtures/src/simple.js']
-        },
+      sourcemap_basic: {
+        src: 'test/fixtures/src/simple.js',
+        dest: 'tmp/sourcemap_basic.js',
         options: {
-          sourceMap: 'tmp/sourcemap_prefix',
-          sourceMapPrefix: 3
+          sourceMap: true
         }
       },
-      multiple_sourcemaps: {
-        files: {
-          'tmp/multiple_sourcemaps1.js': ['test/fixtures/src/simple.js'],
-          'tmp/multiple_sourcemaps2.js': ['test/fixtures/src/comments.js']
-        },
+      sourcemap_customName: {
+        src: 'test/fixtures/src/simple.js',
+        dest: 'tmp/sourcemap_customName.js',
         options: {
-          sourceMap: function(dest) {
-            return dest.replace(/\.js$/,".map");
-          },
-          sourceMappingURL: function(dest) {
-            return dest.replace(/\.js$/,".mapurl");
+          sourceMap: true,
+          sourceMapName: 'tmp/source_map_custom_name'
+        }
+      },
+      sourcemap_customDir: {
+        src: 'test/fixtures/src/simple.js',
+        dest: 'tmp/sourcemap_customDir.js',
+        options: {
+          sourceMap: true,
+          sourceMapName: 'tmp/deep/directory/location/source_map.js.map'
+        }
+      },
+      sourcemap_functionName: {
+        src: 'test/fixtures/src/simple.js',
+        dest: 'tmp/sourcemap_functionName.js',
+        options: {
+          sourceMap: true,
+          sourceMapName: function( dest ) {
+            return dest + ".fn.map";
           }
         }
       },
-      sourcemap_in_generator_single_src: {
-        files: [{
-          expand: true,
-          flatten: true,
-          src: ['test/fixtures/expected/multiple_sourcemaps*.js'],
-          dest: 'tmp',
-          ext: '.min.js'
-        }],
+      sourcemap_multiple: {
+        files: {
+          'tmp/sourcemaps_multiple1.js': ['test/fixtures/src/simple.js'],
+          'tmp/sourcemaps_multiple2.js': ['test/fixtures/src/comments.js']
+        },
         options: {
-          sourceMap: function (dest) { return dest.replace(/\.js$/, '') + '.map'; },
-          sourceMapIn: function (src) { return src.replace(/\.js$/, '') + '.map'; }
+          sourceMap: true
         }
       },
-      sourcemap_in_generator_multi_src: {
-        src: 'test/fixtures/expected/multiple_sourcemaps*.js',
-        dest: 'tmp/multiple_sourcemaps_all.min.js',
+      sourcemap_multipleFunctionNames: {
+        files: {
+          'tmp/sourcemaps_multiple1_fnName.js': ['test/fixtures/src/simple.js'],
+          'tmp/sourcemaps_multiple2_fnName.js': ['test/fixtures/src/comments.js']
+        },
         options: {
-          sourceMap: function (dest) { return dest.replace(/\.js$/, '') + '.map'; },
-          sourceMapIn: function (src) { return src.replace(/\.js$/, '') + '.map'; }
+          sourceMap: true,
+          sourceMapName: function( dest ) {
+            return dest+'.fn.map';
+          }
         }
-      }
+      },
+      sourcemapin: {
+        files: {
+          'tmp/sourcemapin.js': ['test/fixtures/src/simple2.js']
+        },
+        options: {
+          mangle: false,
+          banner: '// Hello World\n',
+          sourceMap: true,
+          sourceMapIn: function() {
+            return 'test/fixtures/src/simple2.map';
+          }
+        }
+      },
     },
 
     // Unit tests.
@@ -240,17 +235,17 @@ module.exports = function(grunt) {
     'uglify:compress_mangle_except',
     'uglify:compress_mangle_beautify',
     'uglify:multifile',
-    'uglify:compress_mangle_sourcemap',
-    'uglify:sourcemapin',
-    'uglify:sourcemapurl',
     'uglify:comments',
     'uglify:wrap',
     'uglify:exportAll',
-    'uglify:sourcemap_prefix',
-    'uglify:multiple_sourcemaps',
     'uglify:enclose',
-    'uglify:sourcemap_in_generator_single_src',
-    'expectFail:uglify:sourcemap_in_generator_multi_src', // fail case
+    'uglify:sourcemap_basic',
+    'uglify:sourcemap_customName',
+    'uglify:sourcemap_customDir',
+    'uglify:sourcemap_functionName',
+    'uglify:sourcemap_multiple',
+    'uglify:sourcemap_multipleFunctionNames',
+    'uglify:sourcemapin',
     'nodeunit'
   ]);
 
