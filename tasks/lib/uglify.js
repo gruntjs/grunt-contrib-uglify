@@ -138,6 +138,9 @@ exports.init = function(grunt) {
       }
     }
 
+    if (options.ascii_only) {
+      outputOptions.ascii_only = true;
+    }
 
     if (options.sourceMap) {
       var sourceMapIn;
