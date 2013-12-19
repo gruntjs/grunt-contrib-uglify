@@ -11,6 +11,7 @@
 // External libs.
 var UglifyJS = require('uglify-js');
 var fs = require('fs');
+var path = require('path');
 
 exports.init = function(grunt) {
   var exports = {};
@@ -34,6 +35,8 @@ exports.init = function(grunt) {
       var code = grunt.file.read(file);
       if (typeof options.sourceMapPrefix !== 'undefined') {
         file = file.replace(/^\/+/, "").split(/\/+/).slice(options.sourceMapPrefix).join("/");
+      } else if (options.sourceMapRelative) {
+        file = path.relative(path.dirname(dest), file);
       }
       totalCode += code;
       topLevel = UglifyJS.parse(code, {
@@ -89,7 +92,7 @@ exports.init = function(grunt) {
     var min = output.get();
 
     if (options.sourceMappingURL || options.sourceMap) {
-      min += "\n//# sourceMappingURL=" + (options.sourceMappingURL || options.sourceMap);
+      min += "\n//# sourceMappingURL=" + (options.sourceMappingURL || (options.sourceMapRelative ? path.relative(path.dirname(dest), options.sourceMap) : options.sourceMap));
     }
 
     var result = {
@@ -145,7 +148,7 @@ exports.init = function(grunt) {
         sourceMapIn = grunt.file.readJSON(options.sourceMapIn);
       }
       outputOptions.source_map = UglifyJS.SourceMap({
-        file: dest,
+        file: (options.sourceMapRelative) ? path.relative(path.dirname(options.sourceMap), dest) : dest,
         root: options.sourceMapRoot,
         orig: sourceMapIn
       });

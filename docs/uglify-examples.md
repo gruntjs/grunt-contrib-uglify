@@ -62,6 +62,7 @@ grunt.initConfig({
 ## Source maps
 
 Configure basic source map output by specifying a file path for the `sourceMap` option.
+Use relative paths inside the generated source map.
 
 ```js
 // Project configuration.
@@ -69,7 +70,8 @@ grunt.initConfig({
   uglify: {
     my_target: {
       options: {
-        sourceMap: 'path/to/source-map.js'
+        sourceMap: 'path/to/source-map.js',
+        sourceMapRelative: true
       },
       files: {
         'dest/output.min.js': ['src/input.js']

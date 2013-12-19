@@ -124,6 +124,15 @@ module.exports = function(grunt) {
           sourceMappingURL: 'js/sourcemapurl.js.map'
         }
       },
+      sourcemaprelative: {
+        files: {
+          'tmp/sourcemaprelative.js': ['test/fixtures/src/simple.js']
+        },
+        options: {
+          sourceMap: 'tmp/sourcemaprelative',
+          sourceMapRelative: true
+        }
+      },
       comments: {
         src: 'test/fixtures/src/comments.js',
         dest: 'tmp/comments.js',
@@ -243,6 +252,7 @@ module.exports = function(grunt) {
     'uglify:compress_mangle_sourcemap',
     'uglify:sourcemapin',
     'uglify:sourcemapurl',
+    'uglify:sourcemaprelative',
     'uglify:comments',
     'uglify:wrap',
     'uglify:exportAll',
