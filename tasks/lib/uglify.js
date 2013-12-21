@@ -152,7 +152,7 @@ exports.init = function(grunt) {
     }
 
     if (options.indentLevel !== undefined) {
-      outputOptions.indent_level = options.indentLevel
+      outputOptions.indent_level = options.indentLevel;
     }
 
     return outputOptions;
