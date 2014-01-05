@@ -1,4 +1,4 @@
-# grunt-contrib-uglify [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
+# grunt-contrib-uglify v0.2.8 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
 
 > Minify files with UglifyJS.
 
@@ -146,7 +146,7 @@ This string will be append to the end of the minified output. It is processed us
 
 _(Default processing options are explained in the [grunt.template.process][] documentation)_
 
-[grunt.template.process]: https://github.com/gruntjs/grunt/wiki/grunt.template#wiki-grunt-template-process
+[grunt.template.process]: http://gruntjs.com/api/grunt.template#grunt.template.process
 
 
 ### Usage examples
@@ -383,4 +383,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Sun Nov 17 2013 19:58:51.*
+*This file was generated on Sun Jan 05 2014 11:18:06.*
