@@ -71,6 +71,12 @@ Default: `undefined`
 
 The number of directories to drop from the path prefix when declaring files in the source map.
 
+## sourceMapIncludeSources
+Type: `Boolean`
+Default: `false`
+
+The number of directories to drop from the path prefix when declaring files in the source map.
+
 #### enclose
 Type: `Object`  
 Default: `undefined`

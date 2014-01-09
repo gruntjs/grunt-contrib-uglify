@@ -16,6 +16,7 @@ exports.contrib_uglify = {
       'compress_mangle_beautify.js',
       'compress_mangle_except.js',
       'compress_mangle_sourcemap',
+      'sourcemap_sources',
       'enclose.js',
       'sourcemapurl.js',
       'multifile.js',
