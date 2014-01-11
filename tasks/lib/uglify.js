@@ -25,6 +25,7 @@ exports.init = function(grunt) {
 
     var topLevel = null;
     var totalCode = '';
+    var sourcesContent = {};
 
     var outputOptions = getOutputOptions(options, dest);
     var output = UglifyJS.OutputStream(outputOptions);
@@ -36,6 +37,7 @@ exports.init = function(grunt) {
         file = file.replace(/^\/+/, "").split(/\/+/).slice(options.sourceMapPrefix).join("/");
       }
       totalCode += code;
+      sourcesContent[file] = code;
       topLevel = UglifyJS.parse(code, {
         filename: file,
         toplevel: topLevel
@@ -81,6 +83,14 @@ exports.init = function(grunt) {
       // Requires previous call to figure_out_scope
       // and should always be called after compressor transform
       topLevel.mangle_names(options.mangle);
+    }
+
+    if (options.sourceMapIncludeSources) {
+      for (var file in sourcesContent) {
+        if (sourcesContent.hasOwnProperty(file)) {
+          outputOptions.source_map.get().setSourceContent(file, sourcesContent[file]);
+        }
+      }
     }
 
     // Print the ast to OutputStream
