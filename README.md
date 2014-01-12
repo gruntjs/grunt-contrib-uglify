@@ -103,7 +103,7 @@ The number of directories to drop from the path prefix when declaring files in t
 Type: `Boolean`
 Default: `false`
 
-The number of directories to drop from the path prefix when declaring files in the source map.
+Pass this flag if you want to include the content of source files in the source map as sourcesContent property.
 
 ###### enclose
 Type: `Object`  
@@ -389,4 +389,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Thu Jan 09 2014 14:39:39.*
+*This file was generated on Sun Jan 12 2014 18:20:39.*
