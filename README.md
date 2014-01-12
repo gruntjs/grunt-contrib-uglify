@@ -89,7 +89,7 @@ when there's one source file.
 Type: `Boolean`
 Default: `false`
 
-The number of directories to drop from the path prefix when declaring files in the source map.
+Pass this flag if you want to include the content of source files in the source map as sourcesContent property.
 
 ###### enclose
 Type: `Object`  
@@ -377,4 +377,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Mon Jan 20 2014 09:38:55.*
+*This file was generated on Tue Jan 21 2014 19:16:16.*
