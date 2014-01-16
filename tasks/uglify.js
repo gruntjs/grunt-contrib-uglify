@@ -8,6 +8,32 @@
 
 'use strict';
 
+var path = require('path');
+
+// Generate the default source map name
+var getSourceMapLocation = function( dest ) {
+
+  var destExt = path.extname(dest);
+  var destDirname = path.dirname(dest);
+  var destBasename = path.basename(dest, destExt);
+
+  return destDirname + path.sep + destBasename + ".map";
+
+};
+
+// Return the relative path from file1 => file2
+var relativePath = function(file1, file2) {
+
+  var file1Dirname = path.dirname(file1);
+  var file2Dirname = path.dirname(file2);
+  if (file1Dirname !== file2Dirname) {
+    return path.relative(file1Dirname, file2Dirname) + path.sep;
+  } else {
+    return "";
+  }
+
+};
+
 module.exports = function(grunt) {
 
   // Internal lib.
@@ -32,7 +58,7 @@ module.exports = function(grunt) {
     // Process banner.
     var banner = grunt.template.process(options.banner);
     var footer = grunt.template.process(options.footer);
-    var mapNameGenerator, mapInNameGenerator, mappingURLGenerator;
+    var mapNameGenerator, mapInNameGenerator;
 
     // Iterate over all src-dest file pairs.
     this.files.forEach(function(f) {
@@ -52,11 +78,11 @@ module.exports = function(grunt) {
       }
 
       // function to get the name of the sourceMap
-      if (typeof options.sourceMap === "function") {
-        mapNameGenerator = options.sourceMap;
+      if (typeof options.sourceMapName === "function") {
+        mapNameGenerator = options.sourceMapName;
       }
 
-      // function to get the name of the sourceMap
+      // function to get the name of the sourceMapIn file
       if (typeof options.sourceMapIn === "function") {
         if (src.length !== 1) {
           grunt.fail.warn('Cannot generate `sourceMapIn` for multiple source files.');
@@ -64,23 +90,24 @@ module.exports = function(grunt) {
         mapInNameGenerator = options.sourceMapIn;
       }
 
-      // function to get the sourceMappingURL
-      if (typeof options.sourceMappingURL === "function") {
-        mappingURLGenerator = options.sourceMappingURL;
-      }
-
       // dynamically create destination sourcemap name
       if (mapNameGenerator) {
         try {
-          options.sourceMap = mapNameGenerator(f.dest);
+          options.generatedSourceMapName = mapNameGenerator(f.dest);
         } catch (e) {
-          var err = new Error('SourceMapName failed.');
+          var err = new Error('SourceMap failed.');
           err.origError = e;
           grunt.fail.warn(err);
         }
       }
+      // If no name is passed, generate the default name
+      else if ( !options.sourceMapName ) {
+        options.generatedSourceMapName = getSourceMapLocation( f.dest );
+      } else {
+        options.generatedSourceMapName = options.sourceMapName;
+      }
 
-      // dynamically create incoming sourcemap names
+      // Dynamically create incoming sourcemap names
       if (mapInNameGenerator) {
         try {
           options.sourceMapIn = mapInNameGenerator(src[0]);
@@ -91,15 +118,12 @@ module.exports = function(grunt) {
         }
       }
 
-      // dynamically create sourceMappingURL
-      if (mappingURLGenerator) {
-        try {
-          options.sourceMappingURL = mappingURLGenerator(f.dest);
-        } catch (e) {
-          var err = new Error('SourceMappingURL failed.');
-          err.origError = e;
-          grunt.fail.warn(err);
-        }
+      // Calculate the path from the dest file to the sourcemap for the
+      // sourceMappingURL reference
+      if (options.sourceMap) {
+        var destToSourceMapPath = relativePath(f.dest, options.generatedSourceMapName);
+        var sourceMapBasename = path.basename(options.generatedSourceMapName);
+        options.destToSourceMap = destToSourceMapPath + sourceMapBasename;
       }
 
       // Minify files, warn and fail on error.
@@ -131,11 +155,10 @@ module.exports = function(grunt) {
       // Write the destination file.
       grunt.file.write(f.dest, output);
 
-
       // Write source map
       if (options.sourceMap) {
-        grunt.file.write(options.sourceMap, result.sourceMap);
-        grunt.log.writeln('File ' + chalk.cyan(options.sourceMap) + ' created (source map).');
+        grunt.file.write(options.generatedSourceMapName, result.sourceMap);
+        grunt.log.writeln('File ' + chalk.cyan(options.generatedSourceMapName) + ' created (source map).');
       }
 
       // Print a success message.
