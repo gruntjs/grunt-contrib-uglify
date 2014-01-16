@@ -196,7 +196,23 @@ module.exports = function(grunt) {
             sourceMap: true,
             sourceMapIncludeSources: true
           }
+      },
+      ascii_only: {
+        files: {
+          'tmp/ascii_only.js': ['test/fixtures/src/non_ascii.js']
         },
+        options: {
+          asciiOnly: true
+        }
+      },
+      non_ascii: {
+        files: {
+          'tmp/non_ascii.js': ['test/fixtures/src/non_ascii.js']
+        },
+        options: {
+          asciiOnly: false
+        }
+      }
     },
 
     // Unit tests.
@@ -257,6 +273,8 @@ module.exports = function(grunt) {
     'uglify:sourcemap_multipleFunctionNames',
     'uglify:sourcemapin',
     'uglify:sourcemap_sources',
+    'uglify:ascii_only',
+    'uglify:non_ascii',
     'nodeunit'
   ]);
 
