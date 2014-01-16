@@ -66,17 +66,16 @@ Gzipped:  20084 bytes.
 ```
 
 #### sourceMap
+Type: `Boolean`  
+Default: `false`
+
+If `true`, a source map file will be generated in the same directory as the `dest` file. By default it will have the same basename as the `dest` file, but with a `.map` extension.
+
+#### sourceMapName
 Type: `String`  `Function`  
 Default: `undefined`
 
-The location to output the sourcemap. If a function is provided, the uglify destination is passed as the argument
-and the return value will be used as the sourceMap name.
-
-#### sourceMapRoot
-Type: `String`  
-Default: `undefined`
-
-The location where your source files can be found. This sets the sourceRoot field in the source map.
+To customize the name or location of the generated source map, pass a string to indicate where to write the source map to. If a function is provided, the uglify destination is passed as the argument and the return value will be used as the file name.
 
 #### sourceMapIn
 Type: `String`  `Function`  
@@ -85,19 +84,6 @@ Default: `undefined`
 The location of an input source map from an earlier compilation, e.g. from CoffeeScript. If a function is provided, the
 uglify source is passed as the argument and the return value will be used as the sourceMap name. This only makes sense
 when there's one source file.
-
-#### sourceMappingURL
-Type: `String`  `Function`  
-Default: `undefined`
-
-The location of your sourcemap. Defaults to the location you use for sourceMap, override if you need finer control. Provide
-a function to dynamically generate the sourceMappingURL based off the destination.
-
-#### sourceMapPrefix
-Type: `Number`  
-Default: `undefined`
-
-The number of directories to drop from the path prefix when declaring files in the source map.
 
 #### sourceMapIncludeSources
 Type: `Boolean`
@@ -389,4 +375,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Thu Jan 09 2014 14:39:39.*
+*This file was generated on Thu Jan 16 2014 10:40:08.*
