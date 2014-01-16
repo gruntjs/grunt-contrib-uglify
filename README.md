@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v0.2.8 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
+# grunt-contrib-uglify v0.3.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
 
 > Minify files with UglifyJS.
 
@@ -357,6 +357,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2014-01-16   v0.3.0   refactor sourcemap support
  * 2013-11-09   v0.2.7   prepending banner if sourceMap option not set, addresses
  * 2013-11-08   v0.2.6   merged 45, 53, 85 (105 by way of duping 53) Added support for banners in uglified files with sourcemaps Updated docs
  * 2013-10-28   v0.2.5   Added warning for banners when using sourcemaps
@@ -375,4 +376,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Thu Jan 16 2014 10:40:08.*
+*This file was generated on Thu Jan 16 2014 13:40:44.*

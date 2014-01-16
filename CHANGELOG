@@ -1,3 +1,7 @@
+v0.3.0:
+  date: 2014-01-16
+  changes:
+    - refactor sourcemap support
 v0.2.7:
   date: 2013-11-09
   changes:
