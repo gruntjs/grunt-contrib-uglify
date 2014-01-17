@@ -42,8 +42,9 @@ exports.init = function(grunt) {
       var fileDir = path.dirname(file);
       var sourceMapDir = path.dirname(options.generatedSourceMapName);
       var relativePath = path.relative(sourceMapDir, fileDir);
+      var pathPrefix = relativePath ? (relativePath+path.sep) : "";
 
-      file = relativePath + path.sep + basename;
+      file = pathPrefix + basename;
 
       topLevel = UglifyJS.parse(code, {
         filename: file,
