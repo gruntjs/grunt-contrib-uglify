@@ -1,3 +1,7 @@
+v0.3.1:
+  date: 2014-01-20
+  changes:
+    - fix relative path issue in sourcemaps
 v0.3.0:
   date: 2014-01-16
   changes:
