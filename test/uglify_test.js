@@ -36,7 +36,9 @@ exports.contrib_uglify = {
       'sourcemaps_multiple1_fnName.js',
       'sourcemaps_multiple1_fnName.js.fn.map',
       'sourcemaps_multiple2_fnName.js',
-      'sourcemaps_multiple2_fnName.js.fn.map'
+      'sourcemaps_multiple2_fnName.js.fn.map',
+      'ascii_only.js',
+      'non_ascii.js'
     ];
 
     test.expect(files.length);

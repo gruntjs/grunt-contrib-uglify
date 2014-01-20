@@ -130,6 +130,10 @@ exports.init = function(grunt) {
       source_map: null
     };
 
+    if ('asciiOnly' in options) {
+      outputOptions.ascii_only = !!options.asciiOnly;
+    }
+
     if (options.preserveComments) {
       if (options.preserveComments === 'all' || options.preserveComments === true) {
 
