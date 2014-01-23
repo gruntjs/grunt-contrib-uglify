@@ -95,7 +95,7 @@ exports.init = function(grunt) {
       topLevel.mangle_names(options.mangle);
     }
 
-    if (options.sourceMapIncludeSources) {
+    if (options.sourceMap && options.sourceMapIncludeSources) {
       for (var file in sourcesContent) {
         if (sourcesContent.hasOwnProperty(file)) {
           outputOptions.source_map.get().setSourceContent(file, sourcesContent[file]);
