@@ -1,3 +1,7 @@
+v0.3.2:
+  date: 2013-01-22
+  changes:
+    - fix handling of `sourceMapIncludeSources` option.
 v0.3.1:
   date: 2014-01-20
   changes:
