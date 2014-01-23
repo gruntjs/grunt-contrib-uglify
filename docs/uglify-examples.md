@@ -103,7 +103,27 @@ grunt.initConfig({
   },
 });
 ```
+## Discard console.* functions
 
+Specify `drop_console: true` as part of the `compress` options to discard calls to `console.*` functions.
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    options: {
+      compress: {
+        drop_console: true
+      }
+    },
+    my_target: {
+      files: {
+        'dest/output.min.js': ['src/input.js']
+      }
+    }
+  }
+});
+```
 
 ## Beautify
 
