@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v0.3.1 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
+# grunt-contrib-uglify v0.3.2 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
 
 > Minify files with UglifyJS.
 
@@ -246,7 +246,27 @@ grunt.initConfig({
   },
 });
 ```
+#### Discard console.* functions
 
+Specify `drop_console: true` as part of the `compress` options to discard calls to `console.*` functions.
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    options: {
+      compress: {
+        drop_console: true
+      }
+    },
+    my_target: {
+      files: {
+        'dest/output.min.js': ['src/input.js']
+      }
+    }
+  }
+});
+```
 
 #### Beautify
 
@@ -378,4 +398,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Thu Jan 23 2014 09:31:12.*
+*This file was generated on Thu Jan 23 2014 09:35:35.*
