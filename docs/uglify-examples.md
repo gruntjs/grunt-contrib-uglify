@@ -61,7 +61,10 @@ grunt.initConfig({
 
 ## Source maps
 
-Configure basic source map output by specifying a file path for the `sourceMap` option.
+Generate a source map by setting the `sourceMap` option to `true`. The generated
+source map will be in the same directory as the destination file. Its name will be the
+basename of the destination file with a `.map` extension. Override these
+defaults with the `sourceMapName` attribute.
 
 ```js
 // Project configuration.
@@ -69,7 +72,8 @@ grunt.initConfig({
   uglify: {
     my_target: {
       options: {
-        sourceMap: 'path/to/source-map.js'
+        sourceMap: true,
+        sourceMapName: 'path/to/sourcemap.map'
       },
       files: {
         'dest/output.min.js': ['src/input.js']
@@ -81,10 +85,8 @@ grunt.initConfig({
 
 ## Advanced source maps
 
-You can specify the parameters to pass to `UglifyJS.SourceMap()` which will
-allow you to configure advanced settings.
-
-Refer to the [UglifyJS SourceMap Documentation](http://lisperator.net/uglifyjs/codegen#source-map) for more information.
+Set the `sourceMapIncludeSources` option to `true` to embed your sources directly into the map. To include
+a source map from a previous compilation pass it as the value of the `sourceMapIn` option.
 
 ```js
 // Project configuration.
@@ -92,8 +94,8 @@ grunt.initConfig({
   uglify: {
     my_target: {
       options: {
-        sourceMap: 'path/to/source-map.js',
-        sourceMapRoot: 'http://example.com/path/to/src/', // the location to find your original source
+        sourceMap: true,
+        sourceMapIncludeSources: true,
         sourceMapIn: 'example/coffeescript-sourcemap.js', // input sourcemap from a previous compilation
       },
       files: {
@@ -103,6 +105,10 @@ grunt.initConfig({
   },
 });
 ```
+
+Refer to the [UglifyJS SourceMap Documentation](http://lisperator.net/uglifyjs/codegen#source-map) for more information.
+
+
 ## Discard console.* functions
 
 Specify `drop_console: true` as part of the `compress` options to discard calls to `console.*` functions.
