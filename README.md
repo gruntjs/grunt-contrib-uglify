@@ -403,7 +403,7 @@ grunt.initConfig({
 
 ## Release History
 
- * 2013-01-22   v0.3.2   fix handling of `sourceMapIncludeSources` option.
+ * 2014-01-22   v0.3.2   fix handling of `sourceMapIncludeSources` option.
  * 2014-01-20   v0.3.1   fix relative path issue in sourcemaps
  * 2014-01-16   v0.3.0   refactor sourcemap support
  * 2013-11-09   v0.2.7   prepending banner if sourceMap option not set, addresses
