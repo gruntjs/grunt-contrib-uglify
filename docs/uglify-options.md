@@ -100,15 +100,10 @@ Turn on preservation of comments.
 Type: `String`  
 Default: empty string
 
-This string will be prepended to the beginning of the minified output. It is processed using [grunt.template.process][], using the default options.
+This string will be prepended to the minified output.  Template strings (e.g. `<%= config.value %>` will be expanded automatically.
 
 ## footer
 Type: `String`  
 Default: empty string
 
-This string will be append to the end of the minified output. It is processed using [grunt.template.process][], using the default options.
-
-_(Default processing options are explained in the [grunt.template.process][] documentation)_
-
-[grunt.template.process]: http://gruntjs.com/api/grunt.template#grunt.template.process
-
+This string will be appended to the minified output.  Template strings (e.g. `<%= config.value %>` will be expanded automatically.
