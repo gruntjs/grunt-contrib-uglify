@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v0.3.2 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
+# grunt-contrib-uglify v0.3.3 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
 
 > Minify files with UglifyJS.
 
@@ -398,6 +398,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2013-02-27   v0.3.3   remove unnecessary calls to `grunt.template.process`
  * 2014-01-22   v0.3.2   fix handling of `sourceMapIncludeSources` option.
  * 2014-01-20   v0.3.1   fix relative path issue in sourcemaps
  * 2014-01-16   v0.3.0   refactor sourcemap support
@@ -419,4 +420,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Thu Feb 27 2014 17:21:08.*
+*This file was generated on Thu Feb 27 2014 17:22:46.*
