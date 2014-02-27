@@ -56,8 +56,8 @@ module.exports = function(grunt) {
     });
 
     // Process banner.
-    var banner = grunt.template.process(options.banner);
-    var footer = grunt.template.process(options.footer);
+    var banner = options.banner;
+    var footer = options.footer;
     var mapNameGenerator, mapInNameGenerator;
 
     // Iterate over all src-dest file pairs.
