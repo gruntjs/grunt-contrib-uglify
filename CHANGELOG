@@ -1,5 +1,5 @@
 v0.3.3:
-  date: 2013-02-27
+  date: 2014-02-27
   changes:
     - remove unnecessary calls to `grunt.template.process`
 v0.3.2:
