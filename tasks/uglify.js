@@ -9,6 +9,8 @@
 'use strict';
 
 var path = require('path');
+var chalk = require('chalk');
+var maxmin = require('maxmin');
 
 // Generate the default source map name
 var getSourceMapLocation = function( dest ) {
@@ -35,12 +37,8 @@ var relativePath = function(file1, file2) {
 };
 
 module.exports = function(grunt) {
-
   // Internal lib.
   var uglify = require('./lib/uglify').init(grunt);
-
-  var chalk = require('chalk');
-  var maxmin = require('maxmin');
 
   grunt.registerMultiTask('uglify', 'Minify files with UglifyJS.', function() {
     // Merge task-specific and/or target-specific options with these defaults.
@@ -65,7 +63,7 @@ module.exports = function(grunt) {
       var src = f.src.filter(function(filepath) {
         // Warn on and remove invalid source files (if nonull was set).
         if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
+          grunt.log.warn('Source file ' + chalk.cyan(filepath) + ' not found.');
           return false;
         } else {
           return true;
@@ -73,7 +71,7 @@ module.exports = function(grunt) {
       });
 
       if (src.length === 0) {
-        grunt.log.warn('Destination (' + f.dest + ') not written because src files were empty.');
+        grunt.log.warn('Destination ' + chalk.cyan(f.dest) + ' not written because src files were empty.');
         return;
       }
 
@@ -140,7 +138,7 @@ module.exports = function(grunt) {
           }
         }
         err.origError = e;
-        grunt.log.warn('Uglifying source "' + src + '" failed.');
+        grunt.log.warn('Uglifying source ' + chalk.cyan(src) + ' failed.');
         grunt.fail.warn(err);
       }
 
