@@ -24,18 +24,11 @@ Default: `false`
 Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`
 
 ## report
-Choices: `false` `'min'` `'gzip'`  
-Default: `false`
+Choices: `'min'`, `'gzip'`  
+Default: `'min'`
 
-Either do not report anything, report only minification result, or report minification and gzip results. This is useful to see exactly how well Uglify is performing, but using `'gzip'` can add 5-10x runtime task execution.
-
-Example ouput using `'gzip'`:
-
-```
-Original: 198444 bytes.
-Minified: 101615 bytes.
-Gzipped:  20084 bytes.
-```
+Either report only minification result or report minification and gzip results.
+This is useful to see exactly how well clean-css is performing but using `'gzip'` will make the task take 5-10x longer to complete. [Example output](https://github.com/sindresorhus/maxmin#readme).
 
 ## sourceMap
 Type: `Boolean`  

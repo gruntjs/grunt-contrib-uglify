@@ -37,10 +37,10 @@ var relativePath = function(file1, file2) {
 module.exports = function(grunt) {
 
   // Internal lib.
-  var contrib = require('grunt-lib-contrib').init(grunt);
   var uglify = require('./lib/uglify').init(grunt);
 
   var chalk = require('chalk');
+  var maxmin = require('maxmin');
 
   grunt.registerMultiTask('uglify', 'Minify files with UglifyJS.', function() {
     // Merge task-specific and/or target-specific options with these defaults.
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
       },
       mangle: {},
       beautify: false,
-      report: false
+      report: 'min'
     });
 
     // Process banner.
@@ -161,14 +161,8 @@ module.exports = function(grunt) {
         grunt.log.writeln('File ' + chalk.cyan(options.generatedSourceMapName) + ' created (source map).');
       }
 
-      // Print a success message.
-      grunt.log.writeln('File ' + chalk.cyan(f.dest) + ' created.');
-
-      // ...and report some size information.
-      if (options.report) {
-        contrib.minMaxInfo(output, result.max, options.report);
-      }
+      grunt.log.writeln('File ' + chalk.cyan(f.dest) + ' created: ' +
+                        maxmin(result.max, output, options.report === 'gzip'));
     });
   });
-
 };

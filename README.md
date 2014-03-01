@@ -5,7 +5,7 @@
 
 
 ## Getting Started
-This plugin requires Grunt `~0.4.0`
+This plugin requires Grunt `^0.4.0`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -72,18 +72,11 @@ Default: `false`
 Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`
 
 #### report
-Choices: `false` `'min'` `'gzip'`  
-Default: `false`
+Choices: `'min'`, `'gzip'`  
+Default: `'min'`
 
-Either do not report anything, report only minification result, or report minification and gzip results. This is useful to see exactly how well Uglify is performing, but using `'gzip'` can add 5-10x runtime task execution.
-
-Example ouput using `'gzip'`:
-
-```
-Original: 198444 bytes.
-Minified: 101615 bytes.
-Gzipped:  20084 bytes.
-```
+Either report only minification result or report minification and gzip results.
+This is useful to see exactly how well clean-css is performing but using `'gzip'` will make the task take 5-10x longer to complete. [Example output](https://github.com/sindresorhus/maxmin#readme).
 
 #### sourceMap
 Type: `Boolean`  
@@ -398,7 +391,7 @@ grunt.initConfig({
 
 ## Release History
 
- * 2013-02-27   v0.3.3   remove unnecessary calls to `grunt.template.process`
+ * 2014-02-27   v0.3.3   remove unnecessary calls to `grunt.template.process`
  * 2014-01-22   v0.3.2   fix handling of `sourceMapIncludeSources` option.
  * 2014-01-20   v0.3.1   fix relative path issue in sourcemaps
  * 2014-01-16   v0.3.0   refactor sourcemap support
@@ -420,4 +413,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Thu Feb 27 2014 17:22:46.*
+*This file was generated on Sat Mar 01 2014 20:32:59.*
