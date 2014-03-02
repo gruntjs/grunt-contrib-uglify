@@ -391,6 +391,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2014-03-01   v0.4.0   remove grunt-lib-contrib dependency and add more colors
  * 2014-02-27   v0.3.3   remove unnecessary calls to `grunt.template.process`
  * 2014-01-22   v0.3.2   fix handling of `sourceMapIncludeSources` option.
  * 2014-01-20   v0.3.1   fix relative path issue in sourcemaps
@@ -413,4 +414,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Sat Mar 01 2014 20:36:24.*
+*This file was generated on Sun Mar 02 2014 16:10:17.*

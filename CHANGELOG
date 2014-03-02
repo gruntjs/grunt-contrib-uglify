@@ -1,3 +1,7 @@
+v0.4.0:
+  date: 2014-03-01
+  changes:
+    - remove grunt-lib-contrib dependency and add more colors
 v0.3.3:
   date: 2014-02-27
   changes:
