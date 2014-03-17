@@ -43,11 +43,12 @@ exports.init = function(grunt) {
       var fileDir = path.dirname(file);
       var sourceMapDir = path.dirname(options.generatedSourceMapName);
       var relativePath = path.relative(sourceMapDir, fileDir);
-      var pathPrefix = relativePath ? (relativePath+path.sep) : "";
+      var pathPrefix = relativePath ? (relativePath+path.sep) : '';
 
       file = pathPrefix + basename;
 
-      sourcesContent[file] = code;
+      // Convert paths to use forward slashes for sourcemap use in the browser
+      sourcesContent[file.replace(/\\/g, '/')] = code;
       topLevel = UglifyJS.parse(code, {
         filename: file,
         toplevel: topLevel
@@ -110,7 +111,8 @@ exports.init = function(grunt) {
 
     // Add the source map reference to the end of the file
     if (options.sourceMap) {
-      min += "\n//# sourceMappingURL="+options.destToSourceMap;
+      // Set all paths to forward slashes for use in the browser
+      min += "\n//# sourceMappingURL="+options.destToSourceMap.replace(/\\/g, '/');
     }
 
     var result = {
