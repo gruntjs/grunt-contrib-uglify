@@ -29,7 +29,8 @@
   "dependencies": {
     "uglify-js": "^2.4.0",
     "chalk": "^0.4.0",
-    "maxmin": "^0.1.0"
+    "maxmin": "^0.1.0",
+    "lodash": "^2.4.1"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "^0.8.0",
