@@ -8,11 +8,11 @@
 
 'use strict';
 
-var path = require('path');
-
 // External libs.
-var UglifyJS = require('uglify-js');
+var path = require('path');
 var fs = require('fs');
+var UglifyJS = require('uglify-js');
+var _ = require('lodash');
 
 exports.init = function(grunt) {
   var exports = {};
@@ -61,7 +61,7 @@ exports.init = function(grunt) {
 
     // Wrap code in closure with configurable arguments/parameters list.
     if (options.enclose) {
-      var argParamList = grunt.util._.map(options.enclose, function(val, key) {
+      var argParamList = _.map(options.enclose, function(val, key) {
         return key + ':' + val;
       });
 
@@ -138,7 +138,7 @@ exports.init = function(grunt) {
       } else if (options.preserveComments === 'some') {
         // preserve comments with directives or that start with a bang (!)
         outputOptions.comments = /^!|@preserve|@license|@cc_on/i;
-      } else if (grunt.util._.isFunction(options.preserveComments)) {
+      } else if (_.isFunction(options.preserveComments)) {
 
         // support custom functions passed in
         outputOptions.comments = options.preserveComments;
@@ -150,10 +150,10 @@ exports.init = function(grunt) {
     }
 
     if (options.beautify) {
-      if (grunt.util._.isObject(options.beautify)) {
+      if (_.isObject(options.beautify)) {
         // beautify options sent as an object are merged
         // with outputOptions and passed to the OutputStream
-        grunt.util._.extend(outputOptions, options.beautify);
+        _.assign(outputOptions, options.beautify);
       } else {
         outputOptions.beautify = true;
       }
