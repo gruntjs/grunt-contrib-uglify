@@ -12,11 +12,6 @@ var path = require('path');
 var chalk = require('chalk');
 var maxmin = require('maxmin');
 
-// Generate the default source map name
-function getSourceMapLocation( dest ) {
-  return dest + ".map";
-}
-
 // Return the relative path from file1 => file2
 function relativePath(file1, file2) {
 
@@ -97,9 +92,9 @@ module.exports = function(grunt) {
           grunt.fail.warn(err);
         }
       }
-      // If no name is passed, generate the default name
+      // If no name is passed append .map to the filename
       else if ( !options.sourceMapName ) {
-        options.generatedSourceMapName = getSourceMapLocation( f.dest );
+        options.generatedSourceMapName = f.dest + '.map';
       } else {
         options.generatedSourceMapName = options.sourceMapName;
       }
