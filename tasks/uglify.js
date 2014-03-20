@@ -13,7 +13,7 @@ var chalk = require('chalk');
 var maxmin = require('maxmin');
 
 // Generate the default source map name
-var getSourceMapLocation = function( dest ) {
+function getSourceMapLocation( dest ) {
 
   var destExt = path.extname(dest);
   var destDirname = path.dirname(dest);
@@ -21,10 +21,10 @@ var getSourceMapLocation = function( dest ) {
 
   return destDirname + path.sep + destBasename + ".map";
 
-};
+}
 
 // Return the relative path from file1 => file2
-var relativePath = function(file1, file2) {
+function relativePath(file1, file2) {
 
   var file1Dirname = path.dirname(file1);
   var file2Dirname = path.dirname(file2);
@@ -34,7 +34,12 @@ var relativePath = function(file1, file2) {
     return "";
   }
 
-};
+}
+
+// Converts \r\n to \n
+function normalizeLf( string ) {
+  return string.replace(/\r\n/g, '\n');
+}
 
 module.exports = function(grunt) {
   // Internal lib.
@@ -54,8 +59,8 @@ module.exports = function(grunt) {
     });
 
     // Process banner.
-    var banner = options.banner;
-    var footer = options.footer;
+    var banner = normalizeLf(options.banner);
+    var footer = normalizeLf(options.footer);
     var mapNameGenerator, mapInNameGenerator;
 
     // Iterate over all src-dest file pairs.
