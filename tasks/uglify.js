@@ -15,9 +15,8 @@ var maxmin = require('maxmin');
 // Generate the default source map name
 var getSourceMapLocation = function( dest ) {
 
-  var destExt = path.extname(dest);
   var destDirname = path.dirname(dest);
-  var destBasename = path.basename(dest, destExt);
+  var destBasename = path.basename(dest);
 
   return destDirname + path.sep + destBasename + ".map";
 
