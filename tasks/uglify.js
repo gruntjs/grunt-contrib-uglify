@@ -14,12 +14,7 @@ var maxmin = require('maxmin');
 
 // Generate the default source map name
 function getSourceMapLocation( dest ) {
-
-  var destDirname = path.dirname(dest);
-  var destBasename = path.basename(dest);
-
-  return destDirname + path.sep + destBasename + ".map";
-
+  return dest + ".map";
 }
 
 // Return the relative path from file1 => file2
