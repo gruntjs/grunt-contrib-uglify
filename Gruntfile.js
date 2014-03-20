@@ -71,7 +71,8 @@ module.exports = function(grunt) {
           'tmp/compress_mangle_beautify.js': ['test/fixtures/src/simple.js']
         },
         options: {
-          beautify: true
+          beautify: true,
+          footer: '\n// This is a footer.'
         }
       },
       enclose: {
