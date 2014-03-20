@@ -45,10 +45,10 @@ exports.init = function(grunt) {
       var relativePath = path.relative(sourceMapDir, fileDir);
       var pathPrefix = relativePath ? (relativePath+path.sep) : '';
 
-      file = pathPrefix + basename;
-
       // Convert paths to use forward slashes for sourcemap use in the browser
-      sourcesContent[file.replace(/\\/g, '/')] = code;
+      file = (pathPrefix + basename).replace(/\\/g, '/');
+
+      sourcesContent[file] = code;
       topLevel = UglifyJS.parse(code, {
         filename: file,
         toplevel: topLevel
