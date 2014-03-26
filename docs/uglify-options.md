@@ -89,7 +89,7 @@ Turn on preservation of comments.
 - `'some'` will preserve all comments that start with a bang (`!`) or include a closure compiler style directive (`@preserve` `@license` `@cc_on`)
 - `Function` specify your own comment preservation function. You will be passed the current node and the current comment and are expected to return either `true` or `false`
 
-## banner
+## preamble
 Type: `String`  
 Default: empty string
 
