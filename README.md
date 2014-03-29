@@ -45,6 +45,7 @@ Version `3.x` introduced changes to configuring source maps. Accordingly, if you
 
 `sourceMapName` - Accepts a string or function to change the location or name of your map
 `sourceMapIncludeSources` - Embed the content of your source files directly into the map
+`expression` - Accepts a `Boolean` value. Parse a single expression (JSON or single functions)
 
 ### Options
 
@@ -70,6 +71,12 @@ Type: `Boolean` `Object`
 Default: `false`
 
 Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`
+
+###### expression
+Type: `Boolean`
+Default: `false`
+
+Parse a single expression, rather than a program (for parsing JSON)
 
 #### report
 Choices: `'min'`, `'gzip'`  
@@ -414,4 +421,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Sun Mar 02 2014 16:10:17.*
+*This file was generated on Sat Mar 29 2014 00:35:52.*

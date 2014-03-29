@@ -18,3 +18,4 @@ Version `3.x` introduced changes to configuring source maps. Accordingly, if you
 
 `sourceMapName` - Accepts a string or function to change the location or name of your map
 `sourceMapIncludeSources` - Embed the content of your source files directly into the map
+`expression` - Accepts a `Boolean` value. Parse a single expression (JSON or single functions)
