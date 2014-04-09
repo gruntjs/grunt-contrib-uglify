@@ -6,15 +6,15 @@ Version `3.x` introduced changes to configuring source maps. Accordingly, if you
 
 ## Removed options
 
-`sourceMapRoot` - The location of your sources is now calculated for you when `sourceMap` is set to `true`  
-`sourceMapPrefix` - No longer necessary for the above reason  
+`sourceMapRoot` - The location of your sources is now calculated for you when `sourceMap` is set to `true` <br/>
+`sourceMapPrefix` - No longer necessary for the above reason <br/>
 `sourceMappingURL` - Once again, this is calculated automatically
 
 ## Changed options
 
-`sourceMap` - Only accepts a `Boolean` value. Generates a map with a default name for you  
+`sourceMap` - Only accepts a `Boolean` value. Generates a map with a default name for you
 
 ## New options
 
-`sourceMapName` - Accepts a string or function to change the location or name of your map
+`sourceMapName` - Accepts a string or function to change the location or name of your map <br/>
 `sourceMapIncludeSources` - Embed the content of your source files directly into the map
