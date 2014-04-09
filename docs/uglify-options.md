@@ -6,44 +6,44 @@ This task primarily delegates to [UglifyJS2][], so please consider the [UglifyJS
 [UglifyJS documentation]: http://lisperator.net/uglifyjs/
 
 ## mangle
-Type: `Boolean` `Object`  
+Type: `Boolean` `Object` <br/>
 Default: `{}`
 
 Turn on or off mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_names()` *and* `ast.compute_char_frequency()` (mimicking command line behavior).
 
 ## compress
-Type: `Boolean` `Object`  
+Type: `Boolean` `Object` <br/>
 Default: `{}`
 
 Turn on or off source compression with default options. If an `Object` is specified, it is passed as options to `UglifyJS.Compressor()`.
 
 ## beautify
-Type: `Boolean` `Object`  
+Type: `Boolean` `Object` <br/>
 Default: `false`
 
 Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`
 
 ## report
-Choices: `'min'`, `'gzip'`  
+Choices: `'min'`, `'gzip'` <br/>
 Default: `'min'`
 
 Either report only minification result or report minification and gzip results.
 This is useful to see exactly how well clean-css is performing but using `'gzip'` will make the task take 5-10x longer to complete. [Example output](https://github.com/sindresorhus/maxmin#readme).
 
 ## sourceMap
-Type: `Boolean`  
+Type: `Boolean` <br/>
 Default: `false`
 
 If `true`, a source map file will be generated in the same directory as the `dest` file. By default it will have the same basename as the `dest` file, but with a `.map` extension.
 
 ## sourceMapName
-Type: `String`  `Function`  
+Type: `String`  `Function` <br/>
 Default: `undefined`
 
 To customize the name or location of the generated source map, pass a string to indicate where to write the source map to. If a function is provided, the uglify destination is passed as the argument and the return value will be used as the file name.
 
 ## sourceMapIn
-Type: `String`  `Function`  
+Type: `String`  `Function` <br/>
 Default: `undefined`
 
 The location of an input source map from an earlier compilation, e.g. from CoffeeScript. If a function is provided, the
@@ -51,20 +51,20 @@ uglify source is passed as the argument and the return value will be used as the
 when there's one source file.
 
 ## sourceMapIncludeSources
-Type: `Boolean`
+Type: `Boolean` <br/>
 Default: `false`
 
 Pass this flag if you want to include the content of source files in the source map as sourcesContent property.
 
 #### enclose
-Type: `Object`  
+Type: `Object` <br/>
 Default: `undefined`
 
 Wrap all of the code in a closure with a configurable arguments/parameters list.
 Each key-value pair in the `enclose` object is effectively an argument-parameter pair.
 
 ## wrap
-Type: `String`  
+Type: `String` <br/>
 Default: `undefined`
 
 Wrap all of the code in a closure, an easy way to make sure nothing is leaking.
@@ -72,14 +72,14 @@ For variables that need to be public `exports` and `global` variables are made a
 The value of wrap is the global variable exports will be available as.
 
 ## exportAll
-Type: `Boolean`  
+Type: `Boolean` <br/>
 Default: `false`
 
 When using `wrap` this will make all global functions and variables available via the export variable.
 
 ## preserveComments
-Type: `Boolean` `String` `Function`  
-Default: `undefined`  
+Type: `Boolean` `String` `Function` <br/>
+Default: `undefined` <br/>
 Options: `false` `'all'` `'some'`
 
 Turn on preservation of comments.
@@ -90,13 +90,13 @@ Turn on preservation of comments.
 - `Function` specify your own comment preservation function. You will be passed the current node and the current comment and are expected to return either `true` or `false`
 
 ## banner
-Type: `String`  
+Type: `String` <br/>
 Default: empty string
 
 This string will be prepended to the minified output.  Template strings (e.g. `<%= config.value %>` will be expanded automatically.
 
 ## footer
-Type: `String`  
+Type: `String` <br/>
 Default: empty string
 
 This string will be appended to the minified output.  Template strings (e.g. `<%= config.value %>` will be expanded automatically.
