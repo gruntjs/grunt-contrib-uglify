@@ -65,6 +65,7 @@ module.exports = function(grunt) {
       });
 
       if (src.length === 0) {
+        grunt.file.write(f.dest, '');
         grunt.log.warn('Destination ' + chalk.cyan(f.dest) + ' not written because src files were empty.');
         return;
       }
