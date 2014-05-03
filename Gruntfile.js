@@ -198,6 +198,18 @@ module.exports = function(grunt) {
             sourceMapIncludeSources: true
           }
       },
+      sourcemapin_sources: {
+        files: {
+          'tmp/sourcemapin_sources.js': ['test/fixtures/src/simple2.js']
+        },
+        options: {
+          sourceMap: true,
+          sourceMapIn: function() {
+            return 'test/fixtures/src/simple2.map';
+          },
+          sourceMapIncludeSources: true
+        }
+      },
       expression_json: {
           files: {
             'tmp/expression.json': ['test/fixtures/src/simple.json']
@@ -276,6 +288,7 @@ module.exports = function(grunt) {
     'uglify:sourcemap_multipleFunctionNames',
     'uglify:sourcemapin',
     'uglify:sourcemap_sources',
+    'uglify:sourcemapin_sources',
     'uglify:expression_json',
     'uglify:expression_js',
     'nodeunit'

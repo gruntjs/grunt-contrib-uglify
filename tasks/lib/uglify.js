@@ -177,6 +177,11 @@ exports.init = function(grunt) {
         file: destBasename,
         orig: sourceMapIn
       });
+      if (options.sourceMapIncludeSources && sourceMapIn && sourceMapIn.sourcesContent) {
+        sourceMapIn.sourcesContent.forEach(function(content, idx) {
+          outputOptions.source_map.get().setSourceContent(sourceMapIn.sources[idx], content);
+        });
+      }
 
     }
 

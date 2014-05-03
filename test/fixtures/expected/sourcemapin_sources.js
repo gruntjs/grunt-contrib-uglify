@@ -1,0 +1,2 @@
+void function(){var a,b,c,d,e,f,g;d=42,e=!0,e&&(d=-42),g=function(a){return a*a},b=[1,2,3,4,5],c={root:Math.sqrt,square:g,cube:function(a){return a*g(a)}},f=function(a,b){return b=2<=arguments.length?[].slice.call(arguments,1):[],print(a,b)},"undefined"!=typeof elvis&&null!=elvis&&alert("I knew it!"),a=function(a){for(var d,e=0,f=b.length;f>e;++e)d=b[e],a.push(c.cube(d));return a}.call(this,[])}.call(this);
+//# sourceMappingURL=sourcemapin_sources.js.map
