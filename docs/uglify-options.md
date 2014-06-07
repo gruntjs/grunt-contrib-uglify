@@ -23,6 +23,12 @@ Default: `false`
 
 Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`
 
+#### expression
+Type: `Boolean`
+Default: `false`
+
+Parse a single expression, rather than a program (for parsing JSON)
+
 ## report
 Choices: `'min'`, `'gzip'`  
 Default: `'min'`

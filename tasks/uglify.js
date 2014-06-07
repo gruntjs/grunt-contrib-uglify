@@ -44,7 +44,8 @@ module.exports = function(grunt) {
       },
       mangle: {},
       beautify: false,
-      report: 'min'
+      report: 'min',
+      expression: false
     });
 
     // Process banner.
@@ -67,6 +68,13 @@ module.exports = function(grunt) {
       if (src.length === 0) {
         grunt.log.warn('Destination ' + chalk.cyan(f.dest) + ' not written because src files were empty.');
         return;
+      }
+
+      // Warn on incompatible options
+      if (options.expression && (options.compress || options.mangle)) {
+        grunt.log.warn('Option ' + chalk.cyan('expression') + ' not compatible with ' + chalk.cyan('compress and mangle'));
+        options.compress = false;
+        options.mangle = false;
       }
 
       // function to get the name of the sourceMap

@@ -197,7 +197,25 @@ module.exports = function(grunt) {
             sourceMap: true,
             sourceMapIncludeSources: true
           }
-        },
+      },
+      expression_json: {
+          files: {
+            'tmp/expression.json': ['test/fixtures/src/simple.json']
+          },
+          options: {
+            expression: true
+          }
+      },
+      expression_js: {
+          files: {
+            'tmp/expression.js': ['test/fixtures/src/expression.js']
+          },
+          options: {
+            expression: true,
+            mangle: false,
+            compress: false
+          }
+      },
     },
 
     // Unit tests.
@@ -258,6 +276,8 @@ module.exports = function(grunt) {
     'uglify:sourcemap_multipleFunctionNames',
     'uglify:sourcemapin',
     'uglify:sourcemap_sources',
+    'uglify:expression_json',
+    'uglify:expression_js',
     'nodeunit'
   ]);
 

@@ -51,7 +51,8 @@ exports.init = function(grunt) {
       sourcesContent[file] = code;
       topLevel = UglifyJS.parse(code, {
         filename: file,
-        toplevel: topLevel
+        toplevel: topLevel,
+        expression: options.expression
       });
     });
 
@@ -71,7 +72,9 @@ exports.init = function(grunt) {
 
     // Need to call this before we mangle or compress,
     // and call after any compression or ast altering
-    topLevel.figure_out_scope();
+    if (options.expression === false) {
+      topLevel.figure_out_scope();
+    }
 
     if (options.compress !== false) {
       if (options.compress.warnings !== true) {
