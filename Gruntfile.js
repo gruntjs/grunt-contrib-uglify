@@ -43,12 +43,12 @@ module.exports = function(grunt) {
           'tmp/compress_mangle.js': ['test/fixtures/src/simple.js']
         }
       },
-      compress_mangle_banner: {
+      compress_mangle_preamble: {
         files: {
           'tmp/compress_mangle_banner.js': ['test/fixtures/src/simple.js']
         },
-        options : {
-          banner : '// banner without sourcemap\n'
+        options: {
+          preamble: '// banner without sourcemap\n'
         }
       },
       no_src: {
@@ -182,7 +182,7 @@ module.exports = function(grunt) {
         },
         options: {
           mangle: false,
-          banner: '// Hello World\n',
+          preamble: '// Hello World\n',
           sourceMap: true,
           sourceMapIn: function() {
             return 'test/fixtures/src/simple2.map';
@@ -258,7 +258,7 @@ module.exports = function(grunt) {
     'clean',
     'uglify:compress',
     'uglify:compress_mangle',
-    'uglify:compress_mangle_banner',
+    'uglify:compress_mangle_preamble',
     'uglify:no_src',
     'uglify:compress_mangle_except',
     'uglify:compress_mangle_beautify',

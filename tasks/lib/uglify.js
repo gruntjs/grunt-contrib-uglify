@@ -150,9 +150,7 @@ exports.init = function(grunt) {
       }
     }
 
-    if (options.banner && options.sourceMap) {
-      outputOptions.preamble = options.banner;
-    }
+    outputOptions.preamble = options.preamble;
 
     if (options.beautify) {
       if (_.isObject(options.beautify)) {

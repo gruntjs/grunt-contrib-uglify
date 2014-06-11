@@ -144,7 +144,7 @@ Turn on preservation of comments.
 - `'some'` will preserve all comments that start with a bang (`!`) or include a closure compiler style directive (`@preserve` `@license` `@cc_on`)
 - `Function` specify your own comment preservation function. You will be passed the current node and the current comment and are expected to return either `true` or `false`
 
-#### banner
+#### preamble
 Type: `String`  
 Default: empty string
 
@@ -421,4 +421,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Tue Apr 08 2014 18:01:12.*
+*This file was generated on Thu May 01 2014 20:02:26.*
