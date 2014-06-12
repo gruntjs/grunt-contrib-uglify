@@ -1,3 +1,12 @@
+v0.5.0:
+  date: 2014-06-11
+  changes:
+    - added option "expression" to uglify json and single functions.
+    - Removes unnecessary source map function.
+    - Simplify default source map naming function.
+    - Normalizes header and footer linefeeds.
+    - Source map names follow specs.
+    - Updates sourcemapin fixture.
 v0.4.0:
   date: 2014-03-01
   changes:

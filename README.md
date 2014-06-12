@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v0.4.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) <a href="https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify"><img src="https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master" alt="Build Status: Windows" height="18" /></a>
+# grunt-contrib-uglify v0.5.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) <a href="https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify"><img src="https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master" alt="Build Status: Windows" height="18" /></a>
 
 > Minify files with UglifyJS.
 
@@ -398,6 +398,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2014-06-11   v0.5.0   added option "expression" to uglify json and single functions. Removes unnecessary source map function. Simplify default source map naming function. Normalizes header and footer linefeeds. Source map names follow specs. Updates sourcemapin fixture.
  * 2014-03-01   v0.4.0   remove grunt-lib-contrib dependency and add more colors
  * 2014-02-27   v0.3.3   remove unnecessary calls to `grunt.template.process`
  * 2014-01-22   v0.3.2   fix handling of `sourceMapIncludeSources` option.
@@ -421,4 +422,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Tue Apr 08 2014 18:01:12.*
+*This file was generated on Wed Jun 11 2014 17:27:16.*
