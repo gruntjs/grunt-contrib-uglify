@@ -13,6 +13,7 @@ var path = require('path');
 var fs = require('fs');
 var UglifyJS = require('uglify-js');
 var _ = require('lodash');
+var uriPath = require('uri-path');
 
 exports.init = function(grunt) {
   var exports = {};
@@ -46,7 +47,7 @@ exports.init = function(grunt) {
       var pathPrefix = relativePath ? (relativePath+path.sep) : '';
 
       // Convert paths to use forward slashes for sourcemap use in the browser
-      file = (pathPrefix + basename).replace(/\\/g, '/');
+      file = uriPath(pathPrefix + basename);
 
       sourcesContent[file] = code;
       topLevel = UglifyJS.parse(code, {
@@ -115,7 +116,7 @@ exports.init = function(grunt) {
     // Add the source map reference to the end of the file
     if (options.sourceMap) {
       // Set all paths to forward slashes for use in the browser
-      min += "\n//# sourceMappingURL="+options.destToSourceMap.replace(/\\/g, '/');
+      min += "\n//# sourceMappingURL=" + uriPath(options.destToSourceMap);
     }
 
     var result = {
