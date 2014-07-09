@@ -158,10 +158,10 @@ module.exports = function(grunt) {
       // Write source map
       if (options.sourceMap) {
         grunt.file.write(options.generatedSourceMapName, result.sourceMap);
-        grunt.log.writeln('File ' + chalk.cyan(options.generatedSourceMapName) + ' created (source map).');
+        grunt.verbose.writeln('File ' + chalk.cyan(options.generatedSourceMapName) + ' created (source map).');
       }
 
-      grunt.log.writeln('File ' + chalk.cyan(f.dest) + ' created: ' +
+      grunt.verbose.writeln('File ' + chalk.cyan(f.dest) + ' created: ' +
                         maxmin(result.max, output, options.report === 'gzip'));
     });
   });
