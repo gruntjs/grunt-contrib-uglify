@@ -1,11 +1,11 @@
-# grunt-contrib-uglify v0.4.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
+# grunt-contrib-uglify v0.4.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
 
 > Minify files with UglifyJS.
 
 
 
 ## Getting Started
-This plugin requires Grunt `^0.4.0`
+This plugin requires Grunt `~0.4.0`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -391,6 +391,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2014-07-25   v0.4.1   fixes npm 2 peerDep issues.
  * 2014-03-01   v0.4.0   remove grunt-lib-contrib dependency and add more colors
  * 2014-02-27   v0.3.3   remove unnecessary calls to `grunt.template.process`
  * 2014-01-22   v0.3.2   fix handling of `sourceMapIncludeSources` option.
@@ -414,4 +415,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Sun Mar 02 2014 16:10:17.*
+*This file was generated on Fri Jul 25 2014 12:04:58.*
