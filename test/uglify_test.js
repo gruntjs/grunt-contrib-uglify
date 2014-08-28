@@ -1,9 +1,12 @@
 'use strict';
 
 var grunt = require('grunt');
+var path = require('path');
 
-var tmp = 'tmp/',
-    fixtures = 'test/fixtures/expected/';
+var read = function() {
+  var filepath = path.join.apply(this, Array.prototype.slice.call(arguments));
+  return grunt.util.normalizelf(grunt.file.read(filepath));
+};
 
 exports.contrib_uglify = {
   preuglified_files: function(test) {
@@ -25,7 +28,7 @@ exports.contrib_uglify = {
       'sourcemap_customName.js',
       'sourcemap_functionName.js',
       'sourcemap_functionName.js.fn.map',
-      'deep/directory/location/source_map.js.map',
+      path.join('deep', 'directory', 'location', 'source_map.js.map'),
       'sourcemapin.js',
       'sourcemapin.js.map',
       'sourcemap_sources.js.map',
@@ -45,9 +48,9 @@ exports.contrib_uglify = {
 
     test.expect(files.length);
 
-    files.forEach(function(file){
-      var actual = grunt.file.read(tmp + file);
-      var expected = grunt.file.read(fixtures + file);
+    files.forEach(function(file) {
+      var actual = read('tmp', file);
+      var expected = read('test', 'fixtures', 'expected', file);
       test.equal(actual, expected, 'task output should equal ' + file);
     });
 
