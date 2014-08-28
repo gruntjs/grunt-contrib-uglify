@@ -113,6 +113,22 @@ module.exports = function(grunt) {
           wrap: 'testExport'
         }
       },
+      maxLineLen: {
+        src: 'test/fixtures/src/simple2.js',
+        dest: 'tmp/maxLineLen.js',
+        options: {
+          mangle: false,
+          maxLineLen: 100
+        }
+      },
+      ASCIIOnly: {
+        src: 'test/fixtures/src/localization.js',
+        dest: 'tmp/asciionly.js',
+        options: {
+          mangle: false,
+          ASCIIOnly: true
+        }
+      },
       exportAll: {
         src: 'test/fixtures/src/simple.js',
         dest: 'tmp/exportAll.js',
@@ -227,7 +243,7 @@ module.exports = function(grunt) {
             mangle: false,
             compress: false
           }
-      },
+      }
     },
 
     // Unit tests.
@@ -279,6 +295,8 @@ module.exports = function(grunt) {
     'uglify:sourcemap_sources',
     'uglify:comments',
     'uglify:wrap',
+    'uglify:maxLineLen',
+    'uglify:ASCIIOnly',
     'uglify:exportAll',
     'uglify:enclose',
     'uglify:sourcemap_basic',

@@ -21,6 +21,8 @@ exports.contrib_uglify = {
       'enclose.js',
       'multifile.js',
       'wrap.js',
+      'maxLineLen.js',
+      'asciionly.js',
       'exportAll.js',
       'sourcemap_basic.js',
       'sourcemap_basic.js.map',
