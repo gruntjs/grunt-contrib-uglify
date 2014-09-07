@@ -126,6 +126,18 @@ Wrap all of the code in a closure, an easy way to make sure nothing is leaking.
 For variables that need to be public `exports` and `global` variables are made available.
 The value of wrap is the global variable exports will be available as.
 
+#### maxLineLen
+Type: `Number`
+Default: `32000`
+
+Limit the line length in symbols. Pass maxLineLen = 0 to disable this safety feature.
+
+#### ASCIIOnly
+Type: `Boolean`
+Default: `false`
+
+Enables to encode non-ASCII characters as \uXXXX.
+
 #### exportAll
 Type: `Boolean`  
 Default: `false`
@@ -422,4 +434,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Fri Jul 25 2014 12:07:55.*
+*This file was generated on Thu Aug 28 2014 15:31:19.*

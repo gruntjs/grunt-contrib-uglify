@@ -45,7 +45,9 @@ module.exports = function(grunt) {
       mangle: {},
       beautify: false,
       report: 'min',
-      expression: false
+      expression: false,
+      maxLineLen: 32000,
+      ASCIIOnly: false
     });
 
     // Process banner.

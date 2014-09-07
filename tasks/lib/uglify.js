@@ -190,6 +190,14 @@ exports.init = function(grunt) {
       outputOptions.indent_level = options.indentLevel;
     }
 
+    if (options.maxLineLen !== undefined) {
+      outputOptions.max_line_len = options.maxLineLen;
+    }
+
+    if (options.ASCIIOnly !== undefined) {
+      outputOptions.ascii_only = options.ASCIIOnly;
+    }
+
     return outputOptions;
   };
 
