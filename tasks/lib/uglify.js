@@ -184,6 +184,14 @@ exports.init = function(grunt) {
         });
       }
 
+      if (sourceMapIn && sourceMapIn.sourcesContent) {
+        var sources = sourceMapIn.sources;
+        var sourcesContent = sourceMapIn.sourcesContent;
+
+        for (var i = 0; i < sourcesContent.length; i++) {
+          outputOptions.source_map.get().setSourceContent(sources[i], sourcesContent[i]);
+        }
+      }
     }
 
     if (options.indentLevel !== undefined) {
