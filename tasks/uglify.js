@@ -163,7 +163,7 @@ module.exports = function(grunt) {
         grunt.verbose.writeln('File ' + chalk.cyan(options.generatedSourceMapName) + ' created (source map).');
       }
 
-      grunt.verbose.writeln('File ' + chalk.cyan(f.dest) + ' created: ' +
+      grunt.log.writeln('File ' + chalk.cyan(f.dest) + ' created: ' +
                         maxmin(result.max, output, options.report === 'gzip'));
     });
   });
