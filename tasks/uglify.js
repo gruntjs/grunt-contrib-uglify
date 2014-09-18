@@ -54,10 +54,12 @@ module.exports = function(grunt) {
     var banner = normalizeLf(options.banner);
     var footer = normalizeLf(options.footer);
     var mapNameGenerator, mapInNameGenerator;
+    var createdFiles = 0;
+    var createdMaps = 0;
 
     // Iterate over all src-dest file pairs.
-    this.files.forEach(function(f) {
-      var src = f.src.filter(function(filepath) {
+    this.files.forEach(function (f) {
+      var src = f.src.filter(function (filepath) {
         // Warn on and remove invalid source files (if nonull was set).
         if (!grunt.file.exists(filepath)) {
           grunt.log.warn('Source file ' + chalk.cyan(filepath) + ' not found.');
@@ -103,7 +105,7 @@ module.exports = function(grunt) {
         }
       }
       // If no name is passed append .map to the filename
-      else if ( !options.sourceMapName ) {
+      else if (!options.sourceMapName) {
         options.generatedSourceMapName = f.dest + '.map';
       } else {
         options.generatedSourceMapName = options.sourceMapName;
@@ -161,10 +163,22 @@ module.exports = function(grunt) {
       if (options.sourceMap) {
         grunt.file.write(options.generatedSourceMapName, result.sourceMap);
         grunt.verbose.writeln('File ' + chalk.cyan(options.generatedSourceMapName) + ' created (source map).');
+        createdMaps++;
       }
 
       grunt.verbose.writeln('File ' + chalk.cyan(f.dest) + ' created: ' +
-                        maxmin(result.max, output, options.report === 'gzip'));
+        maxmin(result.max, output, options.report === 'gzip'));
+      createdFiles++;
     });
+
+    if (createdMaps > 0) {
+      grunt.log.ok(createdMaps + ' source' + grunt.util.pluralize(this.files.length, 'map/maps') + ' created.');
+    }
+
+    if (createdFiles > 0) {
+      grunt.log.ok(createdFiles + ' ' + grunt.util.pluralize(this.files.length, 'file/files') + ' created.');
+    } else {
+      grunt.log.warn('No files created.');
+    }
   });
 };
