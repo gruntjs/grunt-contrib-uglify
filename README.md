@@ -111,6 +111,14 @@ Default: `false`
 
 Pass this flag if you want to include the content of source files in the source map as sourcesContent property.
 
+#### sourceMapRoot
+Type: `String`
+Default: `undefined`
+
+With this option you can customize root URL that browser will use when looking for sources.
+
+If the sources are not absolute URLs after prepending of the `sourceMapRoot`, the sources are resolved relative to the SourceMap.
+
 ###### enclose
 Type: `Object`  
 Default: `undefined`

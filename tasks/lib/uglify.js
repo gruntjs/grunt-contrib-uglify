@@ -176,6 +176,7 @@ exports.init = function(grunt) {
       }
       outputOptions.source_map = UglifyJS.SourceMap({
         file: destBasename,
+        root: options.sourceMapRoot,
         orig: sourceMapIn
       });
       if (options.sourceMapIncludeSources && sourceMapIn && sourceMapIn.sourcesContent) {
