@@ -1,3 +1,9 @@
+v0.7.0:
+  date: 2014-12-23
+  changes:
+    - Adds sourceMapRoot options.
+    - Updates readme descriptions.
+    - Removes reference to cleancss.
 v0.6.0:
   date: 2014-09-17
   changes:

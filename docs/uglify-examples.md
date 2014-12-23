@@ -109,9 +109,10 @@ grunt.initConfig({
 Refer to the [UglifyJS SourceMap Documentation](http://lisperator.net/uglifyjs/codegen#source-map) for more information.
 
 
-## Discard console.* functions
+## Turn off console warnings
 
 Specify `drop_console: true` as part of the `compress` options to discard calls to `console.*` functions.
+This will supress warning messages in the console.
 
 ```js
 // Project configuration.

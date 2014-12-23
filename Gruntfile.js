@@ -239,7 +239,9 @@ module.exports = function(grunt) {
             'tmp/expression.json': ['test/fixtures/src/simple.json']
           },
           options: {
-            expression: true
+            expression: true,
+            mangle: false,
+            compress: false
           }
       },
       expression_js: {

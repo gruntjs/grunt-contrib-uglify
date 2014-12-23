@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v0.6.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) <a href="https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify"><img src="https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master" alt="Build Status: Windows" height="18" /></a>
+# grunt-contrib-uglify v0.7.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify files with UglifyJS.
 
@@ -33,12 +33,12 @@ Version `3.x` introduced changes to configuring source maps. Accordingly, if you
 
 #### Removed options
 
-`sourceMappingURL` - This is calculated automatically now  
+`sourceMappingURL` - This is calculated automatically now
 `sourceMapPrefix` - No longer necessary for the above reason
 
 #### Changed options
 
-`sourceMap` - Only accepts a `Boolean` value. Generates a map with a default name for you  
+`sourceMap` - Only accepts a `Boolean` value. Generates a map with a default name for you
 `sourceMapRoot` - The location of your sources is now calculated for you when `sourceMap` is set to `true` but you can set manual source root if needed
 
 #### New options
@@ -73,7 +73,7 @@ Default: `false`
 Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`
 
 ###### expression
-Type: `Boolean`  
+Type: `Boolean`
 Default: `false`
 
 Parse a single expression, rather than a program (for parsing JSON)
@@ -83,7 +83,7 @@ Choices: `'min'`, `'gzip'`
 Default: `'min'`
 
 Either report only minification result or report minification and gzip results.
-This is useful to see exactly how well uglifyjs is performing but using `'gzip'` will make the task take 5-10x longer to complete. [Example output](https://github.com/sindresorhus/maxmin#readme).
+This is useful to see exactly how well clean-css is performing but using `'gzip'` will make the task take 5-10x longer to complete. [Example output](https://github.com/sindresorhus/maxmin#readme).
 
 #### sourceMap
 Type: `Boolean`  
@@ -106,13 +106,13 @@ uglify source is passed as the argument and the return value will be used as the
 when there's one source file.
 
 #### sourceMapIncludeSources
-Type: `Boolean`  
+Type: `Boolean`
 Default: `false`
 
 Pass this flag if you want to include the content of source files in the source map as sourcesContent property.
 
-#### sourceMapRoot
-Type: `String`  
+###### sourceMapRoot
+Type: `String`
 Default: `undefined`
 
 With this option you can customize root URL that browser will use when looking for sources.
@@ -135,13 +135,13 @@ For variables that need to be public `exports` and `global` variables are made a
 The value of wrap is the global variable exports will be available as.
 
 #### maxLineLen
-Type: `Number`  
+Type: `Number`
 Default: `32000`
 
 Limit the line length in symbols. Pass maxLineLen = 0 to disable this safety feature.
 
 #### ASCIIOnly
-Type: `Boolean`  
+Type: `Boolean`
 Default: `false`
 
 Enables to encode non-ASCII characters as \uXXXX.
@@ -289,7 +289,8 @@ Refer to the [UglifyJS SourceMap Documentation](http://lisperator.net/uglifyjs/c
 
 #### Turn off console warnings
 
-Specify `drop_console: true` as part of the `compress` options to discard calls to `console.*` functions. This will supress warning messages in the console.
+Specify `drop_console: true` as part of the `compress` options to discard calls to `console.*` functions.
+This will supress warning messages in the console.
 
 ```js
 // Project configuration.
@@ -418,6 +419,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2014-12-23   v0.7.0   Adds sourceMapRoot options. Updates readme descriptions. Removes reference to cleancss.
  * 2014-09-17   v0.6.0   Output fixes. ASCIIOnly option. Other fixes.
  * 2014-07-25   v0.5.1   Chalk updates. Output updates.
  * 2014-03-01   v0.4.0   remove grunt-lib-contrib dependency and add more colors
@@ -443,4 +445,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Wed Sep 17 2014 21:59:24.*
+*This file was generated on Tue Dec 23 2014 16:18:53.*
