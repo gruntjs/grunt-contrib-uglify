@@ -33,13 +33,13 @@ Version `3.x` introduced changes to configuring source maps. Accordingly, if you
 
 #### Removed options
 
-`sourceMapRoot` - The location of your sources is now calculated for you when `sourceMap` is set to `true`  
-`sourceMapPrefix` - No longer necessary for the above reason  
-`sourceMappingURL` - Once again, this is calculated automatically
+`sourceMappingURL` - This is calculated automatically now  
+`sourceMapPrefix` - No longer necessary for the above reason
 
 #### Changed options
 
 `sourceMap` - Only accepts a `Boolean` value. Generates a map with a default name for you  
+`sourceMapRoot` - The location of your sources is now calculated for you when `sourceMap` is set to `true` but you can set manual source root if needed
 
 #### New options
 
@@ -73,7 +73,7 @@ Default: `false`
 Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`
 
 ###### expression
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Parse a single expression, rather than a program (for parsing JSON)
@@ -106,10 +106,18 @@ uglify source is passed as the argument and the return value will be used as the
 when there's one source file.
 
 #### sourceMapIncludeSources
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Pass this flag if you want to include the content of source files in the source map as sourcesContent property.
+
+#### sourceMapRoot
+Type: `String`  
+Default: `undefined`
+
+With this option you can customize root URL that browser will use when looking for sources.
+
+If the sources are not absolute URLs after prepending of the `sourceMapRoot`, the sources are resolved relative to the source map.
 
 ###### enclose
 Type: `Object`  
@@ -127,13 +135,13 @@ For variables that need to be public `exports` and `global` variables are made a
 The value of wrap is the global variable exports will be available as.
 
 #### maxLineLen
-Type: `Number`
+Type: `Number`  
 Default: `32000`
 
 Limit the line length in symbols. Pass maxLineLen = 0 to disable this safety feature.
 
 #### ASCIIOnly
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Enables to encode non-ASCII characters as \uXXXX.

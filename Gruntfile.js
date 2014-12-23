@@ -161,6 +161,14 @@ module.exports = function(grunt) {
           sourceMapName: 'tmp/deep/directory/location/source_map.js.map'
         }
       },
+      sourcemap_customRoot: {
+        src: 'test/fixtures/src/simple.js',
+        dest: 'tmp/sourcemap_customRoot.js',
+        options: {
+          sourceMap: true,
+          sourceMapRoot: 'https://github.com/RReverser/grunt-contrib-uglify/tree/master/tmp'
+        }
+      },
       sourcemap_functionName: {
         src: 'test/fixtures/src/simple.js',
         dest: 'tmp/sourcemap_functionName.js',
@@ -302,6 +310,7 @@ module.exports = function(grunt) {
     'uglify:sourcemap_basic',
     'uglify:sourcemap_customName',
     'uglify:sourcemap_customDir',
+    'uglify:sourcemap_customRoot',
     'uglify:sourcemap_functionName',
     'uglify:sourcemap_multiple',
     'uglify:sourcemap_multipleFunctionNames',
