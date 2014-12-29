@@ -24,6 +24,7 @@ exports.contrib_uglify = {
       'maxLineLen.js',
       'asciionly.js',
       'exportAll.js',
+      'screwIE8.js',
       'sourcemap_basic.js',
       'sourcemap_basic.js.map',
       'sourcemap_customDir.js',

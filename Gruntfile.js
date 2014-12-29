@@ -129,6 +129,13 @@ module.exports = function(grunt) {
           ASCIIOnly: true
         }
       },
+      ScrewIE8: {
+        src: 'test/fixtures/src/screwIE8.js',
+        dest: 'tmp/screwIE8.js',
+        options: {
+          screwIE8: true
+        }
+      },
       exportAll: {
         src: 'test/fixtures/src/simple.js',
         dest: 'tmp/exportAll.js',
@@ -307,6 +314,7 @@ module.exports = function(grunt) {
     'uglify:wrap',
     'uglify:maxLineLen',
     'uglify:ASCIIOnly',
+    'uglify:ScrewIE8',
     'uglify:exportAll',
     'uglify:enclose',
     'uglify:sourcemap_basic',
