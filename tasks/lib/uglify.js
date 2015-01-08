@@ -74,7 +74,7 @@ exports.init = function(grunt) {
     // Need to call this before we mangle or compress,
     // and call after any compression or ast altering
     if (options.expression === false) {
-      topLevel.figure_out_scope();
+      topLevel.figure_out_scope({screw_ie8: options.screwIE8});
     }
 
     if (options.compress !== false) {
@@ -165,6 +165,9 @@ exports.init = function(grunt) {
       }
     }
 
+    if (options.screwIE8) {
+      outputOptions.screw_ie8 = true;
+    }
 
     if (options.sourceMap) {
 

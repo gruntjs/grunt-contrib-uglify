@@ -47,7 +47,8 @@ module.exports = function(grunt) {
       report: 'min',
       expression: false,
       maxLineLen: 32000,
-      ASCIIOnly: false
+      ASCIIOnly: false,
+      screwIE8: false
     });
 
     // Process banner.
@@ -128,6 +129,11 @@ module.exports = function(grunt) {
         var destToSourceMapPath = relativePath(f.dest, options.generatedSourceMapName);
         var sourceMapBasename = path.basename(options.generatedSourceMapName);
         options.destToSourceMap = destToSourceMapPath + sourceMapBasename;
+      }
+
+      if (options.screwIE8) {
+        if (options.mangle) { options.mangle.screw_ie8 = true; }
+        if (options.compress) { options.compress.screw_ie8 = true; }
       }
 
       // Minify files, warn and fail on error.

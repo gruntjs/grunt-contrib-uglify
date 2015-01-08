@@ -126,3 +126,9 @@ Type: `String`
 Default: empty string
 
 This string will be appended to the minified output.  Template strings (e.g. `<%= config.value %>` will be expanded automatically.
+
+## screwIE8
+Type: `Boolean`
+Default: false
+
+Pass this flag if you don't care about full compliance with Internet Explorer 6-8 quirks.
