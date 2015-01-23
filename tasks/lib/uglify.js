@@ -85,7 +85,7 @@ exports.init = function(grunt) {
       topLevel = topLevel.transform(compressor);
 
       // Need to figure out scope again after source being altered
-      topLevel.figure_out_scope();
+      topLevel.figure_out_scope({screw_ie8: options.screwIE8});
     }
 
     if (options.mangle !== false) {
