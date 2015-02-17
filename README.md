@@ -58,19 +58,26 @@ This task primarily delegates to [UglifyJS2][], so please consider the [UglifyJS
 Type: `Boolean` `Object`  
 Default: `{}`
 
-Turn on or off mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_names()` *and* `ast.compute_char_frequency()` (mimicking command line behavior).
+Turn on or off mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_names()` *and* `ast.compute_char_frequency()` (mimicking command line behavior). [View all options here](https://github.com/mishoo/UglifyJS2#mangler-options).
+
+
 
 #### compress
 Type: `Boolean` `Object`  
 Default: `{}`
 
-Turn on or off source compression with default options. If an `Object` is specified, it is passed as options to `UglifyJS.Compressor()`.
+
+Turn on or off source compression with default options. If an `Object` is specified, it is passed as options to `UglifyJS.Compressor()`. [View all options here](https://github.com/mishoo/UglifyJS2#compressor-options).
+
+
 
 #### beautify
 Type: `Boolean` `Object`  
 Default: `false`
 
-Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`
+
+Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`. [View all options here](https://github.com/mishoo/UglifyJS2#beautifier-options)
+
 
 ###### expression
 Type: `Boolean`
