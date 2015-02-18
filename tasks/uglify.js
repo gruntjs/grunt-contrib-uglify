@@ -59,7 +59,7 @@ module.exports = function(grunt) {
 
     // Iterate over all src-dest file pairs.
     this.files.forEach(function (f) {
-      var src = f.src.filter(function (filepath) {
+      var src = f.orig.src.filter(function (filepath) {
         // Warn on and remove invalid source files (if nonull was set).
         if (!grunt.file.exists(filepath)) {
           grunt.log.warn('Source file ' + chalk.cyan(filepath) + ' not found.');
