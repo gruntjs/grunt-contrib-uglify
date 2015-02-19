@@ -38,6 +38,14 @@ module.exports = function(grunt) {
           mangle: false
         }
       },
+      compress_explicit: {
+        files: {
+          'tmp/compress_explicit.js': ['test/fixtures/src/simple.js']
+        },
+        options: {
+          compress: true
+        }
+      },
       compress_mangle: {
         files: {
           'tmp/compress_mangle.js': ['test/fixtures/src/simple.js']
@@ -303,6 +311,7 @@ module.exports = function(grunt) {
     'jshint',
     'clean',
     'uglify:compress',
+    'uglify:compress_explicit',
     'uglify:compress_mangle',
     'uglify:compress_mangle_banner',
     'uglify:no_src',

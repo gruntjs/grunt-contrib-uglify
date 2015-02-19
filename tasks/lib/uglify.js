@@ -78,6 +78,9 @@ exports.init = function(grunt) {
     }
 
     if (options.compress !== false) {
+      if (options.compress === true) {
+        options.compress = {};
+      }
       if (options.compress.warnings !== true) {
         options.compress.warnings = false;
       }
