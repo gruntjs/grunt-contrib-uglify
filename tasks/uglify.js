@@ -25,10 +25,9 @@ function relativePath(file1, file2) {
 
 }
 
-function report_facility( grunt, options ){
+function reportFacility( grunt, options ){
   var reporter;
   switch( options.report ){
-    case false:
     case 'none':
       reporter = grunt.verbose;
       break;
@@ -65,7 +64,7 @@ module.exports = function(grunt) {
       ASCIIOnly: false,
       screwIE8: false
     });
-    var reportLog  = report_facility( grunt, options );
+    var log = reportFacility( grunt, options );
 
     // Process banner.
     var banner = normalizeLf(options.banner);
@@ -184,12 +183,12 @@ module.exports = function(grunt) {
       // Write source map
       if (options.sourceMap) {
         grunt.file.write(options.generatedSourceMapName, result.sourceMap);
-        reportLog.writeln('File ' + chalk.cyan(options.generatedSourceMapName) + ' created (source map).');
+        log.writeln('File ' + chalk.cyan(options.generatedSourceMapName) + ' created (source map).');
         createdMaps++;
       }
 
       var outputSize = maxmin(result.max, output, options.report === 'gzip');
-      reportLog.writeln('File ' + chalk.cyan(f.dest) + ' created: ' + outputSize);
+      log.writeln('File ' + chalk.cyan(f.dest) + ' created: ' + outputSize);
 
       createdFiles++;
     });
