@@ -10,7 +10,6 @@
 
 // External libs.
 var path = require('path');
-var fs = require('fs');
 var UglifyJS = require('uglify-js');
 var _ = require('lodash');
 var uriPath = require('uri-path');
@@ -175,7 +174,6 @@ exports.init = function(grunt) {
     if (options.sourceMap) {
 
       var destBasename = path.basename(dest);
-      var destPath     = path.dirname(dest);
       var sourceMapIn;
       if (options.sourceMapIn) {
         sourceMapIn = grunt.file.readJSON(options.sourceMapIn);

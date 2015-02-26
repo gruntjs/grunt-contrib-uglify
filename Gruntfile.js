@@ -284,7 +284,7 @@ module.exports = function(grunt) {
 
     var done = this.async();
 
-    function onComplete(error, result, code) {
+    function onComplete(error, result) {
       grunt.log.write("\n > " + result.stdout.split("\n").join("\n > ") + "\n");
       var rv = error ? true : new Error("Task " + task + " unexpectedly passed.");
       done(rv);
