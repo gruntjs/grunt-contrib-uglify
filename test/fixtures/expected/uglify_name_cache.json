@@ -1,0 +1,19 @@
+{
+  "props": {
+    "cname": 2,
+    "props": {
+      "$myFunction": "a",
+      "$dontMangleMeProperty": "b",
+      "$dontMangleMeProperty2": "c"
+    }
+  },
+  "vars": {
+    "cname": 3,
+    "props": {
+      "$myObj": "a",
+      "$dontMangleMeVariable2": "b",
+      "$dontMangleMeVariable3": "c",
+      "$myNumber": "d"
+    }
+  }
+}

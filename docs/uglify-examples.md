@@ -237,3 +237,53 @@ grunt.initConfig({
   }
 });
 ```
+
+## Turn on object property name mangling
+
+This configuration will turn on object property name mangling, but not mangle built-in browser object properties.
+Additionally, variables and object properties listed in the `myExceptionsFile.json` will be mangled. For more info,
+on the format of the exception file format please see the [UglifyJS docs](https://www.npmjs.com/package/uglify-js).
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    options: {
+      mangleProperties: true,
+      reserveDOMCache: true,
+      exceptionsFiles: [ 'myExceptionsFile.json' ]
+    },
+    my_target: {
+      files: {
+        'dest/output.min.js': ['src/input.js']
+      }
+    }
+  }
+});
+```
+
+## Turn on use of name mangling cache
+
+Turn on use of name mangling cache to coordinate mangled symbols between outputted uglify files. uglify will the
+generate a JSON cache file with the name provided in the options. Note: this generated file uses the same JSON format
+as the `exceptionsFiles` files.
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    options: {
+      nameCache: '.tmp/grunt-uglify-cache.json',
+    },
+    my_target: {
+      files: {
+        'dest/output1.min.js': ['src/input1.js'],
+        'dest/output2.min.js': ['src/input2.js']
+      }
+    }
+  }
+});
+```
+
+
+

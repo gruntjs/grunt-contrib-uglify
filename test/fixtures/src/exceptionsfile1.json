@@ -1,0 +1,4 @@
+{
+  "vars": ["dontMangleMeVariable2"],
+  "props": ["dontMangleMeProperty"]
+}

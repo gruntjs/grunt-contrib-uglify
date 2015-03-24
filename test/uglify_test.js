@@ -49,7 +49,14 @@ exports.contrib_uglify = {
       'sourcemaps_multiple2_fnName.js',
       'sourcemaps_multiple2_fnName.js.fn.map',
       'expression.json',
-      'expression.js'
+      'expression.js',
+      'mangleprops.js',
+      'mangleprops_withExcept.js',
+      'mangleprops_withExceptionsFiles.js',
+      'mangleprops_withExceptAndExceptionsFiles.js',
+      'mangleprops_withNameCacheFile1.js',
+      'mangleprops_withNameCacheFile2.js',
+      'uglify_name_cache.json'
     ];
 
     test.expect(files.length);
