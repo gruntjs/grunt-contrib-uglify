@@ -53,7 +53,7 @@ exports.init = function(grunt) {
       topLevel = UglifyJS.parse(code, {
         filename: file,
         toplevel: topLevel,
-        expression: options.expression
+        expression: options.expression,
         bare_returns: bare_returns
       });
     });
