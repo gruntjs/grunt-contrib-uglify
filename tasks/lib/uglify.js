@@ -83,6 +83,9 @@ exports.init = function(grunt) {
       if (options.compress.warnings !== true) {
         options.compress.warnings = false;
       }
+      if (options.screwIE8) {
+        options.compress.screw_ie8 = true;
+      }
       var compressor = UglifyJS.Compressor(options.compress);
       topLevel = topLevel.transform(compressor);
 
@@ -91,6 +94,12 @@ exports.init = function(grunt) {
     }
 
     if (options.mangle !== false) {
+      if (options.mangle === true) {
+        options.mangle = {};
+      }
+      if (options.screwIE8) {
+        options.mangle.screw_ie8 = true;
+      }
       // disabled due to:
       //   1) preserve stable name mangling
       //   2) it increases gzipped file size, see https://github.com/mishoo/UglifyJS2#mangler-options
