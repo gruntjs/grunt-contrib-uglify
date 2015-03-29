@@ -23,7 +23,7 @@
     "chalk": "^1.0.0",
     "lodash": "^3.2.0",
     "maxmin": "^1.0.0",
-    "uglify-js": "^2.4.0",
+    "uglify-js": "2.4.17",
     "uri-path": "0.0.2"
   },
   "devDependencies": {
