@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v0.8.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v0.8.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify files with UglifyJS.
 
@@ -432,6 +432,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2015-02-19   v0.8.1   lock uglify to 2.4.17 due to breaking changes
  * 2015-02-19   v0.8.0   Add `screwIE8` option. Fix issue with explicit `compress` in node 0.12.0.
  * 2014-12-23   v0.7.0   Adds sourceMapRoot options. Updates readme descriptions. Removes reference to cleancss.
  * 2014-09-17   v0.6.0   Output fixes. ASCIIOnly option. Other fixes.
@@ -459,4 +460,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Thu Feb 19 2015 16:25:10.*
+*This file was generated on Mon Mar 30 2015 16:33:34.*
