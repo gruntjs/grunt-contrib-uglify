@@ -1,3 +1,7 @@
+v0.8.1:
+  date: 2015-02-19
+  changes:
+    - lock uglify to 2.4.17 due to breaking changes
 v0.8.0:
   date: 2015-02-19
   changes:
