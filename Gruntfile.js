@@ -225,7 +225,8 @@ module.exports = function(grunt) {
           sourceMap: true,
           sourceMapIn: function() {
             return 'test/fixtures/src/simple2.map';
-          }
+          },
+          sourceMapIncludeSources: false
         }
       },
       sourcemap_sources: {

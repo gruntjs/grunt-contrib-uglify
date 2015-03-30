@@ -178,7 +178,7 @@ module.exports = function(grunt) {
     });
 
     if (createdMaps > 0) {
-      grunt.log.ok(createdMaps + ' source' + grunt.util.pluralize(this.files.length, 'map/maps') + ' created.');
+      grunt.log.ok(createdMaps + ' source' + grunt.util.pluralize(createdMaps, 'map/maps') + ' created.');
     }
 
     if (createdFiles > 0) {

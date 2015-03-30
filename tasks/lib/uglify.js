@@ -189,6 +189,9 @@ exports.init = function(grunt) {
         });
       }
 
+      if (options.sourceMapIn) {
+        outputOptions.source_map.get()._file = destBasename;
+      }
     }
 
     if (options.indentLevel !== undefined) {
