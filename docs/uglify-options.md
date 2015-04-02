@@ -31,7 +31,7 @@ Turns on beautification of the generated source code. An `Object` will be merged
 
 
 #### expression
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Parse a single expression, rather than a program (for parsing JSON)
@@ -64,13 +64,13 @@ uglify source is passed as the argument and the return value will be used as the
 when there's one source file.
 
 ## sourceMapIncludeSources
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Pass this flag if you want to include the content of source files in the source map as sourcesContent property.
 
 #### sourceMapRoot
-Type: `String`
+Type: `String`  
 Default: `undefined`
 
 With this option you can customize root URL that browser will use when looking for sources.
@@ -93,13 +93,13 @@ For variables that need to be public `exports` and `global` variables are made a
 The value of wrap is the global variable exports will be available as.
 
 ## maxLineLen
-Type: `Number`
+Type: `Number`  
 Default: `32000`
 
 Limit the line length in symbols. Pass maxLineLen = 0 to disable this safety feature.
 
 ## ASCIIOnly
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Enables to encode non-ASCII characters as \uXXXX.
@@ -135,7 +135,35 @@ Default: empty string
 This string will be appended to the minified output.  Template strings (e.g. `<%= config.value %>` will be expanded automatically.
 
 ## screwIE8
-Type: `Boolean`
+Type: `Boolean`  
 Default: false
 
 Pass this flag if you don't care about full compliance with Internet Explorer 6-8 quirks.
+
+## mangleProperties
+Type: `Boolean`  
+Default: false
+
+Use this flag to turn on object property name mangling.
+
+## reserveDOMProperties
+Type: `Boolean`  
+Default: false
+
+Use this flag in conjunction with `mangleProperties` to prevent built-in browser object properties from being mangled.
+
+## exceptionsFiles
+Type: `Array`  
+Default: []
+
+Use this with `mangleProperties` to pass one or more JSON files containing a list of variables and object properties
+that should not be mangled. See the [UglifyJS docs](https://www.npmjs.com/package/uglify-js) for more info on the file syntax.
+
+## nameCache
+Type: `String`   
+Default: empty string
+
+A string that is a path to a JSON cache file that uglify will create and use to coordinate symbol mangling between
+multiple runs of uglify. Note: this generated file uses the same JSON format as the `exceptionsFiles` files.
+
+

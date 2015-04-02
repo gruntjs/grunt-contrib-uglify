@@ -1,0 +1,1 @@
+var a={a:function(a){a++},b:function(){},c:function(){}},b=function(){},c=function(){};

@@ -269,6 +269,63 @@ module.exports = function(grunt) {
             mangle: false,
             compress: false
           }
+      },
+      mangleprops: {
+        files: {
+          'tmp/mangleprops.js': ['test/fixtures/src/mangleprops.js']
+        },
+        options: {
+          mangleProperties: true
+        }
+      },
+      mangleprops_withExcept: {
+        files: {
+          'tmp/mangleprops_withExcept.js': ['test/fixtures/src/mangleprops.js']
+        },
+        options: {
+          mangle: {
+            except: ['dontMangleMeVariable']
+          },
+          mangleProperties: true
+        }
+      },
+      mangleprops_withExceptionsFiles: {
+        files: {
+          'tmp/mangleprops_withExceptionsFiles.js': ['test/fixtures/src/mangleprops.js']
+        },
+        options: {
+          mangle: {
+            toplevel: true
+          },
+          mangleProperties: true,
+          exceptionsFiles: ['test/fixtures/src/exceptionsfile1.json', 'test/fixtures/src/exceptionsfile2.json']
+        }
+      },
+      mangleprops_withExceptAndExceptionsFiles: {
+        files: {
+          'tmp/mangleprops_withExceptAndExceptionsFiles.js': ['test/fixtures/src/mangleprops.js']
+        },
+        options: {
+          mangle: {
+            toplevel: true,
+            except: ['dontMangleMeVariable']
+          },
+          mangleProperties: true,
+          exceptionsFiles: ['test/fixtures/src/exceptionsfile1.json', 'test/fixtures/src/exceptionsfile2.json']
+        }
+      },
+      mangleprops_withNameCacheFile: {
+        files: {
+          'tmp/mangleprops_withNameCacheFile1.js': ['test/fixtures/src/mangleprops.js'],
+          'tmp/mangleprops_withNameCacheFile2.js': ['test/fixtures/src/mangleprops_withNameCache.js']
+        },
+        options: {
+          mangle: {
+            toplevel: true
+          },
+          mangleProperties: true,
+          nameCache: 'tmp/uglify_name_cache.json'
+        }
       }
     },
 
@@ -276,7 +333,6 @@ module.exports = function(grunt) {
     nodeunit: {
       tests: ['test/*_test.js']
     }
-
   });
 
   // task that expects its argument (another task) to fail
@@ -339,6 +395,11 @@ module.exports = function(grunt) {
     'uglify:sourcemapin_sources',
     'uglify:expression_json',
     'uglify:expression_js',
+    'uglify:mangleprops',
+    'uglify:mangleprops_withExcept',
+    'uglify:mangleprops_withExceptionsFiles',
+    'uglify:mangleprops_withExceptAndExceptionsFiles',
+    'uglify:mangleprops_withNameCacheFile',
     'nodeunit'
   ]);
 

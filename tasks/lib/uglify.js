@@ -70,10 +70,15 @@ exports.init = function(grunt) {
       topLevel = topLevel.wrap_enclose(argParamList);
     }
 
+    var topLevelCache = null;
+    if (options.nameCache) {
+      topLevelCache = UglifyJS.readNameCache(options.nameCache, 'vars');
+    }
+
     // Need to call this before we mangle or compress,
     // and call after any compression or ast altering
     if (options.expression === false) {
-      topLevel.figure_out_scope({screw_ie8: options.screwIE8});
+      topLevel.figure_out_scope({ screw_ie8: options.screwIE8, cache: topLevelCache });
     }
 
     if (options.compress !== false) {
@@ -87,7 +92,45 @@ exports.init = function(grunt) {
       topLevel = topLevel.transform(compressor);
 
       // Need to figure out scope again after source being altered
-      topLevel.figure_out_scope({screw_ie8: options.screwIE8});
+      if (options.expression === false) {
+        topLevel.figure_out_scope({screw_ie8: options.screwIE8, cache: topLevelCache});
+      }
+    }
+
+    var mangleExclusions = { vars: [], props: [] };
+    if (options.reserveDOMProperties) {
+      mangleExclusions = UglifyJS.readDefaultReservedFile();
+    }
+
+    if (options.exceptionsFiles) {
+      try {
+        options.exceptionsFiles.forEach(function(filename) {
+          mangleExclusions = UglifyJS.readReservedFile(filename, mangleExclusions);
+        });
+      } catch (ex) {
+        grunt.warn(ex);
+      }
+    }
+
+    var cache = null;
+    if (options.nameCache) {
+      cache = UglifyJS.readNameCache(options.nameCache, 'props');
+    }
+
+    if (options.mangleProperties === true) {
+      topLevel = UglifyJS.mangle_properties(topLevel, {
+        reserved: mangleExclusions ? mangleExclusions.props : null,
+        cache: cache
+      });
+
+      if (options.nameCache) {
+        UglifyJS.writeNameCache(options.nameCache, 'props', cache);
+      }
+
+      // Need to figure out scope again since topLevel has been altered
+      if (options.expression === false) {
+        topLevel.figure_out_scope({screw_ie8: options.screwIE8, cache: topLevelCache});
+      }
     }
 
     if (options.mangle !== false) {
@@ -97,9 +140,20 @@ exports.init = function(grunt) {
       // // compute_char_frequency optimizes names for compression
       // topLevel.compute_char_frequency(options.mangle);
 
+      options.mangle.cache = topLevelCache;
+
+      options.mangle.except = options.mangle.except ? options.mangle.except : [];
+      if (mangleExclusions.vars) {
+        mangleExclusions.vars.forEach(function(name){
+          UglifyJS.push_uniq(options.mangle.except, name);
+        });
+      }
+
       // Requires previous call to figure_out_scope
       // and should always be called after compressor transform
       topLevel.mangle_names(options.mangle);
+
+      UglifyJS.writeNameCache(options.nameCache, 'vars', options.mangle.cache);
     }
 
     if (options.sourceMap && options.sourceMapIncludeSources) {
