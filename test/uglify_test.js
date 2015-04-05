@@ -56,7 +56,10 @@ exports.contrib_uglify = {
       'mangleprops_withExceptAndExceptionsFiles.js',
       'mangleprops_withNameCacheFile1.js',
       'mangleprops_withNameCacheFile2.js',
-      'uglify_name_cache.json'
+      'uglify_name_cache.json',
+      'quotes_single.js',
+      'quotes_double.js',
+      'quotes_original.js'
     ];
 
     test.expect(files.length);

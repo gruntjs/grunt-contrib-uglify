@@ -167,3 +167,14 @@ A string that is a path to a JSON cache file that uglify will create and use to 
 multiple runs of uglify. Note: this generated file uses the same JSON format as the `exceptionsFiles` files.
 
 
+
+## quoteStyle
+Type: `Integer`
+Default: `0`
+
+Preserve or enforce quotation mark style.
+
+- `0` will use single or double quotes such as to minimize the number of bytes (prefers double quotes when both will do)
+- `1` will always use single quotes
+- `2` will always use double quotes
+- `3` will preserve original quotation marks
