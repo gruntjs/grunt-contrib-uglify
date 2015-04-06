@@ -248,16 +248,20 @@ exports.init = function(grunt) {
       }
     }
 
-    if (options.indentLevel !== undefined) {
+    if (!_.isUndefined(options.indentLevel)) {
       outputOptions.indent_level = options.indentLevel;
     }
 
-    if (options.maxLineLen !== undefined) {
+    if (!_.isUndefined(options.maxLineLen)) {
       outputOptions.max_line_len = options.maxLineLen;
     }
 
-    if (options.ASCIIOnly !== undefined) {
+    if (!_.isUndefined(options.ASCIIOnly)) {
       outputOptions.ascii_only = options.ASCIIOnly;
+    }
+
+    if (!_.isUndefined(options.quoteStyle)) {
+      outputOptions.quote_style = options.quoteStyle;
     }
 
     return outputOptions;

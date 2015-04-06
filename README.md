@@ -188,7 +188,18 @@ Type: `Boolean`
 Default: false
 
 Pass this flag if you don't care about full compliance with Internet Explorer 6-8 quirks.
-
+  
+#### quoteStyle
+Type: `Integer`
+Default: `0`
+  
+Preserve or enforce quotation mark style.
+- `0` will use single or double quotes such as to minimize the number of bytes (prefers double quotes when both will do)
+- `1` will always use single quotes
+- `2` will always use double quotes
+- `3` will preserve original quotation marks
+  
+  
 ### Usage examples
 
 #### Basic compression

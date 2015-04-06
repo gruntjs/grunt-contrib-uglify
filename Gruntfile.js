@@ -326,6 +326,30 @@ module.exports = function(grunt) {
           mangleProperties: true,
           nameCache: 'tmp/uglify_name_cache.json'
         }
+      },
+      quotes_single: {
+        files: {
+          'tmp/quotes_single.js': ['test/fixtures/src/quotes.js']
+        },
+        options: {
+          quoteStyle: 1
+        }
+      },
+      quotes_double: {
+        files: {
+          'tmp/quotes_double.js': ['test/fixtures/src/quotes.js']
+        },
+        options: {
+          quoteStyle: 2
+        }
+      },
+      quotes_original: {
+        files: {
+          'tmp/quotes_original.js': ['test/fixtures/src/quotes.js']
+        },
+        options: {
+          quoteStyle: 3
+        }
       }
     },
 
