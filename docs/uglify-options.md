@@ -5,30 +5,24 @@ This task primarily delegates to [UglifyJS2][], so please consider the [UglifyJS
 [UglifyJS2]: https://github.com/mishoo/UglifyJS2
 [UglifyJS documentation]: http://lisperator.net/uglifyjs/
 
+
 ## mangle
 Type: `Boolean` `Object`  
 Default: `{}`
 
 Turn on or off mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_names()` *and* `ast.compute_char_frequency()` (mimicking command line behavior). [View all options here](https://github.com/mishoo/UglifyJS2#mangler-options).
 
-
-
 ## compress
 Type: `Boolean` `Object`  
 Default: `{}`
 
-
 Turn on or off source compression with default options. If an `Object` is specified, it is passed as options to `UglifyJS.Compressor()`. [View all options here](https://github.com/mishoo/UglifyJS2#compressor-options).
-
-
 
 ## beautify
 Type: `Boolean` `Object`  
 Default: `false`
 
-
 Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`. [View all options here](https://github.com/mishoo/UglifyJS2#beautifier-options)
-
 
 #### expression
 Type: `Boolean`  
@@ -160,21 +154,19 @@ Use this with `mangleProperties` to pass one or more JSON files containing a lis
 that should not be mangled. See the [UglifyJS docs](https://www.npmjs.com/package/uglify-js) for more info on the file syntax.
 
 ## nameCache
-Type: `String`   
+Type: `String`  
 Default: empty string
 
 A string that is a path to a JSON cache file that uglify will create and use to coordinate symbol mangling between
 multiple runs of uglify. Note: this generated file uses the same JSON format as the `exceptionsFiles` files.
 
-
-
 ## quoteStyle
-Type: `Integer`
+Type: `Integer`  
 Default: `0`
 
 Preserve or enforce quotation mark style.
 
-- `0` will use single or double quotes such as to minimize the number of bytes (prefers double quotes when both will do)
-- `1` will always use single quotes
-- `2` will always use double quotes
-- `3` will preserve original quotation marks
+* `0` will use single or double quotes such as to minimize the number of bytes (prefers double quotes when both will do)
+* `1` will always use single quotes
+* `2` will always use double quotes
+* `3` will preserve original quotation marks

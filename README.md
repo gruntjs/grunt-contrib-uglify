@@ -46,6 +46,7 @@ Version `3.x` introduced changes to configuring source maps. Accordingly, if you
 `sourceMapName` - Accepts a string or function to change the location or name of your map
 `sourceMapIncludeSources` - Embed the content of your source files directly into the map
 `expression` - Accepts a `Boolean` value. Parse a single expression (JSON or single functions)
+`quoteStyle` - Accepts integers `0` (default), `1`, `2`, `3`. Enforce or preserve quotation mark style.
 
 ### Options
 
@@ -54,33 +55,27 @@ This task primarily delegates to [UglifyJS2][], so please consider the [UglifyJS
 [UglifyJS2]: https://github.com/mishoo/UglifyJS2
 [UglifyJS documentation]: http://lisperator.net/uglifyjs/
 
+
 #### mangle
 Type: `Boolean` `Object`  
 Default: `{}`
 
 Turn on or off mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_names()` *and* `ast.compute_char_frequency()` (mimicking command line behavior). [View all options here](https://github.com/mishoo/UglifyJS2#mangler-options).
 
-
-
 #### compress
 Type: `Boolean` `Object`  
 Default: `{}`
 
-
 Turn on or off source compression with default options. If an `Object` is specified, it is passed as options to `UglifyJS.Compressor()`. [View all options here](https://github.com/mishoo/UglifyJS2#compressor-options).
-
-
 
 #### beautify
 Type: `Boolean` `Object`  
 Default: `false`
 
-
 Turns on beautification of the generated source code. An `Object` will be merged and passed with the options sent to `UglifyJS.OutputStream()`. [View all options here](https://github.com/mishoo/UglifyJS2#beautifier-options)
 
-
 ###### expression
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Parse a single expression, rather than a program (for parsing JSON)
@@ -113,13 +108,13 @@ uglify source is passed as the argument and the return value will be used as the
 when there's one source file.
 
 #### sourceMapIncludeSources
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Pass this flag if you want to include the content of source files in the source map as sourcesContent property.
 
 ###### sourceMapRoot
-Type: `String`
+Type: `String`  
 Default: `undefined`
 
 With this option you can customize root URL that browser will use when looking for sources.
@@ -142,13 +137,13 @@ For variables that need to be public `exports` and `global` variables are made a
 The value of wrap is the global variable exports will be available as.
 
 #### maxLineLen
-Type: `Number`
+Type: `Number`  
 Default: `32000`
 
 Limit the line length in symbols. Pass maxLineLen = 0 to disable this safety feature.
 
 #### ASCIIOnly
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Enables to encode non-ASCII characters as \uXXXX.
@@ -184,22 +179,48 @@ Default: empty string
 This string will be appended to the minified output.  Template strings (e.g. `<%= config.value %>` will be expanded automatically.
 
 #### screwIE8
-Type: `Boolean`
+Type: `Boolean`  
 Default: false
 
 Pass this flag if you don't care about full compliance with Internet Explorer 6-8 quirks.
-  
+
+#### mangleProperties
+Type: `Boolean`  
+Default: false
+
+Use this flag to turn on object property name mangling.
+
+#### reserveDOMProperties
+Type: `Boolean`  
+Default: false
+
+Use this flag in conjunction with `mangleProperties` to prevent built-in browser object properties from being mangled.
+
+#### exceptionsFiles
+Type: `Array`  
+Default: []
+
+Use this with `mangleProperties` to pass one or more JSON files containing a list of variables and object properties
+that should not be mangled. See the [UglifyJS docs](https://www.npmjs.com/package/uglify-js) for more info on the file syntax.
+
+#### nameCache
+Type: `String`  
+Default: empty string
+
+A string that is a path to a JSON cache file that uglify will create and use to coordinate symbol mangling between
+multiple runs of uglify. Note: this generated file uses the same JSON format as the `exceptionsFiles` files.
+
 #### quoteStyle
-Type: `Integer`
+Type: `Integer`  
 Default: `0`
-  
+
 Preserve or enforce quotation mark style.
-- `0` will use single or double quotes such as to minimize the number of bytes (prefers double quotes when both will do)
-- `1` will always use single quotes
-- `2` will always use double quotes
-- `3` will preserve original quotation marks
-  
-  
+
+* `0` will use single or double quotes such as to minimize the number of bytes (prefers double quotes when both will do)
+* `1` will always use single quotes
+* `2` will always use double quotes
+* `3` will preserve original quotation marks
+
 ### Usage examples
 
 #### Basic compression
@@ -310,7 +331,6 @@ grunt.initConfig({
 
 Refer to the [UglifyJS SourceMap Documentation](http://lisperator.net/uglifyjs/codegen#source-map) for more information.
 
-
 #### Turn off console warnings
 
 Specify `drop_console: true` as part of the `compress` options to discard calls to `console.*` functions.
@@ -420,6 +440,7 @@ grunt.initConfig({
   }
 });
 ```
+
 #### Compiling all files in a folder dynamically
 
 This configuration will compress and mangle the files dynamically.
@@ -435,6 +456,53 @@ grunt.initConfig({
           src: '**/*.js',
           dest: 'dest/js'
       }]
+    }
+  }
+});
+```
+
+#### Turn on object property name mangling
+
+This configuration will turn on object property name mangling, but not mangle built-in browser object properties.
+Additionally, variables and object properties listed in the `myExceptionsFile.json` will be mangled. For more info,
+on the format of the exception file format please see the [UglifyJS docs](https://www.npmjs.com/package/uglify-js).
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    options: {
+      mangleProperties: true,
+      reserveDOMCache: true,
+      exceptionsFiles: [ 'myExceptionsFile.json' ]
+    },
+    my_target: {
+      files: {
+        'dest/output.min.js': ['src/input.js']
+      }
+    }
+  }
+});
+```
+
+#### Turn on use of name mangling cache
+
+Turn on use of name mangling cache to coordinate mangled symbols between outputted uglify files. uglify will the
+generate a JSON cache file with the name provided in the options. Note: this generated file uses the same JSON format
+as the `exceptionsFiles` files.
+
+```js
+// Project configuration.
+grunt.initConfig({
+  uglify: {
+    options: {
+      nameCache: '.tmp/grunt-uglify-cache.json',
+    },
+    my_target: {
+      files: {
+        'dest/output1.min.js': ['src/input1.js'],
+        'dest/output2.min.js': ['src/input2.js']
+      }
     }
   }
 });
@@ -471,4 +539,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Mon Mar 30 2015 16:33:34.*
+*This file was generated on Mon Apr 06 2015 09:13:43.*
