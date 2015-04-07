@@ -1,5 +1,9 @@
+v0.9.0:
+  date: 2015-04-07
+  changes:
+    - added hook into uglify's mangling functionality
 v0.8.1:
-  date: 2015-02-19
+  date: 2015-03-30
   changes:
     - lock uglify to 2.4.17 due to breaking changes
 v0.8.0:
