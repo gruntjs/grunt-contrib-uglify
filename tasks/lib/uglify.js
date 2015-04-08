@@ -140,6 +140,11 @@ exports.init = function(grunt) {
       // // compute_char_frequency optimizes names for compression
       // topLevel.compute_char_frequency(options.mangle);
 
+      // if options.mangle is a boolean (true) convert it into an object
+      if (typeof options.mangle !== 'object') {
+        options.mangle = {};
+      }
+
       options.mangle.cache = topLevelCache;
 
       options.mangle.except = options.mangle.except ? options.mangle.except : [];

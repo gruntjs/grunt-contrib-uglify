@@ -350,6 +350,12 @@ module.exports = function(grunt) {
         options: {
           quoteStyle: 3
         }
+      },
+      mangle_isNotObject: {
+        files: {
+          'tmp/mangle.js': ['test/fixtures/src/simple.js']
+        },
+        mangle: true
       }
     },
 
