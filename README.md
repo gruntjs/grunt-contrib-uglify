@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v0.9.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v0.9.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify files with UglifyJS.
 
@@ -540,4 +540,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Tue Apr 07 2015 09:43:05.*
+*This file was generated on Tue Apr 07 2015 21:04:14.*
