@@ -127,7 +127,7 @@ module.exports = function(grunt) {
       // Calculate the path from the dest file to the sourcemap for the
       // sourceMappingURL reference
       if (options.sourceMap) {
-        var destToSourceMapPath = relativePath(f.dest, options.generatedSourceMapName);
+        var destToSourceMapPath = options.sourceMapRoot === undefined ? relativePath(f.dest, options.generatedSourceMapName) : options.sourceMapRoot;
         var sourceMapBasename = path.basename(options.generatedSourceMapName);
         options.destToSourceMap = destToSourceMapPath + sourceMapBasename;
       }
