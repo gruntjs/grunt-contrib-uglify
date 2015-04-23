@@ -33,7 +33,7 @@ exports.init = function(grunt) {
     var output = UglifyJS.OutputStream(outputOptions);
 
     // Grab and parse all source files
-    files.forEach(function(file){
+    files.forEach(function(file) {
 
       var code = grunt.file.read(file);
       totalCode += code;
@@ -43,7 +43,7 @@ exports.init = function(grunt) {
       var fileDir = path.dirname(file);
       var sourceMapDir = path.dirname(options.generatedSourceMapName);
       var relativePath = path.relative(sourceMapDir, fileDir);
-      var pathPrefix = relativePath ? (relativePath+path.sep) : '';
+      var pathPrefix = relativePath ? relativePath + path.sep : '';
 
       // Convert paths to use forward slashes for sourcemap use in the browser
       file = uriPath(pathPrefix + basename);
@@ -149,7 +149,7 @@ exports.init = function(grunt) {
 
       options.mangle.except = options.mangle.except ? options.mangle.except : [];
       if (mangleExclusions.vars) {
-        mangleExclusions.vars.forEach(function(name){
+        mangleExclusions.vars.forEach(function(name) {
           UglifyJS.push_uniq(options.mangle.except, name);
         });
       }
@@ -177,7 +177,7 @@ exports.init = function(grunt) {
     // Add the source map reference to the end of the file
     if (options.sourceMap) {
       // Set all paths to forward slashes for use in the browser
-      min += "\n//# sourceMappingURL=" + uriPath(options.destToSourceMap);
+      min += '\n//# sourceMappingURL=' + uriPath(options.destToSourceMap);
     }
 
     var result = {
