@@ -71,6 +71,12 @@ With this option you can customize root URL that browser will use when looking f
 
 If the sources are not absolute URLs after prepending of the `sourceMapRoot`, the sources are resolved relative to the source map.
 
+## sourceMapUrl
+Type: `String`  
+Default: `undefined`
+
+Override the calculated value for `sourceMappingURL` in the source map. This is useful if the source map location is not relative to the base path of the minified file, i.e. when using a CDN
+
 #### enclose
 Type: `Object`  
 Default: `undefined`

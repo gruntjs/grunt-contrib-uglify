@@ -184,6 +184,14 @@ module.exports = function(grunt) {
           sourceMapRoot: 'https://github.com/RReverser/grunt-contrib-uglify/tree/master/tmp'
         }
       },
+      sourcemap_customUrl: {
+        src: 'test/fixtures/src/simple.js',
+        dest: 'tmp/sourcemap_customUrl.js',
+        options: {
+          sourceMap: true,
+          sourceMapUrl: 'http://www.test.com/test/sourcemap_customUrl.js.map'
+        }
+      },
       sourcemap_functionName: {
         src: 'test/fixtures/src/simple.js',
         dest: 'tmp/sourcemap_functionName.js',

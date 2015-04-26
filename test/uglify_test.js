@@ -32,6 +32,7 @@ exports.contrib_uglify = {
       'sourcemap_customName.js',
       'sourcemap_customRoot.js',
       'sourcemap_customRoot.js.map',
+      'sourcemap_customUrl.js',
       'sourcemap_functionName.js',
       'sourcemap_functionName.js.fn.map',
       path.join('deep', 'directory', 'location', 'source_map.js.map'),
