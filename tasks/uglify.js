@@ -47,7 +47,10 @@ module.exports = function(grunt) {
       maxLineLen: 32000,
       ASCIIOnly: false,
       screwIE8: false,
-      quoteStyle: 0
+      quoteStyle: 0,
+      process: function( output ) {
+        return output;
+      }
     });
 
     // Process banner.
@@ -158,7 +161,9 @@ module.exports = function(grunt) {
       if (!options.sourceMap) {
         output = banner + output;
       }
-
+      
+      output = options.process(output);
+        
       // Write the destination file.
       grunt.file.write(f.dest, output);
 
