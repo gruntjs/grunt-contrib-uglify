@@ -174,10 +174,16 @@ exports.init = function(grunt) {
 
     var min = output.get();
 
+    // Replaces backslashes with forward slashes
+    // Similar to the uri-path module, but without uri-encoding and replacing multiple slashes
+    var forwardSlash = function (path) {
+      return path.replace(/\\/g, '/');
+    };
+
     // Add the source map reference to the end of the file
     if (options.sourceMap) {
       // Set all paths to forward slashes for use in the browser
-      min += '\n//# sourceMappingURL=' + uriPath(options.destToSourceMap);
+      min += '\n//# sourceMappingURL=' + forwardSlash(options.destToSourceMap);
     }
 
     var result = {

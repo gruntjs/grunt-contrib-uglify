@@ -250,6 +250,15 @@ module.exports = function(grunt) {
           sourceMapIncludeSources: true
         }
       },
+      sourcemap_sourceMappingURL: {
+        files: {
+          'tmp/sourcemap_sourceMappingURL.js': ['test/fixtures/src/simple.js']
+        },
+        options: {
+          sourceMap: true,
+          sourceMappingURLBase: 'http://localhost:8080/'
+        }
+      },
       expression_json: {
           files: {
             'tmp/expression.json': ['test/fixtures/src/simple.json']

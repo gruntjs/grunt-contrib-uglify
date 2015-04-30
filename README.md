@@ -33,13 +33,14 @@ Version `3.x` introduced changes to configuring source maps. Accordingly, if you
 
 #### Removed options
 
-`sourceMappingURL` - This is calculated automatically now
+`sourceMappingURL` - This is calculated automatically now   
 `sourceMapPrefix` - No longer necessary for the above reason
 
 #### Changed options
 
 `sourceMap` - Only accepts a `Boolean` value. Generates a map with a default name for you
 `sourceMapRoot` - The location of your sources is now calculated for you when `sourceMap` is set to `true` but you can set manual source root if needed
+`sourceMappingURLBase` - Use this to prefix the automatically calculated sourceMappingURL
 
 #### New options
 
@@ -120,6 +121,13 @@ Default: `undefined`
 With this option you can customize root URL that browser will use when looking for sources.
 
 If the sources are not absolute URLs after prepending of the `sourceMapRoot`, the sources are resolved relative to the source map.
+
+###### sourceMappingURLBase
+Type: `String`  
+Default: `undefined`
+
+When used, this option will add a base URL to the source maps filename (`//# sourceMappingURL=[baseURL][map-filename]`).  
+If `undefined` the relative path will be used.
 
 ###### enclose
 Type: `Object`  
