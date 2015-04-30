@@ -129,12 +129,13 @@ Default: `undefined`
 Wrap all of the code in a closure with a configurable arguments/parameters list.
 Each key-value pair in the `enclose` object is effectively an argument-parameter pair.
 
-##### sourceMappingURLBase
+#### sourceMappingURLBase
 Type: `String`  
 Default: `undefined`
 
-When used, this option will add a base URL to the source maps filename  
-(`//# sourceMappingURL=[baseURL][map-filename]`). If `undefined` the relative path will be used.
+When used, this option will add a base URL to the source maps filename. If `undefined` the relative path will be used.
+
+Example: `//# sourceMappingURL=[baseURL][sourceMapFilename]`
 
 #### wrap
 Type: `String`  
