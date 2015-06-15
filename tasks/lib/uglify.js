@@ -197,21 +197,6 @@ exports.init = function(grunt) {
       source_map: null
     };
 
-    if (options.preserveComments) {
-      if (options.preserveComments === 'all' || options.preserveComments === true) {
-
-        // preserve all the comments we can
-        outputOptions.comments = true;
-      } else if (options.preserveComments === 'some') {
-        // preserve comments with directives or that start with a bang (!)
-        outputOptions.comments = /^!|@preserve|@license|@cc_on/i;
-      } else if (_.isFunction(options.preserveComments)) {
-
-        // support custom functions passed in
-        outputOptions.comments = options.preserveComments;
-      }
-    }
-
     if (options.banner && options.sourceMap) {
       outputOptions.preamble = options.banner;
     }
@@ -269,6 +254,10 @@ exports.init = function(grunt) {
       outputOptions.quote_style = options.quoteStyle;
     }
 
+    if (!_.isUndefined(options.preserveComments)) {
+      outputOptions.comments = options.preserveComments;
+    }
+    
     return outputOptions;
   };
 
