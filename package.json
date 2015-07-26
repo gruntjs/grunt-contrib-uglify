@@ -15,19 +15,19 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "chalk": "^1.0.0",
-    "lodash": "^3.2.0",
-    "maxmin": "^1.0.0",
-    "uglify-js": "^2.4.19",
-    "uri-path": "0.0.2"
+    "chalk": "^1.1.0",
+    "lodash": "^3.10.0",
+    "maxmin": "^1.1.0",
+    "uglify-js": "^2.4.24",
+    "uri-path": "^0.0.2"
   },
   "devDependencies": {
-    "grunt": "^0.4.2",
+    "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-internal": "^0.4.12",
-    "grunt-contrib-jshint": "^0.11.0",
-    "grunt-contrib-nodeunit": "^0.4.0"
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-nodeunit": "^0.4.1"
   },
   "peerDependencies": {
     "grunt": ">=0.4.0"
