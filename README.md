@@ -1,6 +1,6 @@
-# grunt-contrib-uglify v0.9.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v0.9.2 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
-> Minify files with UglifyJS.
+> Minify files with UglifyJS
 
 
 
@@ -511,6 +511,8 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2015-08-24   v0.9.2   bump to uglify ^2.4.24
+ * 2015-04-07   v0.9.1   more fixes for mangle options
  * 2015-04-07   v0.9.0   added hook into uglify's mangling functionality
  * 2015-03-30   v0.8.1   lock uglify to 2.4.17 due to breaking changes
  * 2015-02-19   v0.8.0   Add `screwIE8` option. Fix issue with explicit `compress` in node 0.12.0.
@@ -540,4 +542,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Tue Apr 07 2015 21:04:14.*
+*This file was generated on Mon Aug 24 2015 10:50:01.*
