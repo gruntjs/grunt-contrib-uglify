@@ -120,7 +120,8 @@ exports.init = function(grunt) {
     if (options.mangleProperties === true) {
       topLevel = UglifyJS.mangle_properties(topLevel, {
         reserved: mangleExclusions ? mangleExclusions.props : null,
-        cache: cache
+        cache: cache,
+        regex: options.mangleRegex ? options.mangleRegex : null
       });
 
       if (options.nameCache) {
