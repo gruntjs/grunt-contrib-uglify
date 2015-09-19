@@ -334,7 +334,7 @@ Refer to the [UglifyJS SourceMap Documentation](http://lisperator.net/uglifyjs/c
 #### Turn off console warnings
 
 Specify `drop_console: true` as part of the `compress` options to discard calls to `console.*` functions.
-This will supress warning messages in the console.
+This will suppress warning messages in the console.
 
 ```js
 // Project configuration.
@@ -542,4 +542,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Mon Aug 24 2015 10:50:01.*
+*This file was generated on Sat Sep 19 2015 08:57:31.*
