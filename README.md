@@ -221,6 +221,13 @@ Preserve or enforce quotation mark style.
 * `2` will always use double quotes
 * `3` will preserve original quotation marks
 
+
+#### cwd
+Type: `String`  
+Default: ``
+
+Change working directory for entire files in the task
+
 ### Usage examples
 
 #### Basic compression

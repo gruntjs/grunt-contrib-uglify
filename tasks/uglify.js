@@ -47,7 +47,8 @@ module.exports = function(grunt) {
       maxLineLen: 32000,
       ASCIIOnly: false,
       screwIE8: false,
-      quoteStyle: 0
+      quoteStyle: 0,
+      cwd: ''
     });
 
     // Process banner.
@@ -56,6 +57,16 @@ module.exports = function(grunt) {
     var mapNameGenerator, mapInNameGenerator;
     var createdFiles = 0;
     var createdMaps = 0;
+
+
+    if (options.cwd) {
+      this.files.forEach(function (f) {
+        f.dest = path.join(options.cwd, f.dest);
+        f.orig.src.forEach(function (filepath, i, arr) {
+            arr[i] = path.join(options.cwd, filepath);
+        });
+      });
+    }
 
     // Iterate over all src-dest file pairs.
     this.files.forEach(function (f) {
@@ -67,7 +78,7 @@ module.exports = function(grunt) {
         }
         return true;
       });
-
+      
       if (src.length === 0) {
         grunt.log.warn('Destination ' + chalk.cyan(f.dest) + ' not written because src files were empty.');
         return;
