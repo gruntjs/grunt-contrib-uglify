@@ -47,8 +47,8 @@ module.exports = function(grunt) {
       maxLineLen: 32000,
       ASCIIOnly: false,
       screwIE8: false,
-      quoteStyle: 0
-      cwd: '',
+      quoteStyle: 0,
+      cwd: ''
     });
 
     // Process banner.
