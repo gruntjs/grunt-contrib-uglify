@@ -65,7 +65,7 @@ module.exports = function(grunt) {
         f.orig.src.forEach(function (filepath, i, arr) {
             arr[i] = path.join(options.cwd, filepath);
         });
-      })
+      });
     }
 
     // Iterate over all src-dest file pairs.
