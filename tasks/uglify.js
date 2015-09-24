@@ -48,6 +48,7 @@ module.exports = function(grunt) {
       ASCIIOnly: false,
       screwIE8: false,
       quoteStyle: 0
+      cwd:'',
     });
 
     // Process banner.
@@ -61,17 +62,20 @@ module.exports = function(grunt) {
     this.files.forEach(function (f) {
       var src = f.src.filter(function (filepath) {
         // Warn on and remove invalid source files (if nonull was set).
+        if(options.cwd) filepath = path.resolve(options.cwd, path);
         if (!grunt.file.exists(filepath)) {
           grunt.log.warn('Source file ' + chalk.cyan(filepath) + ' not found.');
           return false;
         }
         return true;
       });
-
+      
       if (src.length === 0) {
         grunt.log.warn('Destination ' + chalk.cyan(f.dest) + ' not written because src files were empty.');
         return;
       }
+
+      if(options.cwd) f.dest = path.resolve(options.cwd, f.dest);
 
       // Warn on incompatible options
       if (options.expression && (options.compress || options.mangle)) {
