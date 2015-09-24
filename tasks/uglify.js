@@ -48,7 +48,7 @@ module.exports = function(grunt) {
       ASCIIOnly: false,
       screwIE8: false,
       quoteStyle: 0
-      cwd:'',
+      cwd: '',
     });
 
     // Process banner.
@@ -58,11 +58,20 @@ module.exports = function(grunt) {
     var createdFiles = 0;
     var createdMaps = 0;
 
+
+    if (options.cwd) {
+      this.files.forEach(function (f) {
+        f.dest = path.join(options.cwd, f.dest);
+        f.orig.src.forEach(function (filepath, i, arr) {
+            arr[i] = path.join(options.cwd, filepath);
+        });
+      })
+    }
+
     // Iterate over all src-dest file pairs.
     this.files.forEach(function (f) {
       var src = f.src.filter(function (filepath) {
         // Warn on and remove invalid source files (if nonull was set).
-        if(options.cwd) filepath = path.resolve(options.cwd, path);
         if (!grunt.file.exists(filepath)) {
           grunt.log.warn('Source file ' + chalk.cyan(filepath) + ' not found.');
           return false;
@@ -74,8 +83,6 @@ module.exports = function(grunt) {
         grunt.log.warn('Destination ' + chalk.cyan(f.dest) + ' not written because src files were empty.');
         return;
       }
-
-      if(options.cwd) f.dest = path.resolve(options.cwd, f.dest);
 
       // Warn on incompatible options
       if (options.expression && (options.compress || options.mangle)) {
