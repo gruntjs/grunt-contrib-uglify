@@ -118,44 +118,44 @@ Turn on preservation of comments.
 
 ## banner
 Type: `String`  
-Default: empty string
+Default: `''`
 
 This string will be prepended to the minified output.  Template strings (e.g. `<%= config.value %>` will be expanded automatically.
 
 ## footer
 Type: `String`  
-Default: empty string
+Default: `''`
 
 This string will be appended to the minified output.  Template strings (e.g. `<%= config.value %>` will be expanded automatically.
 
 ## screwIE8
 Type: `Boolean`  
-Default: false
+Default: `false`
 
 Pass this flag if you don't care about full compliance with Internet Explorer 6-8 quirks.
 
 ## mangleProperties
 Type: `Boolean`  
-Default: false
+Default: `false`
 
 Use this flag to turn on object property name mangling.
 
 ## reserveDOMProperties
 Type: `Boolean`  
-Default: false
+Default: `false`
 
 Use this flag in conjunction with `mangleProperties` to prevent built-in browser object properties from being mangled.
 
 ## exceptionsFiles
 Type: `Array`  
-Default: []
+Default: `[]`
 
 Use this with `mangleProperties` to pass one or more JSON files containing a list of variables and object properties
 that should not be mangled. See the [UglifyJS docs](https://www.npmjs.com/package/uglify-js) for more info on the file syntax.
 
 ## nameCache
 Type: `String`  
-Default: empty string
+Default: `''`
 
 A string that is a path to a JSON cache file that uglify will create and use to coordinate symbol mangling between
 multiple runs of uglify. Note: this generated file uses the same JSON format as the `exceptionsFiles` files.
