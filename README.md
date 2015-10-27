@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v0.9.2 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v0.10.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify files with UglifyJS
 
@@ -168,44 +168,44 @@ Turn on preservation of comments.
 
 #### banner
 Type: `String`  
-Default: empty string
+Default: `''`
 
 This string will be prepended to the minified output.  Template strings (e.g. `<%= config.value %>` will be expanded automatically.
 
 #### footer
 Type: `String`  
-Default: empty string
+Default: `''`
 
 This string will be appended to the minified output.  Template strings (e.g. `<%= config.value %>` will be expanded automatically.
 
 #### screwIE8
 Type: `Boolean`  
-Default: false
+Default: `false`
 
 Pass this flag if you don't care about full compliance with Internet Explorer 6-8 quirks.
 
 #### mangleProperties
 Type: `Boolean`  
-Default: false
+Default: `false`
 
 Use this flag to turn on object property name mangling.
 
 #### reserveDOMProperties
 Type: `Boolean`  
-Default: false
+Default: `false`
 
 Use this flag in conjunction with `mangleProperties` to prevent built-in browser object properties from being mangled.
 
 #### exceptionsFiles
 Type: `Array`  
-Default: []
+Default: `[]`
 
 Use this with `mangleProperties` to pass one or more JSON files containing a list of variables and object properties
 that should not be mangled. See the [UglifyJS docs](https://www.npmjs.com/package/uglify-js) for more info on the file syntax.
 
 #### nameCache
 Type: `String`  
-Default: empty string
+Default: `''`
 
 A string that is a path to a JSON cache file that uglify will create and use to coordinate symbol mangling between
 multiple runs of uglify. Note: this generated file uses the same JSON format as the `exceptionsFiles` files.
@@ -511,6 +511,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2015-10-27   v0.10.0   bump to uglify ^2.5
  * 2015-08-24   v0.9.2   bump to uglify ^2.4.24
  * 2015-04-07   v0.9.1   more fixes for mangle options
  * 2015-04-07   v0.9.0   added hook into uglify's mangling functionality
@@ -542,4 +543,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Sat Sep 19 2015 08:57:31.*
+*This file was generated on Tue Oct 27 2015 10:41:14.*
