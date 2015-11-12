@@ -1,3 +1,7 @@
+v0.10.1:
+  date: 2015-11-12
+  changes:
+    - switch to uglify ~2.5
 v0.10.0:
   date: 2015-10-27
   changes:

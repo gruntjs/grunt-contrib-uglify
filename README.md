@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v0.10.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v0.10.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify files with UglifyJS
 
@@ -511,6 +511,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2015-11-12   v0.10.1   switch to uglify ~2.5
  * 2015-10-27   v0.10.0   bump to uglify ^2.5
  * 2015-08-24   v0.9.2   bump to uglify ^2.4.24
  * 2015-04-07   v0.9.1   more fixes for mangle options
@@ -543,4 +544,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Tue Oct 27 2015 10:41:14.*
+*This file was generated on Thu Nov 12 2015 09:48:34.*
