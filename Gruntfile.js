@@ -83,6 +83,14 @@ module.exports = function(grunt) {
           footer: '\n// This is a footer.'
         }
       },
+      baseDir: {
+        files: {
+          'tmp/compress_baseDir.js': ['fixtures/src/simple.js']
+        },
+        options: {
+          baseDir: 'test/'
+        }
+      },
       enclose: {
         files: {
           'tmp/enclose.js': ['test/fixtures/src/simple.js']

@@ -47,7 +47,8 @@ module.exports = function(grunt) {
       maxLineLen: 32000,
       ASCIIOnly: false,
       screwIE8: false,
-      quoteStyle: 0
+      quoteStyle: 0,
+      baseDir: null
     });
 
     // Process banner.
@@ -67,6 +68,25 @@ module.exports = function(grunt) {
         }
         return true;
       });
+
+      // check if src is empty since grunt will return an empty array as the f.src value
+      // it's empty because a base path is set, and it doesnt know about it
+      if (src.length === 0 && options.baseDir) {
+        // remap each original src file specified by the grunt task and prepend the baseDir value
+        f.orig.src = f.orig.src.map(function(filepath){
+          return options.baseDir + filepath;
+        });
+        // perform same task as above, filter each and ensure they exist
+        // as well as populate the src variable with the list
+        src = f.orig.src.filter(function (filepath) {
+          // Warn on and remove invalid source files (if nonull was set).
+          if (!grunt.file.exists(filepath)) {
+            grunt.log.warn('Source file ' + chalk.cyan(filepath) + ' not found.');
+            return false;
+          }
+          return true;
+        });
+      }
 
       if (src.length === 0) {
         grunt.log.warn('Destination ' + chalk.cyan(f.dest) + ' not written because src files were empty.');
