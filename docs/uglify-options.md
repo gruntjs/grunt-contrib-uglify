@@ -135,10 +135,10 @@ Default: `false`
 Pass this flag if you don't care about full compliance with Internet Explorer 6-8 quirks.
 
 ## mangleProperties
-Type: `Boolean`  
+Type: `Boolean` `Object`
 Default: `false`
 
-Use this flag to turn on object property name mangling.
+Turn on or off property mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_properties()` (mimicking command line behavior). [View all options here](https://github.com/mishoo/UglifyJS2#mangler-options).
 
 ## reserveDOMProperties
 Type: `Boolean`  
