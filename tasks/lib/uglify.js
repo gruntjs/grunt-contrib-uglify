@@ -250,6 +250,10 @@ exports.init = function(grunt) {
       outputOptions.ascii_only = options.ASCIIOnly;
     }
 
+    if (_.isObject(options.beautify) && !_.isUndefined(options.beautify.ascii_only)) {
+      outputOptions.ascii_only = options.beautify.ascii_only;
+    }
+
     if (!_.isUndefined(options.quoteStyle)) {
       outputOptions.quote_style = options.quoteStyle;
     }
