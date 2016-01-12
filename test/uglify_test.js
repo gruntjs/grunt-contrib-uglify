@@ -56,6 +56,7 @@ exports.contrib_uglify = {
       'mangleprops_withExceptAndExceptionsFiles.js',
       'mangleprops_withNameCacheFile1.js',
       'mangleprops_withNameCacheFile2.js',
+      'mangleprops_withMangleRegex.js',
       'uglify_name_cache.json',
       'quotes_single.js',
       'quotes_double.js',

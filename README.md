@@ -190,6 +190,13 @@ Default: `false`
 
 Use this flag to turn on object property name mangling.
 
+#### mangleRegex
+Type: `RegExp`  
+Default: null
+
+When using `mangleProperties` this option takes a `RegExp` to only mangle the properties
+that match the regex. Example: `/^_/` will only mangle properties starting with an underscore.
+
 #### reserveDOMProperties
 Type: `Boolean`  
 Default: `false`
