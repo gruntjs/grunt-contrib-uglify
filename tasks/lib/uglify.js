@@ -117,11 +117,16 @@ exports.init = function(grunt) {
       cache = UglifyJS.readNameCache(options.nameCache, 'props');
     }
 
-    if (options.mangleProperties === true) {
-      topLevel = UglifyJS.mangle_properties(topLevel, {
-        reserved: mangleExclusions ? mangleExclusions.props : null,
-        cache: cache
-      });
+    if (typeof(options.mangleProperties) !== 'undefined' && options.mangleProperties !== false) {
+      // if options.mangleProperties is a boolean (true) convert it into an object
+      if (typeof options.mangleProperties !== 'object') {
+        options.mangleProperties = {};
+      }
+
+      options.mangleProperties.reserved = mangleExclusions ? mangleExclusions.props : null;
+      options.mangleProperties.cache = cache;
+
+      topLevel = UglifyJS.mangle_properties(topLevel, options.mangleProperties);
 
       if (options.nameCache) {
         UglifyJS.writeNameCache(options.nameCache, 'props', cache);
@@ -257,7 +262,7 @@ exports.init = function(grunt) {
     if (!_.isUndefined(options.preserveComments)) {
       outputOptions.comments = options.preserveComments;
     }
-    
+
     return outputOptions;
   };
 
