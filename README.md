@@ -1,8 +1,6 @@
 # grunt-contrib-uglify v0.11.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
-> Minify files with UglifyJS
-
-
+> Minify javascript files with UglifyJS
 
 ## Getting Started
 This plugin requires Grunt `>=0.4.0`
