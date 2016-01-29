@@ -11,6 +11,7 @@
 var path = require('path');
 var chalk = require('chalk');
 var maxmin = require('maxmin');
+var err;
 
 // Return the relative path from file1 => file2
 function relativePath(file1, file2) {
@@ -98,7 +99,7 @@ module.exports = function(grunt) {
         try {
           options.generatedSourceMapName = mapNameGenerator(f.dest);
         } catch (e) {
-          var err = new Error('SourceMap failed.');
+          err = new Error('SourceMap failed.');
           err.origError = e;
           grunt.fail.warn(err);
         }
@@ -114,7 +115,7 @@ module.exports = function(grunt) {
         try {
           options.sourceMapIn = mapInNameGenerator(src[0]);
         } catch (e) {
-          var err = new Error('SourceMapInName failed.');
+          err = new Error('SourceMapInName failed.');
           err.origError = e;
           grunt.fail.warn(err);
         }
@@ -139,7 +140,7 @@ module.exports = function(grunt) {
         result = uglify.minify(src, f.dest, options);
       } catch (e) {
         console.log(e);
-        var err = new Error('Uglification failed.');
+        err = new Error('Uglification failed.');
         if (e.message) {
           err.message += '\n' + e.message + '. \n';
           if (e.line) {
