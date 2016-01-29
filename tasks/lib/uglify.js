@@ -13,6 +13,7 @@ var path = require('path');
 var UglifyJS = require('uglify-js');
 var _ = require('lodash');
 var uriPath = require('uri-path');
+var getOutputOptions;
 
 exports.init = function(grunt) {
   var exports = {};
@@ -196,7 +197,7 @@ exports.init = function(grunt) {
     return result;
   };
 
-  var getOutputOptions = function(options, dest) {
+  getOutputOptions = function(options, dest) {
     var outputOptions = {
       beautify: false,
       source_map: null
