@@ -327,6 +327,16 @@ module.exports = function(grunt) {
           nameCache: 'tmp/uglify_name_cache.json'
         }
       },
+      mangleprops_withRegex: {
+        files: {
+          'tmp/mangleprops_withRegex.js': ['test/fixtures/src/mangleprops_withRegex.js']
+        },
+        options: {
+          mangleProperties: {
+            regex: /^[^#].*/
+          }
+        }
+      },
       quotes_single: {
         files: {
           'tmp/quotes_single.js': ['test/fixtures/src/quotes.js']
