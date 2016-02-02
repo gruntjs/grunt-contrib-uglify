@@ -1,6 +1,6 @@
 {
   "name": "grunt-contrib-uglify",
-  "description": "Minify files with UglifyJS",
+  "description": "Minify javascript files with UglifyJS",
   "version": "0.11.1",
   "author": {
     "name": "Grunt Team",

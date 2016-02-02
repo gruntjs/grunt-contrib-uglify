@@ -1,9 +1,10 @@
-# grunt-contrib-uglify v0.11.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v0.11.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify javascript files with UglifyJS
 
+
+
 ## Getting Started
-This plugin requires Grunt `>=0.4.0`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -183,10 +184,10 @@ Default: `false`
 Pass this flag if you don't care about full compliance with Internet Explorer 6-8 quirks.
 
 #### mangleProperties
-Type: `Boolean`  
+Type: `Boolean` `Object`
 Default: `false`
 
-Use this flag to turn on object property name mangling.
+Turn on or off property mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_properties()` (mimicking command line behavior). [View all options here](https://github.com/mishoo/UglifyJS2#mangler-options).
 
 #### reserveDOMProperties
 Type: `Boolean`  
@@ -414,9 +415,9 @@ grunt.initConfig({
 
 #### Conditional compilation
 
-You can also enable UglifyJS conditional compilation . This is commonly used to remove debug code blocks for production builds.
+You can also enable UglifyJS conditional compilation. This is commonly used to remove debug code blocks for production builds.
 
-See [UglifyJS global definitions documentation](http://lisperator.net/uglifyjs/compress#global-defs) for more information. This is equivalent to the command line [`--define` option](https://github.com/mishoo/UglifyJS#use-as-a-code-pre-processor).
+See [UglifyJS global definitions documentation](http://lisperator.net/uglifyjs/compress#global-defs) for more information.
 
 ```js
 // Project configuration.
@@ -509,6 +510,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2016-01-29   v0.11.1   switch to lodash ^4.0.1 switch to grunt-contrib-clean ^0.7.0 switch to grunt-contrib-jshint ^0.12.0
  * 2015-11-20   v0.11.0   switch to uglify ~2.6.0
  * 2015-11-12   v0.10.1   switch to uglify ~2.5
  * 2015-10-27   v0.10.0   bump to uglify ^2.5
@@ -543,4 +545,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Fri Nov 20 2015 14:05:29.*
+*This file was generated on Tue Feb 02 2016 11:38:37.*
