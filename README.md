@@ -415,7 +415,7 @@ grunt.initConfig({
 
 #### Conditional compilation
 
-You can also enable UglifyJS conditional compilation. This is commonly used to remove debug code blocks for production builds.
+You can also enable UglifyJS conditional compilation. This is commonly used to remove debug code blocks for production builds. This is equivalent to the command line [`--define` option](https://github.com/mishoo/UglifyJS#use-as-a-code-pre-processor).
 
 See [UglifyJS global definitions documentation](http://lisperator.net/uglifyjs/compress#global-defs) for more information.
 
@@ -545,4 +545,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Tue Feb 02 2016 11:38:37.*
+*This file was generated on Tue Feb 02 2016 12:54:04.*
