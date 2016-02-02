@@ -129,11 +129,6 @@ module.exports = function(grunt) {
         options.destToSourceMap = destToSourceMapPath + sourceMapBasename;
       }
 
-      if (options.screwIE8) {
-        if (options.mangle) { options.mangle.screw_ie8 = true; }
-        if (options.compress) { options.compress.screw_ie8 = true; }
-      }
-
       // Minify files, warn and fail on error.
       var result;
       try {
