@@ -32,20 +32,21 @@ Version `3.x` introduced changes to configuring source maps. Accordingly, if you
 
 #### Removed options
 
-`sourceMappingURL` - This is calculated automatically now
+`sourceMappingURL` - This is calculated automatically now   
 `sourceMapPrefix` - No longer necessary for the above reason
 
 #### Changed options
 
-`sourceMap` - Only accepts a `Boolean` value. Generates a map with a default name for you
-`sourceMapRoot` - The location of your sources is now calculated for you when `sourceMap` is set to `true` but you can set manual source root if needed
+`sourceMap` - Only accepts a `Boolean` value. Generates a map with a default name for you  
+`sourceMapRoot` - The location of your sources is now calculated for you when `sourceMap` is set to `true` but you can set manual source root if needed  
 
 #### New options
 
-`sourceMapName` - Accepts a string or function to change the location or name of your map
-`sourceMapIncludeSources` - Embed the content of your source files directly into the map
-`expression` - Accepts a `Boolean` value. Parse a single expression (JSON or single functions)
-`quoteStyle` - Accepts integers `0` (default), `1`, `2`, `3`. Enforce or preserve quotation mark style.
+`sourceMapName` - Accepts a string or function to change the location or name of your map  
+`sourceMapIncludeSources` - Embed the content of your source files directly into the map  
+`expression` - Accepts a `Boolean` value. Parse a single expression (JSON or single functions)  
+`sourceMappingURLBase` - Use this to prefix the automatically calculated sourceMappingURL  
+`quoteStyle` - Accepts integers `0` (default), `1`, `2`, `3`. Enforce or preserve quotation mark style.  
 
 ### Options
 
@@ -126,6 +127,14 @@ Default: `undefined`
 
 Wrap all of the code in a closure with a configurable arguments/parameters list.
 Each key-value pair in the `enclose` object is effectively an argument-parameter pair.
+
+#### sourceMappingURLBase
+Type: `String`  
+Default: `undefined`
+
+When used, this option will add a base URL to the source maps filename. If `undefined` the relative path will be used.
+
+Example: `//# sourceMappingURL=[baseURL][sourceMapFilename]`
 
 #### wrap
 Type: `String`  
