@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v0.11.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v1.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify javascript files with UglifyJS
 
@@ -120,6 +120,12 @@ Default: `undefined`
 With this option you can customize root URL that browser will use when looking for sources.
 
 If the sources are not absolute URLs after prepending of the `sourceMapRoot`, the sources are resolved relative to the source map.
+
+#### sourceMapUrl
+Type: `String`  
+Default: `undefined`
+
+Override the calculated value for `sourceMappingURL` in the source map. This is useful if the source map location is not relative to the base path of the minified file, i.e. when using a CDN
 
 ###### enclose
 Type: `Object`  
@@ -511,6 +517,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2016-03-04   v1.0.0   Use uglify-js ~2.6.2 to fix sourcemap issue. Improving docs for global-defs and --define options. Add 'sourceMapUrl' option. add bare_returns option. Optionally set report verbosity level using report option.
  * 2016-01-29   v0.11.1   switch to lodash ^4.0.1 switch to grunt-contrib-clean ^0.7.0 switch to grunt-contrib-jshint ^0.12.0
  * 2015-11-20   v0.11.0   switch to uglify ~2.6.0
  * 2015-11-12   v0.10.1   switch to uglify ~2.5
@@ -546,4 +553,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Tue Feb 02 2016 12:54:04.*
+*This file was generated on Fri Mar 04 2016 12:46:01.*
