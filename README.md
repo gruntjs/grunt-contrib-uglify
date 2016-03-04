@@ -80,11 +80,12 @@ Default: `false`
 Parse a single expression, rather than a program (for parsing JSON)
 
 #### report
-Choices: `'min'`, `'gzip'`  
+Choices: `false, 'none', 'min'`, `'gzip'`
 Default: `'min'`
 
 Either report only minification result or report minification and gzip results.
 This is useful to see exactly how well clean-css is performing but using `'gzip'` will make the task take 5-10x longer to complete. [Example output](https://github.com/sindresorhus/maxmin#readme).
+If false or 'none' is used the report will be generated on the verbose output.
 
 #### sourceMap
 Type: `Boolean`  
