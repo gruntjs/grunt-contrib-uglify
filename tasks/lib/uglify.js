@@ -45,6 +45,7 @@ exports.init = function(grunt) {
       var sourceMapDir = path.dirname(options.generatedSourceMapName);
       var relativePath = path.relative(sourceMapDir, fileDir);
       var pathPrefix = relativePath ? relativePath + path.sep : '';
+      var bare_returns = options.bare_returns || undefined;
 
       // Convert paths to use forward slashes for sourcemap use in the browser
       file = uriPath(pathPrefix + basename);
@@ -53,7 +54,8 @@ exports.init = function(grunt) {
       topLevel = UglifyJS.parse(code, {
         filename: file,
         toplevel: topLevel,
-        expression: options.expression
+        expression: options.expression,
+        bare_returns: bare_returns
       });
     });
 
