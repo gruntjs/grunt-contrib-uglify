@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "chalk": "^1.0.0",
+    "gzip-size": "2.1.0",
     "lodash": "^4.0.1",
     "maxmin": "^2.0.0",
     "uglify-js": "~2.6.2",
