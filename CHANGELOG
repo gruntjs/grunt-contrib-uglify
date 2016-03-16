@@ -1,3 +1,7 @@
+v1.0.1:
+  date: 2016-03-16
+  changes:
+    - downgrade maxmin for node 0.10
 v1.0.0:
   date: 2016-03-04
   changes:

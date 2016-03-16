@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v1.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v1.0.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify javascript files with UglifyJS
 
@@ -517,6 +517,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2016-03-16   v1.0.1   downgrade maxmin for node 0.10
  * 2016-03-04   v1.0.0   Use uglify-js ~2.6.2 to fix sourcemap issue. Improving docs for global-defs and --define options. Add 'sourceMapUrl' option. add bare_returns option. Optionally set report verbosity level using report option.
  * 2016-01-29   v0.11.1   switch to lodash ^4.0.1 switch to grunt-contrib-clean ^0.7.0 switch to grunt-contrib-jshint ^0.12.0
  * 2015-11-20   v0.11.0   switch to uglify ~2.6.0
@@ -553,4 +554,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Fri Mar 04 2016 12:46:01.*
+*This file was generated on Wed Mar 16 2016 10:51:38.*
