@@ -204,7 +204,7 @@ grunt.initConfig({
     options: {
       compress: {
         global_defs: {
-          "DEBUG": false
+          'DEBUG': false
         },
         dead_code: true
       }
