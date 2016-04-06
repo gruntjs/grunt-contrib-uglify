@@ -23,12 +23,11 @@
     "uri-path": "^1.0.0"
   },
   "devDependencies": {
-    "grunt": "^0.4.2",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-clean": "^0.7.0",
-    "grunt-contrib-internal": "^0.4.12",
-    "grunt-contrib-jshint": "^0.12.0",
-    "grunt-contrib-nodeunit": "^0.4.0"
+    "grunt": "^1.0.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-internal": "^1.1.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-nodeunit": "^1.0.0"
   },
   "keywords": [
     "gruntplugin"
