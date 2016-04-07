@@ -176,13 +176,13 @@ Turn on preservation of comments.
 Type: `String`  
 Default: `''`
 
-This string will be prepended to the minified output.  Template strings (e.g. `<%= config.value %>` will be expanded automatically.
+This string will be prepended to the minified output. Template strings (e.g. `<%= config.value %>` will be expanded automatically.
 
 #### footer
 Type: `String`  
 Default: `''`
 
-This string will be appended to the minified output.  Template strings (e.g. `<%= config.value %>` will be expanded automatically.
+This string will be appended to the minified output. Template strings (e.g. `<%= config.value %>` will be expanded automatically.
 
 #### screwIE8
 Type: `Boolean`  
@@ -433,7 +433,7 @@ grunt.initConfig({
     options: {
       compress: {
         global_defs: {
-          "DEBUG": false
+          'DEBUG': false
         },
         dead_code: true
       }
@@ -554,4 +554,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Fri Mar 18 2016 21:02:15.*
+*This file was generated on Thu Apr 07 2016 15:29:35.*
