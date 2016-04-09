@@ -24,9 +24,9 @@ function relativePath(file1, file2) {
   return '';
 }
 
-function reportFacility( grunt, options ){
+function reportFacility(grunt, options) {
   var reporter;
-  switch( options.report ){
+  switch (options.report) {
     case 'none':
       reporter = grunt.verbose;
       break;
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
       screwIE8: false,
       quoteStyle: 0
     });
-    var log = reportFacility( grunt, options );
+    var log = reportFacility(grunt, options);
 
     // Process banner.
     var banner = normalizeLf(options.banner);
@@ -139,7 +139,7 @@ module.exports = function(grunt) {
       // Calculate the path from the dest file to the sourcemap for the
       // sourceMappingURL reference
       // If sourceMapUrl is defined, use this instead
-      if(options.sourceMap) {
+      if (options.sourceMap) {
         var destToSourceMapPath, sourceMapBasename;
         if (!options.sourceMapUrl) {
           destToSourceMapPath = relativePath(f.dest, options.generatedSourceMapName);
