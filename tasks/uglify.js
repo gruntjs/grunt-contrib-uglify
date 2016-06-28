@@ -188,8 +188,8 @@ module.exports = function(grunt) {
 
       var outputSize = maxmin(result.max, output, options.report === 'gzip');
       if(!options.quiet) {
-       log.writeln('File ' + chalk.cyan(f.dest) + ' created: ' + outputSize);		       log.writeln('File ' + chalk.cyan(f.dest) + ' created: ' + outputSize);
--		+ }
+       log.writeln('File ' + chalk.cyan(f.dest) + ' created: ' + outputSize);
+      }
 
       createdFiles++;
     });
