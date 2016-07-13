@@ -81,7 +81,10 @@ exports.init = function(grunt) {
     // Need to call this before we mangle or compress,
     // and call after any compression or ast altering
     if (options.expression === false) {
-      topLevel.figure_out_scope({ screw_ie8: options.screwIE8, cache: topLevelCache });
+      topLevel.figure_out_scope({
+        screw_ie8: options.screwIE8,
+        cache: topLevelCache
+      });
     }
 
     if (options.compress !== false) {
@@ -99,11 +102,17 @@ exports.init = function(grunt) {
 
       // Need to figure out scope again after source being altered
       if (options.expression === false) {
-        topLevel.figure_out_scope({screw_ie8: options.screwIE8, cache: topLevelCache});
+        topLevel.figure_out_scope({
+          screw_ie8: options.screwIE8,
+          cache: topLevelCache
+        });
       }
     }
 
-    var mangleExclusions = { vars: [], props: [] };
+    var mangleExclusions = {
+      vars: [],
+      props: []
+    };
     if (options.reserveDOMProperties) {
       mangleExclusions = UglifyJS.readDefaultReservedFile();
     }
@@ -123,7 +132,7 @@ exports.init = function(grunt) {
       cache = UglifyJS.readNameCache(options.nameCache, 'props');
     }
 
-    if (typeof(options.mangleProperties) !== 'undefined' && options.mangleProperties !== false) {
+    if (typeof options.mangleProperties !== 'undefined' && options.mangleProperties !== false) {
       // if options.mangleProperties is a boolean (true) convert it into an object
       if (typeof options.mangleProperties !== 'object') {
         options.mangleProperties = {};
@@ -140,7 +149,10 @@ exports.init = function(grunt) {
 
       // Need to figure out scope again since topLevel has been altered
       if (options.expression === false) {
-        topLevel.figure_out_scope({screw_ie8: options.screwIE8, cache: topLevelCache});
+        topLevel.figure_out_scope({
+          screw_ie8: options.screwIE8,
+          cache: topLevelCache
+        });
       }
     }
 
@@ -195,7 +207,7 @@ exports.init = function(grunt) {
     if (options.sourceMap) {
       // Set all paths to forward slashes for use in the browser
       var sourceMappingURL;
-      sourceMappingURL = options.destToSourceMap.match(/^http[s]?\:\/\//) === null ?  uriPath(options.destToSourceMap) : options.destToSourceMap;
+      sourceMappingURL = options.destToSourceMap.match(/^http[s]?:\/\//) === null ? uriPath(options.destToSourceMap) : options.destToSourceMap;
       min += '\n//# sourceMappingURL=' + sourceMappingURL;
     }
 

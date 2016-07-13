@@ -55,8 +55,8 @@ module.exports = function(grunt) {
         files: {
           'tmp/compress_mangle_banner.js': ['test/fixtures/src/simple.js']
         },
-        options : {
-          banner : '// banner without sourcemap\n'
+        options: {
+          banner: '// banner without sourcemap\n'
         }
       },
       no_src: {
@@ -99,7 +99,7 @@ module.exports = function(grunt) {
       },
       multifile: {
         files: {
-          'tmp/multifile.js': ['test/fixtures/src/simple.js','test/fixtures/src/comments.js']
+          'tmp/multifile.js': ['test/fixtures/src/simple.js', 'test/fixtures/src/comments.js']
         },
         options: {
           mangle: false
@@ -197,8 +197,8 @@ module.exports = function(grunt) {
         dest: 'tmp/sourcemap_functionName.js',
         options: {
           sourceMap: true,
-          sourceMapName: function( dest ) {
-            return dest + ".fn.map";
+          sourceMapName: function(dest) {
+            return dest + '.fn.map';
           }
         }
       },
@@ -218,7 +218,7 @@ module.exports = function(grunt) {
         },
         options: {
           sourceMap: true,
-          sourceMapName: function( dest ) {
+          sourceMapName: function(dest) {
             return dest+'.fn.map';
           }
         }
@@ -238,13 +238,13 @@ module.exports = function(grunt) {
         }
       },
       sourcemap_sources: {
-          files: {
-            'tmp/sourcemap_sources.js': ['test/fixtures/src/simple.js']
-          },
-          options: {
-            sourceMap: true,
-            sourceMapIncludeSources: true
-          }
+        files: {
+          'tmp/sourcemap_sources.js': ['test/fixtures/src/simple.js']
+        },
+        options: {
+          sourceMap: true,
+          sourceMapIncludeSources: true
+        }
       },
       sourcemapin_sources: {
         files: {
@@ -259,24 +259,24 @@ module.exports = function(grunt) {
         }
       },
       expression_json: {
-          files: {
-            'tmp/expression.json': ['test/fixtures/src/simple.json']
-          },
-          options: {
-            expression: true,
-            mangle: false,
-            compress: false
-          }
+        files: {
+          'tmp/expression.json': ['test/fixtures/src/simple.json']
+        },
+        options: {
+          expression: true,
+          mangle: false,
+          compress: false
+        }
       },
       expression_js: {
-          files: {
-            'tmp/expression.js': ['test/fixtures/src/expression.js']
-          },
-          options: {
-            expression: true,
-            mangle: false,
-            compress: false
-          }
+        files: {
+          'tmp/expression.js': ['test/fixtures/src/expression.js']
+        },
+        options: {
+          expression: true,
+          mangle: false,
+          compress: false
+        }
       },
       mangleprops: {
         files: {
@@ -396,20 +396,20 @@ module.exports = function(grunt) {
   });
 
   // task that expects its argument (another task) to fail
-  grunt.registerTask('expectFail', function(){
+  grunt.registerTask('expectFail', function() {
     var task = this.args.join(':');
 
     var done = this.async();
 
     function onComplete(error, result) {
-      grunt.log.write("\n > " + result.stdout.split("\n").join("\n > ") + "\n");
-      var rv = error ? true : new Error("Task " + task + " unexpectedly passed.");
+      grunt.log.write('\n > ' + result.stdout.split('\n').join('\n > ') + '\n');
+      var rv = error ? true : new Error('Task ' + task + ' unexpectedly passed.');
       done(rv);
     }
 
     grunt.util.spawn({
-      grunt : true,
-      args : task
+      grunt: true,
+      args: task
     }, onComplete);
   });
 
