@@ -11,7 +11,7 @@
 // External libs.
 var path = require('path');
 var UglifyJS = require('uglify-js');
-var _ = require('lodash');
+var assign = require('lodash.assign');
 var uriPath = require('uri-path');
 var getOutputOptions;
 
@@ -66,8 +66,8 @@ exports.init = function(grunt) {
 
     // Wrap code in closure with configurable arguments/parameters list.
     if (options.enclose) {
-      var argParamList = _.map(options.enclose, function(val, key) {
-        return key + ':' + val;
+      var argParamList = Object.keys(options.enclose).map(function(key) {
+        return key + ':' + options.enclose[key];
       });
 
       topLevel = topLevel.wrap_enclose(argParamList);
@@ -247,29 +247,29 @@ exports.init = function(grunt) {
       }
     }
 
-    if (!_.isUndefined(options.indentLevel)) {
+    if (typeof options.indentLevel !== 'undefined') {
       outputOptions.indent_level = options.indentLevel;
     }
 
-    if (!_.isUndefined(options.maxLineLen)) {
+    if (typeof options.maxLineLen !== 'undefined') {
       outputOptions.max_line_len = options.maxLineLen;
     }
 
-    if (!_.isUndefined(options.ASCIIOnly)) {
+    if (typeof options.ASCIIOnly !== 'undefined') {
       outputOptions.ascii_only = options.ASCIIOnly;
     }
 
-    if (!_.isUndefined(options.quoteStyle)) {
+    if (typeof options.quoteStyle !== 'undefined') {
       outputOptions.quote_style = options.quoteStyle;
     }
 
-    if (!_.isUndefined(options.preserveComments)) {
+    if (typeof options.preserveComments !== 'undefined') {
       outputOptions.comments = options.preserveComments;
     }
 
     if (options.beautify) {
-      if (_.isObject(options.beautify)) {
-        _.assign(outputOptions, options.beautify);
+      if (typeof options.beautify === 'object') {
+        assign(outputOptions, options.beautify);
       } else {
         outputOptions.beautify = true;
       }
