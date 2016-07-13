@@ -141,7 +141,7 @@ module.exports = function(grunt) {
         src: 'test/fixtures/src/screwIE8.js',
         dest: 'tmp/screwIE8.js',
         options: {
-          screwIE8: true
+          screwIE8: false
         }
       },
       exportAll: {

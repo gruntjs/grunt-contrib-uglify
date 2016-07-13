@@ -1,1 +1,1 @@
-var reserved_words={class:!0};
+var reserved_words={"class":!0};

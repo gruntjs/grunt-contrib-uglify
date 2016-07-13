@@ -91,8 +91,8 @@ exports.init = function(grunt) {
       if (options.compress.warnings !== true) {
         options.compress.warnings = false;
       }
-      if (options.screwIE8) {
-        options.compress.screw_ie8 = true;
+      if (options.screwIE8 === false) {
+        options.compress.screw_ie8 = false;
       }
       var compressor = UglifyJS.Compressor(options.compress);
       topLevel = topLevel.transform(compressor);
@@ -148,8 +148,8 @@ exports.init = function(grunt) {
       if (options.mangle === true) {
         options.mangle = {};
       }
-      if (options.screwIE8) {
-        options.mangle.screw_ie8 = true;
+      if (options.screwIE8 === false) {
+        options.mangle.screw_ie8 = false;
       }
       // disabled due to:
       //   1) preserve stable name mangling
@@ -220,8 +220,8 @@ exports.init = function(grunt) {
       outputOptions.preamble = options.banner;
     }
 
-    if (options.screwIE8) {
-      outputOptions.screw_ie8 = true;
+    if (options.screwIE8 === false) {
+      outputOptions.screw_ie8 = false;
     }
 
     if (options.sourceMap) {
