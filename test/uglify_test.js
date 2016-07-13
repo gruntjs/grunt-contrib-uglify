@@ -12,6 +12,7 @@ exports.contrib_uglify = {
   preuglified_files: function(test) {
 
     var files = [
+      'beautify.js',
       'comments.js',
       'compress.js',
       'compress_explicit.js',
