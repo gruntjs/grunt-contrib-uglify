@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v1.0.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v1.0.2 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify javascript files with UglifyJS
 
@@ -517,41 +517,42 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2016-03-19   v1.0.2   Update grunt to ^1.0.0. Fix `beautify` when passed as an object. Fix docs about `report` values.
  * 2016-03-16   v1.0.1   Downgrade maxmin for Node.js 0.10.
- * 2016-03-04   v1.0.0   Use uglify-js ~2.6.2 to fix sourcemap issue. Improving docs for `global-defs` and `--define` options. Add `sourceMapUrl` option. add `bare_returns` option. Optionally set report verbosity level using report option.
- * 2016-01-29   v0.11.1   Update to lodash ^4.0.1. Update to grunt-contrib-clean ^0.7.0. Update to grunt-contrib-jshint ^0.12.0.
- * 2015-11-20   v0.11.0   Update to uglify ~2.6.0.
- * 2015-11-12   v0.10.1   Update to uglify ~2.5.
- * 2015-10-27   v0.10.0   Update to uglify ^2.5.
- * 2015-08-24   v0.9.2   Update to uglify ^2.4.24
+ * 2016-03-04   v1.0.0   Use uglify-js ~2.6.2 to fix sourcemap issue. Improve docs for `global-defs` and `--define` options. Add `sourceMapUrl` option. Add `bare_returns` option. Optionally set report verbosity level using report option.
+ * 2016-01-29   v0.11.1   Update lodash to ^4.0.1. Update grunt-contrib-clean to ^0.7.0. Update grunt-contrib-jshint to ^0.12.0.
+ * 2015-11-20   v0.11.0   Update uglify-js to ~2.6.0.
+ * 2015-11-12   v0.10.1   Update uglify-js to ~2.5.
+ * 2015-10-27   v0.10.0   Update uglify-js to ^2.5.
+ * 2015-08-24   v0.9.2   Update uglify-js to ^2.4.24
  * 2015-04-07   v0.9.1   More fixes for `mangle` options.
- * 2015-04-07   v0.9.0   Added hook into uglify's mangling functionality.
- * 2015-03-30   v0.8.1   Lock uglify to 2.4.17 due to breaking changes.
+ * 2015-04-07   v0.9.0   Add hook into uglify-js's mangling functionality.
+ * 2015-03-30   v0.8.1   Lock uglify-js to 2.4.17 due to breaking changes.
  * 2015-02-19   v0.8.0   Add `screwIE8` option. Fix issue with explicit `compress` in Node.js 0.12.0.
- * 2014-12-23   v0.7.0   Adds `sourceMapRoot` options. Updates readme descriptions. Removes reference to cleancss.
- * 2014-09-17   v0.6.0   Output fixes. `ASCIIOnly` option. Other fixes.
- * 2014-07-25   v0.5.1   Chalk updates. Output updates.
+ * 2014-12-23   v0.7.0   Add `sourceMapRoot` options. Update readme descriptions. Remove reference to clean-css.
+ * 2014-09-17   v0.6.0   Output fixes. Add `ASCIIOnly` option. Other fixes.
+ * 2014-07-25   v0.5.1   Update chalk to ^0.5.1. Output updates.
  * 2014-03-01   v0.4.0   Remove grunt-lib-contrib dependency and add more colors.
  * 2014-02-27   v0.3.3   Remove unnecessary calls to `grunt.template.process`.
  * 2014-01-22   v0.3.2   Fix handling of `sourceMapIncludeSources` option.
  * 2014-01-20   v0.3.1   Fix relative path issue in sourcemaps.
  * 2014-01-16   v0.3.0   Refactor sourcemap support.
- * 2013-11-09   v0.2.7   Prepending banner if `sourceMap` option not set, addresses #109.
- * 2013-11-08   v0.2.6   Merged #45, #53, #85 (#105 by way of duping #53). Added support for banners in uglified files with sourcemaps. Updated docs.
- * 2013-10-28   v0.2.5   Added warning for banners when using sourcemaps.
- * 2013-09-02   v0.2.4   Updated sourcemap format via #83.
- * 2013-06-10   v0.2.3   Added `footer` option.
- * 2013-05-31   v0.2.2   Reverted #56 due to #58 until [chrome/239660](https://code.google.com/p/chromium/issues/detail?id=239660&q=sourcemappingurl&colspec=ID%20Pri%20M%20Iteration%20ReleaseBlock%20Cr%20Status%20Owner%20Summary%20OS%20Modified) [firefox/870361](https://bugzilla.mozilla.org/show_bug.cgi?id=870361) drop.
- * 2013-05-22   v0.2.1   Bumped uglify to ~2.3.5 #55 #40. Changed `sourcemappingUrl` syntax #56. Disabled sorting of names for consistent mangling #44. Updated docs for `sourceMapRoot` #47 #25.
+ * 2013-11-09   v0.2.7   Prepend banner if `sourceMap` option not set, addresses #109.
+ * 2013-11-08   v0.2.6   Merge #45, #53, #85 (#105 by way of duping #53). Add support for banners in uglified files with sourcemaps. Update docs.
+ * 2013-10-28   v0.2.5   Add warning for banners when using sourcemaps.
+ * 2013-09-02   v0.2.4   Update sourcemap format via #83.
+ * 2013-06-10   v0.2.3   Add `footer` option.
+ * 2013-05-31   v0.2.2   Revert #56 due to #58 until [chrome/239660](https://code.google.com/p/chromium/issues/detail?id=239660&q=sourcemappingurl&colspec=ID%20Pri%20M%20Iteration%20ReleaseBlock%20Cr%20Status%20Owner%20Summary%20OS%20Modified) [firefox/870361](https://bugzilla.mozilla.org/show_bug.cgi?id=870361) drop.
+ * 2013-05-22   v0.2.1   Update uglify-js to ~2.3.5 #55 #40. Change `sourcemappingUrl` syntax #56. Disable sorting of names for consistent mangling #44. Update docs for `sourceMapRoot` #47 #25.
  * 2013-03-14   v0.2.0   No longer report gzip results by default. Support `report` option.
- * 2013-01-30   v0.1.2   Added better error reporting. Support for dynamic names of multiple sourcemaps.
+ * 2013-01-30   v0.1.2   Add better error reporting. Support for dynamic names of multiple sourcemaps.
  * 2013-02-15   v0.1.1   First official release for Grunt 0.4.0.
- * 2013-01-18   v0.1.1rc6   Updating grunt/gruntplugin dependencies to rc6. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
- * 2013-01-09   v0.1.1rc5   Updating to work with grunt v0.4.0rc5. Switching back to `this.files` API.
- * 2012-11-28   v0.1.0   Work in progress, not yet officially released.
+ * 2013-01-18   v0.1.1rc6   Update grunt/gruntplugin dependencies to rc6. Change in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
+ * 2013-01-09   v0.1.1rc5   Update to work with grunt v0.4.0rc5. Switch back to `this.files` API.
+ * 2012-11-28   v0.1.0   Work in progress, not officially released yet.
 
 ---
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Tue Jul 19 2016 10:15:13.*
+*This file was generated on Tue Jul 19 2016 16:34:56.*
