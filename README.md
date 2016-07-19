@@ -513,6 +513,8 @@ grunt.initConfig({
   }
 });
 ```
+#### Quiet Mode
+By default the task supresses the logging, use _--verbose_ to show the full output.
 
 
 ## Release History
