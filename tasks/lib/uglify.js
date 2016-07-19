@@ -220,16 +220,6 @@ exports.init = function(grunt) {
       outputOptions.preamble = options.banner;
     }
 
-    if (options.beautify) {
-      if (_.isObject(options.beautify)) {
-        // beautify options sent as an object are merged
-        // with outputOptions and passed to the OutputStream
-        _.assign(outputOptions, options.beautify);
-      } else {
-        outputOptions.beautify = true;
-      }
-    }
-
     if (options.screwIE8) {
       outputOptions.screw_ie8 = true;
     }
@@ -275,6 +265,14 @@ exports.init = function(grunt) {
 
     if (!_.isUndefined(options.preserveComments)) {
       outputOptions.comments = options.preserveComments;
+    }
+
+    if (options.beautify) {
+      if (_.isObject(options.beautify)) {
+        _.assign(outputOptions, options.beautify);
+      } else {
+        outputOptions.beautify = true;
+      }
     }
 
     return outputOptions;
