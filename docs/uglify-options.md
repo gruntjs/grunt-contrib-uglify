@@ -137,9 +137,9 @@ This string will be appended to the minified output. Template strings (e.g. `<%=
 
 ## screwIE8
 Type: `Boolean`  
-Default: `false`
+Default: `true`
 
-Pass this flag if you don't care about full compliance with Internet Explorer 6-8 quirks.
+Set this to `false` if you still care about full compliance with Internet Explorer 6-8 quirks.
 
 ## mangleProperties
 Type: `Boolean` `Object`

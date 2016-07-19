@@ -1,6 +1,6 @@
-# grunt-contrib-uglify v1.0.2 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v2.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
-> Minify javascript files with UglifyJS
+> Minify JavaScript files with UglifyJS
 
 
 
@@ -186,9 +186,9 @@ This string will be appended to the minified output. Template strings (e.g. `<%=
 
 #### screwIE8
 Type: `Boolean`  
-Default: `false`
+Default: `true`
 
-Pass this flag if you don't care about full compliance with Internet Explorer 6-8 quirks.
+Set this to `false` if you still care about full compliance with Internet Explorer 6-8 quirks.
 
 #### mangleProperties
 Type: `Boolean` `Object`
@@ -513,13 +513,12 @@ grunt.initConfig({
   }
 });
 ```
-#### Quiet Mode
-By default the task supresses the logging, use _--verbose_ to show the full output.
 
 
 ## Release History
 
- * 2016-03-19   v1.0.2   Update grunt to ^1.0.0. Fix `beautify` when passed as an object. Fix docs about `report` values.
+ * 2016-07-19   v2.0.0   Update uglify-js to v2.7.0. `screwIE8` is enabled by default.
+ * 2016-07-19   v1.0.2   Update grunt to ^1.0.0. Fix `beautify` when passed as an object. Fix docs about `report` values.
  * 2016-03-16   v1.0.1   Downgrade maxmin for Node.js 0.10.
  * 2016-03-04   v1.0.0   Use uglify-js ~2.6.2 to fix sourcemap issue. Improve docs for `global-defs` and `--define` options. Add `sourceMapUrl` option. Add `bare_returns` option. Optionally set report verbosity level using report option.
  * 2016-01-29   v0.11.1   Update lodash to ^4.0.1. Update grunt-contrib-clean to ^0.7.0. Update grunt-contrib-jshint to ^0.12.0.
@@ -557,4 +556,4 @@ By default the task supresses the logging, use _--verbose_ to show the full outp
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Tue Jul 19 2016 16:34:56.*
+*This file was generated on Tue Jul 19 2016 16:46:21.*

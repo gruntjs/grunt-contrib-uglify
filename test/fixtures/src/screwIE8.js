@@ -1,5 +1,5 @@
 
-// screw-ie8 true will remove quotes
+// screw-ie8 false will not remove quotes
 var reserved_words = {
   'class': true
 };
