@@ -227,6 +227,15 @@ Preserve or enforce quotation mark style.
 * `2` will always use double quotes
 * `3` will preserve original quotation marks
 
+#### quiet
+Type: `boolean`  
+Default: `false`
+
+Hide or show logging.
+
+* `true` will hide all the logging
+* `false` or not setting it altogether will show the logging
+
 ### Usage examples
 
 #### Basic compression
