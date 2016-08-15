@@ -31,7 +31,7 @@ Default: `false`
 Parse a single expression, rather than a program (for parsing JSON)
 
 ## report
-Choices: `'none'`, `'min'`, `'gzip'`
+Choices: `'none'`, `'min'`, `'gzip'`  
 Default: `'min'`
 
 Either report only minification result or report minification and gzip results.
@@ -45,13 +45,13 @@ Default: `false`
 If `true`, a source map file will be generated in the same directory as the `dest` file. By default it will have the same basename as the `dest` file, but with a `.map` extension.
 
 ## sourceMapName
-Type: `String`  `Function`  
+Type: `String` `Function`  
 Default: `undefined`
 
 To customize the name or location of the generated source map, pass a string to indicate where to write the source map to. If a function is provided, the uglify destination is passed as the argument and the return value will be used as the file name.
 
 ## sourceMapIn
-Type: `String`  `Function`  
+Type: `String` `Function`  
 Default: `undefined`
 
 The location of an input source map from an earlier compilation, e.g. from CoffeeScript. If a function is provided, the
@@ -142,7 +142,7 @@ Default: `true`
 Set this to `false` if you still care about full compliance with Internet Explorer 6-8 quirks.
 
 ## mangleProperties
-Type: `Boolean` `Object`
+Type: `Boolean` `Object`  
 Default: `false`
 
 Turn on or off property mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_properties()` (mimicking command line behavior). [View all options here](https://github.com/mishoo/UglifyJS2#mangler-options).

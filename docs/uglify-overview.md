@@ -6,17 +6,17 @@ Version `3.x` introduced changes to configuring source maps. Accordingly, if you
 
 ## Removed options
 
-`sourceMappingURL` - This is calculated automatically now
-`sourceMapPrefix` - No longer necessary for the above reason
+* `sourceMappingURL` - This is calculated automatically now
+* `sourceMapPrefix` - No longer necessary for the above reason
 
 ## Changed options
 
-`sourceMap` - Only accepts a `Boolean` value. Generates a map with a default name for you
-`sourceMapRoot` - The location of your sources is now calculated for you when `sourceMap` is set to `true` but you can set manual source root if needed
+* `sourceMap` - Only accepts a `Boolean` value. Generates a map with a default name for you
+* `sourceMapRoot` - The location of your sources is now calculated for you when `sourceMap` is set to `true` but you can set manual source root if needed
 
 ## New options
 
-`sourceMapName` - Accepts a string or function to change the location or name of your map
-`sourceMapIncludeSources` - Embed the content of your source files directly into the map
-`expression` - Accepts a `Boolean` value. Parse a single expression (JSON or single functions)
-`quoteStyle` - Accepts integers `0` (default), `1`, `2`, `3`. Enforce or preserve quotation mark style.
+* `sourceMapName` - Accepts a string or function to change the location or name of your map
+* `sourceMapIncludeSources` - Embed the content of your source files directly into the map
+* `expression` - Accepts a `Boolean` value. Parse a single expression (JSON or single functions)
+* `quoteStyle` - Accepts integers `0` (default), `1`, `2`, `3`. Enforce or preserve quotation mark style.

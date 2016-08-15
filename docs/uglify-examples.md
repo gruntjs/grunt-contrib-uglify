@@ -62,8 +62,8 @@ grunt.initConfig({
 ## Source maps
 
 Generate a source map by setting the `sourceMap` option to `true`. The generated
-source map will be in the same directory as the destination file. Its name will be the
-basename of the destination file with a `.map` extension. Override these
+source map will be in the same directory as the destination file. Its name will be
+the basename of the destination file with a `.map` extension. Override these
 defaults with the `sourceMapName` attribute.
 
 ```js

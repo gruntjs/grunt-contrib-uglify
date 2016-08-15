@@ -32,20 +32,20 @@ Version `3.x` introduced changes to configuring source maps. Accordingly, if you
 
 #### Removed options
 
-`sourceMappingURL` - This is calculated automatically now
-`sourceMapPrefix` - No longer necessary for the above reason
+* `sourceMappingURL` - This is calculated automatically now
+* `sourceMapPrefix` - No longer necessary for the above reason
 
 #### Changed options
 
-`sourceMap` - Only accepts a `Boolean` value. Generates a map with a default name for you
-`sourceMapRoot` - The location of your sources is now calculated for you when `sourceMap` is set to `true` but you can set manual source root if needed
+* `sourceMap` - Only accepts a `Boolean` value. Generates a map with a default name for you
+* `sourceMapRoot` - The location of your sources is now calculated for you when `sourceMap` is set to `true` but you can set manual source root if needed
 
 #### New options
 
-`sourceMapName` - Accepts a string or function to change the location or name of your map
-`sourceMapIncludeSources` - Embed the content of your source files directly into the map
-`expression` - Accepts a `Boolean` value. Parse a single expression (JSON or single functions)
-`quoteStyle` - Accepts integers `0` (default), `1`, `2`, `3`. Enforce or preserve quotation mark style.
+* `sourceMapName` - Accepts a string or function to change the location or name of your map
+* `sourceMapIncludeSources` - Embed the content of your source files directly into the map
+* `expression` - Accepts a `Boolean` value. Parse a single expression (JSON or single functions)
+* `quoteStyle` - Accepts integers `0` (default), `1`, `2`, `3`. Enforce or preserve quotation mark style.
 
 ### Options
 
@@ -80,7 +80,7 @@ Default: `false`
 Parse a single expression, rather than a program (for parsing JSON)
 
 #### report
-Choices: `'none'`, `'min'`, `'gzip'`
+Choices: `'none'`, `'min'`, `'gzip'`  
 Default: `'min'`
 
 Either report only minification result or report minification and gzip results.
@@ -94,13 +94,13 @@ Default: `false`
 If `true`, a source map file will be generated in the same directory as the `dest` file. By default it will have the same basename as the `dest` file, but with a `.map` extension.
 
 #### sourceMapName
-Type: `String`  `Function`  
+Type: `String` `Function`  
 Default: `undefined`
 
 To customize the name or location of the generated source map, pass a string to indicate where to write the source map to. If a function is provided, the uglify destination is passed as the argument and the return value will be used as the file name.
 
 #### sourceMapIn
-Type: `String`  `Function`  
+Type: `String` `Function`  
 Default: `undefined`
 
 The location of an input source map from an earlier compilation, e.g. from CoffeeScript. If a function is provided, the
@@ -191,7 +191,7 @@ Default: `true`
 Set this to `false` if you still care about full compliance with Internet Explorer 6-8 quirks.
 
 #### mangleProperties
-Type: `Boolean` `Object`
+Type: `Boolean` `Object`  
 Default: `false`
 
 Turn on or off property mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_properties()` (mimicking command line behavior). [View all options here](https://github.com/mishoo/UglifyJS2#mangler-options).
@@ -291,8 +291,8 @@ grunt.initConfig({
 #### Source maps
 
 Generate a source map by setting the `sourceMap` option to `true`. The generated
-source map will be in the same directory as the destination file. Its name will be the
-basename of the destination file with a `.map` extension. Override these
+source map will be in the same directory as the destination file. Its name will be
+the basename of the destination file with a `.map` extension. Override these
 defaults with the `sourceMapName` attribute.
 
 ```js
@@ -556,4 +556,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Tue Jul 19 2016 16:46:21.*
+*This file was generated on Mon Aug 15 2016 15:14:40.*
