@@ -112,15 +112,14 @@ Default: `false`
 When using `wrap` this will make all global functions and variables available via the export variable.
 
 ## preserveComments
-Type: `Boolean` `String` `Function`  
+Type: `Boolean` `Function`  
 Default: `undefined`  
-Options: `false` `'all'` `'some'`
+Options: `true` `false` `Function`
 
-Turn on preservation of comments.
+Turn on preservation of comments. Note some Uglify command line options are not available, see Examples for details on preserving some comments but stripping others.
 
 - `false` will strip all comments
-- `'all'` will preserve all comments in code blocks that have not been squashed or dropped
-- `'some'` will preserve all comments that start with a bang (`!`) or include a closure compiler style directive (`@preserve` `@license` `@cc_on`)
+- `true` will preserve all comments in code blocks that have not been squashed or dropped
 - `Function` specify your own comment preservation function. You will be passed the current node and the current comment and are expected to return either `true` or `false`
 
 ## banner

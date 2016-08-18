@@ -59,6 +59,24 @@ grunt.initConfig({
 });
 ```
 
+## Retain comments with `!` or preservation directives
+
+A common use case is to retain comments starting with `!` or with preserve directives, but strip all others. To do this, use `preserveComments` with the `Function` option, eg:
+ 
+    uglify: {
+      options: {
+        preserveComments: function(node, comment) {
+          return /^!|@preserve|@license|@cc_on/i.test(comment.value);
+        }
+      },
+      build: {
+        src: 'example.js',
+        dest: 'example.min.js'
+      }
+    }
+
+Note: this was previously replicated with `some`, but this option has been removed.
+
 ## Source maps
 
 Generate a source map by setting the `sourceMap` option to `true`. The generated
