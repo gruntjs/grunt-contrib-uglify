@@ -11,7 +11,7 @@
 // External libs.
 var path = require('path');
 var UglifyJS = require('uglify-js');
-var assign = require('lodash.assign');
+var assign = require('object.assign');
 var uriPath = require('uri-path');
 var getOutputOptions;
 
