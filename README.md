@@ -169,8 +169,9 @@ Turn on preservation of comments.
 
 - `false` will strip all comments
 - `'all'` will preserve all comments in code blocks that have not been squashed or dropped
-- `'some'` will preserve all comments that start with a bang (`!`) or include a closure compiler style directive (`@preserve` `@license` `@cc_on`)
+- `'some'` will preserve all comments that include a closure compiler style directive (`@preserve` `@license` `@cc_on`)
 - `Function` specify your own comment preservation function. You will be passed the current node and the current comment and are expected to return either `true` or `false`
+- `RegExp` `'/[RegExp]/'` will preserve comments matching given RegExp or stringified RegExp
 
 #### banner
 Type: `String`  
