@@ -113,6 +113,14 @@ module.exports = function(grunt) {
           preserveComments: 'some'
         }
       },
+      commentsWithImportant: {
+        src: 'test/fixtures/src/comments.js',
+        dest: 'tmp/commentsWithImportant.js',
+        options: {
+          mangle: false,
+          preserveComments: /^!|@preserve|@license|@cc_on/i
+        }
+      },
       wrap: {
         src: 'test/fixtures/src/simple.js',
         dest: 'tmp/wrap.js',

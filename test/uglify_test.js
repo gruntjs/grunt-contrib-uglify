@@ -14,6 +14,7 @@ exports.contrib_uglify = {
     var files = [
       'beautify.js',
       'comments.js',
+      'commentsWithImportant.js',
       'compress.js',
       'compress_explicit.js',
       'compress_mangle.js',
