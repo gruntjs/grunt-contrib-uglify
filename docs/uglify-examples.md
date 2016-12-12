@@ -238,6 +238,41 @@ grunt.initConfig({
 });
 ```
 
+
+## Compiling all files separately on the each their path
+
+This configuration will compress and mangle all js files separately on the each their path.
+
+Also expext jQuery for mangling and ignore all `*.min.js` files.
+
+```js
+// Project configuration.
+uglify: {
+	dev: {
+		options: {
+			mangle: {
+				except: ['jQuery']
+			}
+		},
+		files: [{
+			expand: true,
+			src: ['dist/assets/js/*.js', '!dist/assets/js/*.min.js'],
+			dest: 'dist/assets',
+			cwd: '.',
+			rename: function (dst, src) {
+				// To keep src js files and make new files as *.min.js :
+				// return dst + '/' + src.replace('.js', '.min.js');
+				// Or to override to src :
+				return src;
+			}
+		}]
+	}
+},
+
+```
+
+
+
 ## Turn on object property name mangling
 
 This configuration will turn on object property name mangling, but not mangle built-in browser object properties.
