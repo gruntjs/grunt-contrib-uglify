@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v2.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v2.1.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify JavaScript files with UglifyJS
 
@@ -518,6 +518,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2017-02-08   v2.1.0   Show size changes in output. Switch to `object.assign`.
  * 2016-07-19   v2.0.0   Update uglify-js to v2.7.0. `screwIE8` is enabled by default.
  * 2016-07-19   v1.0.2   Update grunt to ^1.0.0. Fix `beautify` when passed as an object. Fix docs about `report` values.
  * 2016-03-16   v1.0.1   Downgrade maxmin for Node.js 0.10.
@@ -557,4 +558,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Mon Aug 15 2016 15:14:40.*
+*This file was generated on Wed Feb 08 2017 11:06:25.*
