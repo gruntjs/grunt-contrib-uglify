@@ -243,7 +243,7 @@ grunt.initConfig({
 
 This configuration will compress and mangle all js files separately on the each their path.
 
-Also expect jQuery for mangling and ignore all `*.min.js` files.
+Also except jQuery for mangling and ignore all `*.min.js` files.
 
 ```js
 // Project configuration.
