@@ -24,9 +24,9 @@ function relativePath(file1, file2) {
   return '';
 }
 
-function reportFacility( grunt, options ){
+function reportFacility(grunt, options) {
   var reporter;
-  switch( options.report ){
+  switch (options.report) {
     case 'none':
       reporter = grunt.verbose;
       break;
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
       screwIE8: true,
       quoteStyle: 0
     });
-    var log = reportFacility( grunt, options );
+    var log = reportFacility(grunt, options);
 
     // Process banner.
     var banner = normalizeLf(options.banner);

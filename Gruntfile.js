@@ -389,9 +389,9 @@ module.exports = function(grunt) {
         },
         options: {
           beautify: {
-            'ascii_only': true,
-            'indent_start': 2,
-            'max_line_len': 40
+            ascii_only: true,
+            indent_start: 2,
+            max_line_len: 40
           }
         }
       }
