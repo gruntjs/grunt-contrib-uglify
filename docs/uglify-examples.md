@@ -238,12 +238,11 @@ grunt.initConfig({
 });
 ```
 
-
 ## Compiling all files separately on the each their path
 
 This configuration will compress and mangle all js files separately on the each their path.
 
-Also except jQuery for mangling and ignore all `*.min.js` files.
+Also exclude jQuery for mangling and ignore all `*.min.js` files.
 
 ```js
 // Project configuration.
@@ -268,10 +267,7 @@ uglify: {
 		}]
 	}
 },
-
 ```
-
-
 
 ## Turn on object property name mangling
 
