@@ -240,7 +240,7 @@ grunt.initConfig({
 
 ## Compiling all files separately on the each their path
 
-This configuration will compress and mangle all js files separately on the each their path.
+This configuration will compress and mangle all js files separately in each folder.
 
 Also exclude jQuery for mangling and ignore all `*.min.js` files.
 
@@ -259,7 +259,7 @@ uglify: {
 			dest: 'dist/assets',
 			cwd: '.',
 			rename: function (dst, src) {
-				// To keep src js files and make new files as *.min.js:
+				// To keep the source js files and make new files as `*.min.js`:
 				// return dst + '/' + src.replace('.js', '.min.js');
 				// Or to override to src:
 				return src;
