@@ -259,9 +259,9 @@ uglify: {
 			dest: 'dist/assets',
 			cwd: '.',
 			rename: function (dst, src) {
-				// To keep src js files and make new files as *.min.js :
+				// To keep src js files and make new files as *.min.js:
 				// return dst + '/' + src.replace('.js', '.min.js');
-				// Or to override to src :
+				// Or to override to src:
 				return src;
 			}
 		}]
