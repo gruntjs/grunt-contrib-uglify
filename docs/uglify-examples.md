@@ -228,10 +228,10 @@ grunt.initConfig({
   uglify: {
     my_target: {
       files: [{
-          expand: true,
-          cwd: 'src/js',
-          src: '**/*.js',
-          dest: 'dest/js'
+        expand: true,
+        cwd: 'src/js',
+        src: '**/*.js',
+        dest: 'dest/js'
       }]
     }
   }
@@ -247,25 +247,25 @@ Also exclude jQuery for mangling and ignore all `*.min.js` files.
 ```js
 // Project configuration.
 uglify: {
-	dev: {
-		options: {
-			mangle: {
-				except: ['jQuery']
-			}
-		},
-		files: [{
-			expand: true,
-			src: ['dist/assets/js/*.js', '!dist/assets/js/*.min.js'],
-			dest: 'dist/assets',
-			cwd: '.',
-			rename: function (dst, src) {
-				// To keep the source js files and make new files as `*.min.js`:
-				// return dst + '/' + src.replace('.js', '.min.js');
-				// Or to override to src:
-				return src;
-			}
-		}]
-	}
+  dev: {
+    options: {
+      mangle: {
+        except: ['jQuery']
+      }
+    },
+    files: [{
+      expand: true,
+      src: ['dist/assets/js/*.js', '!dist/assets/js/*.min.js'],
+      dest: 'dist/assets',
+      cwd: '.',
+      rename: function (dst, src) {
+        // To keep the source js files and make new files as `*.min.js`:
+        // return dst + '/' + src.replace('.js', '.min.js');
+        // Or to override to src:
+        return src;
+      }
+    }]
+  }
 },
 ```
 
