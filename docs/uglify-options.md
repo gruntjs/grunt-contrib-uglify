@@ -31,12 +31,12 @@ Default: `false`
 Parse a single expression, rather than a program (for parsing JSON)
 
 ## report
-Choices: `'none'`, `'min'`, `'gzip'`  
+Type: `string`  
+Choices: `'min'`, `'gzip'`  
 Default: `'min'`
 
-Either report only minification result or report minification and gzip results.
-This is useful to see exactly how well UglifyJS is performing but using `'gzip'` will make the task take 5-10x longer to complete. [Example output](https://github.com/sindresorhus/maxmin#readme).
-If `'none'` is used the report will be generated on the verbose output.
+Report minification result or both minification and gzip results.
+This is useful to see exactly how well uglify-js is performing but using `'gzip'` will make the task take 5-10x longer to complete. [Example output](https://github.com/sindresorhus/maxmin#readme).
 
 ## sourceMap
 Type: `Boolean`  
