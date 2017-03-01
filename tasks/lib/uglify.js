@@ -98,7 +98,7 @@ exports.init = function(grunt) {
         options.compress.screw_ie8 = false;
       }
       var compressor = UglifyJS.Compressor(options.compress);
-      topLevel = topLevel.transform(compressor);
+      topLevel = compressor.compress(topLevel);
 
       // Need to figure out scope again after source being altered
       if (options.expression === false) {
