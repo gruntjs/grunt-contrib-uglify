@@ -385,13 +385,13 @@ module.exports = function(grunt) {
       },
       beautify_Object: {
         files: {
-          'tmp/beautify.js': ['test/fixtures/src/localization.js', 'test/fixtures/src/simple.js']
+          'tmp/beautify.js': ['test/fixtures/src/simple.js']
         },
         options: {
           beautify: {
             ascii_only: true,
             indent_start: 2,
-            max_line_len: 40
+            max_line_len: 55
           }
         }
       }
