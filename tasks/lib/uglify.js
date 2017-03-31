@@ -15,6 +15,11 @@ var assign = require('object.assign');
 var uriPath = require('uri-path');
 var getOutputOptions;
 
+// Converts \r\n to \n
+function normalizeLf(string) {
+  return string.replace(/\r\n/g, '\n');
+}
+
 exports.init = function(grunt) {
   var exports = {};
 
@@ -228,8 +233,8 @@ exports.init = function(grunt) {
       source_map: null
     };
 
-    if (options.banner && options.sourceMap) {
-      outputOptions.preamble = options.banner;
+    if (options.banner) {
+      outputOptions.preamble = normalizeLf(options.banner);
     }
 
     if (options.screwIE8 === false) {

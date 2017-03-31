@@ -66,8 +66,6 @@ module.exports = function(grunt) {
     });
     var log = reportFacility(grunt, options);
 
-    // Process banner.
-    var banner = normalizeLf(options.banner);
     var footer = normalizeLf(options.footer);
     var mapNameGenerator, mapInNameGenerator;
     var createdFiles = 0;
@@ -170,11 +168,6 @@ module.exports = function(grunt) {
 
       // Concat minified source + footer
       var output = result.min + footer;
-
-      // Only prepend banner if uglify hasn't taken care of it as part of the preamble
-      if (!options.sourceMap) {
-        output = banner + output;
-      }
 
       // Write the destination file.
       grunt.file.write(f.dest, output);
