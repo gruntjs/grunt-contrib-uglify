@@ -1,1 +1,1 @@
-function longFunctionC(argumentC,argumentD){return 3+argumentC+argumentD}var longNameA=1,longNameB=2,result=longFunctionC(3,4);
+function longFunctionC(argumentC,argumentD){return longNameA+longNameB+argumentC+argumentD}var longNameA=1,longNameB=2,result=longFunctionC(3,4);
