@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v2.2.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v2.2.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify JavaScript files with UglifyJS
 
@@ -25,27 +25,6 @@ grunt.loadNpmTasks('grunt-contrib-uglify');
 _Run this task with the `grunt uglify` command._
 
 Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
-
-### Migrating from 2.x to 3.x
-
-Version `3.x` introduced changes to configuring source maps. Accordingly, if you don't use the source map options you should be able to upgrade seamlessly. If you do use source maps, see below.
-
-#### Removed options
-
-* `sourceMappingURL` - This is calculated automatically now
-* `sourceMapPrefix` - No longer necessary for the above reason
-
-#### Changed options
-
-* `sourceMap` - Only accepts a `Boolean` value. Generates a map with a default name for you
-* `sourceMapRoot` - The location of your sources is now calculated for you when `sourceMap` is set to `true` but you can set manual source root if needed
-
-#### New options
-
-* `sourceMapName` - Accepts a string or function to change the location or name of your map
-* `sourceMapIncludeSources` - Embed the content of your source files directly into the map
-* `expression` - Accepts a `Boolean` value. Parse a single expression (JSON or single functions)
-* `quoteStyle` - Accepts integers `0` (default), `1`, `2`, `3`. Enforce or preserve quotation mark style.
 
 ### Options
 
@@ -549,6 +528,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2017-03-31   v2.2.1   Fix banner option.
  * 2017-03-01   v2.2.0   Update uglify-js to v2.8.3.
  * 2017-02-08   v2.1.0   Show size changes in output. Switch to `object.assign`.
  * 2016-07-19   v2.0.0   Update uglify-js to v2.7.0. `screwIE8` is enabled by default.
@@ -590,4 +570,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Wed Mar 01 2017 09:37:05.*
+*This file was generated on Fri Mar 31 2017 12:54:16.*

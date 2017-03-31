@@ -1,3 +1,7 @@
+v2.2.1:
+  date: 2017-03-31
+  changes:
+    - Fix banner option.
 v2.2.0:
   date: 2017-03-01
   changes:
