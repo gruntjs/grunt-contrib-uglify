@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v2.2.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v2.3.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify JavaScript files with UglifyJS
 
@@ -59,12 +59,12 @@ Default: `false`
 Parse a single expression, rather than a program (for parsing JSON)
 
 #### report
-Choices: `'none'`, `'min'`, `'gzip'`  
+Type: `string`  
+Choices: `'min'`, `'gzip'`  
 Default: `'min'`
 
-Either report only minification result or report minification and gzip results.
-This is useful to see exactly how well UglifyJS is performing but using `'gzip'` will make the task take 5-10x longer to complete. [Example output](https://github.com/sindresorhus/maxmin#readme).
-If `'none'` is used the report will be generated on the verbose output.
+Report minification result or both minification and gzip results.
+This is useful to see exactly how well uglify-js is performing but using `'gzip'` will make the task take 5-10x longer to complete. [Example output](https://github.com/sindresorhus/maxmin#readme).
 
 #### sourceMap
 Type: `Boolean`  
@@ -528,6 +528,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2017-04-05   v2.3.0   Make CLI output less verbose.
  * 2017-03-31   v2.2.1   Fix banner option.
  * 2017-03-01   v2.2.0   Update uglify-js to v2.8.3.
  * 2017-02-08   v2.1.0   Show size changes in output. Switch to `object.assign`.
@@ -570,4 +571,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Fri Mar 31 2017 12:54:16.*
+*This file was generated on Wed Apr 05 2017 00:24:18.*
