@@ -39,7 +39,7 @@ grunt.initConfig({
 
 ## Reserved identifiers
 
-You can specify identifiers to leave untouched with an `except` array in the `mangle` options.
+You can specify identifiers to leave untouched with an `reserved` array in the `mangle` options.
 
 ```js
 // Project configuration.
@@ -47,7 +47,7 @@ grunt.initConfig({
   uglify: {
     options: {
       mangle: {
-        except: ['jQuery', 'Backbone']
+        reserved: ['jQuery', 'Backbone']
       }
     },
     my_target: {
@@ -85,7 +85,7 @@ grunt.initConfig({
 
 ## Advanced source maps
 
-Set the `sourceMapIncludeSources` option to `true` to embed your sources directly into the map. To include
+Set the `sourceMap.includeSources` option to `true` to embed your sources directly into the map. To include
 a source map from a previous compilation pass it as the value of the `sourceMapIn` option.
 
 ```js
@@ -94,8 +94,9 @@ grunt.initConfig({
   uglify: {
     my_target: {
       options: {
-        sourceMap: true,
-        sourceMapIncludeSources: true,
+        sourceMap: {
+          includeSources: true
+        },
         sourceMapIn: 'example/coffeescript-sourcemap.js', // input sourcemap from a previous compilation
       },
       files: {
@@ -106,7 +107,7 @@ grunt.initConfig({
 });
 ```
 
-Refer to the [UglifyJS SourceMap Documentation](http://lisperator.net/uglifyjs/codegen#source-map) for more information.
+Refer to the [UglifyJS SourceMap Documentation](https://github.com/mishoo/UglifyJS2#source-map-options) for more information.
 
 ## Turn off console warnings
 
@@ -134,11 +135,9 @@ grunt.initConfig({
 ## Beautify
 
 Specify `beautify: true` to beautify your code for debugging/troubleshooting purposes.
-Pass an object to manually configure any other output options passed directly to `UglifyJS.OutputStream()`.
+Pass an object to manually configure any other output options.
 
-See [UglifyJS Codegen documentation](http://lisperator.net/uglifyjs/codegen) for more information.
-
-_Note that manual configuration will require you to explicitly set `beautify: true` if you want traditional, beautified output._
+See [UglifyJS documentation](https://github.com/mishoo/UglifyJS2#beautifier-options) for more information.
 
 ```js
 // Project configuration.
@@ -155,8 +154,7 @@ grunt.initConfig({
     my_advanced_target: {
       options: {
         beautify: {
-          width: 80,
-          beautify: true
+          width: 80
         }
       },
       files: {
@@ -193,9 +191,9 @@ grunt.initConfig({
 
 ## Conditional compilation
 
-You can also enable UglifyJS conditional compilation. This is commonly used to remove debug code blocks for production builds. This is equivalent to the command line [`--define` option](https://github.com/mishoo/UglifyJS#use-as-a-code-pre-processor).
+You can also enable UglifyJS conditional compilation. This is commonly used to remove debug code blocks for production builds. This is equivalent to the command line `--define` option.
 
-See [UglifyJS global definitions documentation](http://lisperator.net/uglifyjs/compress#global-defs) for more information.
+See [UglifyJS global definitions documentation](https://github.com/mishoo/UglifyJS2#conditional-compilation) for more information.
 
 ```js
 // Project configuration.
@@ -250,7 +248,7 @@ uglify: {
   dev: {
     options: {
       mangle: {
-        except: ['jQuery']
+        reserved: ['jQuery']
       }
     },
     files: [{
@@ -280,7 +278,9 @@ on the format of the exception file format please see the [UglifyJS docs](https:
 grunt.initConfig({
   uglify: {
     options: {
-      mangleProperties: true,
+      mangle: {
+        properties: true
+      },
       reserveDOMCache: true,
       exceptionsFiles: [ 'myExceptionsFile.json' ]
     },

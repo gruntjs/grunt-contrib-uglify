@@ -11,6 +11,7 @@
 var path = require('path');
 var chalk = require('chalk');
 var maxmin = require('maxmin');
+var uriPath = require('uri-path');
 var err;
 
 // Return the relative path from file1 => file2
@@ -19,7 +20,7 @@ function relativePath(file1, file2) {
   var file2Dirname = path.dirname(file2);
 
   if (file1Dirname !== file2Dirname) {
-    return path.relative(file1Dirname, file2Dirname) + path.sep;
+    return path.relative(file1Dirname, file2Dirname);
   }
   return '';
 }
@@ -48,17 +49,11 @@ module.exports = function(grunt) {
     var options = this.options({
       banner: '',
       footer: '',
-      compress: {
-        warnings: false
-      },
+      compress: {},
       mangle: {},
       beautify: false,
       report: 'min',
-      expression: false,
-      maxLineLen: 32000,
-      ASCIIOnly: false,
-      screwIE8: true,
-      quoteStyle: 0
+      ie8: false
     });
 
     var footer = normalizeLf(options.footer);
@@ -71,6 +66,13 @@ module.exports = function(grunt) {
       before: 0,
       after: 0
     };
+    var generateSourceMapURL = options.sourceMap && !options.sourceMap.url;
+    var generateSourceMapFilename = options.sourceMap && !options.sourceMap.filename;
+
+    // function to get the name of the sourceMap
+    if (typeof options.sourceMapName === 'function') {
+      mapNameGenerator = options.sourceMapName;
+    }
 
     // Iterate over all src-dest file pairs.
     this.files.forEach(function (f) {
@@ -79,18 +81,6 @@ module.exports = function(grunt) {
       if (availableFiles.length === 0) {
         grunt.log.warn('Destination ' + chalk.cyan(f.dest) + ' not written because src files were empty.');
         return;
-      }
-
-      // Warn on incompatible options
-      if (options.expression && (options.compress || options.mangle)) {
-        grunt.log.warn('Option ' + chalk.cyan('expression') + ' not compatible with ' + chalk.cyan('compress and mangle'));
-        options.compress = false;
-        options.mangle = false;
-      }
-
-      // function to get the name of the sourceMap
-      if (typeof options.sourceMapName === 'function') {
-        mapNameGenerator = options.sourceMapName;
       }
 
       // function to get the name of the sourceMapIn file
@@ -128,17 +118,21 @@ module.exports = function(grunt) {
         }
       }
 
-      // Calculate the path from the dest file to the sourcemap for the
-      // sourceMappingURL reference
-      // If sourceMapUrl is defined, use this instead
-      if (options.sourceMap) {
-        var destToSourceMapPath, sourceMapBasename;
-        if (!options.sourceMapUrl) {
-          destToSourceMapPath = relativePath(f.dest, options.generatedSourceMapName);
-          sourceMapBasename = path.basename(options.generatedSourceMapName);
-          options.destToSourceMap = destToSourceMapPath + sourceMapBasename;
-        } else {
-          options.destToSourceMap = options.sourceMapUrl;
+      if (options.sourceMap && generateSourceMapURL) {
+        if (typeof options.sourceMap !== 'object') {
+          options.sourceMap = {};
+        }
+        if (generateSourceMapFilename) {
+          options.sourceMap.filename = path.basename(f.dest);
+        }
+        if (options.sourceMapIn) {
+          options.sourceMap.content = grunt.file.read(options.sourceMapIn);
+        }
+        // Calculate the path from the dest file to the sourcemap for sourceMap.url
+        if (generateSourceMapURL) {
+          var destToSourceMapPath = relativePath(f.dest, options.generatedSourceMapName);
+          var sourceMapBasename = path.basename(options.generatedSourceMapName);
+          options.sourceMap.url = uriPath(path.join(destToSourceMapPath, sourceMapBasename));
         }
       }
 

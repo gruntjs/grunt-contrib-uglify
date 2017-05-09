@@ -1,1 +1,1 @@
-var a={a:function(a){a++},dontMangleMeProperty:function(){},b:function(){}},dontMangleMeVariable2=function(){},dontMangleMeVariable3=function(){};
+var n={n:function(n){n++},dontMangleMeProperty:function(){},o:function(){}},dontMangleMeVariable2=function(){},dontMangleMeVariable3=function(){};

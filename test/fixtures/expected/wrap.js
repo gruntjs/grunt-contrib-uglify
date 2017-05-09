@@ -1,1 +1,1 @@
-!function(exports,global){var longNameA=1,longNameB=2;global.testExport=exports}({},function(){return this}());
+!function(exports){var longNameA=1,longNameB=2}("undefined"==typeof testExport?testExport={}:testExport);
