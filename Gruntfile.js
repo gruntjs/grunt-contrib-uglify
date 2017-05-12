@@ -70,7 +70,7 @@ module.exports = function(grunt) {
         },
         options: {
           mangle: {
-            except: ['argumentC']
+            reserved: ['argumentC']
           }
         }
       },
@@ -81,20 +81,6 @@ module.exports = function(grunt) {
         options: {
           beautify: true,
           footer: '\n// This is a footer.'
-        }
-      },
-      enclose: {
-        files: {
-          'tmp/enclose.js': ['test/fixtures/src/simple.js']
-        },
-        options: {
-          beautify: true,
-          compress: false,
-          enclose: {
-            'window.argA': 'paramA',
-            'window.argB': 'paramB'
-          },
-          mangle: false
         }
       },
       multifile: {
@@ -110,7 +96,9 @@ module.exports = function(grunt) {
         dest: 'tmp/comments.js',
         options: {
           mangle: false,
-          preserveComments: 'some'
+          output: {
+            comments: 'some'
+          }
         }
       },
       commentsWithImportant: {
@@ -118,7 +106,9 @@ module.exports = function(grunt) {
         dest: 'tmp/commentsWithImportant.js',
         options: {
           mangle: false,
-          preserveComments: /^!|@preserve|@license|@cc_on/i
+          output: {
+            comments: /^!|@preserve|@license|@cc_on/i
+          }
         }
       },
       wrap: {
@@ -134,7 +124,9 @@ module.exports = function(grunt) {
         dest: 'tmp/maxLineLen.js',
         options: {
           mangle: false,
-          maxLineLen: 100
+          output: {
+            max_line_len: 100
+          }
         }
       },
       ASCIIOnly: {
@@ -142,23 +134,16 @@ module.exports = function(grunt) {
         dest: 'tmp/asciionly.js',
         options: {
           mangle: false,
-          ASCIIOnly: true
+          output: {
+            ascii_only: true
+          }
         }
       },
       screwIE8: {
         src: 'test/fixtures/src/screwIE8.js',
         dest: 'tmp/screwIE8.js',
         options: {
-          screwIE8: false
-        }
-      },
-      exportAll: {
-        src: 'test/fixtures/src/simple.js',
-        dest: 'tmp/exportAll.js',
-        options: {
-          mangle: false,
-          wrap: 'testExport',
-          exportAll: true
+          ie8: true
         }
       },
       sourcemap_basic: {
@@ -188,16 +173,18 @@ module.exports = function(grunt) {
         src: 'test/fixtures/src/simple.js',
         dest: 'tmp/sourcemap_customRoot.js',
         options: {
-          sourceMap: true,
-          sourceMapRoot: 'https://github.com/RReverser/grunt-contrib-uglify/tree/master/tmp'
+          sourceMap: {
+            root: 'https://github.com/RReverser/grunt-contrib-uglify/tree/master/tmp'
+          }
         }
       },
       sourcemap_customUrl: {
         src: 'test/fixtures/src/simple.js',
         dest: 'tmp/sourcemap_customUrl.js',
         options: {
-          sourceMap: true,
-          sourceMapUrl: 'http://www.test.com/test/sourcemap_customUrl.js.map'
+          sourceMap: {
+            url: 'http://www.test.com/test/sourcemap_customUrl.js.map'
+          }
         }
       },
       sourcemap_functionName: {
@@ -227,7 +214,7 @@ module.exports = function(grunt) {
         options: {
           sourceMap: true,
           sourceMapName: function(dest) {
-            return dest+'.fn.map';
+            return dest + '.fn.map';
           }
         }
       },
@@ -238,11 +225,12 @@ module.exports = function(grunt) {
         options: {
           mangle: false,
           banner: '// Hello World\n',
-          sourceMap: true,
+          sourceMap: {
+            includeSources: false
+          },
           sourceMapIn: function() {
             return 'test/fixtures/src/simple2.map';
-          },
-          sourceMapIncludeSources: false
+          }
         }
       },
       sourcemap_sources: {
@@ -250,8 +238,9 @@ module.exports = function(grunt) {
           'tmp/sourcemap_sources.js': ['test/fixtures/src/simple.js']
         },
         options: {
-          sourceMap: true,
-          sourceMapIncludeSources: true
+          sourceMap: {
+            includeSources: true
+          }
         }
       },
       sourcemapin_sources: {
@@ -259,11 +248,12 @@ module.exports = function(grunt) {
           'tmp/sourcemapin_sources.js': ['test/fixtures/src/simple2.js']
         },
         options: {
-          sourceMap: true,
+          sourceMap: {
+            includeSources: true
+          },
           sourceMapIn: function() {
             return 'test/fixtures/src/simple2.map';
-          },
-          sourceMapIncludeSources: true
+          }
         }
       },
       expression_json: {
@@ -271,7 +261,9 @@ module.exports = function(grunt) {
           'tmp/expression.json': ['test/fixtures/src/simple.json']
         },
         options: {
-          expression: true,
+          parse: {
+            expression: true
+          },
           mangle: false,
           compress: false
         }
@@ -281,7 +273,9 @@ module.exports = function(grunt) {
           'tmp/expression.js': ['test/fixtures/src/expression.js']
         },
         options: {
-          expression: true,
+          parse: {
+            expression: true
+          },
           mangle: false,
           compress: false
         }
@@ -291,7 +285,9 @@ module.exports = function(grunt) {
           'tmp/mangleprops.js': ['test/fixtures/src/mangleprops.js']
         },
         options: {
-          mangleProperties: true
+          mangle: {
+            properties: true
+          }
         }
       },
       mangleprops_withExcept: {
@@ -300,9 +296,9 @@ module.exports = function(grunt) {
         },
         options: {
           mangle: {
-            except: ['dontMangleMeVariable']
-          },
-          mangleProperties: true
+            reserved: ['dontMangleMeVariable'],
+            properties: true
+          }
         }
       },
       mangleprops_withExceptionsFiles: {
@@ -311,9 +307,9 @@ module.exports = function(grunt) {
         },
         options: {
           mangle: {
-            toplevel: true
+            toplevel: true,
+            properties: true
           },
-          mangleProperties: true,
           exceptionsFiles: ['test/fixtures/src/exceptionsfile1.json', 'test/fixtures/src/exceptionsfile2.json']
         }
       },
@@ -324,9 +320,9 @@ module.exports = function(grunt) {
         options: {
           mangle: {
             toplevel: true,
-            except: ['dontMangleMeVariable']
+            reserved: ['dontMangleMeVariable'],
+            properties: true
           },
-          mangleProperties: true,
           exceptionsFiles: ['test/fixtures/src/exceptionsfile1.json', 'test/fixtures/src/exceptionsfile2.json']
         }
       },
@@ -337,9 +333,9 @@ module.exports = function(grunt) {
         },
         options: {
           mangle: {
-            toplevel: true
+            toplevel: true,
+            properties: true
           },
-          mangleProperties: true,
           nameCache: 'tmp/uglify_name_cache.json'
         }
       },
@@ -348,8 +344,10 @@ module.exports = function(grunt) {
           'tmp/mangleprops_withRegex.js': ['test/fixtures/src/mangleprops_withRegex.js']
         },
         options: {
-          mangleProperties: {
-            regex: /^[^#].*/
+          mangle: {
+            properties: {
+              regex: /^[^#].*/
+            }
           }
         }
       },
@@ -358,7 +356,9 @@ module.exports = function(grunt) {
           'tmp/quotes_single.js': ['test/fixtures/src/quotes.js']
         },
         options: {
-          quoteStyle: 1
+          output: {
+            quote_style: 1
+          }
         }
       },
       quotes_double: {
@@ -366,7 +366,9 @@ module.exports = function(grunt) {
           'tmp/quotes_double.js': ['test/fixtures/src/quotes.js']
         },
         options: {
-          quoteStyle: 2
+          output: {
+            quote_style: 2
+          }
         }
       },
       quotes_original: {
@@ -374,7 +376,9 @@ module.exports = function(grunt) {
           'tmp/quotes_original.js': ['test/fixtures/src/quotes.js']
         },
         options: {
-          quoteStyle: 3
+          output: {
+            quote_style: 3
+          }
         }
       },
       mangle_isNotObject: {

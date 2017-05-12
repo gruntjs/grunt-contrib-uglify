@@ -2,7 +2,7 @@
  * grunt-contrib-uglify
  * https://gruntjs.com/
  *
- * Copyright (c) 2016 "Cowboy" Ben Alman, contributors
+ * Copyright (c) 2017 "Cowboy" Ben Alman, contributors
  * Licensed under the MIT license.
  */
 
@@ -11,13 +11,23 @@
 // External libs.
 var path = require('path');
 var UglifyJS = require('uglify-js');
-var assign = require('object.assign');
 var uriPath = require('uri-path');
-var getOutputOptions;
 
 // Converts \r\n to \n
 function normalizeLf(string) {
   return string.replace(/\r\n/g, '\n');
+}
+
+function toCache(cache, key) {
+  if (cache[key]) {
+    cache[key].props = UglifyJS.Dictionary.fromObject(cache[key].props);
+  } else {
+    cache[key] = {
+      cname: -1,
+      props: new UglifyJS.Dictionary()
+    };
+  }
+  return cache[key];
 }
 
 exports.init = function(grunt) {
@@ -25,22 +35,92 @@ exports.init = function(grunt) {
 
   // Minify with UglifyJS.
   // From https://github.com/mishoo/UglifyJS2
-  // API docs at http://lisperator.net/uglifyjs/
   exports.minify = function(files, dest, options) {
     options = options || {};
 
     grunt.verbose.write('Minifying with UglifyJS...');
 
-    var topLevel = null;
     var totalCode = '';
-    var sourcesContent = {};
+    var minifyOptions = {
+      compress: options.compress,
+      ie8: options.ie8,
+      keep_fnames: options.keep_fnames,
+      mangle: options.mangle,
+      output: options.output || {},
+      parse: options.parse || {},
+      sourceMap: options.sourceMap,
+      toplevel: options.topLevel,
+      wrap: options.wrap
+    };
 
-    var outputOptions = getOutputOptions(options, dest);
-    var output = UglifyJS.OutputStream(outputOptions);
+    if (options.banner) {
+      minifyOptions.output.preamble = normalizeLf(options.banner);
+    }
 
-    // Grab and parse all source files
-    files.forEach(function(file) {
+    if (options.beautify) {
+      minifyOptions.output.beautify = true;
+      for (var key in options.beautify) {
+        minifyOptions.output[key] = options.beautify[key];
+      }
+    }
 
+    var cache;
+    if (options.nameCache) {
+      try {
+        cache = JSON.parse(grunt.file.read(options.nameCache));
+      } catch (ex) {
+        cache = {};
+      }
+    }
+
+    if (minifyOptions.mangle) {
+      if (typeof minifyOptions.mangle !== 'object') {
+        minifyOptions.mangle = {};
+      }
+      if (cache) {
+        minifyOptions.mangle.cache = toCache(cache, 'vars');
+      }
+      if (!Array.isArray(minifyOptions.mangle.reserved)) {
+        minifyOptions.mangle.reserved = [];
+      }
+      if (minifyOptions.mangle.properties) {
+        if (typeof minifyOptions.mangle.properties !== 'object') {
+          minifyOptions.mangle.properties = {};
+        }
+        if (cache) {
+          minifyOptions.mangle.properties.cache = toCache(cache, 'props');
+        }
+        if (!Array.isArray(minifyOptions.mangle.properties.reserved)) {
+          minifyOptions.mangle.properties.reserved = [];
+        }
+        if (options.reserveDOMProperties) {
+          require('uglify-js/tools/domprops').forEach(function(name) {
+            UglifyJS._push_uniq(minifyOptions.mangle.properties.reserved, name);
+          });
+        }
+      }
+      if (options.exceptionsFiles) {
+        options.exceptionsFiles.forEach(function(file) {
+          try {
+            var obj = JSON.parse(grunt.file.read(file));
+            if (minifyOptions.mangle && obj.vars) {
+              obj.vars.forEach(function(name) {
+                UglifyJS._push_uniq(minifyOptions.mangle.reserved, name);
+              });
+            }
+            if (minifyOptions.mangle.properties && obj.props) {
+              obj.props.forEach(function(name) {
+                UglifyJS._push_uniq(minifyOptions.mangle.properties.reserved, name);
+              });
+            }
+          } catch (ex) {
+            grunt.warn(ex);
+          }
+        });
+      }
+    }
+
+    var result = UglifyJS.minify(files.reduce(function(o, file) {
       var code = grunt.file.read(file);
       totalCode += code;
 
@@ -50,249 +130,28 @@ exports.init = function(grunt) {
       var sourceMapDir = path.dirname(options.generatedSourceMapName);
       var relativePath = path.relative(sourceMapDir, fileDir);
       var pathPrefix = relativePath ? relativePath + path.sep : '';
-      var bare_returns = options.bare_returns || undefined;
 
       // Convert paths to use forward slashes for sourcemap use in the browser
-      file = uriPath(pathPrefix + basename);
-
-      sourcesContent[file] = code;
-      topLevel = UglifyJS.parse(code, {
-        filename: file,
-        toplevel: topLevel,
-        expression: options.expression,
-        bare_returns: bare_returns
-      });
-    });
-
-    // Wrap code in a common js wrapper.
-    if (options.wrap) {
-      topLevel = topLevel.wrap_commonjs(options.wrap, options.exportAll);
+      o[uriPath(pathPrefix + basename)] = code;
+      return o;
+    }, {}), minifyOptions);
+    if (result.error) {
+      throw result.error;
     }
 
-    // Wrap code in closure with configurable arguments/parameters list.
-    if (options.enclose) {
-      var argParamList = Object.keys(options.enclose).map(function(key) {
-        return key + ':' + options.enclose[key];
-      });
-
-      topLevel = topLevel.wrap_enclose(argParamList);
-    }
-
-    var topLevelCache = null;
     if (options.nameCache) {
-      topLevelCache = UglifyJS.readNameCache(options.nameCache, 'vars');
+      grunt.file.write(options.nameCache, JSON.stringify(cache, function(key, value) {
+        return value instanceof UglifyJS.Dictionary ? value.toObject() : value;
+      }));
     }
-
-    // Need to call this before we mangle or compress,
-    // and call after any compression or ast altering
-    if (options.expression === false) {
-      topLevel.figure_out_scope({
-        screw_ie8: options.screwIE8,
-        cache: topLevelCache
-      });
-    }
-
-    if (options.compress !== false) {
-      if (options.compress === true) {
-        options.compress = {};
-      }
-      if (options.compress.warnings !== true) {
-        options.compress.warnings = false;
-      }
-      if (options.screwIE8 === false) {
-        options.compress.screw_ie8 = false;
-      }
-      var compressor = UglifyJS.Compressor(options.compress);
-      topLevel = compressor.compress(topLevel);
-
-      // Need to figure out scope again after source being altered
-      if (options.expression === false) {
-        topLevel.figure_out_scope({
-          screw_ie8: options.screwIE8,
-          cache: topLevelCache
-        });
-      }
-    }
-
-    var mangleExclusions = {
-      vars: [],
-      props: []
-    };
-    if (options.reserveDOMProperties) {
-      mangleExclusions = UglifyJS.readDefaultReservedFile();
-    }
-
-    if (options.exceptionsFiles) {
-      try {
-        options.exceptionsFiles.forEach(function(filename) {
-          mangleExclusions = UglifyJS.readReservedFile(filename, mangleExclusions);
-        });
-      } catch (ex) {
-        grunt.warn(ex);
-      }
-    }
-
-    var cache = null;
-    if (options.nameCache) {
-      cache = UglifyJS.readNameCache(options.nameCache, 'props');
-    }
-
-    if (typeof options.mangleProperties !== 'undefined' && options.mangleProperties !== false) {
-      // if options.mangleProperties is a boolean (true) convert it into an object
-      if (typeof options.mangleProperties !== 'object') {
-        options.mangleProperties = {};
-      }
-
-      options.mangleProperties.reserved = mangleExclusions ? mangleExclusions.props : null;
-      options.mangleProperties.cache = cache;
-
-      topLevel = UglifyJS.mangle_properties(topLevel, options.mangleProperties);
-
-      if (options.nameCache) {
-        UglifyJS.writeNameCache(options.nameCache, 'props', cache);
-      }
-
-      // Need to figure out scope again since topLevel has been altered
-      if (options.expression === false) {
-        topLevel.figure_out_scope({
-          screw_ie8: options.screwIE8,
-          cache: topLevelCache
-        });
-      }
-    }
-
-    if (options.mangle !== false) {
-      if (options.mangle === true) {
-        options.mangle = {};
-      }
-      if (options.screwIE8 === false) {
-        options.mangle.screw_ie8 = false;
-      }
-      // disabled due to:
-      //   1) preserve stable name mangling
-      //   2) it increases gzipped file size, see https://github.com/mishoo/UglifyJS2#mangler-options
-      // // compute_char_frequency optimizes names for compression
-      // topLevel.compute_char_frequency(options.mangle);
-
-      // if options.mangle is a boolean (true) convert it into an object
-      if (typeof options.mangle !== 'object') {
-        options.mangle = {};
-      }
-
-      options.mangle.cache = topLevelCache;
-
-      options.mangle.except = options.mangle.except ? options.mangle.except : [];
-      if (mangleExclusions.vars) {
-        mangleExclusions.vars.forEach(function(name) {
-          UglifyJS.push_uniq(options.mangle.except, name);
-        });
-      }
-
-      // Requires previous call to figure_out_scope
-      // and should always be called after compressor transform
-      topLevel.mangle_names(options.mangle);
-
-      UglifyJS.writeNameCache(options.nameCache, 'vars', options.mangle.cache);
-    }
-
-    if (options.sourceMap && options.sourceMapIncludeSources) {
-      for (var file in sourcesContent) {
-        if (sourcesContent.hasOwnProperty(file)) {
-          outputOptions.source_map.get().setSourceContent(file, sourcesContent[file]);
-        }
-      }
-    }
-
-    // Print the ast to OutputStream
-    topLevel.print(output);
-
-    var min = output.get();
-
-    // Add the source map reference to the end of the file
-    if (options.sourceMap) {
-      // Set all paths to forward slashes for use in the browser
-      var sourceMappingURL;
-      sourceMappingURL = options.destToSourceMap.match(/^http[s]?:\/\//) === null ? uriPath(options.destToSourceMap) : options.destToSourceMap;
-      min += '\n//# sourceMappingURL=' + sourceMappingURL;
-    }
-
-    var result = {
-      max: totalCode,
-      min: min,
-      sourceMap: outputOptions.source_map
-    };
 
     grunt.verbose.ok();
 
-    return result;
-  };
-
-  getOutputOptions = function(options, dest) {
-    var outputOptions = {
-      beautify: false,
-      source_map: null
+    return {
+      max: totalCode,
+      min: result.code,
+      sourceMap: result.map
     };
-
-    if (options.banner) {
-      outputOptions.preamble = normalizeLf(options.banner);
-    }
-
-    if (options.screwIE8 === false) {
-      outputOptions.screw_ie8 = false;
-    }
-
-    if (options.sourceMap) {
-
-      var destBasename = path.basename(dest);
-      var sourceMapIn;
-      if (options.sourceMapIn) {
-        sourceMapIn = grunt.file.readJSON(options.sourceMapIn);
-      }
-      outputOptions.source_map = UglifyJS.SourceMap({
-        file: destBasename,
-        root: options.sourceMapRoot,
-        orig: sourceMapIn
-      });
-      if (options.sourceMapIncludeSources && sourceMapIn && sourceMapIn.sourcesContent) {
-        sourceMapIn.sourcesContent.forEach(function(content, idx) {
-          outputOptions.source_map.get().setSourceContent(sourceMapIn.sources[idx], content);
-        });
-      }
-
-      if (options.sourceMapIn) {
-        outputOptions.source_map.get()._file = destBasename;
-      }
-    }
-
-    if (typeof options.indentLevel !== 'undefined') {
-      outputOptions.indent_level = options.indentLevel;
-    }
-
-    if (typeof options.maxLineLen !== 'undefined') {
-      outputOptions.max_line_len = options.maxLineLen;
-    }
-
-    if (typeof options.ASCIIOnly !== 'undefined') {
-      outputOptions.ascii_only = options.ASCIIOnly;
-    }
-
-    if (typeof options.quoteStyle !== 'undefined') {
-      outputOptions.quote_style = options.quoteStyle;
-    }
-
-    if (typeof options.preserveComments !== 'undefined') {
-      outputOptions.comments = options.preserveComments;
-    }
-
-    if (options.beautify) {
-      if (typeof options.beautify === 'object') {
-        assign(outputOptions, options.beautify);
-      } else {
-        outputOptions.beautify = true;
-      }
-    }
-
-    return outputOptions;
   };
 
   return exports;

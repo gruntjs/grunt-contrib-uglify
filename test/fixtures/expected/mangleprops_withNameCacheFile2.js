@@ -1,1 +1,1 @@
-var d=10;a.a(d);
+var a=10;n.n(a);
