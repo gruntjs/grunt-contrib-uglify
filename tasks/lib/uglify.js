@@ -10,7 +10,7 @@
 
 // External libs.
 var path = require('path');
-var UglifyJS = require('uglify-js');
+var UglifyJS = require('uglify-es');
 var uriPath = require('uri-path');
 
 // Converts \r\n to \n

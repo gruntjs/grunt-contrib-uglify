@@ -18,7 +18,7 @@
   "dependencies": {
     "chalk": "^1.0.0",
     "maxmin": "^1.1.0",
-    "uglify-js": "~3.0.4",
+    "uglify-es": "~3.0.4",
     "uri-path": "^1.0.0"
   },
   "devDependencies": {
