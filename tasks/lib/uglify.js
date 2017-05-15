@@ -12,6 +12,7 @@
 var path = require('path');
 var UglifyJS = require('uglify-js');
 var uriPath = require('uri-path');
+var domprops = require('uglify-js/tools/domprops');
 
 // Converts \r\n to \n
 function normalizeLf(string) {
@@ -94,7 +95,7 @@ exports.init = function(grunt) {
           minifyOptions.mangle.properties.reserved = [];
         }
         if (options.reserveDOMProperties) {
-          require('uglify-js/tools/domprops').forEach(function(name) {
+          domprops.forEach(function(name) {
             UglifyJS._push_uniq(minifyOptions.mangle.properties.reserved, name);
           });
         }
