@@ -94,7 +94,7 @@ exports.init = function(grunt) {
           minifyOptions.mangle.properties.reserved = [];
         }
         if (options.reserveDOMProperties) {
-          require('uglify-js/tools/domprops').forEach(function(name) {
+          require('uglify-es/tools/domprops').forEach(function(name) {
             UglifyJS._push_uniq(minifyOptions.mangle.properties.reserved, name);
           });
         }
