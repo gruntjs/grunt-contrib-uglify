@@ -50,7 +50,7 @@ exports.init = function(grunt) {
       output: options.output || {},
       parse: options.parse || {},
       sourceMap: options.sourceMap,
-      toplevel: options.topLevel,
+      toplevel: options.toplevel,
       wrap: options.wrap
     };
 
