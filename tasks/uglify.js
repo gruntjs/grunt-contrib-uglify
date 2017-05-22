@@ -154,8 +154,11 @@ module.exports = function(grunt) {
         grunt.fail.warn(err);
       }
 
-      // Concat minified source + footer
-      var output = result.min + footer;
+      var output = result.min;
+      if (footer) {
+        // Concat minified source + footer
+        output += '\n' + footer;
+      }
 
       var unCompiledJSString = availableFiles.map(function (file) {
         return grunt.file.read(file);
