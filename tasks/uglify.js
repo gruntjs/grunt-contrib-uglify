@@ -37,8 +37,7 @@ module.exports = function(grunt) {
   var getAvailableFiles = function (filesArray) {
     return filesArray.filter(function (filepath) {
       if (!grunt.file.exists(filepath)) {
-        grunt.log.warn('Source file ' + chalk.cyan(filepath) + ' not found');
-        return false;
+        throw new Error('Source file ' + chalk.cyan(filepath) + ' not found');
       }
       return true;
     });
