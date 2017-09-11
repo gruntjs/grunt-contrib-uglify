@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v3.0.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v3.1.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify JavaScript files with UglifyJS
 
@@ -525,6 +525,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2017-09-11   v3.1.0   Update uglify-js to v3.1.0.
  * 2017-05-20   v3.0.1   Fix toplevel option.
  * 2017-05-12   v3.0.0   Update uglify-js to v3.0.4.
  * 2017-04-05   v2.3.0   Make CLI output less verbose.
@@ -570,4 +571,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Sat May 20 2017 19:52:43.*
+*This file was generated on Mon Sep 11 2017 13:21:40.*
