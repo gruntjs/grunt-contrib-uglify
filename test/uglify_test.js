@@ -41,6 +41,8 @@ exports.contrib_uglify = {
       'sourcemapin.js',
       'sourcemapin.js.map',
       'sourcemap_sources.js.map',
+      'sourcemapin_customUrl.js',
+      'sourcemapin_customUrl.js.map',
       'sourcemapin_sources.js',
       'sourcemapin_sources.js.map',
       'sourcemaps_multiple1.js',

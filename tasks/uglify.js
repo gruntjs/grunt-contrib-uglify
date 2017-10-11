@@ -118,18 +118,18 @@ module.exports = function(grunt) {
         }
       }
 
-      if (options.sourceMap && generateSourceMapURL) {
+      if (options.sourceMap) {
         if (typeof options.sourceMap !== 'object') {
           options.sourceMap = {};
-        }
-        if (generateSourceMapFilename) {
-          options.sourceMap.filename = path.basename(f.dest);
         }
         if (options.sourceMapIn) {
           options.sourceMap.content = grunt.file.read(options.sourceMapIn);
         }
         // Calculate the path from the dest file to the sourcemap for sourceMap.url
         if (generateSourceMapURL) {
+          if (generateSourceMapFilename) {
+            options.sourceMap.filename = path.basename(f.dest);
+          }
           var destToSourceMapPath = relativePath(f.dest, options.generatedSourceMapName);
           var sourceMapBasename = path.basename(options.generatedSourceMapName);
           options.sourceMap.url = uriPath(path.join(destToSourceMapPath, sourceMapBasename));

@@ -256,6 +256,20 @@ module.exports = function(grunt) {
           }
         }
       },
+      sourcemapin_customUrl: {
+        files: {
+          'tmp/sourcemapin_customUrl.js': ['test/fixtures/src/simple2.js']
+        },
+        options: {
+          sourceMap: {
+            includeSources: true,
+            url: 'sourcemapin_customUrl.js.map'
+          },
+          sourceMapIn: function() {
+            return 'test/fixtures/src/simple2.map';
+          }
+        }
+      },
       expression_json: {
         files: {
           'tmp/expression.json': ['test/fixtures/src/simple.json']
