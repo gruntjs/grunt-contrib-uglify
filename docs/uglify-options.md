@@ -125,13 +125,13 @@ Turn on preservation of comments.
 Type: `String`  
 Default: `''`
 
-This string will be prepended to the minified output. Template strings (e.g. `<%= config.value %>` will be expanded automatically.
+This string will be prepended to the minified output. Template strings (e.g. `<%= config.value %>`) will be expanded automatically.
 
 ## footer
 Type: `String`  
 Default: `''`
 
-This string will be appended to the minified output. Template strings (e.g. `<%= config.value %>` will be expanded automatically.
+This string will be appended to the minified output. Template strings (e.g. `<%= config.value %>`) will be expanded automatically.
 
 ## ie8
 Type: `Boolean`  
