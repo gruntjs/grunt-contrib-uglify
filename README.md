@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v3.2.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v3.3.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify JavaScript files with UglifyJS
 
@@ -153,13 +153,13 @@ Turn on preservation of comments.
 Type: `String`  
 Default: `''`
 
-This string will be prepended to the minified output. Template strings (e.g. `<%= config.value %>` will be expanded automatically.
+This string will be prepended to the minified output. Template strings (e.g. `<%= config.value %>`) will be expanded automatically.
 
 #### footer
 Type: `String`  
 Default: `''`
 
-This string will be appended to the minified output. Template strings (e.g. `<%= config.value %>` will be expanded automatically.
+This string will be appended to the minified output. Template strings (e.g. `<%= config.value %>`) will be expanded automatically.
 
 #### ie8
 Type: `Boolean`  
@@ -525,6 +525,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2017-12-24   v3.3.0   Update uglify-js to v3.3.0.
  * 2017-11-26   v3.2.1   Update uglify-js to v3.2.0.
  * 2017-09-11   v3.1.0   Update uglify-js to v3.1.0.
  * 2017-05-20   v3.0.1   Fix toplevel option.
@@ -572,4 +573,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Sun Nov 26 2017 08:57:08.*
+*This file was generated on Sun Dec 24 2017 14:47:07.*
