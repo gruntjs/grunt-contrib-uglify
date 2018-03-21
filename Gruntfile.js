@@ -412,6 +412,14 @@ module.exports = function(grunt) {
             max_line_len: 55
           }
         }
+      },
+      fail_to_minify: {
+        options: {
+          skipErrors: true
+        },
+        files: {
+          'tmp/fail_to_minify.js': ['test/fixtures/src/fail_to_minify.js']
+        }
       }
     },
 
