@@ -1,1 +1,1 @@
-!function(exports){var argumentC,argumentD;argumentC=3,argumentD=4}("undefined"==typeof testExport?testExport={}:testExport);
+!function(exports){var argumentC;argumentC=3}("undefined"==typeof testExport?testExport={}:testExport);
