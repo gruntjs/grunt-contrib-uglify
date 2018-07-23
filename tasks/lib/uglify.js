@@ -20,15 +20,16 @@ function normalizeLf(string) {
 }
 
 function toCache(cache, key) {
-  if (cache[key]) {
-    cache[key].props = UglifyJS.Dictionary.fromObject(cache[key].props);
-  } else {
-    cache[key] = {
-      cname: -1,
-      props: new UglifyJS.Dictionary()
-    };
+  if (!cache[key]) {
+    cache[key] = {};
   }
   return cache[key];
+}
+
+function pushUniq(array, el) {
+  if (array.indexOf(el) < 0) {
+    array.push(el);
+  }
 }
 
 exports.init = function(grunt) {
@@ -96,7 +97,7 @@ exports.init = function(grunt) {
         }
         if (options.reserveDOMProperties) {
           domprops.forEach(function(name) {
-            UglifyJS._push_uniq(minifyOptions.mangle.properties.reserved, name);
+            pushUniq(minifyOptions.mangle.properties.reserved, name);
           });
         }
       }
@@ -106,12 +107,12 @@ exports.init = function(grunt) {
             var obj = JSON.parse(grunt.file.read(file));
             if (minifyOptions.mangle && obj.vars) {
               obj.vars.forEach(function(name) {
-                UglifyJS._push_uniq(minifyOptions.mangle.reserved, name);
+                pushUniq(minifyOptions.mangle.reserved, name);
               });
             }
             if (minifyOptions.mangle.properties && obj.props) {
               obj.props.forEach(function(name) {
-                UglifyJS._push_uniq(minifyOptions.mangle.properties.reserved, name);
+                pushUniq(minifyOptions.mangle.properties.reserved, name);
               });
             }
           } catch (ex) {

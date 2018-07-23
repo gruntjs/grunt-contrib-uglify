@@ -439,6 +439,17 @@ module.exports = function(grunt) {
     }, onComplete);
   });
 
+  grunt.registerTask('pregennamecache', function() {
+    grunt.file.write(
+      'tmp/uglify_name_cache.json',
+      JSON.stringify({
+        props: {
+          props: { $myFunction: '$mf' }
+        }
+      })
+    );
+  });
+
   // Actually load this plugin's task(s).
   grunt.loadTasks('tasks');
 
@@ -453,6 +464,7 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'jshint',
     'clean',
+    'pregennamecache',
     'uglify',
     'nodeunit'
   ]);
