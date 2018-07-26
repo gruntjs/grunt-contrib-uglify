@@ -96,7 +96,7 @@ exports.init = function(grunt) {
         }
         if (options.reserveDOMProperties) {
           domprops.forEach(function(name) {
-            UglifyJS._push_uniq(minifyOptions.mangle.properties.reserved, name);
+            UglifyJS.push_uniq(minifyOptions.mangle.properties.reserved, name);
           });
         }
       }
@@ -106,12 +106,12 @@ exports.init = function(grunt) {
             var obj = JSON.parse(grunt.file.read(file));
             if (minifyOptions.mangle && obj.vars) {
               obj.vars.forEach(function(name) {
-                UglifyJS._push_uniq(minifyOptions.mangle.reserved, name);
+                UglifyJS.push_uniq(minifyOptions.mangle.reserved, name);
               });
             }
             if (minifyOptions.mangle.properties && obj.props) {
               obj.props.forEach(function(name) {
-                UglifyJS._push_uniq(minifyOptions.mangle.properties.reserved, name);
+                UglifyJS.push_uniq(minifyOptions.mangle.properties.reserved, name);
               });
             }
           } catch (ex) {
