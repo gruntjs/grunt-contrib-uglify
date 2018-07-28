@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v3.3.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v3.4.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify JavaScript files with UglifyJS
 
@@ -525,6 +525,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2018-07-29   v3.4.0   Update uglify-js to v3.4.0.
  * 2017-12-24   v3.3.0   Update uglify-js to v3.3.0.
  * 2017-11-26   v3.2.1   Update uglify-js to v3.2.0.
  * 2017-09-11   v3.1.0   Update uglify-js to v3.1.0.
@@ -573,4 +574,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Sun Dec 24 2017 14:47:07.*
+*This file was generated on Sun Jul 29 2018 01:52:18.*
