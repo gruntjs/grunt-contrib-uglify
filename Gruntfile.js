@@ -1,6 +1,6 @@
 /*
  * grunt-contrib-uglify
- * http://gruntjs.com/
+ * https://gruntjs.com/
  *
  * Copyright (c) 2016 "Cowboy" Ben Alman, contributors
  * Licensed under the MIT license.
@@ -183,7 +183,7 @@ module.exports = function(grunt) {
         dest: 'tmp/sourcemap_customUrl.js',
         options: {
           sourceMap: {
-            url: 'http://www.test.com/test/sourcemap_customUrl.js.map'
+            url: 'https://www.test.com/test/sourcemap_customUrl.js.map'
           }
         }
       },
@@ -458,6 +458,6 @@ module.exports = function(grunt) {
   ]);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['test', 'contrib-ci:skipIfExists', 'contrib-core']);
+  grunt.registerTask('default', ['test', 'build-contrib']);
 
 };
