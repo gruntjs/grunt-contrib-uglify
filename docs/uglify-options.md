@@ -26,19 +26,19 @@ sourceMapUrl            | sourceMap.url
 Type: `Boolean` `Object`  
 Default: `{}`
 
-Turn on or off mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_names()` *and* `ast.compute_char_frequency()` (mimicking command line behavior). [View all options here](https://github.com/mishoo/UglifyJS2#mangler-options).
+Turn on or off mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_names()` *and* `ast.compute_char_frequency()` (mimicking command line behavior). [View all options here](https://github.com/mishoo/UglifyJS2#mangle-options).
 
 ## compress
 Type: `Boolean` `Object`  
 Default: `{}`
 
-Turn on or off source compression with default options. If an `Object` is specified, it is passed as options to `UglifyJS.Compressor()`. [View all options here](https://github.com/mishoo/UglifyJS2#compressor-options).
+Turn on or off source compression with default options. If an `Object` is specified, it is passed as options to `UglifyJS.Compressor()`. [View all options here](https://github.com/mishoo/UglifyJS2#compress-options).
 
 ## beautify
 Type: `Boolean` `Object`  
 Default: `false`
 
-Turns on beautification of the generated source code. [View all options here](https://github.com/mishoo/UglifyJS2#beautifier-options)
+Turns on beautification of the generated source code. [View all options here](https://github.com/mishoo/UglifyJS2#output-options)
 
 #### parse.expression
 Type: `Boolean`  
@@ -143,7 +143,7 @@ Set this to `true` if you still care about full compliance with Internet Explore
 Type: `Boolean` `Object`  
 Default: `false`
 
-Turn on or off property mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_properties()` (mimicking command line behavior). [View all options here](https://github.com/mishoo/UglifyJS2#mangler-options).
+Turn on or off property mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_properties()` (mimicking command line behavior). [View all options here](https://github.com/mishoo/UglifyJS2#mangle-options).
 
 ## reserveDOMProperties
 Type: `Boolean`  

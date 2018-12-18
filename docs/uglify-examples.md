@@ -137,7 +137,7 @@ grunt.initConfig({
 Specify `beautify: true` to beautify your code for debugging/troubleshooting purposes.
 Pass an object to manually configure any other output options.
 
-See [UglifyJS documentation](https://github.com/mishoo/UglifyJS2#beautifier-options) for more information.
+See [UglifyJS documentation](https://github.com/mishoo/UglifyJS2#output-options) for more information.
 
 ```js
 // Project configuration.
