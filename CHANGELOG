@@ -1,3 +1,8 @@
+v4.0.1:
+  date: 2019-03-21
+  changes:
+    - Update uglify-js to v3.5.0.
+    - Update dependencies.
 v4.0.0:
   date: 2018-08-26
   changes:
