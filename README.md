@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v4.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
+# grunt-contrib-uglify v4.0.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-uglify.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ybtf5vbvtenii561/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-uglify/branch/master)
 
 > Minify JavaScript files with UglifyJS
 
@@ -54,19 +54,19 @@ sourceMapUrl            | sourceMap.url
 Type: `Boolean` `Object`  
 Default: `{}`
 
-Turn on or off mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_names()` *and* `ast.compute_char_frequency()` (mimicking command line behavior). [View all options here](https://github.com/mishoo/UglifyJS2#mangler-options).
+Turn on or off mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_names()` *and* `ast.compute_char_frequency()` (mimicking command line behavior). [View all options here](https://github.com/mishoo/UglifyJS2#mangle-options).
 
 #### compress
 Type: `Boolean` `Object`  
 Default: `{}`
 
-Turn on or off source compression with default options. If an `Object` is specified, it is passed as options to `UglifyJS.Compressor()`. [View all options here](https://github.com/mishoo/UglifyJS2#compressor-options).
+Turn on or off source compression with default options. If an `Object` is specified, it is passed as options to `UglifyJS.Compressor()`. [View all options here](https://github.com/mishoo/UglifyJS2#compress-options).
 
 #### beautify
 Type: `Boolean` `Object`  
 Default: `false`
 
-Turns on beautification of the generated source code. [View all options here](https://github.com/mishoo/UglifyJS2#beautifier-options)
+Turns on beautification of the generated source code. [View all options here](https://github.com/mishoo/UglifyJS2#output-options)
 
 ###### parse.expression
 Type: `Boolean`  
@@ -171,7 +171,7 @@ Set this to `true` if you still care about full compliance with Internet Explore
 Type: `Boolean` `Object`  
 Default: `false`
 
-Turn on or off property mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_properties()` (mimicking command line behavior). [View all options here](https://github.com/mishoo/UglifyJS2#mangler-options).
+Turn on or off property mangling with default options. If an `Object` is specified, it is passed directly to `ast.mangle_properties()` (mimicking command line behavior). [View all options here](https://github.com/mishoo/UglifyJS2#mangle-options).
 
 #### reserveDOMProperties
 Type: `Boolean`  
@@ -343,7 +343,7 @@ grunt.initConfig({
 Specify `beautify: true` to beautify your code for debugging/troubleshooting purposes.
 Pass an object to manually configure any other output options.
 
-See [UglifyJS documentation](https://github.com/mishoo/UglifyJS2#beautifier-options) for more information.
+See [UglifyJS documentation](https://github.com/mishoo/UglifyJS2#output-options) for more information.
 
 ```js
 // Project configuration.
@@ -575,4 +575,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Sun Aug 26 2018 09:22:15.*
+*This file was generated on Thu Mar 21 2019 14:11:06.*
