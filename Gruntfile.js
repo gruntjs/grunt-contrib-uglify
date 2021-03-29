@@ -115,6 +115,7 @@ module.exports = function(grunt) {
         src: 'test/fixtures/src/simple.js',
         dest: 'tmp/wrap.js',
         options: {
+          compress: false,
           mangle: false,
           wrap: 'testExport'
         }
