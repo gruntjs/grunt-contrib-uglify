@@ -236,7 +236,7 @@ grunt.initConfig({
 });
 ```
 
-## Compiling all files separately on the each their path
+## Compiling all files separately in the each their path
 
 This configuration will compress and mangle all js files separately in each folder.
 
