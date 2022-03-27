@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v5.0.0 [![Build Status](https://github.com/gruntjs/grunt-contrib-uglify/workflows/Tests/badge.svg)](https://github.com/gruntjs/grunt-contrib-uglify/actions?workflow=Tests)
+# grunt-contrib-uglify v5.1.0 [![Build Status](https://github.com/gruntjs/grunt-contrib-uglify/workflows/Tests/badge.svg)](https://github.com/gruntjs/grunt-contrib-uglify/actions?workflow=Tests)
 
 > Minify JavaScript files with UglifyJS
 
@@ -442,7 +442,7 @@ grunt.initConfig({
 });
 ```
 
-#### Compiling all files separately in each of their path
+#### Compiling all files separately in the each their path
 
 This configuration will compress and mangle all js files separately in each folder.
 
@@ -525,6 +525,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2022-03-27   v5.1.0   Update dependencies. uglify-js ^3.15.2. Requires node 12+.
  * 2020-07-16   v5.0.0   Requires node 10+. Update dependencies.
  * 2019-03-21   v4.0.1   Update uglify-js to v3.5.0. Update dependencies.
  * 2018-08-26   v4.0.0   Update dependencies. Requires Node.js >= 6.
@@ -577,4 +578,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Thu Jul 16 2020 10:08:35.*
+*This file was generated on Sun Mar 27 2022 11:41:37.*

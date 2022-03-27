@@ -1,3 +1,8 @@
+v5.1.0:
+  date: 2022-03-27
+  changes:
+    - Update dependencies. uglify-js ^3.15.2.
+    - Requires node 12+.
 v5.0.0:
   date: 2020-07-16
   changes:
