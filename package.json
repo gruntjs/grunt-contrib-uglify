@@ -9,7 +9,7 @@
   "repository": "gruntjs/grunt-contrib-uglify",
   "license": "MIT",
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "main": "tasks/uglify.js",
   "scripts": {
@@ -24,9 +24,9 @@
   "devDependencies": {
     "grunt": "^1.1.0",
     "grunt-contrib-clean": "^2.0.0",
-    "grunt-contrib-internal": "^5.0.0",
-    "grunt-contrib-jshint": "^2.1.0",
-    "grunt-contrib-nodeunit": "^2.0.0"
+    "grunt-contrib-internal": "^7.0.0",
+    "grunt-contrib-jshint": "^3.2.0",
+    "grunt-contrib-nodeunit": "^4.0.0"
   },
   "keywords": [
     "gruntplugin"
