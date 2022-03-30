@@ -281,7 +281,7 @@ grunt.initConfig({
       mangle: {
         properties: true
       },
-      reserveDOMCache: true,
+      reserveDOMProperties: true,
       exceptionsFiles: [ 'myExceptionsFile.json' ]
     },
     my_target: {
