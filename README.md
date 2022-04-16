@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v5.1.0 [![Build Status](https://github.com/gruntjs/grunt-contrib-uglify/workflows/Tests/badge.svg)](https://github.com/gruntjs/grunt-contrib-uglify/actions?workflow=Tests)
+# grunt-contrib-uglify v5.2.0 [![Build Status](https://github.com/gruntjs/grunt-contrib-uglify/workflows/Tests/badge.svg)](https://github.com/gruntjs/grunt-contrib-uglify/actions?workflow=Tests)
 
 > Minify JavaScript files with UglifyJS
 
@@ -578,4 +578,4 @@ grunt.initConfig({
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com)
 
-*This file was generated on Sun Mar 27 2022 11:41:37.*
+*This file was generated on Fri Apr 15 2022 21:00:08.*
