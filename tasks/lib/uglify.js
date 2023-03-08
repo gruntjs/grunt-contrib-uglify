@@ -51,7 +51,8 @@ exports.init = function(grunt) {
       parse: options.parse || {},
       sourceMap: options.sourceMap,
       toplevel: options.toplevel,
-      wrap: options.wrap
+      wrap: options.wrap,
+      webkit: options.webkit
     };
 
     if (options.banner) {
