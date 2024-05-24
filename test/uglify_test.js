@@ -21,6 +21,7 @@ exports.contrib_uglify = {
       'compress_mangle_banner.js',
       'compress_mangle_beautify.js',
       'compress_mangle_except.js',
+      'fail_to_minify.js',
       'multifile.js',
       'wrap.js',
       'maxLineLen.js',
