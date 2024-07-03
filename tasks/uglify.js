@@ -76,7 +76,7 @@ module.exports = function(grunt) {
 
     // Iterate over all src-dest file pairs.
     this.files.forEach(function (f) {
-      var availableFiles = getAvailableFiles(f.src);
+      var availableFiles = getAvailableFiles(f.orig.src);
 
       if (availableFiles.length === 0) {
         grunt.log.warn('Destination ' + chalk.cyan(f.dest) + ' not written because src files were empty.');
