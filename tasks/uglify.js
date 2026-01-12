@@ -53,7 +53,8 @@ module.exports = function(grunt) {
       mangle: {},
       beautify: false,
       report: 'min',
-      ie8: false
+      ie8: false,
+      skipErrors: grunt.option('force') || false
     });
 
     var footer = normalizeLf(options.footer);
@@ -138,28 +139,37 @@ module.exports = function(grunt) {
 
       // Minify files, warn and fail on error.
       var result;
+      var isFailed = false;
+
       try {
         result = uglify.minify(availableFiles, f.dest, options);
       } catch (e) {
-        console.log(e);
-        err = new Error('Uglification failed.');
-        if (e.message) {
-          err.message += '\n' + e.message + '. \n';
-          if (e.line) {
-            err.message += 'Line ' + e.line + ' in ' + availableFiles + '\n';
-          }
-        }
+        err = new Error(e.message + ' in line ' + e.line + '\n');
         err.origError = e;
-        grunt.log.warn('Uglifying source ' + chalk.cyan(availableFiles) + ' failed.');
-        grunt.fail.warn(err);
+        if (options['skipErrors']) {
+          grunt.log.error('Uglifying source ' + chalk.cyan(availableFiles) + ' failed.' + (options['skipErrors'] ? ' Skipping...' : ''));
+          grunt.log.error(err);
+        } else {
+          grunt.log.error('Uglifying source ' + chalk.cyan(availableFiles) + ' failed.');
+          grunt.fail.fatal(err);
+        }
+        isFailed = true;
       }
-
-      // Concat minified source + footer
-      var output = result.min + footer;
 
       var unCompiledJSString = availableFiles.map(function (file) {
         return grunt.file.read(file);
       }).join('');
+
+      // If the minifying fails, use the actual string as it is
+      if (isFailed) {
+        result = {
+          min: unCompiledJSString,
+          max: unCompiledJSString
+        };
+      }
+
+      // Concat minified source + footer
+      var output = isFailed ? unCompiledJSString : (result.min + footer);
 
       // Write the destination file.
       grunt.file.write(f.dest, output);
